@@ -5,24 +5,17 @@ z.config(z.locales.zhTW());
 
 /** 依 docs/PRD.md 第 7 節定義的資料格式。 */
 
-export const REGIONS = ['北', '中', '南', '東'] as const;
-export const SPOT_TYPES = [
-  'park',
-  'zoo',
-  'farm',
-  'theme',
-  'sea',
-  'museum',
-  'indoorplay',
-  'train',
-  'dino',
-  'water',
-] as const;
-export const ENVS = ['in', 'semi', 'mix', 'out'] as const;
-export const COST_TIERS = ['free', '$', '$$', '$$$', '?'] as const;
-export const PRICE_TIERS = ['$$', '$$$', '$$$$'] as const;
-export const HOTEL_TAGS = ['play', 'slide', 'pool', 'spa', 'park', 'animal'] as const;
-export const BADGE_KINDS = ['new', 'end'] as const;
+import {
+  BADGE_KINDS,
+  COST_TIERS,
+  ENVS,
+  HOTEL_TAGS,
+  PRICE_TIERS,
+  REGIONS,
+  SPOT_TYPES,
+} from './enums.ts';
+
+export * from './enums.ts';
 
 /** YYYY-MM-DD，而且必須是真實存在的日期（例如 2026-02-30 不行）。 */
 export function isValidIsoDate(value: string): boolean {
@@ -89,12 +82,6 @@ export const hotelSchema = z.object({
   last_verified: isoDate,
 });
 
-export type Region = (typeof REGIONS)[number];
-export type SpotType = (typeof SPOT_TYPES)[number];
-export type Env = (typeof ENVS)[number];
-export type CostTier = (typeof COST_TIERS)[number];
-export type PriceTier = (typeof PRICE_TIERS)[number];
-export type HotelTag = (typeof HOTEL_TAGS)[number];
 export type Badge = z.infer<typeof badgeSchema>;
 export type Spot = z.infer<typeof spotSchema>;
 export type Hotel = z.infer<typeof hotelSchema>;
