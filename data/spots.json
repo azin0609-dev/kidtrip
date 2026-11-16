@@ -1,1 +1,1656 @@
-[]
+[
+  {
+    "id": "spot-001",
+    "name": "林口樂活公園",
+    "city": "新北市林口區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 10,
+    "tip": "就在家附近，溜滑梯和沙坑夠玩一個早上，傍晚去比較不曬。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-002",
+    "name": "臺北市立動物園",
+    "city": "台北市文山區",
+    "region": "北",
+    "types": [
+      "zoo"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 45,
+    "tip": "園區很大，3 歲先看兒童動物區和企鵝館就好，遊園列車可以省腳力。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-003",
+    "name": "臺北市立兒童新樂園",
+    "city": "台北市士林區",
+    "region": "北",
+    "types": [
+      "theme"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "設施是分開投幣的，小小孩先玩旋轉木馬和小火車，假日早點到。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-004",
+    "name": "國立臺灣科學教育館",
+    "city": "台北市士林區",
+    "region": "北",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "兒童益智探索館適合學齡前，要另外買票而且分場次，先看好時間。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-005",
+    "name": "臺北市立天文科學教育館",
+    "city": "台北市士林區",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "宇宙探險軌道車小孩很愛，跟科教館在隔壁，可以排同一天。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-006",
+    "name": "大安森林公園",
+    "city": "台北市大安區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 40,
+    "tip": "共融遊戲場有大沙坑，記得帶挖沙工具和替換衣物。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-007",
+    "name": "花博公園舞蝶共融遊戲場",
+    "city": "台北市中山區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "就在捷運圓山站旁，遊具分齡，小小孩區有圍起來比較安心。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-008",
+    "name": "國立臺灣博物館古生物館",
+    "city": "台北市中正區",
+    "region": "北",
+    "types": [
+      "museum",
+      "dino"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 40,
+    "tip": "恐龍骨架就在大廳，逛一小時剛好，下雨天的好備案。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-009",
+    "name": "華山大草原遊戲場",
+    "city": "台北市中正區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 40,
+    "tip": "有沙坑和滑索，玩完走去華山文創園區吃飯很方便。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-010",
+    "name": "新北大都會公園熊猴森樂園",
+    "city": "新北市三重區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "整排堤坡溜滑梯，矮的那幾座適合 3 歲；幾乎沒有遮蔭，要防曬。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-011",
+    "name": "板橋435藝文特區",
+    "city": "新北市板橋區",
+    "region": "北",
+    "types": [
+      "park",
+      "museum"
+    ],
+    "env": "mix",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 30,
+    "tip": "戶外有沙坑和大草地，室內有玩具展館，晴雨都能待。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-012",
+    "name": "新北市立十三行博物館",
+    "city": "新北市八里區",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "館內有考古體驗區，外面草地可以跑，順路去八里左岸散步。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-013",
+    "name": "新北市立鶯歌陶瓷博物館",
+    "city": "新北市鶯歌區",
+    "region": "北",
+    "types": [
+      "museum",
+      "water"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 30,
+    "tip": "後面的陶瓷公園夏天有戲水區，記得帶泳衣和毛巾。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-014",
+    "name": "野柳海洋世界",
+    "city": "新北市萬里區",
+    "region": "北",
+    "types": [
+      "sea"
+    ],
+    "env": "in",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 70,
+    "tip": "海洋動物表演有固定場次，先查時間再出發，隔壁就是野柳地質公園。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-015",
+    "name": "國立海洋科技博物館",
+    "city": "基隆市中正區",
+    "region": "北",
+    "types": [
+      "museum",
+      "sea"
+    ],
+    "env": "in",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 60,
+    "tip": "兒童廳適合學齡前，展區很大，挑一兩區逛就好。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-016",
+    "name": "潮境公園",
+    "city": "基隆市中正區",
+    "region": "北",
+    "types": [
+      "park",
+      "sea"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 60,
+    "tip": "大草地看海放風箏，風很大，幫小孩多帶一件外套。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-017",
+    "name": "Xpark 都會型水生公園",
+    "city": "桃園市中壢區（青埔）",
+    "region": "北",
+    "types": [
+      "sea"
+    ],
+    "env": "in",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "企鵝和水母區最受歡迎，建議先線上買票，平日人少很多。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-018",
+    "name": "巧虎夢想樂園",
+    "city": "桃園市中壢區（青埔）",
+    "region": "北",
+    "types": [
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "專為 2–6 歲設計，跟 Xpark 同一棟；有舞台秀的場次要先預約。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-019",
+    "name": "桃園市兒童美術館",
+    "city": "桃園市中壢區（青埔）",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "展覽可以動手玩，館外有大水池和草地，逛完還能放電。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-020",
+    "name": "小人國主題樂園",
+    "city": "桃園市龍潭區",
+    "region": "北",
+    "types": [
+      "theme",
+      "water"
+    ],
+    "env": "mix",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 40,
+    "tip": "室內遊樂區不怕下雨，迷你建築區推車也好走。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-021",
+    "name": "六福村主題遊樂園",
+    "city": "新竹縣關西鎮",
+    "region": "北",
+    "types": [
+      "theme",
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 50,
+    "tip": "3 歲主要看動物、搭猛獸巴士，刺激設施大多有身高限制。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-022",
+    "name": "埔心牧場",
+    "city": "桃園市楊梅區",
+    "region": "北",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "可以餵牛餵羊，大草原很好跑，中午太陽大，帶帽子。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-023",
+    "name": "富田花園農場",
+    "city": "桃園市大溪區",
+    "region": "北",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 40,
+    "tip": "可以餵羊駝和笑笑羊，園區不大，兩小時剛好。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-024",
+    "name": "奧爾森林學堂",
+    "city": "桃園市八德區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": false,
+    "mins_from_linkou": 30,
+    "tip": "樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-025",
+    "name": "新竹市立動物園",
+    "city": "新竹市東區",
+    "region": "北",
+    "types": [
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 55,
+    "tip": "小而美，一個半小時逛得完，隔壁新竹公園還有遊戲場。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-026",
+    "name": "青青草原",
+    "city": "新竹市香山區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": false,
+    "mins_from_linkou": 65,
+    "tip": "超長磨石子溜滑梯要大人陪滑，穿長褲；園區有坡，推車比較吃力。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-027",
+    "name": "綠世界生態農場",
+    "city": "新竹縣北埔鄉",
+    "region": "北",
+    "types": [
+      "farm",
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 75,
+    "tip": "可以近距離看鳥和羊駝，園區在山坡上，路程抓寬一點。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-028",
+    "name": "小叮噹科學主題樂園",
+    "city": "新竹縣新豐鄉",
+    "region": "北",
+    "types": [
+      "theme",
+      "water"
+    ],
+    "env": "mix",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 45,
+    "tip": "有科學遊具和室內滑雪場，夏天還有戲水區，可以玩一整天。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-029",
+    "name": "蘭陽博物館",
+    "city": "宜蘭縣頭城鎮",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 75,
+    "tip": "兒童探索區要預約場次，建築外面的步道很好拍照。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-030",
+    "name": "幾米主題廣場",
+    "city": "宜蘭縣宜蘭市",
+    "region": "北",
+    "types": [
+      "park",
+      "train"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 80,
+    "tip": "就在宜蘭火車站旁，可以看火車進站，停留一小時就夠。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-031",
+    "name": "國立傳統藝術中心",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "types": [
+      "theme"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "老街有騎樓可以躲雨，童玩和 DIY 小孩會喜歡，下午有踩街表演。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-032",
+    "name": "羅東林業文化園區",
+    "city": "宜蘭縣羅東鎮",
+    "region": "北",
+    "types": [
+      "park",
+      "train"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "有蒸汽火車頭和貯木池，環池步道平坦好推車。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-033",
+    "name": "張美阿嬤農場",
+    "city": "宜蘭縣三星鄉",
+    "region": "北",
+    "types": [
+      "farm",
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 95,
+    "tip": "可以餵梅花鹿和水豚，飼料杯含在門票裡，小孩會餵到不想走。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-034",
+    "name": "遛遛三星",
+    "city": "宜蘭縣三星鄉",
+    "region": "北",
+    "types": [
+      "farm",
+      "indoorplay"
+    ],
+    "env": "semi",
+    "cost_tier": "?",
+    "stroller_ok": true,
+    "mins_from_linkou": 95,
+    "tip": "新開的自然樂園，大部分在室內，宜蘭下雨也能玩；票價出發前再查。",
+    "badge": {
+      "kind": "new",
+      "label": "2026 新開幕"
+    },
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "env",
+      "stroller_ok"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-035",
+    "name": "冬山河生態綠舟",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "可以搭小船、玩沙和滑草，園區平坦，推車很好走。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-036",
+    "name": "KidZania Taipei 奇薩尼亞台北",
+    "city": "台北市南港區",
+    "region": "北",
+    "types": [
+      "indoorplay",
+      "theme"
+    ],
+    "env": "in",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 50,
+    "tip": "在 LaLaport 南港 5 樓，11/24 開幕；職業體驗多半適合 4 歲以上，3 歲先確認能玩的項目。試營運只收線上購票。",
+    "badge": {
+      "kind": "new",
+      "label": "11/24 開幕"
+    },
+    "opens_on": "2026-11-24",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "stroller_ok"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-037",
+    "name": "野趣森林",
+    "city": "桃園市中壢區",
+    "region": "北",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 30,
+    "tip": "無動力冒險樂園。原訂 11/30 熄燈，已提前在 9/20 結束營業。",
+    "badge": {
+      "kind": "end",
+      "label": "已熄燈"
+    },
+    "closes_on": "2026-09-20",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "closes_on"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-038",
+    "name": "尚順育樂世界",
+    "city": "苗栗縣頭份市",
+    "region": "中",
+    "types": [
+      "theme",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 65,
+    "tip": "全室內的主題樂園，下雨天首選；3 歲能玩的在幼兒區。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-039",
+    "name": "飛牛牧場",
+    "city": "苗栗縣通霄鎮",
+    "region": "中",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "餵小牛喝奶有固定時間，先看場次；草原很大，推車走得動。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-040",
+    "name": "國立自然科學博物館",
+    "city": "台中市北區",
+    "region": "中",
+    "types": [
+      "museum",
+      "dino"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 110,
+    "tip": "恐龍廳的機械恐龍會動會叫，膽子小的先在遠處看。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-041",
+    "name": "異想新樂園",
+    "city": "台中市大里區",
+    "region": "中",
+    "types": [
+      "indoorplay",
+      "theme"
+    ],
+    "env": "in",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 120,
+    "tip": "號稱全台最大的室內樂園，各區分開收費，先挑適合 3 歲的區。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-042",
+    "name": "麗寶樂園",
+    "city": "台中市后里區",
+    "region": "中",
+    "types": [
+      "theme",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 100,
+    "tip": "探索樂園有幼兒設施，夏天馬拉灣可以玩水，旁邊就有飯店。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-043",
+    "name": "臺中中央公園",
+    "city": "台中市西屯區",
+    "region": "中",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 110,
+    "tip": "遊戲場很多座，挑一兩區玩就好；遮蔭少，下午晚一點去。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-044",
+    "name": "臺中兒童藝術館",
+    "city": "台中市大里區",
+    "region": "中",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 120,
+    "tip": "分場次入場，適合學齡前動手玩，跟異想新樂園很近。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-045",
+    "name": "芊動彰化親子園區",
+    "city": "彰化縣彰化市",
+    "region": "中",
+    "types": [
+      "park"
+    ],
+    "env": "semi",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 125,
+    "tip": "舊客運站改建的免費遊戲場，有屋頂遮陽，剛開幕假日人多。",
+    "badge": {
+      "kind": "new",
+      "label": "2026 新開幕"
+    },
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "env",
+      "stroller_ok"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-046",
+    "name": "百果山探索樂園",
+    "city": "彰化縣員林市",
+    "region": "中",
+    "types": [
+      "theme",
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 135,
+    "tip": "2026 年初改版重新開幕；園區在山坡上，推車會比較辛苦。",
+    "badge": {
+      "kind": "new",
+      "label": "2026 改版"
+    },
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "stroller_ok"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-047",
+    "name": "彰化扇形車庫",
+    "city": "彰化縣彰化市",
+    "region": "中",
+    "types": [
+      "train"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 125,
+    "tip": "可以近看火車頭轉進車庫，火車迷必去，停留一小時左右。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-048",
+    "name": "九族文化村",
+    "city": "南投縣魚池鄉",
+    "region": "中",
+    "types": [
+      "theme"
+    ],
+    "env": "out",
+    "cost_tier": "$$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 180,
+    "tip": "可以搭纜車到日月潭；園區坡多階梯多，建議帶揹巾，車程長最好住一晚。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-049",
+    "name": "清境農場青青草原",
+    "city": "南投縣仁愛鄉",
+    "region": "中",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 210,
+    "tip": "綿羊秀小孩很愛；山上冷而且坡陡，推車幾乎用不到。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-050",
+    "name": "劍湖山世界",
+    "city": "雲林縣古坑鄉",
+    "region": "中",
+    "types": [
+      "theme",
+      "indoorplay"
+    ],
+    "env": "mix",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 165,
+    "tip": "兒童玩國在室內，適合小小孩，隔壁就是飯店。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-051",
+    "name": "千巧谷牛樂園牧場",
+    "city": "雲林縣崙背鄉",
+    "region": "中",
+    "types": [
+      "farm"
+    ],
+    "env": "semi",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 160,
+    "tip": "免門票，可以看乳牛、吃冰淇淋，有遮棚不怕曬。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-052",
+    "name": "國立故宮博物院南部院區",
+    "city": "嘉義縣太保市",
+    "region": "南",
+    "types": [
+      "museum",
+      "park"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 175,
+    "tip": "兒童創意中心適合學齡前，戶外園區很大，可以跑也可以野餐。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-053",
+    "name": "嘉義公園 KANO 遊戲場",
+    "city": "嘉義市東區",
+    "region": "南",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 180,
+    "tip": "棒球主題的遊戲場，旁邊有射日塔，樹蔭多比較涼。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-054",
+    "name": "北門森鐵車庫園區",
+    "city": "嘉義市東區",
+    "region": "南",
+    "types": [
+      "train"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 180,
+    "tip": "可以看阿里山小火車的車頭和檢修庫，免門票。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-055",
+    "name": "奇美博物館",
+    "city": "台南市仁德區",
+    "region": "南",
+    "types": [
+      "museum",
+      "park"
+    ],
+    "env": "mix",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 215,
+    "tip": "動物標本廳小孩最愛，外面草地和噴水池可以放電。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-056",
+    "name": "十鼓仁糖文創園區",
+    "city": "台南市仁德區",
+    "region": "南",
+    "types": [
+      "theme",
+      "train"
+    ],
+    "env": "mix",
+    "cost_tier": "$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 215,
+    "tip": "有小火車和擊鼓表演；舊糖廠裡階梯多，推車不太方便。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-057",
+    "name": "頑皮世界野生動物園",
+    "city": "台南市學甲區",
+    "region": "南",
+    "types": [
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 200,
+    "tip": "可以餵長頸鹿，動物表演有固定場次，先查時間。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-058",
+    "name": "南瀛天文館",
+    "city": "台南市大內區",
+    "region": "南",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 210,
+    "tip": "星象劇場要另外買票，戶外草地視野很好。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-059",
+    "name": "河樂廣場",
+    "city": "台南市中西區",
+    "region": "南",
+    "types": [
+      "water",
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 220,
+    "tip": "市中心的免費戲水池，夏天最適合，記得帶泳衣和替換衣物。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-060",
+    "name": "樹谷生活科學館",
+    "city": "台南市新市區",
+    "region": "南",
+    "types": [
+      "museum",
+      "dino"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 205,
+    "tip": "有大型恐龍和古生物化石，場館不大，一個半小時剛好。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-061",
+    "name": "壽山動物園",
+    "city": "高雄市鼓山區",
+    "region": "南",
+    "types": [
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 240,
+    "tip": "整修後有空中廊道，推車好走；可以搭園區接駁車省力。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-062",
+    "name": "國立科學工藝博物館",
+    "city": "高雄市三民區",
+    "region": "南",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 235,
+    "tip": "兒童科學園適合學齡前，分場次入場，先線上訂。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-063",
+    "name": "哈瑪星台灣鐵道館",
+    "city": "高雄市鹽埕區",
+    "region": "南",
+    "types": [
+      "train",
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 240,
+    "tip": "超大鐵道模型很好看，戶外還有駁二小火車可以搭。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-064",
+    "name": "衛武營都會公園共融遊戲場",
+    "city": "高雄市鳳山區",
+    "region": "南",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 240,
+    "tip": "樹蔭多、草地大，遊戲場有沙坑和滑索。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-065",
+    "name": "高雄親子遊樂園區",
+    "city": "高雄市鳳山區",
+    "region": "南",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "semi",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 240,
+    "tip": "舊鐵道機廠改建，有屋頂遮陽，免費入場，設施照年齡分區。",
+    "badge": {
+      "kind": "new",
+      "label": "2026 新開幕"
+    },
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "stroller_ok"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-066",
+    "name": "義大遊樂世界",
+    "city": "高雄市大樹區",
+    "region": "南",
+    "types": [
+      "theme",
+      "indoorplay"
+    ],
+    "env": "mix",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 235,
+    "tip": "室內區很大，下雨也能玩，3 歲可以玩的設施不少。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-067",
+    "name": "國立海洋生物博物館",
+    "city": "屏東縣車城鄉",
+    "region": "南",
+    "types": [
+      "sea",
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 300,
+    "tip": "海底隧道和白鯨最受歡迎，可以排夜宿；車程很長，一定要住一晚。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-068",
+    "name": "屏東縣民公園",
+    "city": "屏東縣屏東市",
+    "region": "南",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 255,
+    "tip": "舊糖廠遺構改成的河濱公園，有遊戲場，傍晚去最舒服。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-069",
+    "name": "六堆客家文化園區",
+    "city": "屏東縣內埔鄉",
+    "region": "南",
+    "types": [
+      "park",
+      "indoorplay"
+    ],
+    "env": "mix",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 260,
+    "tip": "有室內兒童探索區，戶外大傘架下可以躲太陽。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-070",
+    "name": "遠雄海洋公園",
+    "city": "花蓮縣壽豐鄉",
+    "region": "東",
+    "types": [
+      "theme",
+      "sea"
+    ],
+    "env": "mix",
+    "cost_tier": "$$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 200,
+    "tip": "海豚表演和水族館適合小小孩，園區依山而建，有手扶梯和纜車。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-071",
+    "name": "新光兆豐休閒農場",
+    "city": "花蓮縣鳳林鎮",
+    "region": "東",
+    "types": [
+      "farm",
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 220,
+    "tip": "園區很大，可以租電動車；有可愛動物區，還能泡溫泉。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-072",
+    "name": "知卡宣綠森林親水公園",
+    "city": "花蓮縣吉安鄉",
+    "region": "東",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 195,
+    "tip": "遊戲場免費，夏天戲水區開放時要另外收費。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-073",
+    "name": "瑞穗牧場",
+    "city": "花蓮縣瑞穗鄉",
+    "region": "東",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 240,
+    "tip": "免門票，可以看乳牛、喝鮮奶、吃鮮奶饅頭。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-074",
+    "name": "國立臺灣史前文化博物館",
+    "city": "臺東縣臺東市",
+    "region": "東",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 330,
+    "tip": "整修後有兒童互動展區，戶外水舞廣場小孩很愛。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-075",
+    "name": "初鹿牧場",
+    "city": "臺東縣卑南鄉",
+    "region": "東",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 320,
+    "tip": "大草原可以滑草、餵牛，鮮奶冰淇淋必吃。",
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-16"
+  }
+]

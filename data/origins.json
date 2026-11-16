@@ -1,359 +1,359 @@
 {
   "source": "© OpenStreetMap contributors（Nominatim），各縣市、鄉鎮市區的代表座標",
-  "generated": null,
+  "generated": "2026-11-16",
   "counties": [
     {
       "name": "基隆市",
-      "lat": null,
-      "lng": null,
+      "lat": 25.131723,
+      "lng": 121.744652,
       "towns": [
         {
           "name": "仁愛區",
-          "lat": null,
-          "lng": null
+          "lat": 25.12512,
+          "lng": 121.736779
         },
         {
           "name": "信義區",
-          "lat": null,
-          "lng": null
+          "lat": 25.129527,
+          "lng": 121.751182
         },
         {
           "name": "中正區",
-          "lat": null,
-          "lng": null
+          "lat": 25.141031,
+          "lng": 121.759136
         },
         {
           "name": "中山區",
-          "lat": null,
-          "lng": null
+          "lat": 25.152815,
+          "lng": 121.729596
         },
         {
           "name": "安樂區",
-          "lat": null,
-          "lng": null
+          "lat": 25.120976,
+          "lng": 121.723324
         },
         {
           "name": "暖暖區",
-          "lat": null,
-          "lng": null
+          "lat": 25.10026,
+          "lng": 121.735989
         },
         {
           "name": "七堵區",
-          "lat": null,
-          "lng": null
+          "lat": 25.097772,
+          "lng": 121.716395
         }
       ]
     },
     {
       "name": "臺北市",
-      "lat": null,
-      "lng": null,
+      "lat": 25.03752,
+      "lng": 121.56368,
       "towns": [
         {
           "name": "中正區",
-          "lat": null,
-          "lng": null
+          "lat": 25.032361,
+          "lng": 121.518267
         },
         {
           "name": "大同區",
-          "lat": null,
-          "lng": null
+          "lat": 25.065986,
+          "lng": 121.515514
         },
         {
           "name": "中山區",
-          "lat": null,
-          "lng": null
+          "lat": 25.064361,
+          "lng": 121.533468
         },
         {
           "name": "松山區",
-          "lat": null,
-          "lng": null
+          "lat": 25.049885,
+          "lng": 121.577272
         },
         {
           "name": "大安區",
-          "lat": null,
-          "lng": null
+          "lat": 25.026515,
+          "lng": 121.534395
         },
         {
           "name": "萬華區",
-          "lat": null,
-          "lng": null
+          "lat": 25.031933,
+          "lng": 121.499332
         },
         {
           "name": "信義區",
-          "lat": null,
-          "lng": null
+          "lat": 25.033345,
+          "lng": 121.566896
         },
         {
           "name": "士林區",
-          "lat": null,
-          "lng": null
+          "lat": 25.09184,
+          "lng": 121.524207
         },
         {
           "name": "北投區",
-          "lat": null,
-          "lng": null
+          "lat": 25.132419,
+          "lng": 121.501379
         },
         {
           "name": "內湖區",
-          "lat": null,
-          "lng": null
+          "lat": 25.069664,
+          "lng": 121.588998
         },
         {
           "name": "南港區",
-          "lat": null,
-          "lng": null
+          "lat": 25.054578,
+          "lng": 121.6066
         },
         {
           "name": "文山區",
-          "lat": null,
-          "lng": null
+          "lat": 24.989786,
+          "lng": 121.570458
         }
       ]
     },
     {
       "name": "新北市",
-      "lat": null,
-      "lng": null,
+      "lat": 25.011997,
+      "lng": 121.465662,
       "towns": [
         {
           "name": "板橋區",
-          "lat": null,
-          "lng": null
+          "lat": 25.00967,
+          "lng": 121.459099
         },
         {
           "name": "三重區",
-          "lat": null,
-          "lng": null
+          "lat": 25.061486,
+          "lng": 121.488102
         },
         {
           "name": "中和區",
-          "lat": null,
-          "lng": null
+          "lat": 24.999397,
+          "lng": 121.49898
         },
         {
           "name": "永和區",
-          "lat": null,
-          "lng": null
+          "lat": 25.009235,
+          "lng": 121.52007
         },
         {
           "name": "新莊區",
-          "lat": null,
-          "lng": null
+          "lat": 25.035772,
+          "lng": 121.450248
         },
         {
           "name": "新店區",
-          "lat": null,
-          "lng": null
+          "lat": 24.967394,
+          "lng": 121.541942
         },
         {
           "name": "樹林區",
-          "lat": null,
-          "lng": null
+          "lat": 24.990706,
+          "lng": 121.420533
         },
         {
           "name": "鶯歌區",
-          "lat": null,
-          "lng": null
+          "lat": 24.959945,
+          "lng": 121.353771
         },
         {
           "name": "三峽區",
-          "lat": null,
-          "lng": null
+          "lat": 24.934339,
+          "lng": 121.368905
         },
         {
           "name": "淡水區",
-          "lat": null,
-          "lng": null
+          "lat": 25.181304,
+          "lng": 121.453148
         },
         {
           "name": "汐止區",
-          "lat": null,
-          "lng": null
+          "lat": 25.064159,
+          "lng": 121.658748
         },
         {
           "name": "瑞芳區",
-          "lat": null,
-          "lng": null
+          "lat": 25.108911,
+          "lng": 121.809768
         },
         {
           "name": "土城區",
-          "lat": null,
-          "lng": null
+          "lat": 24.972201,
+          "lng": 121.443348
         },
         {
           "name": "蘆洲區",
-          "lat": null,
-          "lng": null
+          "lat": 25.084923,
+          "lng": 121.4737
         },
         {
           "name": "五股區",
-          "lat": null,
-          "lng": null
+          "lat": 25.082743,
+          "lng": 121.438156
         },
         {
           "name": "泰山區",
-          "lat": null,
-          "lng": null
+          "lat": 25.058864,
+          "lng": 121.430811
         },
         {
           "name": "林口區",
-          "lat": null,
-          "lng": null
+          "lat": 25.077531,
+          "lng": 121.391602
         },
         {
           "name": "深坑區",
-          "lat": null,
-          "lng": null
+          "lat": 25.002329,
+          "lng": 121.61567
         },
         {
           "name": "石碇區",
-          "lat": null,
-          "lng": null
+          "lat": 24.991679,
+          "lng": 121.658567
         },
         {
           "name": "坪林區",
-          "lat": null,
-          "lng": null
+          "lat": 24.937388,
+          "lng": 121.711185
         },
         {
           "name": "三芝區",
-          "lat": null,
-          "lng": null
+          "lat": 25.258047,
+          "lng": 121.500866
         },
         {
           "name": "石門區",
-          "lat": null,
-          "lng": null
+          "lat": 25.2913,
+          "lng": 121.567684
         },
         {
           "name": "八里區",
-          "lat": null,
-          "lng": null
+          "lat": 25.145692,
+          "lng": 121.403511
         },
         {
           "name": "平溪區",
-          "lat": null,
-          "lng": null
+          "lat": 25.025797,
+          "lng": 121.739144
         },
         {
           "name": "雙溪區",
-          "lat": null,
-          "lng": null
+          "lat": 25.033409,
+          "lng": 121.865676
         },
         {
           "name": "貢寮區",
-          "lat": null,
-          "lng": null
+          "lat": 25.022043,
+          "lng": 121.910082
         },
         {
           "name": "金山區",
-          "lat": null,
-          "lng": null
+          "lat": 25.221883,
+          "lng": 121.636185
         },
         {
           "name": "萬里區",
-          "lat": null,
-          "lng": null
+          "lat": 25.181234,
+          "lng": 121.688687
         },
         {
           "name": "烏來區",
-          "lat": null,
-          "lng": null
+          "lat": 24.863976,
+          "lng": 121.551255
         }
       ]
     },
     {
       "name": "桃園市",
-      "lat": null,
-      "lng": null,
+      "lat": 24.993,
+      "lng": 121.301,
       "towns": [
         {
           "name": "桃園區",
-          "lat": null,
-          "lng": null
+          "lat": 24.993923,
+          "lng": 121.30168
         },
         {
           "name": "中壢區",
-          "lat": null,
-          "lng": null
+          "lat": 24.965353,
+          "lng": 121.224926
         },
         {
           "name": "大溪區",
-          "lat": null,
-          "lng": null
+          "lat": 24.880584,
+          "lng": 121.286962
         },
         {
           "name": "楊梅區",
-          "lat": null,
-          "lng": null
+          "lat": 24.907575,
+          "lng": 121.145874
         },
         {
           "name": "蘆竹區",
-          "lat": null,
-          "lng": null
+          "lat": 25.050645,
+          "lng": 121.291732
         },
         {
           "name": "大園區",
-          "lat": null,
-          "lng": null
+          "lat": 25.063889,
+          "lng": 121.195277
         },
         {
           "name": "龜山區",
-          "lat": null,
-          "lng": null
+          "lat": 24.992517,
+          "lng": 121.337767
         },
         {
           "name": "八德區",
-          "lat": null,
-          "lng": null
+          "lat": 24.928651,
+          "lng": 121.284656
         },
         {
           "name": "龍潭區",
-          "lat": null,
-          "lng": null
+          "lat": 24.863851,
+          "lng": 121.216392
         },
         {
           "name": "平鎮區",
-          "lat": null,
-          "lng": null
+          "lat": 24.945752,
+          "lng": 121.218359
         },
         {
           "name": "新屋區",
-          "lat": null,
-          "lng": null
+          "lat": 24.972203,
+          "lng": 121.105801
         },
         {
           "name": "觀音區",
-          "lat": null,
-          "lng": null
+          "lat": 25.036385,
+          "lng": 121.082255
         },
         {
           "name": "復興區",
-          "lat": null,
-          "lng": null
+          "lat": 24.815377,
+          "lng": 121.351898
         }
       ]
     },
     {
       "name": "新竹市",
-      "lat": null,
-      "lng": null,
+      "lat": 24.806633,
+      "lng": 120.968683,
       "towns": [
         {
           "name": "東區",
-          "lat": null,
-          "lng": null
+          "lat": 24.804733,
+          "lng": 120.973626
         },
         {
           "name": "北區",
-          "lat": null,
-          "lng": null
+          "lat": 24.818754,
+          "lng": 120.960044
         },
         {
           "name": "香山區",
-          "lat": null,
-          "lng": null
+          "lat": 24.797202,
+          "lng": 120.942528
         }
       ]
     },
