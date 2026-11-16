@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { STORAGE_KEY, loadState, parseState, saveState } from './storage.ts';
+import { STORAGE_KEY, loadState, parseState, saveState, toggleBeen } from './storage.ts';
 
 function memoryStorage(initial: Record<string, string> = {}) {
   const data = { ...initial };
@@ -55,6 +55,25 @@ describe('storage', () => {
 
     const bad = parseState(JSON.stringify({ origin: { label: 'x', lat: 'a' }, kids: 'no', nap: { start: '25:00', end: '1' } }));
     expect(bad).toEqual({ fav: [], been: [] });
+  });
+  it('beenAt：舊資料（沒有 beenAt）照常讀得到', () => {
+    const old = parseState('{"fav":["spot-001"],"been":["spot-002"]}');
+    expect(old).toEqual({ fav: ['spot-001'], been: ['spot-002'] });
+    expect(old.beenAt).toBeUndefined();
+  });
+  it('beenAt：只留合法日期、而且還在 been 裡的', () => {
+    const s = parseState(
+      JSON.stringify({ fav: [], been: ['spot-001', 'spot-002'], beenAt: { 'spot-001': '2026-10-01', 'spot-002': 'yesterday', 'spot-009': '2026-10-01' } }),
+    );
+    expect(s.beenAt).toEqual({ 'spot-001': '2026-10-01' });
+  });
+  it('toggleBeen 記下日期，取消時刪掉', () => {
+    const on = toggleBeen({ fav: [], been: ['spot-002'] }, 'spot-001', '2026-11-16');
+    expect(on.been).toEqual(['spot-002', 'spot-001']);
+    expect(on.beenAt).toEqual({ 'spot-001': '2026-11-16' });
+    const off = toggleBeen(on, 'spot-001', '2026-11-20');
+    expect(off.been).toEqual(['spot-002']);
+    expect(off.beenAt).toEqual({});
   });
   it('localStorage 丟例外或不存在時不會出錯', () => {
     expect(loadState(throwing)).toEqual({ fav: [], been: [] });

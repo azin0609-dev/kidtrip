@@ -23,6 +23,8 @@ export const DEFAULT_NAP: StoredNap = { start: '13:00', end: '15:00' };
 export interface StoredState {
   fav: string[];
   been: string[];
+  /** id → 去過的日期（YYYY-MM-DD）。任務 1-5 加入；舊資料沒有這欄，視為日期不明。 */
+  beenAt?: Record<string, string>;
   origin?: StoredOrigin;
   kids?: StoredKid[];
   nap?: StoredNap;
@@ -49,6 +51,9 @@ export function parseState(raw: string | null): StoredState {
     const obj = data as Record<string, unknown>;
     const state: StoredState = { ...obj, fav: stringList(obj.fav), been: stringList(obj.been) };
     // 型別不對的欄位直接拿掉，不讓壞資料影響畫面。
+    const beenAt = parseBeenAt(obj.beenAt, state.been);
+    if (beenAt) state.beenAt = beenAt;
+    else delete state.beenAt;
     const origin = parseOrigin(obj.origin);
     if (origin) state.origin = origin;
     else delete state.origin;
@@ -66,6 +71,27 @@ export function parseState(raw: string | null): StoredState {
 
 const isFiniteNumber = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
 const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
+
+/** 只保留合法日期、而且還在 been 裡的紀錄。 */
+function parseBeenAt(v: unknown, been: readonly string[]): Record<string, string> | null {
+  if (!isRecord(v)) return null;
+  const out: Record<string, string> = {};
+  for (const [id, date] of Object.entries(v)) {
+    if (been.includes(id) && typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)) out[id] = date;
+  }
+  return out;
+}
+
+/** 切換「去過」：標成去過時記下今天；取消時一併刪掉日期。 */
+export function toggleBeen(state: StoredState, id: string, today: string): StoredState {
+  const beenAt = { ...state.beenAt };
+  if (state.been.includes(id)) {
+    delete beenAt[id];
+    return { ...state, been: state.been.filter((x) => x !== id), beenAt };
+  }
+  beenAt[id] = today;
+  return { ...state, been: [...state.been, id], beenAt };
+}
 
 function parseOrigin(v: unknown): StoredOrigin | null {
   if (!isRecord(v) || typeof v.label !== 'string' || !isFiniteNumber(v.lat) || !isFiniteNumber(v.lng)) return null;

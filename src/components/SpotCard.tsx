@@ -17,6 +17,8 @@ export interface SpotCardProps {
   onToggleFav: () => void;
   onToggleBeen: () => void;
   highlight?: boolean;
+  /** 推薦原因，例如「離家約 25 分・室內・還沒去過」。 */
+  reason?: string;
 }
 
 export function DriveBadge({ mins, originLabel }: { mins: number | null; originLabel: string }) {
@@ -43,7 +45,7 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, highlight }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, highlight, reason }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   return (
     <article
@@ -58,6 +60,10 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
         </div>
         <DriveBadge mins={mins} originLabel={originLabel} />
       </header>
+
+      {reason && (
+        <p className="rounded-lg bg-teal-50 px-3 py-2 text-sm text-teal-900 dark:bg-teal-950 dark:text-teal-100">{reason}</p>
+      )}
 
       <div className="flex flex-wrap gap-1.5">
         {badges.map((b) => (

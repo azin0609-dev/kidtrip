@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
+import { Recommendations } from './components/Recommendations.tsx';
 import { SettingsDialog } from './components/SettingsDialog.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
 import { UpdatePrompt } from './components/UpdatePrompt.tsx';
@@ -21,6 +22,8 @@ import {
 import { latestVerified, shortOriginLabel } from './lib/format.ts';
 import { defaultOrigin, makeMinsOf } from './lib/origin.ts';
 import { pickSpot } from './lib/pick.ts';
+import { recommend, weekSeed } from './lib/recommend.ts';
+import { toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
 
 export default function App() {
@@ -31,6 +34,9 @@ export default function App() {
   const [hotelFilters, setHotelFilters] = useState(DEFAULT_HOTEL_FILTERS);
   const [picked, setPicked] = useState<{ id: string | null; empty: boolean }>({ id: null, empty: false });
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [rainy, setRainy] = useState(false);
+  const [overnight, setOvernight] = useState(false);
+  const [shuffle, setShuffle] = useState(0);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
 
   const fallbackOrigin = useMemo(() => defaultOrigin(origins), []);
@@ -64,7 +70,17 @@ export default function App() {
   const verifiedOn = latestVerified([...spots, ...hotels]);
 
   const toggleFav = (id: string) => update((s) => ({ ...s, fav: toggleInList(s.fav, id) }));
-  const toggleBeen = (id: string) => update((s) => ({ ...s, been: toggleInList(s.been, id) }));
+  const toggleBeen = (id: string) => update((s) => toggleBeenState(s, id, today));
+
+  const picks = useMemo(
+    () =>
+      recommend(
+        spots,
+        { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight },
+        weekSeed(today, origin, shuffle),
+      ),
+    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, origin, shuffle],
+  );
 
   const pickedSpot = picked.id ? spotById.get(picked.id) : undefined;
   const doPick = () => {
@@ -75,7 +91,7 @@ export default function App() {
     );
   };
 
-  const renderSpot = (spot: Spot, highlight = false) => (
+  const renderSpot = (spot: Spot, highlight = false, reason?: string) => (
     <SpotCard
       key={spot.id}
       spot={spot}
@@ -88,6 +104,7 @@ export default function App() {
       onToggleFav={() => toggleFav(spot.id)}
       onToggleBeen={() => toggleBeen(spot.id)}
       highlight={highlight}
+      reason={reason}
     />
   );
   const renderHotel = (hotel: Hotel) => (
@@ -147,6 +164,16 @@ export default function App() {
       <main className="mx-auto max-w-6xl px-4 pt-4">
         {tab === 'spots' && (
           <>
+            <Recommendations
+              picks={picks}
+              rainy={rainy}
+              overnight={overnight}
+              onRainy={setRainy}
+              onOvernight={setOvernight}
+              onShuffle={() => setShuffle((n) => n + 1)}
+              renderCard={(p) => renderSpot(p.spot, false, p.reasons.join('・'))}
+            />
+            <h2 className="mb-3 text-lg font-bold">全部景點</h2>
             <SpotFiltersPanel value={spotFilters} onChange={setSpotFilters} />
             <div className="mt-5 flex items-center justify-between gap-3">
               <p className="text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
