@@ -1,8 +1,8 @@
 import type { z } from 'zod';
-import { hotelSchema, isValidIsoDate, spotSchema } from './schema.ts';
+import { hotelSchema, isValidIsoDate, originsSchema, spotSchema } from './schema.ts';
 
 export interface DataIssue {
-  file: 'spots.json' | 'hotels.json';
+  file: 'spots.json' | 'hotels.json' | 'origins.json';
   /** 該筆的 id；id 本身缺漏時用「#索引」表示。 */
   id: string;
   /** 出錯的欄位路徑，例如 region、types[1]。 */
@@ -106,6 +106,23 @@ export function validateData(spots: unknown, hotels: unknown): DataIssue[] {
   }
 
   return issues;
+}
+
+/** 檢查 origins.json：22 縣市、368 鄉鎮市區，座標在台灣範圍內（還沒產生時可以是 null）。 */
+export function validateOrigins(data: unknown): DataIssue[] {
+  const result = originsSchema.safeParse(data);
+  if (!result.success) {
+    return result.error.issues.map((i) => ({
+      file: 'origins.json',
+      id: '(整個檔案)',
+      field: formatPath(i.path),
+      message: i.message,
+    }));
+  }
+  const towns = result.data.counties.reduce((n, c) => n + c.towns.length, 0);
+  return towns === 368
+    ? []
+    : [{ file: 'origins.json', id: '(整個檔案)', field: 'counties', message: `鄉鎮市區應為 368 個，目前 ${towns} 個` }];
 }
 
 export function formatIssues(issues: DataIssue[]): string {

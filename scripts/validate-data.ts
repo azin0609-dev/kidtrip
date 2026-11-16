@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { formatIssues, validateData } from '../src/data/validate.ts';
+import { formatIssues, validateData, validateOrigins } from '../src/data/validate.ts';
 
 const dataDir = fileURLToPath(new URL('../data/', import.meta.url));
 
@@ -16,7 +16,8 @@ function readJson(name: string): unknown {
 
 const spots = readJson('spots.json');
 const hotels = readJson('hotels.json');
-const issues = validateData(spots, hotels);
+const origins = readJson('origins.json');
+const issues = [...validateData(spots, hotels), ...validateOrigins(origins)];
 
 if (issues.length > 0) {
   console.error(formatIssues(issues));

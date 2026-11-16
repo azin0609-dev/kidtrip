@@ -2,10 +2,31 @@
 
 export const STORAGE_KEY = 'kidtrip.v1';
 
+export interface StoredOrigin {
+  label: string;
+  lat: number;
+  lng: number;
+}
+export interface StoredKid {
+  nickname: string;
+  /** YYYY-MM */
+  birthYm: string;
+}
+export interface StoredNap {
+  /** HH:MM */
+  start: string;
+  end: string;
+}
+
+export const DEFAULT_NAP: StoredNap = { start: '13:00', end: '15:00' };
+
 export interface StoredState {
   fav: string[];
   been: string[];
-  /** 其他欄位（origin、kids…之後的任務才用）原樣保留。 */
+  origin?: StoredOrigin;
+  kids?: StoredKid[];
+  nap?: StoredNap;
+  /** 不認得的欄位原樣保留，之後的版本可能會用到。 */
   [key: string]: unknown;
 }
 
@@ -26,10 +47,46 @@ export function parseState(raw: string | null): StoredState {
     const data: unknown = JSON.parse(raw);
     if (!data || typeof data !== 'object' || Array.isArray(data)) return emptyState();
     const obj = data as Record<string, unknown>;
-    return { ...obj, fav: stringList(obj.fav), been: stringList(obj.been) };
+    const state: StoredState = { ...obj, fav: stringList(obj.fav), been: stringList(obj.been) };
+    // 型別不對的欄位直接拿掉，不讓壞資料影響畫面。
+    const origin = parseOrigin(obj.origin);
+    if (origin) state.origin = origin;
+    else delete state.origin;
+    const kids = parseKids(obj.kids);
+    if (kids) state.kids = kids;
+    else delete state.kids;
+    const nap = parseNap(obj.nap);
+    if (nap) state.nap = nap;
+    else delete state.nap;
+    return state;
   } catch {
     return emptyState();
   }
+}
+
+const isFiniteNumber = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
+const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
+
+function parseOrigin(v: unknown): StoredOrigin | null {
+  if (!isRecord(v) || typeof v.label !== 'string' || !isFiniteNumber(v.lat) || !isFiniteNumber(v.lng)) return null;
+  if (Math.abs(v.lat) > 90 || Math.abs(v.lng) > 180) return null;
+  return { label: v.label, lat: v.lat, lng: v.lng };
+}
+
+function parseKids(v: unknown): StoredKid[] | null {
+  if (!Array.isArray(v)) return null;
+  return v.flatMap((k) =>
+    isRecord(k) && typeof k.nickname === 'string' && typeof k.birthYm === 'string'
+      ? [{ nickname: k.nickname, birthYm: /^\d{4}-\d{2}$/.test(k.birthYm) ? k.birthYm : '' }]
+      : [],
+  );
+}
+
+function parseNap(v: unknown): StoredNap | null {
+  const hhmm = /^([01]\d|2[0-3]):[0-5]\d$/;
+  if (!isRecord(v) || typeof v.start !== 'string' || typeof v.end !== 'string') return null;
+  if (!hhmm.test(v.start) || !hhmm.test(v.end)) return null;
+  return { start: v.start, end: v.end };
 }
 
 /** 取得 localStorage；隱私模式或被封鎖時回傳 null。 */

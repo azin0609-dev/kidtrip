@@ -39,6 +39,23 @@ describe('storage', () => {
     const state = parseState('{"fav":[],"been":[],"origin":{"label":"林口","lat":25,"lng":121}}');
     expect(state.origin).toEqual({ label: '林口', lat: 25, lng: 121 });
   });
+  it('出發地、孩子、午睡：格式對才保留', () => {
+    const good = parseState(
+      JSON.stringify({
+        fav: [],
+        been: [],
+        origin: { label: '高雄市鳳山區', lat: 22.63, lng: 120.36 },
+        kids: [{ nickname: '果果', birthYm: '2023-09' }, { nickname: '核桃', birthYm: 'bad' }, 'x'],
+        nap: { start: '13:00', end: '15:00' },
+      }),
+    );
+    expect(good.origin).toEqual({ label: '高雄市鳳山區', lat: 22.63, lng: 120.36 });
+    expect(good.kids).toEqual([{ nickname: '果果', birthYm: '2023-09' }, { nickname: '核桃', birthYm: '' }]);
+    expect(good.nap).toEqual({ start: '13:00', end: '15:00' });
+
+    const bad = parseState(JSON.stringify({ origin: { label: 'x', lat: 'a' }, kids: 'no', nap: { start: '25:00', end: '1' } }));
+    expect(bad).toEqual({ fav: [], been: [] });
+  });
   it('localStorage 丟例外或不存在時不會出錯', () => {
     expect(loadState(throwing)).toEqual({ fav: [], been: [] });
     expect(saveState(throwing, { fav: [], been: [] })).toBe(false);

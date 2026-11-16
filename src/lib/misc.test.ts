@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { makeHotel, makeSpot } from '../test/fixtures.ts';
-import { formatDrive, latestVerified } from './format.ts';
+import { formatDrive, latestVerified, shortOriginLabel } from './format.ts';
 import { googleMapsUrl, hotelPriceUrl, stripParens } from './links.ts';
 import { tabFromHash } from './tabs.ts';
 
@@ -29,9 +29,16 @@ describe('links', () => {
 describe('format', () => {
   it('車程顯示', () => {
     expect(formatDrive(25)).toEqual({ value: '25', unit: '分' });
+    expect(formatDrive(23)).toEqual({ value: '25', unit: '分' });
+    expect(formatDrive(2)).toEqual({ value: '5', unit: '分' });
     expect(formatDrive(60)).toEqual({ value: '1', unit: '小時' });
     expect(formatDrive(100)).toEqual({ value: '1.5', unit: '小時' });
     expect(formatDrive(200)).toEqual({ value: '3.5', unit: '小時' });
+  });
+  it('出發地短名稱', () => {
+    expect(shortOriginLabel('新北市林口區')).toBe('林口區');
+    expect(shortOriginLabel('嘉義市東區')).toBe('東區');
+    expect(shortOriginLabel('目前位置（新北市林口區附近）')).toBe('目前位置');
   });
   it('資料整理日期取最新', () => {
     expect(latestVerified([{ last_verified: '2026-11-01' }, { last_verified: '2026-11-16' }])).toBe('2026-11-16');

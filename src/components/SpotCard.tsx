@@ -1,6 +1,6 @@
 import type { Hotel, Spot } from '../data/schema.ts';
 import { spotBadges } from '../lib/date.ts';
-import { formatDrive } from '../lib/format.ts';
+import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { COST_LABELS, ENV_LABELS, TYPE_LABELS } from '../lib/labels.ts';
 import { googleMapsUrl } from '../lib/links.ts';
 import { Tag, buttonBase } from './ui.tsx';
@@ -8,6 +8,9 @@ import { Tag, buttonBase } from './ui.tsx';
 export interface SpotCardProps {
   spot: Spot;
   today: string;
+  /** 從目前出發地的車程；null 代表算不出來。 */
+  mins: number | null;
+  originLabel: string;
   nearHotels: Hotel[];
   isFav: boolean;
   isBeen: boolean;
@@ -16,20 +19,31 @@ export interface SpotCardProps {
   highlight?: boolean;
 }
 
-export function DriveBadge({ mins }: { mins: number }) {
+export function DriveBadge({ mins, originLabel }: { mins: number | null; originLabel: string }) {
+  if (mins === null) {
+    return (
+      <div className="shrink-0 text-right">
+        <div className="text-sm font-medium text-stone-700 dark:text-stone-300">車程未知</div>
+        <div className="mt-1 text-xs text-stone-600 dark:text-stone-400">還沒有座標</div>
+      </div>
+    );
+  }
   const d = formatDrive(mins);
   return (
-    <div className="shrink-0 text-right" aria-label={`車程約 ${d.value} ${d.unit}`}>
+    <div className="shrink-0 text-right" title={formatEstimate(mins)}>
       <div className="text-2xl leading-none font-bold text-stone-900 dark:text-stone-50">
+        <span className="mr-0.5 text-sm font-normal">約</span>
         {d.value}
         <span className="ml-0.5 text-sm font-normal">{d.unit}</span>
       </div>
-      <div className="mt-1 text-xs text-stone-500 dark:text-stone-400">林口出發</div>
+      <div className="mt-1 text-xs text-stone-600 dark:text-stone-400">
+        <span className="sr-only">{formatEstimate(mins)}，</span>從{originLabel}・粗估
+      </div>
     </div>
   );
 }
 
-export function SpotCard({ spot, today, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, highlight }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, highlight }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   return (
     <article
@@ -42,7 +56,7 @@ export function SpotCard({ spot, today, nearHotels, isFav, isBeen, onToggleFav, 
           <h3 className="text-lg leading-snug font-bold break-words">{spot.name}</h3>
           <p className="text-sm text-stone-600 dark:text-stone-400">{spot.city}</p>
         </div>
-        <DriveBadge mins={spot.mins_from_linkou} />
+        <DriveBadge mins={mins} originLabel={originLabel} />
       </header>
 
       <div className="flex flex-wrap gap-1.5">

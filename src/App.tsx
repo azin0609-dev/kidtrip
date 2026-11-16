@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
+import { SettingsDialog } from './components/SettingsDialog.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
 import { UpdatePrompt } from './components/UpdatePrompt.tsx';
 import { buttonBase } from './components/ui.tsx';
-import { type Hotel, type Spot, hotels, spots } from './data/index.ts';
+import { type Hotel, type Spot, hotels, origins, spots } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
 import { isSpotVisible, todayInTaipei } from './lib/date.ts';
@@ -17,7 +18,8 @@ import {
   sortByDrive,
   toggleInList,
 } from './lib/filter.ts';
-import { latestVerified } from './lib/format.ts';
+import { latestVerified, shortOriginLabel } from './lib/format.ts';
+import { defaultOrigin, makeMinsOf } from './lib/origin.ts';
 import { pickSpot } from './lib/pick.ts';
 import { TABS } from './lib/tabs.ts';
 
@@ -28,27 +30,37 @@ export default function App() {
   const [spotFilters, setSpotFilters] = useState(DEFAULT_SPOT_FILTERS);
   const [hotelFilters, setHotelFilters] = useState(DEFAULT_HOTEL_FILTERS);
   const [picked, setPicked] = useState<{ id: string | null; empty: boolean }>({ id: null, empty: false });
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const closeSettings = useCallback(() => setSettingsOpen(false), []);
+
+  const fallbackOrigin = useMemo(() => defaultOrigin(origins), []);
+  const origin = stored.origin ?? fallbackOrigin;
+  const minsOf = useMemo(() => makeMinsOf(origin), [origin]);
+  const originShort = shortOriginLabel(origin.label);
 
   const visibleSpots = useMemo(() => spots.filter((s) => isSpotVisible(s, today)), [today]);
   const spotById = useMemo(() => new Map(visibleSpots.map((s) => [s.id, s])), [visibleSpots]);
   const hotelsBySpot = useMemo(() => {
     const map = new Map<string, Hotel[]>();
-    for (const h of sortByDrive(hotels)) {
+    for (const h of sortByDrive(hotels, minsOf)) {
       for (const id of h.near_spot_ids) map.set(id, [...(map.get(id) ?? []), h]);
     }
     return map;
-  }, []);
+  }, [minsOf]);
 
   const spotResults = useMemo(
-    () => sortByDrive(filterSpots(spots, spotFilters, { today, been: stored.been })),
-    [spotFilters, today, stored.been],
+    () => sortByDrive(filterSpots(spots, spotFilters, { today, been: stored.been, minsOf }), minsOf),
+    [spotFilters, today, stored.been, minsOf],
   );
-  const hotelResults = useMemo(() => sortByDrive(filterHotels(hotels, hotelFilters)), [hotelFilters]);
+  const hotelResults = useMemo(
+    () => sortByDrive(filterHotels(hotels, hotelFilters, minsOf), minsOf),
+    [hotelFilters, minsOf],
+  );
 
   const favSet = new Set(stored.fav);
   const beenSet = new Set(stored.been);
-  const favSpots = sortByDrive(visibleSpots.filter((s) => favSet.has(s.id)));
-  const favHotels = sortByDrive(hotels.filter((h) => favSet.has(h.id)));
+  const favSpots = sortByDrive(visibleSpots.filter((s) => favSet.has(s.id)), minsOf);
+  const favHotels = sortByDrive(hotels.filter((h) => favSet.has(h.id)), minsOf);
   const verifiedOn = latestVerified([...spots, ...hotels]);
 
   const toggleFav = (id: string) => update((s) => ({ ...s, fav: toggleInList(s.fav, id) }));
@@ -68,6 +80,8 @@ export default function App() {
       key={spot.id}
       spot={spot}
       today={today}
+      mins={minsOf(spot)}
+      originLabel={originShort}
       nearHotels={hotelsBySpot.get(spot.id) ?? []}
       isFav={favSet.has(spot.id)}
       isBeen={beenSet.has(spot.id)}
@@ -80,6 +94,8 @@ export default function App() {
     <HotelCard
       key={hotel.id}
       hotel={hotel}
+      mins={minsOf(hotel)}
+      originLabel={originShort}
       nearSpots={hotel.near_spot_ids.flatMap((id) => spotById.get(id) ?? [])}
       isFav={favSet.has(hotel.id)}
       onToggleFav={() => toggleFav(hotel.id)}
@@ -92,7 +108,18 @@ export default function App() {
     <div className="min-h-dvh bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
       <header className="sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] border-stone-200 bg-stone-50/95 backdrop-blur dark:border-stone-800 dark:bg-stone-950/95">
         <div className="mx-auto max-w-6xl px-4 pt-4">
-          <h1 className="text-xl font-bold">這週去哪玩</h1>
+          <div className="flex items-center justify-between gap-3">
+            <h1 className="text-xl font-bold">這週去哪玩</h1>
+            <button
+              type="button"
+              onClick={() => setSettingsOpen(true)}
+              aria-label={`設定，目前從${origin.label}出發`}
+              className={`${buttonBase} min-w-0 border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`}
+            >
+              <span className="truncate">從{originShort}出發</span>
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
           <nav aria-label="分頁" className="mt-2 flex">
             {TABS.map((t) => (
               <a
@@ -185,8 +212,21 @@ export default function App() {
           </>
         )}
 
-        <Footer verifiedOn={verifiedOn} />
+        <Footer verifiedOn={verifiedOn} originLabel={origin.label} />
       </main>
+      <SettingsDialog
+        open={settingsOpen}
+        onClose={closeSettings}
+        origins={origins}
+        origin={origin}
+        defaultOrigin={fallbackOrigin}
+        onOriginChange={(o) => update((s) => ({ ...s, origin: o }))}
+        kids={stored.kids ?? []}
+        onKidsChange={(kids) => update((s) => ({ ...s, kids }))}
+        nap={stored.nap}
+        onNapChange={(nap) => update((s) => ({ ...s, nap }))}
+        today={today}
+      />
       <UpdatePrompt />
     </div>
   );

@@ -82,6 +82,20 @@ export const hotelSchema = z.object({
   last_verified: isoDate,
 });
 
+const originPoint = z.object({
+  name: nonEmpty,
+  lat: z.number().min(21).max(27).nullable(),
+  lng: z.number().min(118).max(123).nullable(),
+});
+
+export const originsSchema = z.object({
+  source: nonEmpty,
+  generated: isoDate.nullable(),
+  counties: z
+    .array(originPoint.extend({ towns: z.array(originPoint).min(1) }))
+    .length(22, { message: '必須是 22 個縣市' }),
+});
+
 export type Badge = z.infer<typeof badgeSchema>;
 export type Spot = z.infer<typeof spotSchema>;
 export type Hotel = z.infer<typeof hotelSchema>;

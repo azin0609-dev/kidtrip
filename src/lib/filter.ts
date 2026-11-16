@@ -93,16 +93,28 @@ export function matchesHotelQuery(hotel: Hotel, query: string): boolean {
   return matchesAllTokens(hotelSearchText(hotel), tokenize(query));
 }
 
+/** 取得某筆資料的車程分鐘數；算不出來（沒有座標）回傳 null。 */
+export type MinsOf = (item: { id: string; mins_from_linkou: number }) => number | null;
+
+/** 預設：從林口出發，用人工粗估的 mins_from_linkou。 */
+export const minsFromLinkou: MinsOf = (item) => item.mins_from_linkou;
+
+/** 車程不明時，只有「全部」會顯示。 */
+function matchesDriveOrUnknown(mins: number | null, drive: DriveFilter): boolean {
+  return mins === null ? drive === 'all' : matchesDrive(mins, drive);
+}
+
 export function filterSpots(
   spots: readonly Spot[],
   filters: SpotFilters,
-  ctx: { today: string; been: readonly string[] },
+  ctx: { today: string; been: readonly string[]; minsOf?: MinsOf },
 ): Spot[] {
   const been = new Set(ctx.been);
+  const minsOf = ctx.minsOf ?? minsFromLinkou;
   return spots.filter(
     (s) =>
       isSpotVisible(s, ctx.today) &&
-      matchesDrive(s.mins_from_linkou, filters.drive) &&
+      matchesDriveOrUnknown(minsOf(s), filters.drive) &&
       (filters.region === 'all' || s.region === filters.region) &&
       (!filters.rainOk || s.env === 'in' || s.env === 'semi') &&
       (!filters.free || s.cost_tier === 'free') &&
@@ -113,19 +125,23 @@ export function filterSpots(
   );
 }
 
-export function filterHotels(hotels: readonly Hotel[], filters: HotelFilters): Hotel[] {
+export function filterHotels(hotels: readonly Hotel[], filters: HotelFilters, minsOf: MinsOf = minsFromLinkou): Hotel[] {
   return hotels.filter(
     (h) =>
-      matchesDrive(h.mins_from_linkou, filters.drive) &&
+      matchesDriveOrUnknown(minsOf(h), filters.drive) &&
       (filters.region === 'all' || h.region === filters.region) &&
       (filters.tags.length === 0 || h.tags.some((t) => filters.tags.includes(t))) &&
       matchesHotelQuery(h, filters.query),
   );
 }
 
-/** 依車程由近到遠；一樣近就照 id，結果穩定。不改動原陣列。 */
-export function sortByDrive<T extends { id: string; mins_from_linkou: number }>(items: readonly T[]): T[] {
-  return [...items].sort((a, b) => a.mins_from_linkou - b.mins_from_linkou || a.id.localeCompare(b.id));
+/** 依車程由近到遠；車程不明的排最後；一樣近就照 id，結果穩定。不改動原陣列。 */
+export function sortByDrive<T extends { id: string; mins_from_linkou: number }>(
+  items: readonly T[],
+  minsOf: MinsOf = minsFromLinkou,
+): T[] {
+  const key = (x: T) => minsOf(x) ?? Infinity;
+  return [...items].sort((a, b) => key(a) - key(b) || a.id.localeCompare(b.id));
 }
 
 export function toggleInList<T>(list: readonly T[], item: T): T[] {

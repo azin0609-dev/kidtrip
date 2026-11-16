@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { isValidIsoDate } from './schema.ts';
-import { validateData } from './validate.ts';
+import { validateData, validateOrigins } from './validate.ts';
 
 // 測試用的假資料，只用來驗證檢查邏輯，不會出現在畫面上。
 function makeSpot(overrides: Record<string, unknown> = {}) {
@@ -154,5 +154,33 @@ describe('isValidIsoDate', () => {
     ['20261124', false],
   ])('%s → %s', (value, expected) => {
     expect(isValidIsoDate(value)).toBe(expected);
+  });
+});
+
+describe('validateOrigins', () => {
+  const county = (name: string, towns: number) => ({
+    name,
+    lat: null,
+    lng: null,
+    towns: Array.from({ length: towns }, (_, i) => ({ name: `區${i}`, lat: 25, lng: 121.5 })),
+  });
+  const make = (counts: number[]) => ({
+    source: 'OSM',
+    generated: null,
+    counties: counts.map((n, i) => county(`縣${i}`, n)),
+  });
+  const ok = [...Array(21).fill(17), 11] as number[]; // 21×17 + 11 = 368
+
+  it('22 縣市 368 鄉鎮通過', () => {
+    expect(validateOrigins(make(ok))).toEqual([]);
+  });
+  it('數量不對', () => {
+    expect(validateOrigins(make([...ok.slice(0, 21), 10]))[0]?.message).toContain('367');
+    expect(validateOrigins(make(ok.slice(0, 21)))[0]?.message).toContain('22');
+  });
+  it('座標超出台灣範圍', () => {
+    const data = make(ok);
+    data.counties[0]!.towns[0]!.lat = 35;
+    expect(validateOrigins(data)).toHaveLength(1);
   });
 });

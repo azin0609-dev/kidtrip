@@ -14,7 +14,9 @@
     "typecheck": "tsc -b",
     "test": "vitest run",
     "test:watch": "vitest",
-    "validate:data": "node scripts/validate-data.ts"
+    "validate:data": "node scripts/validate-data.ts",
+    "geocode": "node scripts/geocode.ts",
+    "calibrate": "node scripts/calibrate.ts"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -29,3 +29,22 @@ npm run build        # 正式建置到 dist/
 - 網址：`https://<帳號>.github.io/<repo 名稱>/`。base path 由 workflow 以 `BASE_PATH=/<repo 名稱>/` 傳給 Vite，本機開發仍是 `/`。
 - 第一次要到 repo 的 **Settings → Pages → Build and deployment → Source** 選 **GitHub Actions**。
 - 本機預覽正式版：`BASE_PATH=/kidtrip/ npm run build`，再用任何靜態伺服器把 `dist/` 掛在 `/kidtrip/` 底下。
+
+## 座標補齊（geocode，只在開發時跑）
+
+用 OpenStreetMap Nominatim 補 `lat`、`lng`，每秒最多 1 次請求。聯絡方式用環境變數帶，不會寫進 repo。
+
+```bash
+# 1. 產生出發地選單用的 data/origins.json（390 筆，約 8 分鐘）
+GEOCODE_CONTACT=你的Email npm run geocode -- --origins
+
+# 2. 補景點、飯店座標（只查 lat 為 null 的，已有座標不覆蓋），並產生 data/geocode-report.md
+GEOCODE_CONTACT=你的Email npm run geocode
+
+# 3. 看公式準不準、建議的係數
+npm run calibrate
+```
+
+- 中斷也沒關係，每查完一筆就寫回檔案，再跑一次會接著做。
+- 加 `--dry-run` 只列出要查哪些，不連網。
+- 跑完請看 `data/geocode-report.md`，人工檢查查不到、離縣市太遠、名稱不像的項目。

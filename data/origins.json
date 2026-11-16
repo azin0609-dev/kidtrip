@@ -1,0 +1,2000 @@
+{
+  "source": "© OpenStreetMap contributors（Nominatim），各縣市、鄉鎮市區的代表座標",
+  "generated": null,
+  "counties": [
+    {
+      "name": "基隆市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "仁愛區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "信義區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中正區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "安樂區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "暖暖區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "七堵區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "臺北市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "中正區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大同區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "松山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大安區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "萬華區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "信義區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "士林區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北投區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "內湖區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南港區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "文山區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "新北市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "板橋區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三重區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中和區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "永和區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新莊區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新店區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "樹林區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鶯歌區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三峽區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "淡水區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "汐止區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "瑞芳區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "土城區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "蘆洲區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "五股區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "泰山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "林口區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "深坑區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "石碇區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "坪林區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三芝區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "石門區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "八里區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "平溪區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "雙溪區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "貢寮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "金山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "萬里區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "烏來區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "桃園市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "桃園區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中壢區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大溪區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "楊梅區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "蘆竹區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大園區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "龜山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "八德區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "龍潭區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "平鎮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新屋區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "觀音區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "復興區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "新竹市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "東區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "香山區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "新竹縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "竹北市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "竹東鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新埔鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "關西鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "湖口鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新豐鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "芎林鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "橫山鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北埔鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "寶山鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "峨眉鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "尖石鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "五峰鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "苗栗縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "苗栗市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "苑裡鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "通霄鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "竹南鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "頭份市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "後龍鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "卓蘭鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大湖鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "公館鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "銅鑼鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南庄鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "頭屋鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三義鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西湖鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "造橋鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三灣鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "獅潭鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "泰安鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "臺中市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "中區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西屯區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南屯區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北屯區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "豐原區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東勢區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大甲區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "清水區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "沙鹿區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "梧棲區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "后里區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "神岡區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "潭子區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大雅區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新社區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "石岡區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "外埔區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大安區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "烏日區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大肚區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "龍井區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "霧峰區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "太平區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大里區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "和平區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "彰化縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "彰化市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "員林市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹿港鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "和美鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北斗鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "溪湖鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "田中鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "二林鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "線西鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "伸港鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "福興鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "秀水鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "花壇鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "芬園鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大村鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "埔鹽鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "埔心鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "永靖鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "社頭鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "二水鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "田尾鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "埤頭鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "芳苑鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大城鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "竹塘鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "溪州鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "南投縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "南投市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "埔里鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "草屯鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "竹山鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "集集鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "名間鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹿谷鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中寮鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "魚池鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "國姓鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "水里鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "信義鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "仁愛鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "雲林縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "斗六市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "斗南鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "虎尾鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西螺鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "土庫鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北港鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "古坑鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大埤鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "莿桐鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "林內鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "二崙鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "崙背鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "麥寮鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東勢鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "褒忠鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "臺西鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "元長鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "四湖鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "口湖鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "水林鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "嘉義市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "東區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "嘉義縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "太保市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "朴子市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "布袋鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大林鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "民雄鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "溪口鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新港鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "六腳鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東石鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "義竹鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹿草鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "水上鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中埔鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "竹崎鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "梅山鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "番路鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大埔鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "阿里山鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "臺南市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "新營區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹽水區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "白河區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "柳營區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "後壁區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "麻豆區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "下營區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "六甲區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "官田區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大內區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "佳里區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "學甲區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西港區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "七股區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "將軍區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北門區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新化區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "善化區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新市區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "安定區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "山上區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "玉井區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "楠西區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南化區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "左鎮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "仁德區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "歸仁區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "關廟區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "龍崎區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "永康區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "安南區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "安平區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "中西區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "高雄市",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "新興區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "前金區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "苓雅區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹽埕區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鼓山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "旗津區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "前鎮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三民區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "楠梓區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "小港區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "左營區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "仁武區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大社區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "岡山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "路竹區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "阿蓮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "田寮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "燕巢區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "橋頭區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "梓官區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "彌陀區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "永安區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "湖內區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鳳山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大寮區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "林園區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鳥松區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大樹區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "旗山區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "美濃區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "六龜區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "內門區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "杉林區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "甲仙區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "桃源區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "那瑪夏區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "茂林區",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "茄萣區",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "屏東縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "屏東市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "潮州鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東港鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "恆春鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "萬丹鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "長治鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "麟洛鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "九如鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "里港鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹽埔鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "高樹鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "萬巒鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "內埔鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "竹田鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新埤鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "枋寮鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新園鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "崁頂鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "林邊鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南州鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "佳冬鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "琉球鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "車城鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "滿州鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "枋山鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三地門鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "霧臺鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "瑪家鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "泰武鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "來義鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "春日鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "獅子鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "牡丹鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "宜蘭縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "宜蘭市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "羅東鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "蘇澳鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "頭城鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "礁溪鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "壯圍鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "員山鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "冬山鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "五結鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "三星鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大同鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "南澳鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "花蓮縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "花蓮市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鳳林鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "玉里鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "新城鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "吉安鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "壽豐鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "光復鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "豐濱鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "瑞穗鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "富里鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "秀林鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "萬榮鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "卓溪鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "臺東縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "臺東市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "成功鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "關山鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "卑南鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "鹿野鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "池上鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東河鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "長濱鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "太麻里鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "大武鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "綠島鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "海端鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "延平鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "金峰鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "達仁鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "蘭嶼鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "澎湖縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "馬公市",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "湖西鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "白沙鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "西嶼鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "望安鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "七美鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "金門縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "金城鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "金湖鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "金沙鎮",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "金寧鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "烈嶼鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "烏坵鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    },
+    {
+      "name": "連江縣",
+      "lat": null,
+      "lng": null,
+      "towns": [
+        {
+          "name": "南竿鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "北竿鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "莒光鄉",
+          "lat": null,
+          "lng": null
+        },
+        {
+          "name": "東引鄉",
+          "lat": null,
+          "lng": null
+        }
+      ]
+    }
+  ]
+}

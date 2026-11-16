@@ -6,12 +6,14 @@ import { Tag, buttonBase } from './ui.tsx';
 
 export interface HotelCardProps {
   hotel: Hotel;
+  mins: number | null;
+  originLabel: string;
   nearSpots: Spot[];
   isFav: boolean;
   onToggleFav: () => void;
 }
 
-export function HotelCard({ hotel, nearSpots, isFav, onToggleFav }: HotelCardProps) {
+export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggleFav }: HotelCardProps) {
   return (
     <article className="flex min-w-0 flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-stone-200 dark:bg-stone-900 dark:ring-stone-800">
       <header className="flex items-start justify-between gap-3">
@@ -19,7 +21,7 @@ export function HotelCard({ hotel, nearSpots, isFav, onToggleFav }: HotelCardPro
           <h3 className="text-lg leading-snug font-bold break-words">{hotel.name}</h3>
           <p className="text-sm text-stone-600 dark:text-stone-400">{hotel.city}</p>
         </div>
-        <DriveBadge mins={hotel.mins_from_linkou} />
+        <DriveBadge mins={mins} originLabel={originLabel} />
       </header>
 
       <div className="flex flex-wrap gap-1.5">
