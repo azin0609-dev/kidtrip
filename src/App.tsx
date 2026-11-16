@@ -3,6 +3,7 @@ import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
+import { UpdatePrompt } from './components/UpdatePrompt.tsx';
 import { buttonBase } from './components/ui.tsx';
 import { type Hotel, type Spot, hotels, spots } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
@@ -89,7 +90,7 @@ export default function App() {
 
   return (
     <div className="min-h-dvh bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
-      <header className="sticky top-0 z-10 border-b border-stone-200 bg-stone-50/95 backdrop-blur dark:border-stone-800 dark:bg-stone-950/95">
+      <header className="sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] border-stone-200 bg-stone-50/95 backdrop-blur dark:border-stone-800 dark:bg-stone-950/95">
         <div className="mx-auto max-w-6xl px-4 pt-4">
           <h1 className="text-xl font-bold">這週去哪玩</h1>
           <nav aria-label="分頁" className="mt-2 flex">
@@ -186,6 +187,7 @@ export default function App() {
 
         <Footer verifiedOn={verifiedOn} />
       </main>
+      <UpdatePrompt />
     </div>
   );
 }
