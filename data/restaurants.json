@@ -245,7 +245,7 @@
       "fee"
     ],
     "mins_from_linkou": 30,
-    "tip": "遊戲設施多，比較像室內樂園附餐點。",
+    "tip": "遊戲空間很大，有大球池和旋轉溜滑梯，比較像室內樂園附餐點。",
     "open_note": "遊戲區另外收門票",
     "near_spot_ids": [],
     "lat": 24.993,
@@ -397,15 +397,14 @@
       "still_open",
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "single_source"
+      "tags"
     ],
     "last_verified": "2026-11-16"
   },
   {
     "id": "food-015",
     "name": "樹懶餐廳（九九峰動物樂園）",
-    "city": "宜蘭縣",
+    "city": "宜蘭縣冬山鄉",
     "region": "北",
     "cuisine": "簡餐",
     "price_tier": "$$",
@@ -420,8 +419,8 @@
     "near_spot_ids": [
       "spot-033"
     ],
-    "lat": 24.730279,
-    "lng": 121.763115,
+    "lat": 24.634514,
+    "lng": 121.79228,
     "google_place_id": null,
     "needs_verify": [
       "still_open",
@@ -472,10 +471,11 @@
     "price_tier": "$$",
     "tags": [
       "play",
-      "sand"
+      "sand",
+      "outdoor"
     ],
     "mins_from_linkou": 90,
-    "tip": "有大型室內遊戲區和沙坑，餐點主打無添加。",
+    "tip": "有遊戲區和沙坑，適合好動的學齡前小孩；餐點主打無添加。",
     "near_spot_ids": [
       "spot-032"
     ],
@@ -487,7 +487,7 @@
       "mins_from_linkou",
       "price_tier",
       "tags",
-      "single_source"
+      "tags"
     ],
     "last_verified": "2026-11-16"
   },
@@ -515,8 +515,7 @@
       "still_open",
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "single_source"
+      "tags"
     ],
     "last_verified": "2026-11-16"
   },
@@ -537,6 +536,206 @@
     ],
     "lat": 24.634514,
     "lng": 121.79228,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "single_source"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-020",
+    "name": "Ho'me 廚房＆親子友善餐廳",
+    "city": "台北市內湖區",
+    "region": "北",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "slide",
+      "sand"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "在內湖巷子裡，價格親民；地下一樓遊戲區有球池、溜滑梯和小廚房。",
+    "near_spot_ids": [
+      "spot-036"
+    ],
+    "lat": 25.069664,
+    "lng": 121.588998,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-021",
+    "name": "放了媽媽 Funny Mama",
+    "city": "新北市蘆洲區",
+    "region": "北",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "二樓是獨立遊戲區，有球池、溜滑梯，還有陪玩姊姊，爸媽可以好好吃飯。",
+    "near_spot_ids": [
+      "spot-010"
+    ],
+    "lat": 25.084923,
+    "lng": 121.4737,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-022",
+    "name": "童遊城堡親子咖啡廳 新莊館",
+    "city": "新北市新莊區",
+    "region": "北",
+    "cuisine": "輕食",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "slide",
+      "fee"
+    ],
+    "mins_from_linkou": 20,
+    "tip": "以遊戲空間為主，有原木球池和小城堡，餐點是輕食。",
+    "open_note": "週二公休",
+    "near_spot_ids": [
+      "spot-010"
+    ],
+    "lat": 25.035772,
+    "lng": 121.450248,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-023",
+    "name": "A.maze 兔子迷宮 礁溪浴場",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "fee"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "室內遊戲區很用心，特別適合 1–4 歲；餐點選擇多。",
+    "open_note": "入場要另外購票",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": 24.823646,
+    "lng": 121.771348,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-024",
+    "name": "龍潭大池親子餐廳",
+    "city": "桃園市龍潭區",
+    "region": "北",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [
+      "sand",
+      "slide",
+      "outdoor",
+      "fee"
+    ],
+    "mins_from_linkou": 45,
+    "tip": "在龍潭大池湖畔，有沙坑、溜滑梯和草皮，可以順便踩腳踏船。",
+    "open_note": "平日也有低消",
+    "near_spot_ids": [
+      "spot-020"
+    ],
+    "lat": 24.863851,
+    "lng": 121.216392,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "single_source"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-025",
+    "name": "胖點寵物親子友善餐廳",
+    "city": "桃園市龍潭區",
+    "region": "北",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "animal"
+    ],
+    "mins_from_linkou": 45,
+    "tip": "二樓是親子遊樂區，一樓可以跟店貓店狗互動。",
+    "near_spot_ids": [
+      "spot-020"
+    ],
+    "lat": 24.863851,
+    "lng": 121.216392,
+    "google_place_id": null,
+    "needs_verify": [
+      "still_open",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "single_source"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "food-026",
+    "name": "小島 3.5 度 淡海漂流館",
+    "city": "新北市淡水區",
+    "region": "北",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "slide",
+      "sand"
+    ],
+    "mins_from_linkou": 35,
+    "tip": "北歐風遊戲區，有球池、溜滑梯、彈跳床和大沙坑。",
+    "near_spot_ids": [
+      "spot-012"
+    ],
+    "lat": 25.181304,
+    "lng": 121.453148,
     "google_place_id": null,
     "needs_verify": [
       "still_open",
