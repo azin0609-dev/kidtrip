@@ -11,7 +11,7 @@ export interface SharePayload {
   ratings: Ratings;
 }
 
-const ID_PATTERN = /^(spot|hotel|food)-\d{3,}$/;
+const ID_PATTERN = /^((spot|hotel|food)-\d{3,}|trip-[a-z0-9-]+)$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 function toBase64Url(text: string): string {

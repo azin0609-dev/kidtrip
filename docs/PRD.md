@@ -195,6 +195,22 @@
 
 ---
 
+## 4.5 Phase 1.5 — 出國玩：日本親子自由行（2026-11-17 新增，已完成初版）
+
+**定位：**台灣版解決「這週末去哪」；出國版解決「一年一兩次的大旅行怎麼排」。所以不做每週推薦、車程排序，只提供幾套現成的行程骨架：每天排兩三個點，留時間午睡。是大方向，不像台灣資料那麼細。
+
+**範圍：**
+- 「出國」分頁列出行程卡（天數、適合季節、適合年齡、住哪裡），可展開看「出發前先知道」和逐日行程。
+- 每個點有 Google Maps 連結（用當地名稱搜尋）、室內或戶外、給小小孩家長的一句提醒、需不需要先訂票。
+- 行程可以收藏（id 是 `trip-xxx`），分享連結也會帶。
+- 初版三套：北海道七日、東京五日、大阪五日。之後可加沖繩、九州、名古屋。
+
+**資料：**`data/trips.json`，每一筆有 id、title、country、region、days、best_seasons、age_hint、base_cities、summary、tips、itinerary（day、title、stay?、stops[]：name、query?、area、indoor、tip、booking?）、needs_verify、last_verified。`validate:data` 會檢查 days 跟逐日行程一致。
+
+**規則：**跟台灣資料相同，不存 Google 或訂房網站的評分、照片；預約方式、營業時間、季節活動變動多，畫面固定標示整理日期與「以官方公告為準」。
+
+---
+
 ## 5. Phase 2 — 全家同步、天氣、午睡、集章（方向）
 
 開工前我會再確認細節。預計技術：Supabase（登入、Postgres、Row Level Security、Edge Functions），前端仍放 GitHub Pages。

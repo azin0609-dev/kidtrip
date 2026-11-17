@@ -7,7 +7,7 @@ export function stripParens(text: string): string {
 
 /** Google Maps 免費的搜尋／導航連結（AGENTS.md 指定格式）。 */
 export function googleMapsUrl(place: { name: string; city: string; google_place_id: string | null }): string {
-  const params = new URLSearchParams({ api: '1', query: `${place.name} ${stripParens(place.city)}` });
+  const params = new URLSearchParams({ api: '1', query: `${place.name} ${stripParens(place.city)}`.trim() });
   if (place.google_place_id) params.set('query_place_id', place.google_place_id);
   return `https://www.google.com/maps/search/?${params.toString()}`;
 }

@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { formatIssues, validateData, validateOrigins, validateRestaurants } from '../src/data/validate.ts';
+import { formatIssues, validateData, validateOrigins, validateRestaurants, validateTrips } from '../src/data/validate.ts';
 
 const dataDir = fileURLToPath(new URL('../data/', import.meta.url));
 
@@ -18,7 +18,13 @@ const spots = readJson('spots.json');
 const hotels = readJson('hotels.json');
 const origins = readJson('origins.json');
 const restaurants = readJson('restaurants.json');
-const issues = [...validateData(spots, hotels), ...validateRestaurants(restaurants, spots), ...validateOrigins(origins)];
+const trips = readJson('trips.json');
+const issues = [
+  ...validateData(spots, hotels),
+  ...validateRestaurants(restaurants, spots),
+  ...validateTrips(trips),
+  ...validateOrigins(origins),
+];
 
 if (issues.length > 0) {
   console.error(formatIssues(issues));
@@ -27,4 +33,4 @@ if (issues.length > 0) {
 }
 
 const count = (v: unknown) => (Array.isArray(v) ? v.length : 0);
-console.log(`資料檢查通過：景點 ${count(spots)} 個、住宿 ${count(hotels)} 間、餐廳 ${count(restaurants)} 間。`);
+console.log(`資料檢查通過：景點 ${count(spots)} 個、住宿 ${count(hotels)} 間、餐廳 ${count(restaurants)} 間、出國行程 ${count(trips)} 套。`);

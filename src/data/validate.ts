@@ -1,8 +1,8 @@
 import type { z } from 'zod';
-import { hotelSchema, isValidIsoDate, originsSchema, restaurantSchema, spotSchema } from './schema.ts';
+import { hotelSchema, isValidIsoDate, originsSchema, restaurantSchema, spotSchema, tripSchema } from './schema.ts';
 
 export interface DataIssue {
-  file: 'spots.json' | 'hotels.json' | 'origins.json' | 'restaurants.json';
+  file: 'spots.json' | 'hotels.json' | 'origins.json' | 'restaurants.json' | 'trips.json';
   /** 該筆的 id；id 本身缺漏時用「#索引」表示。 */
   id: string;
   /** 出錯的欄位路徑，例如 region、types[1]。 */
@@ -126,6 +126,30 @@ export function validateRestaurants(restaurants: unknown, spots: unknown): DataI
         issues.push({ file: 'restaurants.json', id: recordLabel(r, index), field: `near_spot_ids[${i}]`, message: `找不到景點 ${spotId}` });
       }
     });
+  });
+  return issues;
+}
+
+/** 檢查 trips.json：欄位、id 不重複、天數要跟逐日行程一致（第 1 天到第 N 天，不能跳號）。空陣列可以。 */
+export function validateTrips(trips: unknown): DataIssue[] {
+  if (!Array.isArray(trips)) {
+    return [{ file: 'trips.json', id: '(整個檔案)', field: '', message: '最外層必須是陣列' }];
+  }
+  if (trips.length === 0) return [];
+  const { issues } = checkList('trips.json', trips, tripSchema);
+  trips.forEach((trip, index) => {
+    const parsed = tripSchema.safeParse(trip);
+    if (!parsed.success) return;
+    const days = parsed.data.itinerary.map((d) => d.day);
+    const expected = Array.from({ length: parsed.data.days }, (_, i) => i + 1);
+    if (days.length !== expected.length || days.some((d, i) => d !== expected[i])) {
+      issues.push({
+        file: 'trips.json',
+        id: recordLabel(trip, index),
+        field: 'itinerary',
+        message: `days 是 ${parsed.data.days}，逐日行程應該是第 1 到第 ${parsed.data.days} 天，目前是 ${days.join('、')}`,
+      });
+    }
   });
   return issues;
 }

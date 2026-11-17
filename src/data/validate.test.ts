@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { isValidIsoDate } from './schema.ts';
-import { validateData, validateOrigins, validateRestaurants } from './validate.ts';
+import { validateData, validateOrigins, validateRestaurants, validateTrips } from './validate.ts';
 
 // 測試用的假資料，只用來驗證檢查邏輯，不會出現在畫面上。
 function makeSpot(overrides: Record<string, unknown> = {}) {
@@ -219,5 +219,44 @@ describe('validateRestaurants', () => {
     expect(text).toContain('food-001:id:id 重複');
     expect(text).toContain('rest-1:id');
     expect(text).toContain('找不到景點 spot-999');
+  });
+});
+
+describe('validateTrips', () => {
+  const stop = { name: '動物園', area: '札幌', indoor: false, tip: '穿暖一點。' };
+  const trip = (o: Record<string, unknown> = {}) => ({
+    id: 'trip-test-2d',
+    title: '測試二日遊',
+    country: '日本',
+    region: '北海道',
+    days: 2,
+    best_seasons: ['夏天'],
+    age_hint: '3 歲以上',
+    base_cities: ['札幌'],
+    summary: '測試。',
+    tips: [],
+    itinerary: [
+      { day: 1, title: '第一天', stops: [stop] },
+      { day: 2, title: '第二天', stops: [{ ...stop, booking: '要先買票', query: '円山動物園' }] },
+    ],
+    needs_verify: [],
+    last_verified: '2026-11-17',
+    ...o,
+  });
+  it('合法資料、空陣列通過', () => {
+    expect(validateTrips([trip()])).toEqual([]);
+    expect(validateTrips([])).toEqual([]);
+  });
+  it('天數跟逐日行程不一致', () => {
+    expect(validateTrips([trip({ days: 3 })])[0]?.field).toBe('itinerary');
+    const skipped = trip({ itinerary: [{ day: 1, title: 'a', stops: [stop] }, { day: 3, title: 'b', stops: [stop] }] });
+    expect(validateTrips([skipped])[0]?.message).toContain('1、3');
+  });
+  it('id 格式、重複、缺欄位', () => {
+    const issues = validateTrips([trip(), trip(), trip({ id: 'Tokyo 5', itinerary: [{ day: 1, title: 'a', stops: [] }], days: 1 })]);
+    const text = issues.map((i) => `${i.id}:${i.field}:${i.message}`).join('|');
+    expect(text).toContain('trip-test-2d:id:id 重複');
+    expect(text).toContain('Tokyo 5:id');
+    expect(text).toContain('itinerary[0].stops');
   });
 });

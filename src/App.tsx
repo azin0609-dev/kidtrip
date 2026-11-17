@@ -10,9 +10,10 @@ import { RestaurantCard } from './components/RestaurantCard.tsx';
 import { Recommendations } from './components/Recommendations.tsx';
 import { SettingsDialog } from './components/SettingsDialog.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
+import { TripCard } from './components/TripCard.tsx';
 import { UpdatePrompt } from './components/UpdatePrompt.tsx';
 import { buttonBase } from './components/ui.tsx';
-import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, spots } from './data/index.ts';
+import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, spots, trips } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
 import { useWeekendWeather } from './hooks/useWeekendWeather.ts';
@@ -73,6 +74,7 @@ export default function App() {
       spots.find((s) => s.id === id)?.name ??
       hotels.find((h) => h.id === id)?.name ??
       restaurants.find((r) => r.id === id)?.name ??
+      trips.find((t) => t.id === id)?.title ??
       id,
     [],
   );
@@ -142,6 +144,7 @@ export default function App() {
   const beenSet = new Set(stored.been);
   const favSpots = sortByDrive(visibleSpots.filter((s) => favSet.has(s.id)), minsOf);
   const favHotels = sortByDrive(hotels.filter((h) => favSet.has(h.id)), minsOf);
+  const favTrips = trips.filter((t) => favSet.has(t.id));
   const favFood = sortByDrive(restaurants.filter((r) => favSet.has(r.id)), minsOf);
   const verifiedOn = latestVerified([...spots, ...hotels, ...restaurants]);
 
@@ -342,6 +345,21 @@ export default function App() {
           </>
         )}
 
+        {tab === 'trips' && (
+          <>
+            <h2 className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">帶小孩出國玩</h2>
+            <p className="mt-1 text-sm text-stone-700 dark:text-stone-300">
+              給 3–6 歲小孩的行程骨架：每天只排兩三個點，留時間午睡。是大方向，細節出發前再查官方資訊。
+            </p>
+            <div className={`mt-4 ${grid}`}>
+              {trips.map((t) => (
+                <TripCard key={t.id} trip={t} isFav={favSet.has(t.id)} onToggleFav={() => toggleFav(t.id)} />
+              ))}
+            </div>
+            {trips.length === 0 && <EmptyState text="還沒有整理出國行程。" />}
+          </>
+        )}
+
         {tab === 'favs' && (
           <>
             <div className="mb-6 flex flex-col gap-4">
@@ -349,7 +367,7 @@ export default function App() {
               <YearReviewCard review={yearReview(spots, stored.beenAt ?? {}, stored.ratings ?? {}, Number(today.slice(0, 4)), minsOf)} />
             </div>
             <h2 className="mb-3 text-lg font-bold">我的收藏</h2>
-            {favSpots.length === 0 && favHotels.length === 0 && favFood.length === 0 && (
+            {favSpots.length === 0 && favHotels.length === 0 && favFood.length === 0 && favTrips.length === 0 && (
               <EmptyState text="還沒有收藏。看到喜歡的景點、住宿或餐廳，按「收藏」就會出現在這裡。" />
             )}
             {favSpots.length > 0 && (
@@ -362,6 +380,16 @@ export default function App() {
               <section className="mt-6">
                 <h2 className="mb-3 text-base font-bold">住宿（{favHotels.length}）</h2>
                 <div className={grid}>{favHotels.map(renderHotel)}</div>
+              </section>
+            )}
+            {favTrips.length > 0 && (
+              <section className="mb-6">
+                <h2 className="mb-3 text-base font-bold">出國行程（{favTrips.length}）</h2>
+                <div className={grid}>
+                  {favTrips.map((t) => (
+                    <TripCard key={t.id} trip={t} isFav onToggleFav={() => toggleFav(t.id)} />
+                  ))}
+                </div>
               </section>
             )}
             {favFood.length > 0 && (

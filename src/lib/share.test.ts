@@ -40,6 +40,13 @@ describe('分享連結', () => {
   });
 });
 
+describe('分享連結可以帶餐廳與出國行程', () => {
+  it('food-、trip- 開頭的 id 會保留', () => {
+    const code = encodeShare({ fav: ['food-001', 'trip-tokyo-5d', 'trip-BAD ID'], been: [], beenAt: {} });
+    expect(decodeShare(code)?.fav).toEqual(['food-001', 'trip-tokyo-5d']);
+  });
+});
+
 describe('回報資料有誤', () => {
   it('存取與整理成文字', () => {
     const state = parseState(JSON.stringify({ fav: [], been: [], reports: [{ id: 'spot-001', note: '週一沒開', date: '2026-11-17' }, { id: 3 }] }));

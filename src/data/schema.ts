@@ -124,6 +124,43 @@ export const restaurantSchema = z.object({
   last_verified: isoDate,
 });
 
+const tripStop = z.object({
+  name: nonEmpty,
+  /** 選填：Google Maps 搜尋用的當地名稱（日文原名比較找得到）。 */
+  query: nonEmpty.optional(),
+  area: nonEmpty,
+  indoor: z.boolean(),
+  tip: nonEmpty,
+  /** 選填：需要事先預約或買票的說明。 */
+  booking: nonEmpty.optional(),
+});
+
+/** 出國行程（大方向的行程骨架，不像台灣景點那麼細）。 */
+export const tripSchema = z.object({
+  id: z.string().regex(/^trip-[a-z0-9-]+$/, { message: 'id 格式必須是 trip-xxx（小寫英數與 -）' }),
+  title: nonEmpty,
+  country: nonEmpty,
+  region: nonEmpty,
+  days: z.number().int().positive().max(30),
+  best_seasons: z.array(nonEmpty).min(1),
+  age_hint: nonEmpty,
+  base_cities: z.array(nonEmpty).min(1),
+  summary: nonEmpty,
+  tips: z.array(nonEmpty),
+  itinerary: z
+    .array(
+      z.object({
+        day: z.number().int().positive(),
+        title: nonEmpty,
+        stay: nonEmpty.optional(),
+        stops: z.array(tripStop).min(1),
+      }),
+    )
+    .min(1),
+  needs_verify: z.array(z.string()),
+  last_verified: isoDate,
+});
+
 const originPoint = z.object({
   name: nonEmpty,
   lat: z.number().min(21).max(27).nullable(),
@@ -142,3 +179,4 @@ export type Badge = z.infer<typeof badgeSchema>;
 export type Spot = z.infer<typeof spotSchema>;
 export type Hotel = z.infer<typeof hotelSchema>;
 export type Restaurant = z.infer<typeof restaurantSchema>;
+export type Trip = z.infer<typeof tripSchema>;
