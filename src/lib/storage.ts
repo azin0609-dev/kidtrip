@@ -1,4 +1,5 @@
 /** 本機儲存，key 為 kidtrip.v1（PRD 第 7 節）。讀寫都不丟例外。 */
+import { type Ratings, parseRatings } from './ratings.ts';
 
 export const STORAGE_KEY = 'kidtrip.v1';
 
@@ -52,6 +53,8 @@ export interface StoredState {
   nap?: StoredNap;
   /** 使用者回報「資料有誤」的紀錄，只存在本機，可以在設定裡複製出來。 */
   reports?: StoredReport[];
+  /** 去過之後的自家評分：id → { stars, tags }。 */
+  ratings?: Ratings;
   /** 不認得的欄位原樣保留，之後的版本可能會用到。 */
   [key: string]: unknown;
 }
@@ -90,6 +93,9 @@ export function parseState(raw: string | null): StoredState {
     const reports = parseReports(obj.reports);
     if (reports) state.reports = reports;
     else delete state.reports;
+    const ratings = parseRatings(obj.ratings);
+    if (ratings) state.ratings = ratings;
+    else delete state.ratings;
     return state;
   } catch {
     return emptyState();

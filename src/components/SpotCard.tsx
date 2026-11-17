@@ -4,6 +4,7 @@ import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { ageBestLabel, stayLabel } from '../lib/details.ts';
 import { COST_LABELS, ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
 import { googleMapsUrl } from '../lib/links.ts';
+import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
 import { Tag, buttonBase } from './ui.tsx';
 
 export interface SpotCardProps {
@@ -24,6 +25,10 @@ export interface SpotCardProps {
   reason?: string;
   /** 依孩子年齡的提醒，例如「核桃（1 歲）可能還太小」。 */
   kidNote?: string | null;
+  /** 自家評分（去過之後才會顯示評分區）。 */
+  rating?: Rating;
+  onStars?: (stars: number) => void;
+  onRatingTag?: (tag: RatingTag) => void;
 }
 
 export function DriveBadge({ mins, originLabel }: { mins: number | null; originLabel: string }) {
@@ -50,7 +55,7 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote, rating, onStars, onRatingTag }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   const facts = [spot.age_best && ageBestLabel(spot.age_best), spot.stay_hours && stayLabel(spot.stay_hours)].filter(Boolean);
   const hasMore = (spot.facilities?.length ?? 0) > 0 || spot.transit || spot.crowd_tip;
@@ -182,6 +187,59 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
           {isBeen ? '去過了' : '去過'}
         </button>
       </div>
+      {isBeen && onStars && (
+        <div className="rounded-2xl bg-amber-50 p-2 dark:bg-amber-950/40">
+          <div className="flex items-center gap-1" role="group" aria-label="給這裡幾顆星">
+            <span className="mr-1 shrink-0 text-sm font-medium text-amber-950 dark:text-amber-100">好玩嗎？</span>
+            {[1, 2, 3, 4, 5].map((n) => {
+              const on = (rating?.stars ?? 0) >= n;
+              return (
+                <button
+                  key={n}
+                  type="button"
+                  aria-label={`${n} 顆星`}
+                  aria-pressed={rating?.stars === n}
+                  onClick={() => onStars(n)}
+                  className="inline-flex min-h-11 min-w-0 flex-1 items-center justify-center rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+                >
+                  <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+                    <path
+                      d="M12 2.500l2.900 6.100 6.600.900-4.800 4.700 1.200 6.600L12 17.600 6.100 20.800l1.200-6.600L2.500 9.500l6.600-.900z"
+                      fill={on ? '#f59e0b' : 'none'}
+                      stroke={on ? '#f59e0b' : '#a8a29e'}
+                      strokeWidth="1.500"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              );
+            })}
+          </div>
+          {rating && onRatingTag && (
+            <div className="mt-1 flex flex-wrap gap-1.5">
+              {RATING_TAGS.map((t) => {
+                const on = rating.tags.includes(t);
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => onRatingTag(t)}
+                    className={`inline-flex min-h-11 items-center rounded-full border px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 ${
+                      on
+                        ? 'border-amber-600 bg-amber-500 text-stone-950'
+                        : 'border-stone-300 bg-white text-stone-800 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200'
+                    }`}
+                  >
+                    {RATING_TAG_LABELS[t]}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
       <button
         type="button"
         onClick={onReport}

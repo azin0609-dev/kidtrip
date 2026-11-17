@@ -4,7 +4,7 @@ export const TABS: { id: Tab; label: string }[] = [
   { id: 'spots', label: '景點' },
   { id: 'hotels', label: '住宿' },
   { id: 'food', label: '餐廳' },
-  { id: 'favs', label: '收藏' },
+  { id: 'favs', label: '我的' },
 ];
 
 /** 網址 hash → 分頁，認不得就回到景點。 */

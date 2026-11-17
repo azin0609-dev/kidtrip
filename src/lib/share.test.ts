@@ -4,7 +4,7 @@ import { type RecommendContext, recommendRound, weekSeed } from './recommend.ts'
 import { buildShareUrl, countNew, decodeShare, encodeShare, mergeShare } from './share.ts';
 import { formatReports, parseState } from './storage.ts';
 
-const mine = { fav: ['spot-001'], been: ['spot-002'], beenAt: { 'spot-002': '2026-10-01' } };
+const mine = { fav: ['spot-001'], been: ['spot-002'], beenAt: { 'spot-002': '2026-10-01' }, ratings: {} };
 
 describe('分享連結', () => {
   it('編碼再解碼內容不變，而且可以放進網址', () => {
@@ -24,18 +24,18 @@ describe('分享連結', () => {
     expect(decodeShare('%%%')).toBeNull();
     expect(decodeShare('bm90IGpzb24')).toBeNull();
     const code = btoa(JSON.stringify({ f: ['spot-001', '<script>', 5], b: ['hotel-010'], d: { 'hotel-010': 'bad', 'spot-999': '2026-01-01' } }));
-    expect(decodeShare(code)).toEqual({ fav: ['spot-001'], been: ['hotel-010'], beenAt: {} });
+    expect(decodeShare(code)).toEqual({ fav: ['spot-001'], been: ['hotel-010'], beenAt: {}, ratings: {} });
   });
   it('合併取聯集，日期留比較新的，不會刪掉原本的', () => {
     const state = { fav: ['spot-001'], been: ['spot-002'], beenAt: { 'spot-002': '2026-10-01' }, origin: { label: 'x', lat: 1, lng: 2 } };
-    const incoming = { fav: ['spot-001', 'spot-005'], been: ['spot-002', 'spot-003'], beenAt: { 'spot-002': '2026-11-01', 'spot-003': '2026-09-01' } };
+    const incoming = { fav: ['spot-001', 'spot-005'], been: ['spot-002', 'spot-003'], beenAt: { 'spot-002': '2026-11-01', 'spot-003': '2026-09-01' }, ratings: {} };
     expect(countNew(state, incoming)).toEqual({ fav: 1, been: 1 });
     const merged = mergeShare(state, incoming);
     expect(merged.fav).toEqual(['spot-001', 'spot-005']);
     expect(merged.been).toEqual(['spot-002', 'spot-003']);
     expect(merged.beenAt).toEqual({ 'spot-002': '2026-11-01', 'spot-003': '2026-09-01' });
     expect(merged.origin).toEqual(state.origin);
-    const older = mergeShare(state, { fav: [], been: ['spot-002'], beenAt: { 'spot-002': '2026-01-01' } });
+    const older = mergeShare(state, { fav: [], been: ['spot-002'], beenAt: { 'spot-002': '2026-01-01' }, ratings: {} });
     expect(older.beenAt).toEqual({ 'spot-002': '2026-10-01' });
   });
 });

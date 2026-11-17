@@ -4,6 +4,8 @@ import { Dino, DinoEgg } from './components/Dino.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { FoodFiltersPanel, HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
+import { KidPick } from './components/KidPick.tsx';
+import { Passport, YearReviewCard } from './components/Passport.tsx';
 import { RestaurantCard } from './components/RestaurantCard.tsx';
 import { Recommendations } from './components/Recommendations.tsx';
 import { SettingsDialog } from './components/SettingsDialog.tsx';
@@ -29,7 +31,9 @@ import {
 import { kidAgeNote } from './lib/details.ts';
 import { latestVerified, shortOriginLabel } from './lib/format.ts';
 import { defaultOrigin, makeMinsOf } from './lib/origin.ts';
+import { passportProgress, yearReview } from './lib/passport.ts';
 import { pickSpot } from './lib/pick.ts';
+import { setStars, toggleRatingTag } from './lib/ratings.ts';
 import { recommendRound, weekSeed } from './lib/recommend.ts';
 import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
 import { formatReports, toggleBeen as toggleBeenState } from './lib/storage.ts';
@@ -48,6 +52,7 @@ export default function App() {
   const [rainyOverride, setRainyOverride] = useState<boolean | null>(null);
   const [overnight, setOvernight] = useState(false);
   const [elders, setElders] = useState(false);
+  const [kidPickOpen, setKidPickOpen] = useState(false);
   const [shuffle, setShuffle] = useState(0);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
   const [reportFor, setReportFor] = useState<{ id: string; name: string } | null>(null);
@@ -147,11 +152,11 @@ export default function App() {
     () =>
       recommendRound(
         spots,
-        { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight, elders },
+        { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight, elders, ratings: stored.ratings },
         (round) => weekSeed(today, origin, round),
         shuffle,
       ),
-    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, elders, origin, shuffle],
+    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, elders, origin, shuffle, stored.ratings],
   );
 
   const pickedSpot = picked.id ? spotById.get(picked.id) : undefined;
@@ -180,6 +185,9 @@ export default function App() {
       highlight={highlight}
       reason={reason}
       kidNote={kidAgeNote(spot, stored.kids ?? [], today)}
+      rating={stored.ratings?.[spot.id]}
+      onStars={(n) => update((s) => ({ ...s, ratings: setStars(s.ratings ?? {}, spot.id, n) }))}
+      onRatingTag={(t) => update((s) => ({ ...s, ratings: toggleRatingTag(s.ratings ?? {}, spot.id, t) }))}
     />
   );
   const renderHotel = (hotel: Hotel) => (
@@ -267,6 +275,7 @@ export default function App() {
               onRainy={setRainyOverride}
               onOvernight={setOvernight}
               onShuffle={() => setShuffle((n) => n + 1)}
+              onKidPick={() => setKidPickOpen(true)}
               renderCard={(p) => renderSpot(p.spot, false, p.reasons.join('・'))}
             />
             <h2 className="mb-3 text-lg font-bold">全部景點</h2>
@@ -335,6 +344,11 @@ export default function App() {
 
         {tab === 'favs' && (
           <>
+            <div className="mb-6 flex flex-col gap-4">
+              <Passport progress={passportProgress(spots, stored.been, (s) => isSpotVisible(s, today))} beenAt={stored.beenAt ?? {}} />
+              <YearReviewCard review={yearReview(spots, stored.beenAt ?? {}, stored.ratings ?? {}, Number(today.slice(0, 4)), minsOf)} />
+            </div>
+            <h2 className="mb-3 text-lg font-bold">我的收藏</h2>
             {favSpots.length === 0 && favHotels.length === 0 && favFood.length === 0 && (
               <EmptyState text="還沒有收藏。看到喜歡的景點、住宿或餐廳，按「收藏」就會出現在這裡。" />
             )}
@@ -396,6 +410,7 @@ export default function App() {
         }}
         onDecline={() => setIncoming(null)}
       />
+      <KidPick open={kidPickOpen} picks={picks} onClose={() => setKidPickOpen(false)} />
       <UpdatePrompt />
     </div>
   );

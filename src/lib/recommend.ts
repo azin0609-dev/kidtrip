@@ -4,6 +4,8 @@ import { daysBetween, spotBadges, spotDateStatus } from './date.ts';
 import type { MinsOf } from './filter.ts';
 import { formatDrive } from './format.ts';
 import { ENV_LABELS } from './labels.ts';
+import { type Ratings, preferenceFor, typePreference } from './ratings.ts';
+import type { SpotType } from '../data/schema.ts';
 
 /** 8 週內去過的不推。 */
 export const RECENT_VISIT_DAYS = 56;
@@ -19,6 +21,10 @@ export interface RecommendContext {
   rainy: boolean;
   /** 「這週要住一晚」：才會推超過 120 分的。 */
   overnight: boolean;
+  /** 自家評分：2 顆星以下不再推；評過高分的類型會多推。沒給視為沒有評分。 */
+  ratings?: Ratings;
+  /** 各類型喜好（由 typePreference 算出）；recommend 會自動算，單獨呼叫 scoreSpot 時可以不給。 */
+  typePref?: Partial<Record<SpotType, number>>;
   /** 「長輩一起去」：只推少樓梯、有地方坐的地方。沒給視為 false。 */
   elders?: boolean;
 }
@@ -85,6 +91,10 @@ export const WEIGHTS = {
   fav: 15,
   /** 現在是特別適合的月份加分；有標月份但現在不是，扣一樣的分。 */
   season: 8,
+  /** 自己給 4 顆星以上。 */
+  ratedHigh: 6,
+  /** 類型喜好：每 1 分喜好（−2 到 +2）乘上這個數字。 */
+  typePref: 4,
   /** 每週隨機加 0–15 分，讓每週組合不一樣。 */
   jitter: 15,
 } as const;
@@ -101,6 +111,9 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
 
   if (ctx.rainy && spot.env !== 'in' && spot.env !== 'semi') return null;
   if (ctx.elders && !spot.facilities?.includes('elder')) return null;
+
+  const myRating = ctx.ratings?.[spot.id];
+  if (myRating && myRating.stars <= 2) return null;
 
   const mins = ctx.minsOf(spot);
   if (mins === null) return null;
@@ -147,6 +160,16 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   }
 
   if (ctx.elders) reasons.push('長輩好走');
+
+  if (myRating && myRating.stars >= 4) {
+    score += WEIGHTS.ratedHigh;
+    reasons.push(`你們給過 ${myRating.stars} 顆星`);
+  }
+  if (ctx.typePref) {
+    const pref = preferenceFor(spot, ctx.typePref);
+    score += pref * WEIGHTS.typePref;
+    if (pref >= 1 && !myRating) reasons.push('你們喜歡這一類');
+  }
 
   if (ctx.fav.includes(spot.id)) {
     score += WEIGHTS.fav;
@@ -209,11 +232,12 @@ export function recommend(
   exclude: ReadonlySet<string> = new Set(),
 ): ScoredSpot[] {
   const random = seededRandom(seed);
+  const fullCtx: RecommendContext = ctx.typePref || !ctx.ratings ? ctx : { ...ctx, typePref: typePreference(spots, ctx.ratings) };
   // 依 id 排序後再加隨機分，確保跟資料順序無關。
   const scored = [...spots]
     .sort((a, b) => a.id.localeCompare(b.id))
     .map((s) => {
-      const base = scoreSpot(s, ctx);
+      const base = scoreSpot(s, fullCtx);
       const jitter = random() * WEIGHTS.jitter;
       return base ? { ...base, score: base.score + jitter } : null;
     })

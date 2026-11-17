@@ -16,6 +16,7 @@ export interface RecommendationsProps {
   onRainy: (v: boolean) => void;
   onOvernight: (v: boolean) => void;
   onShuffle: () => void;
+  onKidPick: () => void;
   renderCard: (pick: ScoredSpot) => ReactNode;
 }
 
@@ -30,6 +31,7 @@ export function Recommendations({
   onRainy,
   onOvernight,
   onShuffle,
+  onKidPick,
   renderCard,
 }: RecommendationsProps) {
   return (
@@ -90,9 +92,19 @@ export function Recommendations({
           </p>
         </div>
       ) : (
-        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3" aria-live="polite">
-          {picks.map((p) => renderCard(p))}
-        </div>
+        <>
+          <button
+            type="button"
+            onClick={onKidPick}
+            className={`${buttonBase} mt-3 w-full bg-amber-400 text-stone-950 hover:bg-amber-300`}
+          >
+            <Dino className="h-7 w-7" />
+            給小孩選（大圖模式）
+          </button>
+          <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3" aria-live="polite">
+            {picks.map((p) => renderCard(p))}
+          </div>
+        </>
       )}
     </section>
   );

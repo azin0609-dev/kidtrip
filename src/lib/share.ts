@@ -1,4 +1,5 @@
 /** 用連結分享收藏與去過紀錄（不需要帳號或後端）。純函式。 */
+import { type Ratings, parseRatings } from './ratings.ts';
 import type { StoredState } from './storage.ts';
 
 export const SHARE_PARAM = 'share';
@@ -7,6 +8,7 @@ export interface SharePayload {
   fav: string[];
   been: string[];
   beenAt: Record<string, string>;
+  ratings: Ratings;
 }
 
 const ID_PATTERN = /^(spot|hotel|food)-\d{3,}$/;
@@ -26,13 +28,14 @@ function fromBase64Url(code: string): string {
 }
 
 /** 只分享收藏、去過；出發地、孩子資料不會放進連結。 */
-export function encodeShare(state: Pick<StoredState, 'fav' | 'been' | 'beenAt'>): string {
+export function encodeShare(state: Pick<StoredState, 'fav' | 'been' | 'beenAt' | 'ratings'>): string {
   const beenAt: Record<string, string> = {};
   for (const id of state.been) {
     const date = state.beenAt?.[id];
     if (date) beenAt[id] = date;
   }
-  return toBase64Url(JSON.stringify({ v: 1, f: state.fav, b: state.been, d: beenAt }));
+  const ratings = state.ratings && Object.keys(state.ratings).length > 0 ? { r: state.ratings } : {};
+  return toBase64Url(JSON.stringify({ v: 1, f: state.fav, b: state.been, d: beenAt, ...ratings }));
 }
 
 /** 解不開或格式不對回傳 null。不認得的 id 會被濾掉。 */
@@ -40,7 +43,7 @@ export function decodeShare(code: string): SharePayload | null {
   try {
     const data: unknown = JSON.parse(fromBase64Url(code));
     if (!data || typeof data !== 'object') return null;
-    const obj = data as { f?: unknown; b?: unknown; d?: unknown };
+    const obj = data as { f?: unknown; b?: unknown; d?: unknown; r?: unknown };
     const ids = (v: unknown) =>
       Array.isArray(v) ? [...new Set(v.filter((x): x is string => typeof x === 'string' && ID_PATTERN.test(x)))].slice(0, 500) : [];
     const fav = ids(obj.f);
@@ -51,7 +54,11 @@ export function decodeShare(code: string): SharePayload | null {
         if (been.includes(id) && typeof date === 'string' && DATE_PATTERN.test(date)) beenAt[id] = date;
       }
     }
-    return { fav, been, beenAt };
+    const ratings: Ratings = {};
+    for (const [id, r] of Object.entries(parseRatings(obj.r) ?? {})) {
+      if (ID_PATTERN.test(id)) ratings[id] = r;
+    }
+    return { fav, been, beenAt, ratings };
   } catch {
     return null;
   }
@@ -69,6 +76,8 @@ export function mergeShare(state: StoredState, incoming: SharePayload): StoredSt
     fav: [...new Set([...state.fav, ...incoming.fav])],
     been: [...new Set([...state.been, ...incoming.been])],
     beenAt,
+    // 評分：自己評過的以自己的為準，沒評過的才用對方的。
+    ratings: { ...incoming.ratings, ...state.ratings },
   };
 }
 
@@ -80,7 +89,7 @@ export function countNew(state: StoredState, incoming: SharePayload): { fav: num
   };
 }
 
-export function buildShareUrl(baseUrl: string, state: Pick<StoredState, 'fav' | 'been' | 'beenAt'>): string {
+export function buildShareUrl(baseUrl: string, state: Pick<StoredState, 'fav' | 'been' | 'beenAt' | 'ratings'>): string {
   const url = new URL(baseUrl);
   url.search = '';
   url.hash = '';
