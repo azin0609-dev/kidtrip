@@ -1,11 +1,15 @@
 import type { ReactNode } from 'react';
 import type { ScoredSpot } from '../lib/recommend.ts';
+import { type WeekendWeather, formatDay } from '../lib/weather.ts';
 import { Dino } from './Dino.tsx';
 import { Chip, buttonBase } from './ui.tsx';
 
 export interface RecommendationsProps {
   picks: ScoredSpot[];
   rainy: boolean;
+  /** 「這週可能下雨」是不是依天氣預報自動決定的（使用者還沒手動改過）。 */
+  rainyIsAuto: boolean;
+  weather: WeekendWeather | null;
   overnight: boolean;
   onRainy: (v: boolean) => void;
   onOvernight: (v: boolean) => void;
@@ -13,7 +17,17 @@ export interface RecommendationsProps {
   renderCard: (pick: ScoredSpot) => ReactNode;
 }
 
-export function Recommendations({ picks, rainy, overnight, onRainy, onOvernight, onShuffle, renderCard }: RecommendationsProps) {
+export function Recommendations({
+  picks,
+  rainy,
+  rainyIsAuto,
+  weather,
+  overnight,
+  onRainy,
+  onOvernight,
+  onShuffle,
+  renderCard,
+}: RecommendationsProps) {
   return (
     <section aria-labelledby="recommend-title" className="mb-8">
       <div className="flex items-center justify-between gap-3">
@@ -29,6 +43,24 @@ export function Recommendations({ picks, rainy, overnight, onRainy, onOvernight,
           換一組
         </button>
       </div>
+
+      {weather && (
+        <div
+          className={`mt-2 rounded-2xl px-3 py-2 text-sm ${
+            weather.rainy
+              ? 'bg-sky-100 text-sky-950 dark:bg-sky-950 dark:text-sky-100'
+              : 'bg-amber-50 text-amber-950 dark:bg-amber-950/60 dark:text-amber-100'
+          }`}
+        >
+          <p className="font-bold">{weather.rainy ? '週末可能下雨，先幫你挑室內的' : '週末天氣看起來可以出門'}</p>
+          <ul className="mt-0.5">
+            {weather.days.map((d) => (
+              <li key={d.date}>{formatDay(d)}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="mt-2 flex flex-wrap gap-2">
         <Chip pressed={rainy} onClick={() => onRainy(!rainy)}>
           這週可能下雨
@@ -37,6 +69,12 @@ export function Recommendations({ picks, rainy, overnight, onRainy, onOvernight,
           這週要住一晚
         </Chip>
       </div>
+      {weather && rainyIsAuto && rainy && (
+        <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
+          「這週可能下雨」是依預報自動打開的，想去戶外可以按一下關掉。
+        </p>
+      )}
+
       {picks.length === 0 ? (
         <div className="mt-3 flex flex-col items-center gap-2 rounded-3xl bg-emerald-50 p-6 text-center dark:bg-emerald-950/40">
           <Dino mood="sleepy" className="h-20 w-20" />

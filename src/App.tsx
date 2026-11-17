@@ -12,6 +12,7 @@ import { buttonBase } from './components/ui.tsx';
 import { type Hotel, type Spot, hotels, origins, spots } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
+import { useWeekendWeather } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, todayInTaipei } from './lib/date.ts';
 import {
   DEFAULT_HOTEL_FILTERS,
@@ -37,7 +38,8 @@ export default function App() {
   const [hotelFilters, setHotelFilters] = useState(DEFAULT_HOTEL_FILTERS);
   const [picked, setPicked] = useState<{ id: string | null; empty: boolean }>({ id: null, empty: false });
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [rainy, setRainy] = useState(false);
+  // null = 還沒手動改過，跟著天氣預報；按過開關就以使用者的選擇為準。
+  const [rainyOverride, setRainyOverride] = useState<boolean | null>(null);
   const [overnight, setOvernight] = useState(false);
   const [shuffle, setShuffle] = useState(0);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
@@ -83,6 +85,8 @@ export default function App() {
   const origin = stored.origin ?? fallbackOrigin;
   const minsOf = useMemo(() => makeMinsOf(origin), [origin]);
   const originShort = shortOriginLabel(origin.label);
+  const weather = useWeekendWeather(origin, today);
+  const rainy = rainyOverride ?? weather?.rainy ?? false;
 
   const visibleSpots = useMemo(() => spots.filter((s) => isSpotVisible(s, today)), [today]);
   const spotById = useMemo(() => new Map(visibleSpots.map((s) => [s.id, s])), [visibleSpots]);
@@ -214,7 +218,9 @@ export default function App() {
               picks={picks}
               rainy={rainy}
               overnight={overnight}
-              onRainy={setRainy}
+              rainyIsAuto={rainyOverride === null}
+              weather={weather}
+              onRainy={setRainyOverride}
               onOvernight={setOvernight}
               onShuffle={() => setShuffle((n) => n + 1)}
               renderCard={(p) => renderSpot(p.spot, false, p.reasons.join('・'))}

@@ -18,6 +18,18 @@ export function Footer({ verifiedOn, originLabel }: { verifiedOn: string | null;
           © OpenStreetMap contributors
         </a>
       </p>
+      <p>
+        天氣預報：
+        <a
+          href="https://open-meteo.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-stone-900 dark:hover:text-stone-100"
+        >
+          Open-Meteo
+        </a>
+        （只送出大約 10 公里範圍的位置）
+      </p>
     </footer>
   );
 }
