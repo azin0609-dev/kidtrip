@@ -124,6 +124,13 @@ export const hotelSchema = z.object({
   last_verified: isoDate,
 });
 
+const verifiedSchema = z.object({
+  date: isoDate,
+  fields: z.array(nonEmpty).min(1),
+  source: z.enum(['official', 'media', 'blog']),
+  note: nonEmpty.optional(),
+});
+
 export const restaurantSchema = z.object({
   id: z.string().regex(/^food-\d{3,}$/, { message: 'id 格式必須是 food-001' }),
   name: nonEmpty,
@@ -136,6 +143,8 @@ export const restaurantSchema = z.object({
   mins_from_linkou: minsFromLinkou,
   tip: nonEmpty,
   open_note: nonEmpty.optional(),
+  /** 選填：查證紀錄（跟景點同格式）。 */
+  verified: verifiedSchema.optional(),
   near_spot_ids: z.array(z.string()),
   lat: coordinate,
   lng: coordinate,

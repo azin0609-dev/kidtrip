@@ -45,9 +45,10 @@ export function RestaurantCard({ restaurant: r, mins, originLabel, nearSpots, is
         </p>
       )}
 
-      {r.needs_verify.includes('single_source') && (
-        <p className="text-xs text-stone-600 dark:text-stone-400">這間只有一個來源提到，去之前先確認有沒有開。</p>
-      )}
+      <p className="text-xs text-stone-600 dark:text-stone-400">
+        {r.verified ? `${r.verified.date} 查過還在營業（${r.verified.note ?? '網路資料'}），` : ''}
+        親子餐廳常改時間或歇業，出發前在 Google 地圖或電話確認一下。
+      </p>
 
       {nearSpots.length > 0 && (
         <p className="text-sm text-stone-600 dark:text-stone-400">
