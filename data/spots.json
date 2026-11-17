@@ -2883,5 +2883,460 @@
       "facilities"
     ],
     "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-076",
+    "name": "斑比山丘",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "types": [
+      "farm",
+      "zoo"
+    ],
+    "env": "out",
+    "cost_tier": "$",
+    "stroller_ok": false,
+    "mins_from_linkou": 90,
+    "tip": "可以走進草地餵梅花鹿，鹿很親人；園區在小山坡上，推車不好推。",
+    "open_note": "假日人多，建議先預約",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "food"
+    ],
+    "crowd_tip": "假日常要排隊一小時以上，先預約或一開門就到",
+    "lat": 24.646427,
+    "lng": 121.74322,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-077",
+    "name": "宜農牧場",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "types": [
+      "farm"
+    ],
+    "env": "semi",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "門票含飼料，可以餵小羊、迷你豬、兔子，還能擠羊奶；有遮棚，小雨也能玩。",
+    "open_note": "公休日各家說法不一（有的說週四休），去之前先確認",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "food",
+      "shade"
+    ],
+    "lat": 24.68837,
+    "lng": 121.735857,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "env",
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-078",
+    "name": "星夢森林劇場",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "types": [
+      "farm",
+      "zoo"
+    ],
+    "env": "mix",
+    "cost_tier": "?",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "動物體驗農場，可以近距離看侏儒羊、水豚、狐獴，環境整理得很乾淨。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "food"
+    ],
+    "lat": 24.681366,
+    "lng": 121.740226,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "env",
+      "stroller_ok",
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-079",
+    "name": "蜡藝蠟筆城堡",
+    "city": "宜蘭縣蘇澳鎮",
+    "region": "北",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 100,
+    "tip": "可以自己動手做蠟筆和彩色筆帶回家，全室內，宜蘭下雨的首選。",
+    "open_note": "DIY 分場次，建議先預約",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "lat": 24.616397,
+    "lng": 121.828211,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-080",
+    "name": "虎牌米粉產業文化館",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "免門票，可以看米粉怎麼做，還能現場吃一碗；DIY 要另外付費。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "lat": 24.68464,
+    "lng": 121.798297,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-081",
+    "name": "宜蘭餅發明館",
+    "city": "宜蘭縣蘇澳鎮",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 100,
+    "tip": "免門票，隔著玻璃看牛舌餅生產線，可以試吃；DIY 要另外付費。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "lat": 24.614134,
+    "lng": 121.828859,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-082",
+    "name": "安永心食館",
+    "city": "宜蘭縣蘇澳鎮",
+    "region": "北",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 100,
+    "tip": "海洋主題的觀光工廠，有兒童遊戲區和互動展示，樓上可以吃飯。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "lat": 24.61462,
+    "lng": 121.818023,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-083",
+    "name": "橘之鄉蜜餞形象館",
+    "city": "宜蘭縣宜蘭市",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 80,
+    "tip": "免門票，可以看金棗蜜餞怎麼做、試吃；蜜餞 DIY 要先預約。",
+    "open_note": "蜜餞 DIY 要先預約",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "lat": 24.751954,
+    "lng": 121.753334,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-084",
+    "name": "菌寶貝博物館",
+    "city": "宜蘭縣宜蘭市",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 80,
+    "tip": "用顯微鏡看微生物，有互動遊戲，逛一小時剛好。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "lat": 24.751954,
+    "lng": 121.753334,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "city",
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-085",
+    "name": "潭酵天地觀光工廠",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "?",
+    "stroller_ok": true,
+    "mins_from_linkou": 70,
+    "tip": "有雙層透明迴旋溜滑梯，小孩會玩很久；果醋可以試喝。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "shade"
+    ],
+    "lat": 24.788901,
+    "lng": 121.739461,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "single_source",
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-086",
+    "name": "冬山河親水公園",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 90,
+    "tip": "大草地和河邊步道很好推車；每年 7–8 月的童玩節在這裡辦，要另外買票。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic",
+      "elder"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "lat": 24.673581,
+    "lng": 121.815285,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-087",
+    "name": "勝洋休閒農場",
+    "city": "宜蘭縣員山鄉",
+    "region": "北",
+    "types": [
+      "farm",
+      "water"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 85,
+    "tip": "水草主題農場，可以搭竹筏、做生態瓶，夏天很涼快。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "food"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "lat": 24.728172,
+    "lng": 121.704751,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "cost_tier",
+      "single_source",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
   }
 ]

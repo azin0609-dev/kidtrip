@@ -10,8 +10,10 @@
 ```
 /AGENTS.md            ← Codex 專案規則
 /docs/PRD.md          ← 這份
-/data/spots.json      ← 75 個親子景點（已整理）
-/data/hotels.json     ← 30 間親子飯店（已整理）
+/data/spots.json      ← 親子景點（開工時 75 個，2026-11-17 為 87 個）
+/data/hotels.json     ← 親子住宿（開工時規劃 30 間，2026-11-17 為 98 間，含民宿）
+/data/restaurants.json ← 親子餐廳（2026-11-17 新增）
+/data/trips.json      ← 出國行程（2026-11-17 新增）
 ```
 
 ### 給 Codex 的起手指令（任務 1-1）

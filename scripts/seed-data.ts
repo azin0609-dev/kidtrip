@@ -99,6 +99,20 @@ const SPOTS: SpotRow[] = [
   ['瑞穗牧場', '花蓮縣瑞穗鄉', '東', ['farm'], 'out', 'free', 1, 240, '免門票，可以看乳牛、喝鮮奶、吃鮮奶饅頭。'],
   ['國立臺灣史前文化博物館', '臺東縣臺東市', '東', ['museum'], 'in', '$', 1, 330, '整修後有兒童互動展區，戶外水舞廣場小孩很愛。'],
   ['初鹿牧場', '臺東縣卑南鄉', '東', ['farm'], 'out', '$', 1, 320, '大草原可以滑草、餵牛，鮮奶冰淇淋必吃。'],
+
+  // ───── 2026-11-17 補宜蘭景點 12 個（id 接在後面，不照地區排）─────
+  ['斑比山丘', '宜蘭縣冬山鄉', '北', ['farm', 'zoo'], 'out', '$', 0, 90, '可以走進草地餵梅花鹿，鹿很親人；園區在小山坡上，推車不好推。', { verify: ['cost_tier'] }],
+  ['宜農牧場', '宜蘭縣冬山鄉', '北', ['farm'], 'semi', '$', 1, 90, '門票含飼料，可以餵小羊、迷你豬、兔子，還能擠羊奶；有遮棚，小雨也能玩。', { verify: ['cost_tier', 'env'] }],
+  ['星夢森林劇場', '宜蘭縣冬山鄉', '北', ['farm', 'zoo'], 'mix', '?', 1, 90, '動物體驗農場，可以近距離看侏儒羊、水豚、狐獴，環境整理得很乾淨。', { verify: ['env', 'stroller_ok'] }],
+  ['蜡藝蠟筆城堡', '宜蘭縣蘇澳鎮', '北', ['museum', 'indoorplay'], 'in', '$$', 1, 100, '可以自己動手做蠟筆和彩色筆帶回家，全室內，宜蘭下雨的首選。', { verify: ['cost_tier'] }],
+  ['虎牌米粉產業文化館', '宜蘭縣五結鄉', '北', ['museum'], 'in', 'free', 1, 90, '免門票，可以看米粉怎麼做，還能現場吃一碗；DIY 要另外付費。'],
+  ['宜蘭餅發明館', '宜蘭縣蘇澳鎮', '北', ['museum'], 'in', 'free', 1, 100, '免門票，隔著玻璃看牛舌餅生產線，可以試吃；DIY 要另外付費。'],
+  ['安永心食館', '宜蘭縣蘇澳鎮', '北', ['museum', 'indoorplay'], 'in', '$', 1, 100, '海洋主題的觀光工廠，有兒童遊戲區和互動展示，樓上可以吃飯。', { verify: ['cost_tier'] }],
+  ['橘之鄉蜜餞形象館', '宜蘭縣宜蘭市', '北', ['museum'], 'in', 'free', 1, 80, '免門票，可以看金棗蜜餞怎麼做、試吃；蜜餞 DIY 要先預約。'],
+  ['菌寶貝博物館', '宜蘭縣宜蘭市', '北', ['museum'], 'in', 'free', 1, 80, '用顯微鏡看微生物，有互動遊戲，逛一小時剛好。', { verify: ['city', 'cost_tier'] }],
+  ['潭酵天地觀光工廠', '宜蘭縣礁溪鄉', '北', ['museum', 'indoorplay'], 'in', '?', 1, 70, '有雙層透明迴旋溜滑梯，小孩會玩很久；果醋可以試喝。', { verify: ['single_source'] }],
+  ['冬山河親水公園', '宜蘭縣五結鄉', '北', ['park', 'water'], 'out', 'free', 1, 90, '大草地和河邊步道很好推車；每年 7–8 月的童玩節在這裡辦，要另外買票。', { verify: ['cost_tier'] }],
+  ['勝洋休閒農場', '宜蘭縣員山鄉', '北', ['farm', 'water'], 'mix', '$', 1, 85, '水草主題農場，可以搭竹筏、做生態瓶，夏天很涼快。', { verify: ['cost_tier', 'single_source'] }],
 ];
 
 // 公休日與預約提醒（依各館慣例整理，出發前仍以官方公告為準；都列入 needs_verify）
@@ -122,6 +136,10 @@ const OPEN_NOTES: Record<string, string> = {
   壽山動物園: '週一休園',
   國立科學工藝博物館: '週一休館；兒童科學園分場次',
   國立臺灣史前文化博物館: '週一休館',
+  斑比山丘: '假日人多，建議先預約',
+  宜農牧場: '公休日各家說法不一（有的說週四休），去之前先確認',
+  蜡藝蠟筆城堡: 'DIY 分場次，建議先預約',
+  橘之鄉蜜餞形象館: '蜜餞 DIY 要先預約',
 };
 
 // 適合年齡、停留時間、設施、大眾運輸、人潮、適合月份（依一般情況整理，全部列入 needs_verify）
@@ -205,6 +223,18 @@ const DETAILS: Record<string, Detail> = {
   瑞穗牧場: [1, 8, 1, 'PFE'],
   國立臺灣史前文化博物館: [3, 12, 2.5, 'NDPSE', { t: '台鐵康樂站走路約 10 分' }],
   初鹿牧場: [1, 10, 2, 'PF'],
+  斑比山丘: [2, 10, 1.5, 'PF', { c: '假日常要排隊一小時以上，先預約或一開門就到' }],
+  宜農牧場: [1, 8, 1.5, 'PFS'],
+  星夢森林劇場: [1, 8, 2, 'PF'],
+  蜡藝蠟筆城堡: [3, 10, 2, 'PSE'],
+  虎牌米粉產業文化館: [2, 10, 1.5, 'PFSE'],
+  宜蘭餅發明館: [2, 10, 1, 'PFSE'],
+  安永心食館: [2, 10, 2, 'NPFSE'],
+  橘之鄉蜜餞形象館: [3, 10, 1, 'PSE'],
+  菌寶貝博物館: [3, 10, 1, 'PSE'],
+  潭酵天地觀光工廠: [2, 10, 1.5, 'PS'],
+  冬山河親水公園: [1, 10, 2, 'PKE', { m: WARM }],
+  勝洋休閒農場: [3, 10, 2, 'PF', { m: WARM }],
 };
 const FAC_CODES: Record<string, string> = { N: 'nursing', D: 'diaper', P: 'parking', F: 'food', K: 'picnic', S: 'shade', E: 'elder' };
 
@@ -385,6 +415,26 @@ const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, m
 });
 
 const idByName = new Map(spots.map((s) => [s.name, s.id]));
+
+// 宜蘭各鄉鎮附近的景點：住宿、餐廳原本列的不到 3 個時，用這張表補到 3 個。
+const YILAN_NEAR: Record<string, string[]> = {
+  礁溪鄉: ['蘭陽博物館', '潭酵天地觀光工廠'],
+  頭城鎮: ['蘭陽博物館', '潭酵天地觀光工廠'],
+  宜蘭市: ['幾米主題廣場', '橘之鄉蜜餞形象館', '菌寶貝博物館'],
+  員山鄉: ['勝洋休閒農場', '幾米主題廣場', '張美阿嬤農場'],
+  羅東鎮: ['羅東林業文化園區', '冬山河親水公園', '宜農牧場'],
+  五結鄉: ['國立傳統藝術中心', '冬山河親水公園', '虎牌米粉產業文化館'],
+  冬山鄉: ['斑比山丘', '宜農牧場', '冬山河生態綠舟'],
+  三星鄉: ['張美阿嬤農場', '遛遛三星', '星夢森林劇場'],
+  蘇澳鎮: ['蜡藝蠟筆城堡', '安永心食館', '宜蘭餅發明館'],
+};
+function withYilanNear(city: string, near: string[]): string[] {
+  const town = /^宜蘭縣(.{2}[鄉鎮市])/.exec(city)?.[1];
+  const extra = town ? (YILAN_NEAR[town] ?? []) : [];
+  const out = [...near];
+  for (const n of extra) if (out.length < 3 && !out.includes(n)) out.push(n);
+  return out;
+}
 const oldHotels = loadExisting('hotels.json');
 const hotels = HOTELS.map(([name, city, region, price_tier, tags, features, mins, tip, near, verify, kind], i) => {
   const id = `hotel-${String(i + 1).padStart(3, '0')}`;
@@ -400,7 +450,7 @@ const hotels = HOTELS.map(([name, city, region, price_tier, tags, features, mins
     features,
     mins_from_linkou: mins,
     tip,
-    near_spot_ids: near.map((n) => {
+    near_spot_ids: withYilanNear(city, near).map((n) => {
       const sid = idByName.get(n);
       if (!sid) throw new Error(`${name}：找不到景點「${n}」`);
       return sid;
@@ -462,7 +512,7 @@ const foods = FOODS.map(([name, city, region, cuisine, price_tier, tags, mins, t
     mins_from_linkou: mins,
     tip,
     ...(note ? { open_note: note } : {}),
-    near_spot_ids: near.map((n) => {
+    near_spot_ids: withYilanNear(city, near).map((n) => {
       const sid = idByName.get(n);
       if (!sid) throw new Error(`${name}：找不到景點「${n}」`);
       return sid;
