@@ -9,7 +9,7 @@ export interface SharePayload {
   beenAt: Record<string, string>;
 }
 
-const ID_PATTERN = /^(spot|hotel)-\d{3,}$/;
+const ID_PATTERN = /^(spot|hotel|food)-\d{3,}$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 function toBase64Url(text: string): string {

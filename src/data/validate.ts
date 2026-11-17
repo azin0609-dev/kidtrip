@@ -1,8 +1,8 @@
 import type { z } from 'zod';
-import { hotelSchema, isValidIsoDate, originsSchema, spotSchema } from './schema.ts';
+import { hotelSchema, isValidIsoDate, originsSchema, restaurantSchema, spotSchema } from './schema.ts';
 
 export interface DataIssue {
-  file: 'spots.json' | 'hotels.json' | 'origins.json';
+  file: 'spots.json' | 'hotels.json' | 'origins.json' | 'restaurants.json';
   /** 該筆的 id；id 本身缺漏時用「#索引」表示。 */
   id: string;
   /** 出錯的欄位路徑，例如 region、types[1]。 */
@@ -105,6 +105,28 @@ export function validateData(spots: unknown, hotels: unknown): DataIssue[] {
     });
   }
 
+  return issues;
+}
+
+/** 檢查 restaurants.json：欄位、id 不重複、near_spot_ids 都找得到景點。空陣列可以（還沒整理）。 */
+export function validateRestaurants(restaurants: unknown, spots: unknown): DataIssue[] {
+  if (!Array.isArray(restaurants)) {
+    return [{ file: 'restaurants.json', id: '(整個檔案)', field: '', message: '最外層必須是陣列' }];
+  }
+  if (restaurants.length === 0) return [];
+  const { issues } = checkList('restaurants.json', restaurants, restaurantSchema);
+  const spotIds = new Set(
+    Array.isArray(spots) ? spots.map((s) => (s && typeof s === 'object' ? (s as { id?: unknown }).id : null)) : [],
+  );
+  restaurants.forEach((r, index) => {
+    const near: unknown = r && typeof r === 'object' ? (r as { near_spot_ids?: unknown }).near_spot_ids : undefined;
+    if (!Array.isArray(near)) return;
+    near.forEach((spotId, i) => {
+      if (typeof spotId === 'string' && !spotIds.has(spotId)) {
+        issues.push({ file: 'restaurants.json', id: recordLabel(r, index), field: `near_spot_ids[${i}]`, message: `找不到景點 ${spotId}` });
+      }
+    });
+  });
   return issues;
 }
 

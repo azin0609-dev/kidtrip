@@ -1,4 +1,4 @@
-import type { Hotel, Spot } from '../data/schema.ts';
+import type { Hotel } from '../data/schema.ts';
 
 /** 「新北市林口區（青埔）」→「新北市林口區」，括號補充不放進搜尋字串。 */
 export function stripParens(text: string): string {
@@ -6,7 +6,7 @@ export function stripParens(text: string): string {
 }
 
 /** Google Maps 免費的搜尋／導航連結（AGENTS.md 指定格式）。 */
-export function googleMapsUrl(place: Pick<Spot | Hotel, 'name' | 'city' | 'google_place_id'>): string {
+export function googleMapsUrl(place: { name: string; city: string; google_place_id: string | null }): string {
   const params = new URLSearchParams({ api: '1', query: `${place.name} ${stripParens(place.city)}` });
   if (place.google_place_id) params.set('query_place_id', place.google_place_id);
   return `https://www.google.com/maps/search/?${params.toString()}`;

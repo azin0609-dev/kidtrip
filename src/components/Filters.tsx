@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
-import { FACILITIES, HOTEL_KINDS, HOTEL_TAGS, SPOT_TYPES } from '../data/enums.ts';
-import { DRIVE_OPTIONS, type HotelFilters, type SpotFilters, toggleInList } from '../lib/filter.ts';
-import { FACILITY_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, REGION_OPTIONS, TYPE_LABELS } from '../lib/labels.ts';
+import { FACILITIES, FOOD_TAGS, HOTEL_KINDS, HOTEL_TAGS, SPOT_TYPES } from '../data/enums.ts';
+import { DRIVE_OPTIONS, type FoodFilters, type HotelFilters, type SpotFilters, toggleInList } from '../lib/filter.ts';
+import { FACILITY_LABELS, FOOD_TAG_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, REGION_OPTIONS, TYPE_LABELS } from '../lib/labels.ts';
 import { Chip, ChipGroup, SearchBox } from './ui.tsx';
 
-type DriveRegion = { drive: SpotFilters['drive']; region: SpotFilters['region']; county: string };
+type DriveRegion = { drive: SpotFilters['drive']; region?: SpotFilters['region']; county: string };
 export type CountyOption = { county: string; count: number };
 
 /** 縣市：一排可以左右滑的按鈕，近的排前面。選了縣市就不再限制北中南東。 */
@@ -30,7 +30,9 @@ function CountyChips<T extends DriveRegion>({
           <span key={c.county} className="shrink-0">
             <Chip
               pressed={value.county === c.county}
-              onClick={() => onChange({ ...value, county: value.county === c.county ? 'all' : c.county, region: 'all' })}
+              onClick={() =>
+                onChange({ ...value, county: value.county === c.county ? 'all' : c.county, ...('region' in value ? { region: 'all' } : {}) })
+              }
             >
               {c.county}
               <span className="ml-1 text-xs opacity-70">{c.count}</span>
@@ -166,6 +168,35 @@ export function HotelFiltersPanel({
           ))}
         </ChipGroup>
       </MoreFilters>
+    </div>
+  );
+}
+
+export function FoodFiltersPanel({
+  value,
+  onChange,
+  counties,
+}: {
+  value: FoodFilters;
+  onChange: (v: FoodFilters) => void;
+  counties: CountyOption[];
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      <SearchBox
+        value={value.query}
+        onChange={(query) => onChange({ ...value, query })}
+        placeholder="搜尋名稱、城市、料理，例如：沙坑 宜蘭"
+      />
+      <DriveChips value={value} onChange={onChange} />
+      <CountyChips value={value} onChange={onChange} counties={counties} />
+      <ChipGroup label="特色（選了的都要有）">
+        {FOOD_TAGS.map((t) => (
+          <Chip key={t} pressed={value.tags.includes(t)} onClick={() => onChange({ ...value, tags: toggleInList(value.tags, t) })}>
+            {FOOD_TAG_LABELS[t]}
+          </Chip>
+        ))}
+      </ChipGroup>
     </div>
   );
 }

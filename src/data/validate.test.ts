@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { isValidIsoDate } from './schema.ts';
-import { validateData, validateOrigins } from './validate.ts';
+import { validateData, validateOrigins, validateRestaurants } from './validate.ts';
 
 // 測試用的假資料，只用來驗證檢查邏輯，不會出現在畫面上。
 function makeSpot(overrides: Record<string, unknown> = {}) {
@@ -183,5 +183,41 @@ describe('validateOrigins', () => {
     const data = make(ok);
     data.counties[0]!.towns[0]!.lat = 35;
     expect(validateOrigins(data)).toHaveLength(1);
+  });
+});
+
+describe('validateRestaurants', () => {
+  const food = (o: Record<string, unknown> = {}) => ({
+    id: 'food-001',
+    name: '測試餐廳',
+    city: '新北市林口區',
+    region: '北',
+    cuisine: '簡餐',
+    price_tier: '$$',
+    tags: ['play'],
+    mins_from_linkou: 10,
+    tip: '有遊戲區。',
+    near_spot_ids: ['spot-001'],
+    lat: null,
+    lng: null,
+    google_place_id: null,
+    needs_verify: [],
+    last_verified: '2026-11-17',
+    ...o,
+  });
+  it('合法資料、空陣列都通過', () => {
+    expect(validateRestaurants([food()], [makeSpot()])).toEqual([]);
+    expect(validateRestaurants([], [makeSpot()])).toEqual([]);
+  });
+  it('enum、id 格式、重複、找不到景點', () => {
+    const issues = validateRestaurants(
+      [food({ tags: ['pool'] }), food(), food({ id: 'rest-1', near_spot_ids: ['spot-999'] })],
+      [makeSpot()],
+    );
+    const text = issues.map((i) => `${i.id}:${i.field}:${i.message}`).join('|');
+    expect(text).toContain('food-001:tags[0]');
+    expect(text).toContain('food-001:id:id 重複');
+    expect(text).toContain('rest-1:id');
+    expect(text).toContain('找不到景點 spot-999');
   });
 });

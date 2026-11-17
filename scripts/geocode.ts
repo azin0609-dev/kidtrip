@@ -158,7 +158,7 @@ interface Place {
 }
 
 async function geocodePlaces() {
-  const files = ['data/spots.json', 'data/hotels.json'] as const;
+  const files = ['data/spots.json', 'data/hotels.json', 'data/restaurants.json'] as const;
   const data = Object.fromEntries(files.map((f) => [f, JSON.parse(readFileSync(path(f), 'utf8')) as Place[]]));
   const todo = files.flatMap((f) => (data[f] ?? []).filter((p) => p.lat === null || p.lng === null).map((p) => ({ file: f, place: p })));
   console.log(`要查 ${todo.length} 筆（約 ${Math.ceil((todo.length * MIN_INTERVAL_MS * 2) / 60000)} 分鐘內）`);

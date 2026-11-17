@@ -413,6 +413,61 @@ const hotels = HOTELS.map(([name, city, region, price_tier, tags, features, mins
   };
 });
 
+// ───── 親子餐廳（2026-11-17 初版：北部＋宜蘭） ─────
+// 價位（每人）：$ 300 元以下、$$ 300–600 元、$$$ 600 元以上
+// verify 裡的 single_source 代表只有一個來源提到，還沒交叉確認。新增的一律接在後面。
+type FoodRow = [name: string, city: string, region: string, cuisine: string, price: string, tags: string[], mins: number, tip: string, near: string[], note?: string, verify?: string[]];
+const FOODS: FoodRow[] = [
+  ['樹屋親子餐廳', '新北市林口區', '北', '日式料理', '$$', ['play', 'slide', 'reserve'], 10, '兩層樓的樹屋溜滑梯通到球池，還有木頭廚具遊戲區；假日熱門，先訂位。', ['林口樂活公園'], '遊戲區限 140 公分以下'],
+  ['童遊水族館 林口分館', '新北市林口區', '北', '簡餐', '$$', ['play', 'slide'], 10, '一樓有大水族缸可以看魚，遊戲區有球池、溜滑梯和氣墊床。', ['林口樂活公園'], '週二、週三公休', ['single_source']],
+  ['食之有情', '新北市林口區', '北', '簡餐', '$$', ['play'], 10, '在三井 Outlet 旁，有兒童遊戲區，也可以帶寵物。', ['林口樂活公園'], undefined, ['single_source']],
+  ['大樹先生的家', '台北市大安區', '北', '義式、簡餐', '$$', ['play', 'slide', 'reserve', 'fee'], 40, '招牌是大溜滑梯球池，有陪玩姊姊；很熱門，一定要先訂位。', ['大安森林公園', '華山大草原遊戲場'], '有低消；入場年齡規定各家說法不一，訂位時問清楚'],
+  ['甲蟲秘境', '台北市士林區', '北', '簡餐', '$$', ['play', 'slide', 'animal'], 35, '甲蟲主題餐廳，可以看活的甲蟲，還有球池、溜滑梯和積木牆。', ['國立臺灣科學教育館', '臺北市立天文科學教育館', '臺北市立兒童新樂園']],
+  ['媽妳講親子餐廳 Money Jump', '台北市內湖區', '北', '排餐、簡餐', '$$$', ['play', 'slide', 'reserve', 'fee'], 40, '有旋轉木馬、大球池和互動牆，另有兩歲以下寶寶專區。', ['KidZania Taipei 奇薩尼亞台北'], '分場次預約制，大人小孩都要穿襪子'],
+  ['象園咖啡', '台北市內湖區', '北', '簡餐、鬆餅', '$$', ['outdoor', 'slide', 'reserve', 'fee'], 40, '在碧湖旁邊，戶外有溜滑梯，可以看湖景；平假日都建議先訂位。', [], '有低消、用餐限時'],
+  ['微笑咖啡', '桃園市中壢區', '北', '簡餐', '$$', ['play', 'slide'], 30, '三層樓的遊戲空間、大球池，小孩可以放電很久。', ['Xpark 都會型水生公園', '桃園市兒童美術館'], '附近沒有停車場，多半停路邊'],
+  ['貝兒絲樂園', '桃園市', '北', '簡餐', '$$', ['play', 'slide', 'fee'], 30, '遊戲設施多，比較像室內樂園附餐點。', [], '遊戲區另外收門票', ['city']],
+  ['大房子親子餐廳', '新竹市東區', '北', '簡餐', '$$', ['play', 'slide', 'sand', 'fee'], 55, '號稱新竹最大的親子餐廳，球池、沙坑、溜滑梯、廚房扮演區都有。', ['新竹市立動物園'], '大人小孩都有低消'],
+  ['愛兒悅義式餐廳', '新竹市北區', '北', '義式', '$$', ['play', 'fee'], 55, '遊戲區依年齡分區，小小孩有自己的空間。', ['新竹市立動物園']],
+  ['La Play 樂玩親子空間', '新竹縣竹北市', '北', '簡餐', '$$', ['play', 'slide', 'sand'], 50, '有球池溜滑梯、決明子沙坑和小旋轉木馬；有人提到部分玩具比較舊。', ['小叮噹科學主題樂園']],
+  ['水鹿咖啡親子館', '宜蘭縣礁溪鄉', '北', '簡餐', '$$', ['play', 'animal', 'outdoor', 'fee'], 70, '可以餵水鹿和小動物，有室內遊戲區和踩踩車，吃飯兼放電。', ['蘭陽博物館'], '要門票；營業時間與公休日各家說法不一，去之前先打電話'],
+  ['童樂園餐廳', '宜蘭縣礁溪鄉', '北', '簡餐', '$$', ['play'], 70, '二樓遊戲區有電動小火車、彈跳床和積木區，適合 2–8 歲。', ['蘭陽博物館'], undefined, ['single_source']],
+  ['樹懶餐廳（九九峰動物樂園）', '宜蘭縣', '北', '簡餐', '$$', ['play', 'slide', 'animal'], 95, '樹懶主題，遊戲區就在座位旁，有球池和溜滑梯，適合 1–6 歲。', ['張美阿嬤農場'], '營業時間各家說法不一', ['city']],
+  ['蘭陽溪口親子餐廳', '宜蘭縣五結鄉', '北', '簡餐', '$$', ['play', 'slide', 'sand', 'outdoor'], 90, '室內有球池和溜滑梯，戶外有沙坑、盪鞦韆，晴雨都能玩。', ['國立傳統藝術中心', '冬山河生態綠舟'], '週二公休'],
+  ['幸福時光親子餐廳', '宜蘭縣羅東鎮', '北', '簡餐', '$$', ['play', 'sand'], 90, '有大型室內遊戲區和沙坑，餐點主打無添加。', ['羅東林業文化園區'], undefined, ['single_source']],
+  ['羅東林場咖啡親子館', '宜蘭縣羅東鎮', '北', '咖啡、簡餐', '$$', ['play', 'sand', 'outdoor'], 90, '就在羅東林場旁，室內遊戲空間大，戶外還有沙坑。', ['羅東林業文化園區'], undefined, ['single_source']],
+  ['二漁咖啡', '宜蘭縣冬山鄉', '北', '鮮魚定食', '$$', ['outdoor'], 90, '鮮魚定食為主，戶外有大草皮和學步車可以玩。', ['冬山河生態綠舟'], undefined, ['single_source']],
+];
+
+const oldFoods = loadExisting('restaurants.json');
+const foods = FOODS.map(([name, city, region, cuisine, price_tier, tags, mins, tip, near, note, verify], i) => {
+  const id = `food-${String(i + 1).padStart(3, '0')}`;
+  const old = oldFoods.get(id);
+  return {
+    id,
+    name,
+    city,
+    region,
+    cuisine,
+    price_tier,
+    tags,
+    mins_from_linkou: mins,
+    tip,
+    ...(note ? { open_note: note } : {}),
+    near_spot_ids: near.map((n) => {
+      const sid = idByName.get(n);
+      if (!sid) throw new Error(`${name}：找不到景點「${n}」`);
+      return sid;
+    }),
+    lat: old?.lat ?? null,
+    lng: old?.lng ?? null,
+    google_place_id: old?.google_place_id ?? null,
+    needs_verify: ['still_open', 'mins_from_linkou', 'price_tier', 'tags', ...(verify ?? [])],
+    last_verified: TODAY,
+  };
+});
+writeFileSync(`${root}data/restaurants.json`, JSON.stringify(foods, null, 2) + '\n');
+
 writeFileSync(`${root}data/spots.json`, JSON.stringify(spots, null, 2) + '\n');
 writeFileSync(`${root}data/hotels.json`, JSON.stringify(hotels, null, 2) + '\n');
-console.log(`已寫入：景點 ${spots.length} 個、飯店 ${hotels.length} 間`);
+console.log(`已寫入：景點 ${spots.length} 個、住宿 ${hotels.length} 間、餐廳 ${foods.length} 間`);

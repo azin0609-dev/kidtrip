@@ -10,6 +10,8 @@ import {
   COST_TIERS,
   ENVS,
   FACILITIES,
+  FOOD_PRICE_TIERS,
+  FOOD_TAGS,
   HOTEL_KINDS,
   HOTEL_TAGS,
   PRICE_TIERS,
@@ -102,6 +104,26 @@ export const hotelSchema = z.object({
   last_verified: isoDate,
 });
 
+export const restaurantSchema = z.object({
+  id: z.string().regex(/^food-\d{3,}$/, { message: 'id 格式必須是 food-001' }),
+  name: nonEmpty,
+  city: nonEmpty,
+  region: z.enum(REGIONS),
+  /** 料理類型，例如「義式」「日式」「簡餐」。 */
+  cuisine: nonEmpty,
+  price_tier: z.enum(FOOD_PRICE_TIERS),
+  tags: z.array(z.enum(FOOD_TAGS)),
+  mins_from_linkou: minsFromLinkou,
+  tip: nonEmpty,
+  open_note: nonEmpty.optional(),
+  near_spot_ids: z.array(z.string()),
+  lat: coordinate,
+  lng: coordinate,
+  google_place_id: z.string().nullable(),
+  needs_verify: z.array(z.string()),
+  last_verified: isoDate,
+});
+
 const originPoint = z.object({
   name: nonEmpty,
   lat: z.number().min(21).max(27).nullable(),
@@ -119,3 +141,4 @@ export const originsSchema = z.object({
 export type Badge = z.infer<typeof badgeSchema>;
 export type Spot = z.infer<typeof spotSchema>;
 export type Hotel = z.infer<typeof hotelSchema>;
+export type Restaurant = z.infer<typeof restaurantSchema>;

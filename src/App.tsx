@@ -3,21 +3,24 @@ import { ImportDialog, ReportDialog } from './components/Dialogs.tsx';
 import { Dino, DinoEgg } from './components/Dino.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
-import { HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
+import { FoodFiltersPanel, HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
+import { RestaurantCard } from './components/RestaurantCard.tsx';
 import { Recommendations } from './components/Recommendations.tsx';
 import { SettingsDialog } from './components/SettingsDialog.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
 import { UpdatePrompt } from './components/UpdatePrompt.tsx';
 import { buttonBase } from './components/ui.tsx';
-import { type Hotel, type Spot, hotels, origins, spots } from './data/index.ts';
+import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, spots } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
 import { useWeekendWeather } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, todayInTaipei } from './lib/date.ts';
 import {
+  DEFAULT_FOOD_FILTERS,
   DEFAULT_HOTEL_FILTERS,
   DEFAULT_SPOT_FILTERS,
   filterHotels,
+  filterRestaurants,
   filterSpots,
   listCounties,
   sortByDrive,
@@ -38,6 +41,7 @@ export default function App() {
   const [stored, update] = useStoredState();
   const [spotFilters, setSpotFilters] = useState(DEFAULT_SPOT_FILTERS);
   const [hotelFilters, setHotelFilters] = useState(DEFAULT_HOTEL_FILTERS);
+  const [foodFilters, setFoodFilters] = useState(DEFAULT_FOOD_FILTERS);
   const [picked, setPicked] = useState<{ id: string | null; empty: boolean }>({ id: null, empty: false });
   const [settingsOpen, setSettingsOpen] = useState(false);
   // null = 還沒手動改過，跟著天氣預報；按過開關就以使用者的選擇為準。
@@ -60,7 +64,11 @@ export default function App() {
   }, []);
 
   const nameOf = useCallback(
-    (id: string) => spots.find((s) => s.id === id)?.name ?? hotels.find((h) => h.id === id)?.name ?? id,
+    (id: string) =>
+      spots.find((s) => s.id === id)?.name ??
+      hotels.find((h) => h.id === id)?.name ??
+      restaurants.find((r) => r.id === id)?.name ??
+      id,
     [],
   );
   const copyText = async (text: string, done: string) => {
@@ -110,6 +118,18 @@ export default function App() {
     [hotelFilters, minsOf],
   );
 
+  const foodBySpot = useMemo(() => {
+    const map = new Map<string, Restaurant[]>();
+    for (const r of sortByDrive(restaurants, minsOf)) {
+      for (const id of r.near_spot_ids) map.set(id, [...(map.get(id) ?? []), r]);
+    }
+    return map;
+  }, [minsOf]);
+  const foodResults = useMemo(
+    () => sortByDrive(filterRestaurants(restaurants, foodFilters, minsOf), minsOf),
+    [foodFilters, minsOf],
+  );
+  const foodCounties = useMemo(() => listCounties(restaurants, minsOf), [minsOf]);
   const spotCounties = useMemo(() => listCounties(visibleSpots, minsOf), [visibleSpots, minsOf]);
   const hotelCounties = useMemo(() => listCounties(hotels, minsOf), [minsOf]);
 
@@ -117,7 +137,8 @@ export default function App() {
   const beenSet = new Set(stored.been);
   const favSpots = sortByDrive(visibleSpots.filter((s) => favSet.has(s.id)), minsOf);
   const favHotels = sortByDrive(hotels.filter((h) => favSet.has(h.id)), minsOf);
-  const verifiedOn = latestVerified([...spots, ...hotels]);
+  const favFood = sortByDrive(restaurants.filter((r) => favSet.has(r.id)), minsOf);
+  const verifiedOn = latestVerified([...spots, ...hotels, ...restaurants]);
 
   const toggleFav = (id: string) => update((s) => ({ ...s, fav: toggleInList(s.fav, id) }));
   const toggleBeen = (id: string) => update((s) => toggleBeenState(s, id, today));
@@ -150,6 +171,7 @@ export default function App() {
       mins={minsOf(spot)}
       originLabel={originShort}
       nearHotels={hotelsBySpot.get(spot.id) ?? []}
+      nearFood={foodBySpot.get(spot.id) ?? []}
       isFav={favSet.has(spot.id)}
       isBeen={beenSet.has(spot.id)}
       onToggleFav={() => toggleFav(spot.id)}
@@ -170,6 +192,19 @@ export default function App() {
       isFav={favSet.has(hotel.id)}
       onToggleFav={() => toggleFav(hotel.id)}
       onReport={() => setReportFor({ id: hotel.id, name: hotel.name })}
+    />
+  );
+
+  const renderFood = (r: Restaurant) => (
+    <RestaurantCard
+      key={r.id}
+      restaurant={r}
+      mins={minsOf(r)}
+      originLabel={originShort}
+      nearSpots={r.near_spot_ids.flatMap((id) => spotById.get(id) ?? [])}
+      isFav={favSet.has(r.id)}
+      onToggleFav={() => toggleFav(r.id)}
+      onReport={() => setReportFor({ id: r.id, name: r.name })}
     />
   );
 
@@ -280,14 +315,28 @@ export default function App() {
               共 {hotelResults.length} 間，依車程由近到遠
             </p>
             <div className={`mt-4 ${grid}`}>{hotelResults.map(renderHotel)}</div>
-            {hotelResults.length === 0 && <EmptyState text="沒有符合的飯店，試試少選幾個條件。" />}
+            {hotelResults.length === 0 && <EmptyState text="沒有符合的住宿，試試少選幾個條件。" />}
+          </>
+        )}
+
+        {tab === 'food' && (
+          <>
+            <FoodFiltersPanel value={foodFilters} onChange={setFoodFilters} counties={foodCounties} />
+            <p className="mt-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
+              共 {foodResults.length} 間，依車程由近到遠
+            </p>
+            <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
+              親子餐廳開開關關很常見，出發前先打電話或看粉專確認有沒有營業。
+            </p>
+            <div className={`mt-4 ${grid}`}>{foodResults.map(renderFood)}</div>
+            {foodResults.length === 0 && <EmptyState text="沒有符合的餐廳，試試少選幾個條件。" />}
           </>
         )}
 
         {tab === 'favs' && (
           <>
-            {favSpots.length === 0 && favHotels.length === 0 && (
-              <EmptyState text="還沒有收藏。看到喜歡的景點或飯店，按「收藏」就會出現在這裡。" />
+            {favSpots.length === 0 && favHotels.length === 0 && favFood.length === 0 && (
+              <EmptyState text="還沒有收藏。看到喜歡的景點、住宿或餐廳，按「收藏」就會出現在這裡。" />
             )}
             {favSpots.length > 0 && (
               <section>
@@ -297,8 +346,14 @@ export default function App() {
             )}
             {favHotels.length > 0 && (
               <section className="mt-6">
-                <h2 className="mb-3 text-base font-bold">飯店（{favHotels.length}）</h2>
+                <h2 className="mb-3 text-base font-bold">住宿（{favHotels.length}）</h2>
                 <div className={grid}>{favHotels.map(renderHotel)}</div>
+              </section>
+            )}
+            {favFood.length > 0 && (
+              <section className="mt-6">
+                <h2 className="mb-3 text-base font-bold">餐廳（{favFood.length}）</h2>
+                <div className={grid}>{favFood.map(renderFood)}</div>
               </section>
             )}
           </>

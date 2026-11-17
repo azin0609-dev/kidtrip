@@ -1,9 +1,10 @@
-export type Tab = 'spots' | 'hotels' | 'favs';
+export type Tab = 'spots' | 'hotels' | 'food' | 'favs';
 
 export const TABS: { id: Tab; label: string }[] = [
-  { id: 'spots', label: '親子景點' },
-  { id: 'hotels', label: '親子住宿' },
-  { id: 'favs', label: '我的收藏' },
+  { id: 'spots', label: '景點' },
+  { id: 'hotels', label: '住宿' },
+  { id: 'food', label: '餐廳' },
+  { id: 'favs', label: '收藏' },
 ];
 
 /** 網址 hash → 分頁，認不得就回到景點。 */

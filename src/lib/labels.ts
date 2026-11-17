@@ -1,4 +1,4 @@
-import type { CostTier, Env, Facility, HotelKind, HotelTag, PriceTier, Region, SpotType } from '../data/schema.ts';
+import type { CostTier, Env, Facility, FoodPriceTier, FoodTag, HotelKind, HotelTag, PriceTier, Region, SpotType } from '../data/schema.ts';
 
 // 介面文字對照表（不是景點資料）。
 
@@ -53,6 +53,22 @@ export const FACILITY_LABELS: Record<Facility, string> = {
   picnic: '可帶便當',
   shade: '有遮蔭',
   elder: '長輩好走',
+};
+
+export const FOOD_TAG_LABELS: Record<FoodTag, string> = {
+  play: '室內遊戲區',
+  slide: '溜滑梯球池',
+  sand: '沙坑',
+  outdoor: '戶外草地',
+  animal: '有動物',
+  reserve: '建議訂位',
+  fee: '有低消或入場費',
+};
+
+export const FOOD_PRICE_LABELS: Record<FoodPriceTier, string> = {
+  $: '$',
+  $$: '$$',
+  $$$: '$$$',
 };
 
 export const HOTEL_KIND_LABELS: Record<HotelKind, string> = {

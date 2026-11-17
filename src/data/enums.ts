@@ -22,6 +22,10 @@ export const HOTEL_TAGS = ['play', 'slide', 'pool', 'spa', 'park', 'animal'] as 
  * 長輩好走（少樓梯、有地方坐）。
  */
 export const FACILITIES = ['nursing', 'diaper', 'parking', 'food', 'picnic', 'shade', 'elder'] as const;
+/** 餐廳特色：室內遊戲區、溜滑梯或球池、沙坑、戶外草地、可以看或餵動物、建議訂位、有低消或遊戲區另外收費。 */
+export const FOOD_TAGS = ['play', 'slide', 'sand', 'outdoor', 'animal', 'reserve', 'fee'] as const;
+/** 餐廳價位（每人）：$ 300 元以下、$$ 300–600 元、$$$ 600 元以上。 */
+export const FOOD_PRICE_TIERS = ['$', '$$', '$$$'] as const;
 /** 住宿類型：飯店、民宿。 */
 export const HOTEL_KINDS = ['hotel', 'bnb'] as const;
 export const BADGE_KINDS = ['new', 'end'] as const;
@@ -33,4 +37,6 @@ export type CostTier = (typeof COST_TIERS)[number];
 export type PriceTier = (typeof PRICE_TIERS)[number];
 export type HotelTag = (typeof HOTEL_TAGS)[number];
 export type Facility = (typeof FACILITIES)[number];
+export type FoodTag = (typeof FOOD_TAGS)[number];
+export type FoodPriceTier = (typeof FOOD_PRICE_TIERS)[number];
 export type HotelKind = (typeof HOTEL_KINDS)[number];

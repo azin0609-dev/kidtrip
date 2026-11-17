@@ -1,4 +1,4 @@
-import type { Hotel, Spot } from '../data/schema.ts';
+import type { Hotel, Restaurant, Spot } from '../data/schema.ts';
 import { spotBadges } from '../lib/date.ts';
 import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { ageBestLabel, stayLabel } from '../lib/details.ts';
@@ -13,6 +13,7 @@ export interface SpotCardProps {
   mins: number | null;
   originLabel: string;
   nearHotels: Hotel[];
+  nearFood?: Restaurant[];
   isFav: boolean;
   isBeen: boolean;
   onToggleFav: () => void;
@@ -49,7 +50,7 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   const facts = [spot.age_best && ageBestLabel(spot.age_best), spot.stay_hours && stayLabel(spot.stay_hours)].filter(Boolean);
   const hasMore = (spot.facilities?.length ?? 0) > 0 || spot.transit || spot.crowd_tip;
@@ -131,6 +132,13 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
             )}
           </div>
         </details>
+      )}
+
+      {nearFood.length > 0 && (
+        <p className="text-sm text-stone-600 dark:text-stone-400">
+          <span className="font-medium text-stone-700 dark:text-stone-300">附近吃飯：</span>
+          {nearFood.map((r) => r.name).join('、')}
+        </p>
       )}
 
       {nearHotels.length > 0 && (

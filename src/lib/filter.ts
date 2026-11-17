@@ -1,6 +1,6 @@
-import type { Facility, Hotel, HotelKind, HotelTag, Region, Spot, SpotType } from '../data/schema.ts';
+import type { Facility, FoodTag, Hotel, HotelKind, Restaurant, HotelTag, Region, Spot, SpotType } from '../data/schema.ts';
 import { isSpotVisible } from './date.ts';
-import { FACILITY_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, TYPE_LABELS } from './labels.ts';
+import { FACILITY_LABELS, FOOD_TAG_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, TYPE_LABELS } from './labels.ts';
 
 export type DriveFilter = 'all' | '30' | '60' | '120' | '240' | 'overnight';
 
@@ -36,6 +36,16 @@ export interface HotelFilters {
   tags: HotelTag[];
   query: string;
 }
+
+export interface FoodFilters {
+  drive: DriveFilter;
+  county: string;
+  /** 特色：選了的每一項都要有。 */
+  tags: FoodTag[];
+  query: string;
+}
+
+export const DEFAULT_FOOD_FILTERS: FoodFilters = { drive: 'all', county: 'all', tags: [], query: '' };
 
 export const DEFAULT_SPOT_FILTERS: SpotFilters = {
   drive: 'all',
@@ -179,6 +189,25 @@ export function filterHotels(hotels: readonly Hotel[], filters: HotelFilters, mi
       (filters.kind === 'all' || h.kind === filters.kind) &&
       (filters.tags.length === 0 || h.tags.some((t) => filters.tags.includes(t))) &&
       matchesHotelQuery(h, filters.query),
+  );
+}
+
+export function restaurantSearchText(r: Restaurant): string[] {
+  return [r.name, r.city, r.cuisine, r.tip, ...r.tags.map((t) => FOOD_TAG_LABELS[t])];
+}
+
+export function filterRestaurants(
+  restaurants: readonly Restaurant[],
+  filters: FoodFilters,
+  minsOf: MinsOf = minsFromLinkou,
+): Restaurant[] {
+  const tokens = tokenize(filters.query);
+  return restaurants.filter(
+    (r) =>
+      matchesDriveOrUnknown(minsOf(r), filters.drive) &&
+      (filters.county === 'all' || countyOf(r.city) === filters.county) &&
+      filters.tags.every((t) => r.tags.includes(t)) &&
+      matchesAllTokens(restaurantSearchText(r), tokens),
   );
 }
 

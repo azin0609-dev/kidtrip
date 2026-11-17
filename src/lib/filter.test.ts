@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
+import type { Restaurant } from '../data/schema.ts';
 import { makeHotel, makeSpot } from '../test/fixtures.ts';
 import {
+  DEFAULT_FOOD_FILTERS,
   DEFAULT_HOTEL_FILTERS,
   DEFAULT_SPOT_FILTERS,
   filterHotels,
+  filterRestaurants,
   countyOf,
   filterSpots,
   listCounties,
@@ -189,5 +192,39 @@ describe('設施篩選', () => {
   it('可以搜尋設施名稱和大眾運輸', () => {
     expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, query: '哺乳室' }, ctx))).toEqual(['spot-001']);
     expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, query: '圓山' }, ctx))).toEqual(['spot-001']);
+  });
+});
+
+describe('餐廳篩選', () => {
+  const food = (o: Partial<Restaurant>): Restaurant => ({
+    id: 'food-001',
+    name: '測試餐廳',
+    city: '宜蘭縣礁溪鄉',
+    region: '北',
+    cuisine: '簡餐',
+    price_tier: '$$',
+    tags: ['play'],
+    mins_from_linkou: 70,
+    tip: '有遊戲區。',
+    near_spot_ids: [],
+    lat: null,
+    lng: null,
+    google_place_id: null,
+    needs_verify: [],
+    last_verified: '2026-11-17',
+    ...o,
+  });
+  const list = [
+    food({ id: 'food-001', tags: ['play', 'sand'] }),
+    food({ id: 'food-002', city: '新北市林口區', mins_from_linkou: 10, tags: ['play'], cuisine: '日式料理' }),
+    food({ id: 'food-003', tags: ['outdoor'], mins_from_linkou: 90 }),
+  ];
+  it('車程、縣市、特色（都要有）、搜尋', () => {
+    expect(ids(filterRestaurants(list, DEFAULT_FOOD_FILTERS))).toEqual(['food-001', 'food-002', 'food-003']);
+    expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, drive: '30' }))).toEqual(['food-002']);
+    expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, county: '宜蘭縣' }))).toEqual(['food-001', 'food-003']);
+    expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, tags: ['play', 'sand'] }))).toEqual(['food-001']);
+    expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, query: '沙坑' }))).toEqual(['food-001']);
+    expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, query: '日式' }))).toEqual(['food-002']);
   });
 });

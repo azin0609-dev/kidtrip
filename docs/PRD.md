@@ -251,6 +251,13 @@
 ### hotels.json 的每一筆
 id（`hotel-001`）、name、city、region、kind（"hotel" \| "bnb"，飯店或民宿，2026-11-17 新增）、price_tier（"$$" \| "$$$" \| "$$$$"）、tags（play, slide, pool, spa, park, animal）、features（string[]）、mins_from_linkou、tip、near_spot_ids、lat、lng、google_place_id、needs_verify、last_verified。
 
+### restaurants.json 的每一筆（2026-11-17 新增）
+id（`food-001`）、name、city、region、cuisine（料理類型）、price_tier（每人："$" 300 元以下 \| "$$" 300–600 元 \| "$$$" 600 元以上）、tags（play 室內遊戲區, slide 溜滑梯球池, sand 沙坑, outdoor 戶外草地, animal 有動物, reserve 建議訂位, fee 有低消或入場費）、mins_from_linkou、tip、open_note（選填）、near_spot_ids、lat、lng、google_place_id、needs_verify、last_verified。
+
+- 規則跟景點、飯店相同：id 發布後不能改、不存 Google 評分。
+- `needs_verify` 裡的 `single_source` 代表只有一個來源提到，卡片會提醒先確認有沒有營業。
+- 畫面：新增「餐廳」分頁（車程、縣市、特色篩選）；景點卡顯示「附近吃飯」；收藏可以收餐廳。分頁名稱縮短為「景點／住宿／餐廳／收藏」。
+
 ### 本機儲存（Phase 1）
 ```ts
 // localStorage key: "kidtrip.v1"
