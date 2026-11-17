@@ -3338,5 +3338,451 @@
       "facilities"
     ],
     "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-088",
+    "name": "林口足夢運動公園",
+    "city": "新北市林口區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 10,
+    "tip": "海洋主題，超長的水管溜滑梯和攀爬網很能放電，旁邊有足球場可以跑。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "lat": 25.074614,
+    "lng": 121.396357,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-089",
+    "name": "林口立功公園",
+    "city": "新北市林口區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 10,
+    "tip": "海盜船造型的遊戲場，設施不高，是給小小孩玩的，核桃這個年紀也能玩。",
+    "age_best": [
+      1,
+      6
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "picnic",
+      "elder"
+    ],
+    "lat": 25.065311,
+    "lng": 121.368839,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-090",
+    "name": "林口吉祥公園",
+    "city": "新北市林口區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 10,
+    "tip": "影視主題公園，有 6 公尺高的電波塔溜滑梯和大沙坑，帶挖沙工具。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "lat": 25.08027,
+    "lng": 121.37576,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-091",
+    "name": "林口社區運動公園（小熊公園）",
+    "city": "新北市林口區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 10,
+    "tip": "大家叫它小熊公園，草地大、適合野餐，旁邊就是國家檔案館。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "shade",
+      "elder"
+    ],
+    "lat": 25.077531,
+    "lng": 121.391602,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-092",
+    "name": "吳福洋襪子故事館",
+    "city": "桃園市蘆竹區",
+    "region": "北",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "?",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的近郊備案。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "lat": 25.050645,
+    "lng": 121.291732,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "city",
+      "single_source",
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-093",
+    "name": "五股成德公園",
+    "city": "新北市五股區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "綠竹筍造型的 10 公尺高塔溜滑梯，還有環狀溜索和彈跳床，適合大一點的小孩。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "lat": 25.105248,
+    "lng": 121.453188,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-094",
+    "name": "八里商港公園（鯨魚滑梯）",
+    "city": "新北市八里區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "鯨魚造型的地景溜滑梯是無障礙設計，坡度緩，小小孩也能溜。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic",
+      "elder"
+    ],
+    "lat": 25.145692,
+    "lng": 121.403511,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-095",
+    "name": "板橋四維公園",
+    "city": "新北市板橋區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 30,
+    "tip": "巨獸造型的攀爬遊戲場，要先爬上去才能溜磨石子滑梯，適合愛爬的小孩。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "shade"
+    ],
+    "lat": 25.02452,
+    "lng": 121.46319,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-096",
+    "name": "八德楓樹腳公園",
+    "city": "桃園市八德區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "2025 年啟用的旗艦公園，16 公尺高的長頸鹿遊戲塔很醒目，還有滑索和水道。",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "lat": 24.934589,
+    "lng": 121.295243,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "single_source",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-097",
+    "name": "桃園風禾公園",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "有 50 公尺長的滾輪溜滑梯、六座磨石子滑梯和沙坑，可以玩很久。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
+    "lat": 25.001709,
+    "lng": 121.291442,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "city",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-098",
+    "name": "大有梯田生態公園",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "依山坡蓋的梯田公園，有滑索、兩層樓高的溜滑梯、可以玩水挖沙。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "picnic"
+    ],
+    "lat": 25.012613,
+    "lng": 121.321031,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-099",
+    "name": "龜山中興兒二公園",
+    "city": "桃園市龜山區",
+    "region": "北",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 15,
+    "tip": "彩色溜滑梯的共融公園，旁邊有一大片草地可以野餐。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "picnic",
+      "elder"
+    ],
+    "lat": 24.996273,
+    "lng": 121.327747,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
+    ],
+    "last_verified": "2026-11-16"
   }
 ]
