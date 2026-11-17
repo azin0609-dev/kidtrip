@@ -359,1640 +359,1640 @@
     },
     {
       "name": "新竹縣",
-      "lat": null,
-      "lng": null,
+      "lat": 24.8267,
+      "lng": 121.012833,
       "towns": [
         {
           "name": "竹北市",
-          "lat": null,
-          "lng": null
+          "lat": 24.839682,
+          "lng": 121.004078
         },
         {
           "name": "竹東鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.736244,
+          "lng": 121.091095
         },
         {
           "name": "新埔鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.828042,
+          "lng": 121.07122
         },
         {
           "name": "關西鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.792632,
+          "lng": 121.175891
         },
         {
           "name": "湖口鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.900599,
+          "lng": 121.046839
         },
         {
           "name": "新豐鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.902334,
+          "lng": 120.986628
         },
         {
           "name": "芎林鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.774856,
+          "lng": 121.07914
         },
         {
           "name": "橫山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.716662,
+          "lng": 121.141266
         },
         {
           "name": "北埔鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.702003,
+          "lng": 121.056685
         },
         {
           "name": "寶山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.765448,
+          "lng": 120.99098
         },
         {
           "name": "峨眉鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.6887,
+          "lng": 121.019622
         },
         {
           "name": "尖石鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.705003,
+          "lng": 121.201259
         },
         {
           "name": "五峰鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.632985,
+          "lng": 121.119308
         }
       ]
     },
     {
       "name": "苗栗縣",
-      "lat": null,
-      "lng": null,
+      "lat": 24.564767,
+      "lng": 120.820517,
       "towns": [
         {
           "name": "苗栗市",
-          "lat": null,
-          "lng": null
+          "lat": 24.561483,
+          "lng": 120.819233
         },
         {
           "name": "苑裡鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.439667,
+          "lng": 120.653533
         },
         {
           "name": "通霄鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.490967,
+          "lng": 120.684067
         },
         {
           "name": "竹南鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.68374,
+          "lng": 120.873432
         },
         {
           "name": "頭份市",
-          "lat": null,
-          "lng": null
+          "lat": 24.686533,
+          "lng": 120.912667
         },
         {
           "name": "後龍鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.613567,
+          "lng": 120.791917
         },
         {
           "name": "卓蘭鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.313023,
+          "lng": 120.824563
         },
         {
           "name": "大湖鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.422987,
+          "lng": 120.865987
         },
         {
           "name": "公館鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.506117,
+          "lng": 120.828283
         },
         {
           "name": "銅鑼鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.486983,
+          "lng": 120.787933
         },
         {
           "name": "南庄鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.602197,
+          "lng": 120.999105
         },
         {
           "name": "頭屋鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.577395,
+          "lng": 120.850848
         },
         {
           "name": "三義鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.413063,
+          "lng": 120.770402
         },
         {
           "name": "西湖鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.556812,
+          "lng": 120.757083
         },
         {
           "name": "造橋鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.63835,
+          "lng": 120.864954
         },
         {
           "name": "三灣鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.654934,
+          "lng": 120.960157
         },
         {
           "name": "獅潭鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.539783,
+          "lng": 120.9205
         },
         {
           "name": "泰安鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.447483,
+          "lng": 120.9077
         }
       ]
     },
     {
       "name": "臺中市",
-      "lat": null,
-      "lng": null,
+      "lat": 24.163162,
+      "lng": 120.647828,
       "towns": [
         {
           "name": "中區",
-          "lat": null,
-          "lng": null
+          "lat": 24.14383,
+          "lng": 120.67951
         },
         {
           "name": "東區",
-          "lat": null,
-          "lng": null
+          "lat": 24.136625,
+          "lng": 120.703854
         },
         {
           "name": "南區",
-          "lat": null,
-          "lng": null
+          "lat": 24.117079,
+          "lng": 120.663608
         },
         {
           "name": "西區",
-          "lat": null,
-          "lng": null
+          "lat": 24.14138,
+          "lng": 120.67104
         },
         {
           "name": "北區",
-          "lat": null,
-          "lng": null
+          "lat": 24.166039,
+          "lng": 120.682318
         },
         {
           "name": "西屯區",
-          "lat": null,
-          "lng": null
+          "lat": 24.165303,
+          "lng": 120.633655
         },
         {
           "name": "南屯區",
-          "lat": null,
-          "lng": null
+          "lat": 24.134631,
+          "lng": 120.644374
         },
         {
           "name": "北屯區",
-          "lat": null,
-          "lng": null
+          "lat": 24.182264,
+          "lng": 120.686288
         },
         {
           "name": "豐原區",
-          "lat": null,
-          "lng": null
+          "lat": 24.24219,
+          "lng": 120.71846
         },
         {
           "name": "東勢區",
-          "lat": null,
-          "lng": null
+          "lat": 24.25861,
+          "lng": 120.82777
         },
         {
           "name": "大甲區",
-          "lat": null,
-          "lng": null
+          "lat": 24.34892,
+          "lng": 120.62239
         },
         {
           "name": "清水區",
-          "lat": null,
-          "lng": null
+          "lat": 24.268576,
+          "lng": 120.559767
         },
         {
           "name": "沙鹿區",
-          "lat": null,
-          "lng": null
+          "lat": 24.233445,
+          "lng": 120.566218
         },
         {
           "name": "梧棲區",
-          "lat": null,
-          "lng": null
+          "lat": 24.254924,
+          "lng": 120.531626
         },
         {
           "name": "后里區",
-          "lat": null,
-          "lng": null
+          "lat": 24.30491,
+          "lng": 120.71071
         },
         {
           "name": "神岡區",
-          "lat": null,
-          "lng": null
+          "lat": 24.257826,
+          "lng": 120.661511
         },
         {
           "name": "潭子區",
-          "lat": null,
-          "lng": null
+          "lat": 24.20953,
+          "lng": 120.70516
         },
         {
           "name": "大雅區",
-          "lat": null,
-          "lng": null
+          "lat": 24.229141,
+          "lng": 120.64778
         },
         {
           "name": "新社區",
-          "lat": null,
-          "lng": null
+          "lat": 24.23414,
+          "lng": 120.8095
         },
         {
           "name": "石岡區",
-          "lat": null,
-          "lng": null
+          "lat": 24.27498,
+          "lng": 120.78041
         },
         {
           "name": "外埔區",
-          "lat": null,
-          "lng": null
+          "lat": 24.33201,
+          "lng": 120.65437
         },
         {
           "name": "大安區",
-          "lat": null,
-          "lng": null
+          "lat": 24.34607,
+          "lng": 120.58652
         },
         {
           "name": "烏日區",
-          "lat": null,
-          "lng": null
+          "lat": 24.104696,
+          "lng": 120.623806
         },
         {
           "name": "大肚區",
-          "lat": null,
-          "lng": null
+          "lat": 24.151083,
+          "lng": 120.545439
         },
         {
           "name": "龍井區",
-          "lat": null,
-          "lng": null
+          "lat": 24.192679,
+          "lng": 120.545838
         },
         {
           "name": "霧峰區",
-          "lat": null,
-          "lng": null
+          "lat": 24.061698,
+          "lng": 120.700272
         },
         {
           "name": "太平區",
-          "lat": null,
-          "lng": null
+          "lat": 24.126472,
+          "lng": 120.718523
         },
         {
           "name": "大里區",
-          "lat": null,
-          "lng": null
+          "lat": 24.099417,
+          "lng": 120.67786
         },
         {
           "name": "和平區",
-          "lat": null,
-          "lng": null
+          "lat": 24.17477,
+          "lng": 120.88349
         }
       ]
     },
     {
       "name": "彰化縣",
-      "lat": null,
-      "lng": null,
+      "lat": 24.075567,
+      "lng": 120.544467,
       "towns": [
         {
           "name": "彰化市",
-          "lat": null,
-          "lng": null
+          "lat": 24.080767,
+          "lng": 120.5423
         },
         {
           "name": "員林市",
-          "lat": null,
-          "lng": null
+          "lat": 23.958752,
+          "lng": 120.574529
         },
         {
           "name": "鹿港鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.056733,
+          "lng": 120.43515
         },
         {
           "name": "和美鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.108117,
+          "lng": 120.494467
         },
         {
           "name": "北斗鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.8713,
+          "lng": 120.521783
         },
         {
           "name": "溪湖鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.959691,
+          "lng": 120.479924
         },
         {
           "name": "田中鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.861267,
+          "lng": 120.580967
         },
         {
           "name": "二林鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.899633,
+          "lng": 120.3744
         },
         {
           "name": "線西鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.130833,
+          "lng": 120.470867
         },
         {
           "name": "伸港鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.147315,
+          "lng": 120.486896
         },
         {
           "name": "福興鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.047989,
+          "lng": 120.443883
         },
         {
           "name": "秀水鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.035233,
+          "lng": 120.503
         },
         {
           "name": "花壇鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.0297,
+          "lng": 120.538117
         },
         {
           "name": "芬園鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.013583,
+          "lng": 120.629
         },
         {
           "name": "大村鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.988997,
+          "lng": 120.565486
         },
         {
           "name": "埔鹽鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.000083,
+          "lng": 120.463583
         },
         {
           "name": "埔心鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.95285,
+          "lng": 120.543733
         },
         {
           "name": "永靖鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.924517,
+          "lng": 120.547933
         },
         {
           "name": "社頭鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.896933,
+          "lng": 120.585767
         },
         {
           "name": "二水鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.8065,
+          "lng": 120.618883
         },
         {
           "name": "田尾鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.89222,
+          "lng": 120.526088
         },
         {
           "name": "埤頭鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.891424,
+          "lng": 120.462152
         },
         {
           "name": "芳苑鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.924017,
+          "lng": 120.320317
         },
         {
           "name": "大城鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.8523,
+          "lng": 120.320767
         },
         {
           "name": "竹塘鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.860474,
+          "lng": 120.427751
         },
         {
           "name": "溪州鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.8511,
+          "lng": 120.498667
         }
       ]
     },
     {
       "name": "南投縣",
-      "lat": null,
-      "lng": null,
+      "lat": 23.90235,
+      "lng": 120.690917,
       "towns": [
         {
           "name": "南投市",
-          "lat": null,
-          "lng": null
+          "lat": 23.909956,
+          "lng": 120.683706
         },
         {
           "name": "埔里鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.966667,
+          "lng": 120.969146
         },
         {
           "name": "草屯鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.973826,
+          "lng": 120.680336
         },
         {
           "name": "竹山鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.757972,
+          "lng": 120.672775
         },
         {
           "name": "集集鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.828633,
+          "lng": 120.786417
         },
         {
           "name": "名間鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.838293,
+          "lng": 120.702929
         },
         {
           "name": "鹿谷鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.74585,
+          "lng": 120.753583
         },
         {
           "name": "中寮鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.878935,
+          "lng": 120.766654
         },
         {
           "name": "魚池鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.896356,
+          "lng": 120.93606
         },
         {
           "name": "國姓鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.041427,
+          "lng": 120.857844
         },
         {
           "name": "水里鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.811384,
+          "lng": 120.856044
         },
         {
           "name": "信義鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.6968,
+          "lng": 120.85425
         },
         {
           "name": "仁愛鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.024429,
+          "lng": 121.133543
         }
       ]
     },
     {
       "name": "雲林縣",
-      "lat": null,
-      "lng": null,
+      "lat": 23.699078,
+      "lng": 120.524551,
       "towns": [
         {
           "name": "斗六市",
-          "lat": null,
-          "lng": null
+          "lat": 23.705053,
+          "lng": 120.537252
         },
         {
           "name": "斗南鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.679731,
+          "lng": 120.479075
         },
         {
           "name": "虎尾鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.708182,
+          "lng": 120.445339
         },
         {
           "name": "西螺鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.797984,
+          "lng": 120.46601
         },
         {
           "name": "土庫鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.677822,
+          "lng": 120.392572
         },
         {
           "name": "北港鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.575525,
+          "lng": 120.302393
         },
         {
           "name": "古坑鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.642568,
+          "lng": 120.562043
         },
         {
           "name": "大埤鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.645908,
+          "lng": 120.430516
         },
         {
           "name": "莿桐鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.760784,
+          "lng": 120.502374
         },
         {
           "name": "林內鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.75591,
+          "lng": 120.613041
         },
         {
           "name": "二崙鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.771273,
+          "lng": 120.415077
         },
         {
           "name": "崙背鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.75884,
+          "lng": 120.353895
         },
         {
           "name": "麥寮鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.753841,
+          "lng": 120.252043
         },
         {
           "name": "東勢鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.674679,
+          "lng": 120.252672
         },
         {
           "name": "褒忠鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.694245,
+          "lng": 120.310488
         },
         {
           "name": "臺西鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.70042,
+          "lng": 120.194474
         },
         {
           "name": "元長鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.649458,
+          "lng": 120.315124
         },
         {
           "name": "四湖鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.63774,
+          "lng": 120.225741
         },
         {
           "name": "口湖鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.582406,
+          "lng": 120.18537
         },
         {
           "name": "水林鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.572634,
+          "lng": 120.245948
         }
       ]
     },
     {
       "name": "嘉義市",
-      "lat": null,
-      "lng": null,
+      "lat": 23.481109,
+      "lng": 120.453541,
       "towns": [
         {
           "name": "東區",
-          "lat": null,
-          "lng": null
+          "lat": 23.478427,
+          "lng": 120.453602
         },
         {
           "name": "西區",
-          "lat": null,
-          "lng": null
+          "lat": 23.464285,
+          "lng": 120.434853
         }
       ]
     },
     {
       "name": "嘉義縣",
-      "lat": null,
-      "lng": null,
+      "lat": 23.459166,
+      "lng": 120.293,
       "towns": [
         {
           "name": "太保市",
-          "lat": null,
-          "lng": null
+          "lat": 23.459647,
+          "lng": 120.332876
         },
         {
           "name": "朴子市",
-          "lat": null,
-          "lng": null
+          "lat": 23.465306,
+          "lng": 120.246196
         },
         {
           "name": "布袋鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.378261,
+          "lng": 120.167123
         },
         {
           "name": "大林鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.603815,
+          "lng": 120.471336
         },
         {
           "name": "民雄鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.551456,
+          "lng": 120.428577
         },
         {
           "name": "溪口鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.602223,
+          "lng": 120.393822
         },
         {
           "name": "新港鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.551806,
+          "lng": 120.347647
         },
         {
           "name": "六腳鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.493942,
+          "lng": 120.291083
         },
         {
           "name": "東石鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.458467,
+          "lng": 120.153733
         },
         {
           "name": "義竹鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.336277,
+          "lng": 120.243423
         },
         {
           "name": "鹿草鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.410784,
+          "lng": 120.30837
         },
         {
           "name": "水上鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.428104,
+          "lng": 120.397936
         },
         {
           "name": "中埔鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.424975,
+          "lng": 120.522541
         },
         {
           "name": "竹崎鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.522765,
+          "lng": 120.550709
         },
         {
           "name": "梅山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.584915,
+          "lng": 120.557192
         },
         {
           "name": "番路鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.465348,
+          "lng": 120.555
         },
         {
           "name": "大埔鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.296769,
+          "lng": 120.593731
         },
         {
           "name": "阿里山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.515035,
+          "lng": 120.809755
         }
       ]
     },
     {
       "name": "臺南市",
-      "lat": null,
-      "lng": null,
+      "lat": 22.991235,
+      "lng": 120.184982,
       "towns": [
         {
           "name": "新營區",
-          "lat": null,
-          "lng": null
+          "lat": 23.308698,
+          "lng": 120.316957
         },
         {
           "name": "鹽水區",
-          "lat": null,
-          "lng": null
+          "lat": 23.319828,
+          "lng": 120.266398
         },
         {
           "name": "白河區",
-          "lat": null,
-          "lng": null
+          "lat": 23.351473,
+          "lng": 120.413745
         },
         {
           "name": "柳營區",
-          "lat": null,
-          "lng": null
+          "lat": 23.279602,
+          "lng": 120.311157
         },
         {
           "name": "後壁區",
-          "lat": null,
-          "lng": null
+          "lat": 23.366721,
+          "lng": 120.362726
         },
         {
           "name": "東山區",
-          "lat": null,
-          "lng": null
+          "lat": 23.326668,
+          "lng": 120.404059
         },
         {
           "name": "麻豆區",
-          "lat": null,
-          "lng": null
+          "lat": 23.181724,
+          "lng": 120.248206
         },
         {
           "name": "下營區",
-          "lat": null,
-          "lng": null
+          "lat": 23.235413,
+          "lng": 120.264484
         },
         {
           "name": "六甲區",
-          "lat": null,
-          "lng": null
+          "lat": 23.232901,
+          "lng": 120.352221
         },
         {
           "name": "官田區",
-          "lat": null,
-          "lng": null
+          "lat": 23.191997,
+          "lng": 120.316493
         },
         {
           "name": "大內區",
-          "lat": null,
-          "lng": null
+          "lat": 23.122633,
+          "lng": 120.356273
         },
         {
           "name": "佳里區",
-          "lat": null,
-          "lng": null
+          "lat": 23.165261,
+          "lng": 120.177323
         },
         {
           "name": "學甲區",
-          "lat": null,
-          "lng": null
+          "lat": 23.232348,
+          "lng": 120.180255
         },
         {
           "name": "西港區",
-          "lat": null,
-          "lng": null
+          "lat": 23.122877,
+          "lng": 120.202119
         },
         {
           "name": "七股區",
-          "lat": null,
-          "lng": null
+          "lat": 23.140545,
+          "lng": 120.140003
         },
         {
           "name": "將軍區",
-          "lat": null,
-          "lng": null
+          "lat": 23.19935,
+          "lng": 120.158836
         },
         {
           "name": "北門區",
-          "lat": null,
-          "lng": null
+          "lat": 23.267919,
+          "lng": 120.125717
         },
         {
           "name": "新化區",
-          "lat": null,
-          "lng": null
+          "lat": 23.039529,
+          "lng": 120.308365
         },
         {
           "name": "善化區",
-          "lat": null,
-          "lng": null
+          "lat": 23.132261,
+          "lng": 120.296895
         },
         {
           "name": "新市區",
-          "lat": null,
-          "lng": null
+          "lat": 23.078497,
+          "lng": 120.296023
         },
         {
           "name": "安定區",
-          "lat": null,
-          "lng": null
+          "lat": 23.122238,
+          "lng": 120.237262
         },
         {
           "name": "山上區",
-          "lat": null,
-          "lng": null
+          "lat": 23.104395,
+          "lng": 120.351853
         },
         {
           "name": "玉井區",
-          "lat": null,
-          "lng": null
+          "lat": 23.122227,
+          "lng": 120.457435
         },
         {
           "name": "楠西區",
-          "lat": null,
-          "lng": null
+          "lat": 23.173836,
+          "lng": 120.487597
         },
         {
           "name": "南化區",
-          "lat": null,
-          "lng": null
+          "lat": 23.041251,
+          "lng": 120.477681
         },
         {
           "name": "左鎮區",
-          "lat": null,
-          "lng": null
+          "lat": 23.057955,
+          "lng": 120.407309
         },
         {
           "name": "仁德區",
-          "lat": null,
-          "lng": null
+          "lat": 22.972212,
+          "lng": 120.25152
         },
         {
           "name": "歸仁區",
-          "lat": null,
-          "lng": null
+          "lat": 22.967169,
+          "lng": 120.293839
         },
         {
           "name": "關廟區",
-          "lat": null,
-          "lng": null
+          "lat": 22.962353,
+          "lng": 120.334494
         },
         {
           "name": "龍崎區",
-          "lat": null,
-          "lng": null
+          "lat": 22.96334,
+          "lng": 120.364729
         },
         {
           "name": "永康區",
-          "lat": null,
-          "lng": null
+          "lat": 23.026325,
+          "lng": 120.25703
         },
         {
           "name": "東區",
-          "lat": null,
-          "lng": null
+          "lat": 22.980072,
+          "lng": 120.224198
         },
         {
           "name": "南區",
-          "lat": null,
-          "lng": null
+          "lat": 22.961078,
+          "lng": 120.188364
         },
         {
           "name": "北區",
-          "lat": null,
-          "lng": null
+          "lat": 23.013856,
+          "lng": 120.199923
         },
         {
           "name": "安南區",
-          "lat": null,
-          "lng": null
+          "lat": 23.047126,
+          "lng": 120.184829
         },
         {
           "name": "安平區",
-          "lat": null,
-          "lng": null
+          "lat": 22.995114,
+          "lng": 120.167979
         },
         {
           "name": "中西區",
-          "lat": null,
-          "lng": null
+          "lat": 22.992152,
+          "lng": 120.205958
         }
       ]
     },
     {
       "name": "高雄市",
-      "lat": null,
-      "lng": null,
+      "lat": 22.620335,
+      "lng": 120.312038,
       "towns": [
         {
           "name": "新興區",
-          "lat": null,
-          "lng": null
+          "lat": 22.63107,
+          "lng": 120.310022
         },
         {
           "name": "前金區",
-          "lat": null,
-          "lng": null
+          "lat": 22.627551,
+          "lng": 120.294164
         },
         {
           "name": "苓雅區",
-          "lat": null,
-          "lng": null
+          "lat": 22.62177,
+          "lng": 120.312347
         },
         {
           "name": "鹽埕區",
-          "lat": null,
-          "lng": null
+          "lat": 22.624666,
+          "lng": 120.286795
         },
         {
           "name": "鼓山區",
-          "lat": null,
-          "lng": null
+          "lat": 22.636797,
+          "lng": 120.281154
         },
         {
           "name": "旗津區",
-          "lat": null,
-          "lng": null
+          "lat": 22.590565,
+          "lng": 120.284429
         },
         {
           "name": "前鎮區",
-          "lat": null,
-          "lng": null
+          "lat": 22.586425,
+          "lng": 120.318583
         },
         {
           "name": "三民區",
-          "lat": null,
-          "lng": null
+          "lat": 22.647695,
+          "lng": 120.299622
         },
         {
           "name": "楠梓區",
-          "lat": null,
-          "lng": null
+          "lat": 22.728326,
+          "lng": 120.326243
         },
         {
           "name": "小港區",
-          "lat": null,
-          "lng": null
+          "lat": 22.565389,
+          "lng": 120.337979
         },
         {
           "name": "左營區",
-          "lat": null,
-          "lng": null
+          "lat": 22.690501,
+          "lng": 120.294795
         },
         {
           "name": "仁武區",
-          "lat": null,
-          "lng": null
+          "lat": 22.70114,
+          "lng": 120.347674
         },
         {
           "name": "大社區",
-          "lat": null,
-          "lng": null
+          "lat": 22.729966,
+          "lng": 120.346635
         },
         {
           "name": "岡山區",
-          "lat": null,
-          "lng": null
+          "lat": 22.797352,
+          "lng": 120.295129
         },
         {
           "name": "路竹區",
-          "lat": null,
-          "lng": null
+          "lat": 22.855264,
+          "lng": 120.259927
         },
         {
           "name": "阿蓮區",
-          "lat": null,
-          "lng": null
+          "lat": 22.883703,
+          "lng": 120.327036
         },
         {
           "name": "田寮區",
-          "lat": null,
-          "lng": null
+          "lat": 22.869965,
+          "lng": 120.359445
         },
         {
           "name": "燕巢區",
-          "lat": null,
-          "lng": null
+          "lat": 22.788396,
+          "lng": 120.362165
         },
         {
           "name": "橋頭區",
-          "lat": null,
-          "lng": null
+          "lat": 22.757501,
+          "lng": 120.305741
         },
         {
           "name": "梓官區",
-          "lat": null,
-          "lng": null
+          "lat": 22.760475,
+          "lng": 120.267322
         },
         {
           "name": "彌陀區",
-          "lat": null,
-          "lng": null
+          "lat": 22.782879,
+          "lng": 120.247344
         },
         {
           "name": "永安區",
-          "lat": null,
-          "lng": null
+          "lat": 22.81858,
+          "lng": 120.225308
         },
         {
           "name": "湖內區",
-          "lat": null,
-          "lng": null
+          "lat": 22.908188,
+          "lng": 120.21153
         },
         {
           "name": "鳳山區",
-          "lat": null,
-          "lng": null
+          "lat": 22.627094,
+          "lng": 120.362772
         },
         {
           "name": "大寮區",
-          "lat": null,
-          "lng": null
+          "lat": 22.605386,
+          "lng": 120.395422
         },
         {
           "name": "林園區",
-          "lat": null,
-          "lng": null
+          "lat": 22.507132,
+          "lng": 120.394902
         },
         {
           "name": "鳥松區",
-          "lat": null,
-          "lng": null
+          "lat": 22.659919,
+          "lng": 120.364579
         },
         {
           "name": "大樹區",
-          "lat": null,
-          "lng": null
+          "lat": 22.693394,
+          "lng": 120.433095
         },
         {
           "name": "旗山區",
-          "lat": null,
-          "lng": null
+          "lat": 22.888491,
+          "lng": 120.48355
         },
         {
           "name": "美濃區",
-          "lat": null,
-          "lng": null
+          "lat": 22.89788,
+          "lng": 120.54153
         },
         {
           "name": "六龜區",
-          "lat": null,
-          "lng": null
+          "lat": 22.997914,
+          "lng": 120.633418
         },
         {
           "name": "內門區",
-          "lat": null,
-          "lng": null
+          "lat": 22.943437,
+          "lng": 120.462351
         },
         {
           "name": "杉林區",
-          "lat": null,
-          "lng": null
+          "lat": 22.970712,
+          "lng": 120.53898
         },
         {
           "name": "甲仙區",
-          "lat": null,
-          "lng": null
+          "lat": 23.085194,
+          "lng": 120.591515
         },
         {
           "name": "桃源區",
-          "lat": null,
-          "lng": null
+          "lat": 23.159178,
+          "lng": 120.765491
         },
         {
           "name": "那瑪夏區",
-          "lat": null,
-          "lng": null
+          "lat": 23.217463,
+          "lng": 120.693163
         },
         {
           "name": "茂林區",
-          "lat": null,
-          "lng": null
+          "lat": 22.886248,
+          "lng": 120.663217
         },
         {
           "name": "茄萣區",
-          "lat": null,
-          "lng": null
+          "lat": 22.906478,
+          "lng": 120.182455
         }
       ]
     },
     {
       "name": "屏東縣",
-      "lat": null,
-      "lng": null,
+      "lat": 22.682802,
+      "lng": 120.487928,
       "towns": [
         {
           "name": "屏東市",
-          "lat": null,
-          "lng": null
+          "lat": 22.662805,
+          "lng": 120.491593
         },
         {
           "name": "潮州鎮",
-          "lat": null,
-          "lng": null
+          "lat": 22.550536,
+          "lng": 120.542854
         },
         {
           "name": "東港鎮",
-          "lat": null,
-          "lng": null
+          "lat": 22.464046,
+          "lng": 120.459194
         },
         {
           "name": "恆春鎮",
-          "lat": null,
-          "lng": null
+          "lat": 22.002656,
+          "lng": 120.744692
         },
         {
           "name": "萬丹鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.589839,
+          "lng": 120.484533
         },
         {
           "name": "長治鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.677062,
+          "lng": 120.527614
         },
         {
           "name": "麟洛鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.650604,
+          "lng": 120.527283
         },
         {
           "name": "九如鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.739778,
+          "lng": 120.490142
         },
         {
           "name": "里港鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.77922,
+          "lng": 120.49449
         },
         {
           "name": "鹽埔鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.754783,
+          "lng": 120.572849
         },
         {
           "name": "高樹鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.826789,
+          "lng": 120.600214
         },
         {
           "name": "萬巒鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.572919,
+          "lng": 120.56812
         },
         {
           "name": "內埔鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.611967,
+          "lng": 120.566865
         },
         {
           "name": "竹田鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.584678,
+          "lng": 120.544038
         },
         {
           "name": "新埤鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.469976,
+          "lng": 120.549546
         },
         {
           "name": "枋寮鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.36683,
+          "lng": 120.593712
         },
         {
           "name": "新園鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.543952,
+          "lng": 120.461739
         },
         {
           "name": "崁頂鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.514795,
+          "lng": 120.514571
         },
         {
           "name": "林邊鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.434015,
+          "lng": 120.515091
         },
         {
           "name": "南州鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.490192,
+          "lng": 120.509808
         },
         {
           "name": "佳冬鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.417653,
+          "lng": 120.551544
         },
         {
           "name": "琉球鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.342366,
+          "lng": 120.36902
         },
         {
           "name": "車城鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.073946,
+          "lng": 120.714193
         },
         {
           "name": "滿州鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.020853,
+          "lng": 120.838843
         },
         {
           "name": "枋山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.263856,
+          "lng": 120.652396
         },
         {
           "name": "三地門鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.788408,
+          "lng": 120.681792
         },
         {
           "name": "霧臺鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.741397,
+          "lng": 120.741989
         },
         {
           "name": "瑪家鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.678572,
+          "lng": 120.680104
         },
         {
           "name": "泰武鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.603744,
+          "lng": 120.6921
         },
         {
           "name": "來義鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.525867,
+          "lng": 120.633601
         },
         {
           "name": "春日鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.370672,
+          "lng": 120.628793
         },
         {
           "name": "獅子鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.201917,
+          "lng": 120.704617
         },
         {
           "name": "牡丹鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.125513,
+          "lng": 120.770918
         }
       ]
     },
     {
       "name": "宜蘭縣",
-      "lat": null,
-      "lng": null,
+      "lat": 24.730279,
+      "lng": 121.763115,
       "towns": [
         {
           "name": "宜蘭市",
-          "lat": null,
-          "lng": null
+          "lat": 24.751954,
+          "lng": 121.753334
         },
         {
           "name": "羅東鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.677033,
+          "lng": 121.766919
         },
         {
           "name": "蘇澳鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.594624,
+          "lng": 121.842653
         },
         {
           "name": "頭城鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.859217,
+          "lng": 121.823307
         },
         {
           "name": "礁溪鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.823646,
+          "lng": 121.771348
         },
         {
           "name": "壯圍鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.746824,
+          "lng": 121.785972
         },
         {
           "name": "員山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.743183,
+          "lng": 121.723372
         },
         {
           "name": "冬山鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.634514,
+          "lng": 121.79228
         },
         {
           "name": "五結鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.68464,
+          "lng": 121.798297
         },
         {
           "name": "三星鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.665963,
+          "lng": 121.653229
         },
         {
           "name": "大同鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.677051,
+          "lng": 121.607875
         },
         {
           "name": "南澳鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.46674,
+          "lng": 121.805197
         }
       ]
     },
     {
       "name": "花蓮縣",
-      "lat": null,
-      "lng": null,
+      "lat": 23.991342,
+      "lng": 121.619728,
       "towns": [
         {
           "name": "花蓮市",
-          "lat": null,
-          "lng": null
+          "lat": 23.982074,
+          "lng": 121.60681
         },
         {
           "name": "鳳林鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.744648,
+          "lng": 121.451687
         },
         {
           "name": "玉里鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.331333,
+          "lng": 121.321453
         },
         {
           "name": "新城鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.039092,
+          "lng": 121.604246
         },
         {
           "name": "吉安鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.973033,
+          "lng": 121.563416
         },
         {
           "name": "壽豐鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.870668,
+          "lng": 121.508943
         },
         {
           "name": "光復鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.669084,
+          "lng": 121.423496
         },
         {
           "name": "豐濱鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.59857,
+          "lng": 121.522108
         },
         {
           "name": "瑞穗鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.496817,
+          "lng": 121.375992
         },
         {
           "name": "富里鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.179984,
+          "lng": 121.250124
         },
         {
           "name": "秀林鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.120156,
+          "lng": 121.626089
         },
         {
           "name": "萬榮鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.714733,
+          "lng": 121.410983
         },
         {
           "name": "卓溪鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.347063,
+          "lng": 121.30361
         }
       ]
     },
     {
       "name": "臺東縣",
-      "lat": null,
-      "lng": null,
+      "lat": 22.755367,
+      "lng": 121.1506,
       "towns": [
         {
           "name": "臺東市",
-          "lat": null,
-          "lng": null
+          "lat": 22.756045,
+          "lng": 121.145654
         },
         {
           "name": "成功鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.105308,
+          "lng": 121.38044
         },
         {
           "name": "關山鎮",
-          "lat": null,
-          "lng": null
+          "lat": 23.047353,
+          "lng": 121.163055
         },
         {
           "name": "卑南鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.793727,
+          "lng": 121.077838
         },
         {
           "name": "鹿野鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.913951,
+          "lng": 121.135982
         },
         {
           "name": "池上鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.122393,
+          "lng": 121.215139
         },
         {
           "name": "東河鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.970203,
+          "lng": 121.304415
         },
         {
           "name": "長濱鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.314999,
+          "lng": 121.451515
         },
         {
           "name": "太麻里鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.615431,
+          "lng": 121.007336
         },
         {
           "name": "大武鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.340533,
+          "lng": 120.890248
         },
         {
           "name": "綠島鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.661676,
+          "lng": 121.492596
         },
         {
           "name": "海端鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.101994,
+          "lng": 121.176631
         },
         {
           "name": "延平鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.902358,
+          "lng": 121.084499
         },
         {
           "name": "金峰鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.595511,
+          "lng": 120.971292
         },
         {
           "name": "達仁鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.294869,
+          "lng": 120.884131
         },
         {
           "name": "蘭嶼鄉",
-          "lat": null,
-          "lng": null
+          "lat": 22.051199,
+          "lng": 121.54695
         }
       ]
     },
     {
       "name": "澎湖縣",
-      "lat": null,
-      "lng": null,
+      "lat": 23.569694,
+      "lng": 119.566454,
       "towns": [
         {
           "name": "馬公市",
-          "lat": null,
-          "lng": null
+          "lat": 23.566377,
+          "lng": 119.578489
         },
         {
           "name": "湖西鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.583845,
+          "lng": 119.652732
         },
         {
           "name": "白沙鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.6665,
+          "lng": 119.598717
         },
         {
           "name": "西嶼鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.60141,
+          "lng": 119.507542
         },
         {
           "name": "望安鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.357177,
+          "lng": 119.500962
         },
         {
           "name": "七美鄉",
-          "lat": null,
-          "lng": null
+          "lat": 23.206666,
+          "lng": 119.423837
         }
       ]
     },
     {
       "name": "金門縣",
-      "lat": null,
-      "lng": null,
+      "lat": 24.448064,
+      "lng": 118.385633,
       "towns": [
         {
           "name": "金城鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.4328,
+          "lng": 118.320567
         },
         {
           "name": "金湖鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.4413,
+          "lng": 118.417067
         },
         {
           "name": "金沙鎮",
-          "lat": null,
-          "lng": null
+          "lat": 24.48903,
+          "lng": 118.413307
         },
         {
           "name": "金寧鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.450798,
+          "lng": 118.335033
         },
         {
           "name": "烈嶼鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.429363,
+          "lng": 118.244648
         },
         {
           "name": "烏坵鄉",
-          "lat": null,
-          "lng": null
+          "lat": 24.98292,
+          "lng": 119.472492
         }
       ]
     },
     {
       "name": "連江縣",
-      "lat": null,
-      "lng": null,
+      "lat": 26.157795,
+      "lng": 119.951976,
       "towns": [
         {
           "name": "南竿鄉",
-          "lat": null,
-          "lng": null
+          "lat": 26.153083,
+          "lng": 119.938627
         },
         {
           "name": "北竿鄉",
-          "lat": null,
-          "lng": null
+          "lat": 26.22505,
+          "lng": 119.997333
         },
         {
           "name": "莒光鄉",
-          "lat": null,
-          "lng": null
+          "lat": 25.971967,
+          "lng": 119.932683
         },
         {
           "name": "東引鄉",
-          "lat": null,
-          "lng": null
+          "lat": 26.366822,
+          "lng": 120.490417
         }
       ]
     }
