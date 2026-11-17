@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 
 const focus =
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 dark:focus-visible:outline-teal-400';
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
 
-export const buttonBase = `inline-flex min-h-11 items-center justify-center gap-1 rounded-xl px-3 text-sm font-medium transition-colors ${focus}`;
+export const buttonBase = `inline-flex min-h-11 items-center justify-center gap-1 rounded-full px-3 text-sm font-bold transition-colors ${focus}`;
 
 export function Chip({
   pressed,
@@ -21,7 +21,7 @@ export function Chip({
       onClick={onClick}
       className={`inline-flex min-h-11 items-center rounded-full border px-3.5 text-sm transition-colors ${focus} ${
         pressed
-          ? 'border-teal-700 bg-teal-700 text-white dark:border-teal-400 dark:bg-teal-400 dark:text-stone-950'
+          ? 'border-emerald-700 bg-emerald-700 text-white dark:border-emerald-400 dark:bg-emerald-400 dark:text-stone-950'
           : 'border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200 dark:hover:bg-stone-800'
       }`}
     >
@@ -42,7 +42,7 @@ export function ChipGroup({ label, children }: { label: string; children: ReactN
 export function Tag({ tone = 'plain', children }: { tone?: 'plain' | 'new' | 'end' | 'good'; children: ReactNode }) {
   const tones = {
     plain: 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300',
-    good: 'bg-teal-50 text-teal-800 dark:bg-teal-950 dark:text-teal-200',
+    good: 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200',
     new: 'bg-sky-100 text-sky-900 dark:bg-sky-950 dark:text-sky-200',
     end: 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200',
   };

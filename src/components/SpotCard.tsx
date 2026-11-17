@@ -49,8 +49,8 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
   const badges = spotBadges(spot, today);
   return (
     <article
-      className={`flex min-w-0 flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 dark:bg-stone-900 ${
-        highlight ? 'ring-2 ring-teal-600 dark:ring-teal-400' : 'ring-stone-200 dark:ring-stone-800'
+      className={`flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 dark:bg-[#16241c] ${
+        highlight ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : 'ring-emerald-100 dark:ring-emerald-950'
       }`}
     >
       <header className="flex items-start justify-between gap-3">
@@ -62,7 +62,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
       </header>
 
       {reason && (
-        <p className="rounded-lg bg-teal-50 px-3 py-2 text-sm text-teal-900 dark:bg-teal-950 dark:text-teal-100">{reason}</p>
+        <p className="rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:bg-emerald-950 dark:text-emerald-100">{reason}</p>
       )}
 
       <div className="flex flex-wrap gap-1.5">
@@ -94,7 +94,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
           href={googleMapsUrl(spot)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${buttonBase} bg-teal-700 text-white hover:bg-teal-800 dark:bg-teal-400 dark:text-stone-950 dark:hover:bg-teal-300`}
+          className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}
         >
           導航
         </a>

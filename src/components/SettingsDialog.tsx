@@ -3,7 +3,7 @@ import { ageLabel, findTown, nearestTown, type Origin, type OriginsFile } from '
 import { DEFAULT_NAP, type StoredKid, type StoredNap } from '../lib/storage.ts';
 import { buttonBase } from './ui.tsx';
 
-const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 dark:focus-visible:outline-teal-400';
+const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
 const field = `min-h-11 w-full rounded-xl border border-stone-300 bg-white px-3 text-base text-stone-900 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 ${focus}`;
 const ghost = `${buttonBase} border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`;
 

@@ -23,7 +23,7 @@ export function UpdatePrompt() {
         <button
           type="button"
           onClick={() => void updateServiceWorker(true)}
-          className="min-h-11 flex-1 rounded-xl text-left text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400"
+          className="min-h-11 flex-1 rounded-xl text-left text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
         >
           有更新，點一下重新整理
         </button>
@@ -31,7 +31,7 @@ export function UpdatePrompt() {
           type="button"
           aria-label="稍後再說"
           onClick={() => setNeedRefresh(false)}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
         >
           ×
         </button>

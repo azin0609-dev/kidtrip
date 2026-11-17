@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import { Dino, DinoEgg } from './components/Dino.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
@@ -122,11 +123,14 @@ export default function App() {
   const grid = 'grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3';
 
   return (
-    <div className="min-h-dvh bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
-      <header className="sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] border-stone-200 bg-stone-50/95 backdrop-blur dark:border-stone-800 dark:bg-stone-950/95">
+    <div className="min-h-dvh bg-[#f6f9ec] text-stone-900 dark:bg-[#0f1a14] dark:text-stone-100">
+      <header className="sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] border-stone-200 bg-[#f6f9ec]/95 backdrop-blur dark:border-emerald-950 dark:bg-[#0f1a14]/95">
         <div className="mx-auto max-w-6xl px-4 pt-4">
           <div className="flex items-center justify-between gap-3">
-            <h1 className="text-xl font-bold">這週去哪玩</h1>
+            <h1 className="flex min-w-0 items-center gap-1.5 text-xl font-extrabold tracking-wide text-emerald-900 dark:text-emerald-100">
+              <Dino className="h-10 w-10 shrink-0" />
+              <span className="truncate">這週去哪玩</span>
+            </h1>
             <button
               type="button"
               onClick={() => setSettingsOpen(true)}
@@ -147,9 +151,9 @@ export default function App() {
                   e.preventDefault();
                   goTab(t.id);
                 }}
-                className={`flex min-h-11 flex-1 items-center justify-center border-b-2 text-sm font-medium focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-teal-600 sm:flex-none sm:px-5 ${
+                className={`flex min-h-11 flex-1 items-center justify-center border-b-2 text-sm font-medium focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-emerald-600 sm:flex-none sm:px-5 ${
                   tab === t.id
-                    ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300'
+                    ? 'border-emerald-700 text-emerald-800 dark:border-emerald-400 dark:text-emerald-300'
                     : 'border-transparent text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100'
                 }`}
               >
@@ -184,6 +188,7 @@ export default function App() {
                 onClick={doPick}
                 className={`${buttonBase} bg-amber-400 text-stone-950 hover:bg-amber-300`}
               >
+                <DinoEgg className="h-5 w-5" />
                 幫我抽一個
               </button>
             </div>
@@ -196,7 +201,10 @@ export default function App() {
                 ) : (
                   pickedSpot && (
                     <>
-                      <p className="mb-2 text-sm font-medium">這週就去這裡吧</p>
+                      <p className="mb-2 flex items-center gap-1 text-sm font-bold">
+                        <Dino className="h-8 w-8" />
+                        小恐龍選好了，這週就去這裡吧
+                      </p>
                       {renderSpot(pickedSpot, true)}
                     </>
                   )
@@ -260,5 +268,10 @@ export default function App() {
 }
 
 function EmptyState({ text }: { text: string }) {
-  return <p className="mt-6 rounded-xl bg-stone-100 p-4 text-sm text-stone-700 dark:bg-stone-900 dark:text-stone-300">{text}</p>;
+  return (
+    <div className="mt-6 flex flex-col items-center gap-2 rounded-3xl bg-emerald-50 p-6 text-center dark:bg-emerald-950/40">
+      <Dino mood="sleepy" className="h-24 w-24" />
+      <p className="text-sm text-stone-700 dark:text-stone-300">{text}</p>
+    </div>
+  );
 }

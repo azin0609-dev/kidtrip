@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { ScoredSpot } from '../lib/recommend.ts';
+import { Dino } from './Dino.tsx';
 import { Chip, buttonBase } from './ui.tsx';
 
 export interface RecommendationsProps {
@@ -16,8 +17,8 @@ export function Recommendations({ picks, rainy, overnight, onRainy, onOvernight,
   return (
     <section aria-labelledby="recommend-title" className="mb-8">
       <div className="flex items-center justify-between gap-3">
-        <h2 id="recommend-title" className="text-lg font-bold">
-          這週推薦
+        <h2 id="recommend-title" className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">
+          小恐龍的這週推薦
         </h2>
         <button
           type="button"
@@ -37,9 +38,12 @@ export function Recommendations({ picks, rainy, overnight, onRainy, onOvernight,
         </Chip>
       </div>
       {picks.length === 0 ? (
-        <p className="mt-3 rounded-xl bg-stone-100 p-4 text-sm text-stone-700 dark:bg-stone-900 dark:text-stone-300">
-          這週沒有適合推薦的地方。試試打開「這週要住一晚」，或關掉「這週可能下雨」。
-        </p>
+        <div className="mt-3 flex flex-col items-center gap-2 rounded-3xl bg-emerald-50 p-6 text-center dark:bg-emerald-950/40">
+          <Dino mood="sleepy" className="h-20 w-20" />
+          <p className="text-sm text-stone-700 dark:text-stone-300">
+            這週沒有適合推薦的地方。試試打開「這週要住一晚」，或關掉「這週可能下雨」。
+          </p>
+        </div>
       ) : (
         <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3" aria-live="polite">
           {picks.map((p) => renderCard(p))}

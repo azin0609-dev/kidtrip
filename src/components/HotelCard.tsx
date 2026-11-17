@@ -15,7 +15,7 @@ export interface HotelCardProps {
 
 export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggleFav }: HotelCardProps) {
   return (
-    <article className="flex min-w-0 flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-stone-200 dark:bg-stone-900 dark:ring-stone-800">
+    <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-stone-200 dark:bg-[#16241c] dark:ring-stone-800">
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-lg leading-snug font-bold break-words">{hotel.name}</h3>
@@ -59,7 +59,7 @@ export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggle
           href={hotelPriceUrl(hotel)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${buttonBase} bg-teal-700 text-white hover:bg-teal-800 dark:bg-teal-400 dark:text-stone-950 dark:hover:bg-teal-300`}
+          className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}
         >
           查房價
         </a>

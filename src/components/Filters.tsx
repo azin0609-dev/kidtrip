@@ -97,7 +97,7 @@ export function HotelFiltersPanel({ value, onChange }: { value: HotelFilters; on
 function MoreFilters({ active, children }: { active: number; children: ReactNode }) {
   return (
     <details className="group" open={active > 0 || undefined}>
-      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-xl text-sm font-medium text-teal-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 dark:text-teal-300 [&::-webkit-details-marker]:hidden">
+      <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-xl text-sm font-medium text-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-emerald-300 [&::-webkit-details-marker]:hidden">
         <span aria-hidden="true" className="inline-block transition-transform group-open:rotate-90">›</span>
         更多篩選：地區、類型{active > 0 && `（已選 ${active}）`}
       </summary>
