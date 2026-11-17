@@ -203,8 +203,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 25,
     "tip": "整排堤坡溜滑梯，矮的那幾座適合 3 歲；幾乎沒有遮蔭，要防曬。",
-    "lat": null,
-    "lng": null,
+    "lat": 25.061486,
+    "lng": 121.488102,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -354,8 +354,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "企鵝和水母區最受歡迎，建議先線上買票，平日人少很多。",
-    "lat": null,
-    "lng": null,
+    "lat": 24.965353,
+    "lng": 121.224926,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -375,8 +375,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "專為 2–6 歲設計，跟 Xpark 同一棟；有舞台秀的場次要先預約。",
-    "lat": null,
-    "lng": null,
+    "lat": 24.965353,
+    "lng": 121.224926,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -504,8 +504,8 @@
     "stroller_ok": false,
     "mins_from_linkou": 30,
     "tip": "樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。",
-    "lat": null,
-    "lng": null,
+    "lat": 24.928651,
+    "lng": 121.284656,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -633,8 +633,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 80,
     "tip": "就在宜蘭火車站旁，可以看火車進站，停留一小時就夠。",
-    "lat": null,
-    "lng": null,
+    "lat": 24.751954,
+    "lng": 121.753334,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -724,8 +724,8 @@
       "kind": "new",
       "label": "2026 新開幕"
     },
-    "lat": null,
-    "lng": null,
+    "lat": 24.665963,
+    "lng": 121.653229,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -776,8 +776,8 @@
       "label": "11/24 開幕"
     },
     "opens_on": "2026-11-24",
-    "lat": null,
-    "lng": null,
+    "lat": 25.054578,
+    "lng": 121.6066,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -804,8 +804,8 @@
       "label": "已熄燈"
     },
     "closes_on": "2026-09-20",
-    "lat": null,
-    "lng": null,
+    "lat": 24.965353,
+    "lng": 121.224926,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -827,8 +827,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 65,
     "tip": "全室內的主題樂園，下雨天首選；3 歲能玩的在幼兒區。",
-    "lat": null,
-    "lng": null,
+    "lat": 24.686533,
+    "lng": 120.912667,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -984,8 +984,8 @@
       "kind": "new",
       "label": "2026 新開幕"
     },
-    "lat": null,
-    "lng": null,
+    "lat": 24.080767,
+    "lng": 120.5423,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1163,8 +1163,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 180,
     "tip": "棒球主題的遊戲場，旁邊有射日塔，樹蔭多比較涼。",
-    "lat": null,
-    "lng": null,
+    "lat": 23.478427,
+    "lng": 120.453602,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -1184,8 +1184,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 180,
     "tip": "可以看阿里山小火車的車頭和檢修庫，免門票。",
-    "lat": null,
-    "lng": null,
+    "lat": 23.478427,
+    "lng": 120.453602,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -1401,8 +1401,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 240,
     "tip": "樹蔭多、草地大，遊戲場有沙坑和滑索。",
-    "lat": null,
-    "lng": null,
+    "lat": 22.627094,
+    "lng": 120.362772,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -1581,8 +1581,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 195,
     "tip": "遊戲場免費，夏天戲水區開放時要另外收費。",
-    "lat": null,
-    "lng": null,
+    "lat": 23.973033,
+    "lng": 121.563416,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
