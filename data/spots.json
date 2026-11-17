@@ -139,8 +139,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "就在捷運圓山站旁，遊具分齡，小小孩區有圍起來比較安心。",
-    "lat": null,
-    "lng": null,
+    "lat": 25.064361,
+    "lng": 121.533468,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -161,8 +161,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "恐龍骨架就在大廳，逛一小時剛好，下雨天的好備案。",
-    "lat": null,
-    "lng": null,
+    "lat": 25.032361,
+    "lng": 121.518267,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -182,8 +182,8 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "有沙坑和滑索，玩完走去華山文創園區吃飯很方便。",
-    "lat": null,
-    "lng": null,
+    "lat": 25.032361,
+    "lng": 121.518267,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou"
@@ -804,8 +804,8 @@
       "label": "已熄燈"
     },
     "closes_on": "2026-09-20",
-    "lat": 25.060335,
-    "lng": 121.525566,
+    "lat": null,
+    "lng": null,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",

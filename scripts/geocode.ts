@@ -27,6 +27,7 @@ const path = (p: string) => `${root}${p}`;
 const args = new Set(process.argv.slice(2));
 const DRY_RUN = args.has('--dry-run');
 const ORIGINS = args.has('--origins');
+const FALLBACK_TOWN = args.has('--fallback-town');
 
 const MIN_INTERVAL_MS = 1100; // 每秒最多 1 次，多留 0.1 秒緩衝
 const ENDPOINT = 'https://nominatim.openstreetmap.org/search';
@@ -200,6 +201,20 @@ async function geocodePlaces() {
         outcome = { ...base, query, status: 'error', error: (error as Error).message };
         if ((error as Error).message.includes('拒絕')) stop = true;
         break;
+      }
+    }
+
+    // --fallback-town：查不到、或查到的結果不在同縣市時，先用鄉鎮市區（沒有就用縣市）的代表座標代替。
+    // 車程本來就是粗估，有個大概位置比「車程未知」好用；報告會列出來等人工修正。
+    if (FALLBACK_TOWN && (outcome.status === 'not_found' || (outcome.status === 'ok' && outcome.countyMatched === false))) {
+      const c = origins?.counties.find((x) => x.name === county);
+      const t = c?.towns.find((x) => x.name === town);
+      const point = t && t.lat !== null && t.lng !== null ? t : c && c.lat !== null && c.lng !== null ? c : null;
+      if (c && point && point.lat !== null && point.lng !== null) {
+        place.lat = point.lat;
+        place.lng = point.lng;
+        writeJson(file, data[file]);
+        outcome = { ...base, query: outcome.query, status: 'error', error: `查不到，先用「${c.name}${point === c ? '' : point.name}」的代表座標代替` };
       }
     }
 

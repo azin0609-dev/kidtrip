@@ -773,8 +773,8 @@
     "near_spot_ids": [
       "spot-067"
     ],
-    "lat": 22.609397,
-    "lng": 120.302108,
+    "lat": null,
+    "lng": null,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -803,8 +803,8 @@
     "near_spot_ids": [
       "spot-070"
     ],
-    "lat": 24.829387,
-    "lng": 121.754106,
+    "lat": null,
+    "lng": null,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -902,6 +902,1540 @@
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-031",
+    "name": "台北美福大飯店",
+    "city": "台北市中山區",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "兒童遊戲室",
+      "電動車跑道",
+      "戶外泳池"
+    ],
+    "mins_from_linkou": 35,
+    "tip": "遊戲室在市區飯店裡算大，有球池和電動車跑道。",
+    "near_spot_ids": [
+      "spot-007",
+      "spot-003"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-032",
+    "name": "台北萬豪酒店",
+    "city": "台北市中山區",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "叢林主題親子房",
+      "兒童遊戲室",
+      "泳池"
+    ],
+    "mins_from_linkou": 35,
+    "tip": "叢林主題房裡有帳篷和遊戲桌，離兒童新樂園不遠。",
+    "near_spot_ids": [
+      "spot-003",
+      "spot-004"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-033",
+    "name": "北投大地酒店",
+    "city": "台北市北投區",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "spa",
+      "play",
+      "slide"
+    ],
+    "features": [
+      "房內湯屋",
+      "球池溜滑梯遊戲室"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "房間裡就能泡湯，不用帶小孩去大眾池；遊戲室不大但乾淨。",
+    "near_spot_ids": [
+      "spot-004",
+      "spot-005"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-034",
+    "name": "凱達大飯店",
+    "city": "台北市萬華區",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "play"
+    ],
+    "features": [
+      "FUN 電堡遊戲室",
+      "近萬華車站"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "就在萬華車站樓上，搭火車來很方便，價位比市區五星親民。",
+    "near_spot_ids": [
+      "spot-008"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-035",
+    "name": "台北晶華酒店",
+    "city": "台北市中山區",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "童話森林遊戲室",
+      "頂樓泳池"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "遊戲室走童話森林風，適合學齡前；樓下就是中山商圈。",
+    "near_spot_ids": [
+      "spot-007",
+      "spot-009"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-036",
+    "name": "野柳泊逸渡假酒店",
+    "city": "新北市萬里區",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide",
+      "pool"
+    ],
+    "features": [
+      "大型球池溜滑梯",
+      "海景"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "遊戲區比市區飯店大很多，走路就到野柳海洋世界。",
+    "near_spot_ids": [
+      "spot-014",
+      "spot-015"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-037",
+    "name": "大溪笠復威斯汀度假酒店",
+    "city": "桃園市大溪區",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "pool",
+      "slide",
+      "play",
+      "park"
+    ],
+    "features": [
+      "室內外泳池與滑水道",
+      "沙坑",
+      "旋轉木馬"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "設施多到一天玩不完，離家近，適合不想開遠的週末。",
+    "near_spot_ids": [
+      "spot-023",
+      "spot-020"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-038",
+    "name": "名人堂花園大飯店",
+    "city": "桃園市龍潭區",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "球池攀爬屋",
+      "親子打擊場",
+      "主題客房"
+    ],
+    "mins_from_linkou": 45,
+    "tip": "有棒球打擊場和大球池，愛跑跳的小孩很適合。",
+    "near_spot_ids": [
+      "spot-020",
+      "spot-021"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-039",
+    "name": "渴望會館",
+    "city": "桃園市龍潭區",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "pool",
+      "park"
+    ],
+    "features": [
+      "兒童遊戲室",
+      "泳池",
+      "大草地"
+    ],
+    "mins_from_linkou": 45,
+    "tip": "園區綠地很大，可以騎腳踏車，步調很慢很放鬆。",
+    "near_spot_ids": [
+      "spot-020",
+      "spot-022"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-040",
+    "name": "南方莊園渡假飯店",
+    "city": "桃園市中壢區",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "play",
+      "pool"
+    ],
+    "features": [
+      "溫泉",
+      "Dino 親子館",
+      "泳池"
+    ],
+    "mins_from_linkou": 30,
+    "tip": "離家半小時就能泡溫泉，親子館設施出發前再確認。",
+    "near_spot_ids": [
+      "spot-019",
+      "spot-017"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "features"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-041",
+    "name": "石門水庫福華渡假飯店",
+    "city": "桃園市龍潭區",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "park"
+    ],
+    "features": [
+      "兒童遊戲室",
+      "電動車",
+      "湖景"
+    ],
+    "mins_from_linkou": 50,
+    "tip": "就在石門水庫園區裡，早上可以沿著湖邊散步。",
+    "near_spot_ids": [
+      "spot-020",
+      "spot-023"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-042",
+    "name": "統一渡假村 馬武督",
+    "city": "新竹縣關西鎮",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "park",
+      "play",
+      "pool"
+    ],
+    "features": [
+      "森林步道",
+      "親子闖關活動",
+      "戶外設施"
+    ],
+    "mins_from_linkou": 60,
+    "tip": "在森林裡，夏天很涼，飯店會帶親子闖關活動。",
+    "near_spot_ids": [
+      "spot-021"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-043",
+    "name": "冠翔泉旅",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "play"
+    ],
+    "features": [
+      "兒童遊樂場",
+      "溫泉",
+      "礁溪火車站旁"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "2024 年開的新飯店，就在礁溪火車站旁，搭火車也能來。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-044",
+    "name": "川湯春天溫泉飯店 旗艦館",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "play",
+      "slide"
+    ],
+    "features": [
+      "室內汽車樂園",
+      "溜滑梯賽車床親子房"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "住房可以玩室內汽車樂園，愛車車的小孩會很開心。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-045",
+    "name": "捷絲旅 宜蘭礁溪館",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "play"
+    ],
+    "features": [
+      "童玩遊戲室",
+      "免費零食",
+      "溫泉"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "有免費零食吧和遊戲室，價位在礁溪算好入手。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-046",
+    "name": "礁溪老爺酒店",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "spa",
+      "pool",
+      "play"
+    ],
+    "features": [
+      "戶外溫泉池",
+      "兒童遊戲室",
+      "親子活動"
+    ],
+    "mins_from_linkou": 75,
+    "tip": "在半山腰很安靜，飯店安排的親子活動很多。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-047",
+    "name": "宜蘭力麗威斯汀度假酒店",
+    "city": "宜蘭縣員山鄉",
+    "region": "北",
+    "price_tier": "$$$$",
+    "tags": [
+      "spa",
+      "pool",
+      "play"
+    ],
+    "features": [
+      "房內溫泉",
+      "兒童遊戲室",
+      "戶外泳池"
+    ],
+    "mins_from_linkou": 85,
+    "tip": "園區很大、房間寬敞，每間房都有溫泉池。",
+    "near_spot_ids": [
+      "spot-030",
+      "spot-033"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-048",
+    "name": "馥藝金鬱金香酒店",
+    "city": "苗栗縣苗栗市",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "童樂屋遊戲室",
+      "溜滑梯主題房"
+    ],
+    "mins_from_linkou": 75,
+    "tip": "地下一樓的遊戲室有球池和溜滑梯，主題房裡也有溜滑梯。",
+    "near_spot_ids": [
+      "spot-039",
+      "spot-038"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-049",
+    "name": "台中鳳凰酒店",
+    "city": "台中市西區",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "星際樂園室內遊樂場",
+      "汽車床主題房"
+    ],
+    "mins_from_linkou": 115,
+    "tip": "9 樓整層是室內遊樂場，有賽車道、繩網和溜滑梯。",
+    "near_spot_ids": [
+      "spot-040"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-050",
+    "name": "想窩11餐旅館",
+    "city": "台中市",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "大型室內遊戲室",
+      "球池溜滑梯",
+      "沙坑"
+    ],
+    "mins_from_linkou": 115,
+    "tip": "遊戲室非常大，還有室內沙坑，下雨天可以待一整天。",
+    "near_spot_ids": [
+      "spot-040",
+      "spot-043"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-051",
+    "name": "台中裕元花園酒店",
+    "city": "台中市西屯區",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "pool",
+      "park"
+    ],
+    "features": [
+      "室內溫水泳池",
+      "戶外兒童遊戲區"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "室內溫水泳池冬天也能游，後面小公園有溜滑梯和沙坑。",
+    "near_spot_ids": [
+      "spot-043"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-052",
+    "name": "風自然親子時尚旅宿",
+    "city": "台中市",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "slide"
+    ],
+    "features": [
+      "房內滾筒溜滑梯",
+      "樹屋城堡房"
+    ],
+    "mins_from_linkou": 115,
+    "tip": "房間裡就有大溜滑梯和樹屋，小孩會不想出門。",
+    "near_spot_ids": [
+      "spot-040"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-053",
+    "name": "烏日璞旅",
+    "city": "台中市烏日區",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "slide",
+      "play"
+    ],
+    "features": [
+      "溜滑梯 Villa 親子房",
+      "室內遊戲室"
+    ],
+    "mins_from_linkou": 115,
+    "tip": "離高鐵台中站近；溜滑梯只有特定房型有，訂房時看清楚。",
+    "near_spot_ids": [
+      "spot-041",
+      "spot-044"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-054",
+    "name": "日月潭力麗溫德姆溫泉酒店",
+    "city": "南投縣魚池鄉",
+    "region": "中",
+    "price_tier": "$$$$",
+    "tags": [
+      "spa",
+      "play"
+    ],
+    "features": [
+      "房內湯池",
+      "彩繪親子房",
+      "親子館"
+    ],
+    "mins_from_linkou": 185,
+    "tip": "在伊達邵碼頭旁，每間房都有湯池，隔壁親子館房客可以用。",
+    "near_spot_ids": [
+      "spot-048"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-055",
+    "name": "承萬尊爵渡假酒店",
+    "city": "南投縣埔里鎮",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide",
+      "pool"
+    ],
+    "features": [
+      "溜滑梯攀爬遊戲區",
+      "南洋風泳池"
+    ],
+    "mins_from_linkou": 160,
+    "tip": "遊戲區有溜滑梯和車車跑道，去清境或日月潭可以當中繼站。",
+    "near_spot_ids": [
+      "spot-048",
+      "spot-049"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-056",
+    "name": "三好國際酒店",
+    "city": "雲林縣斗六市",
+    "region": "中",
+    "price_tier": "$$$",
+    "tags": [
+      "pool",
+      "play",
+      "slide"
+    ],
+    "features": [
+      "露天泳池",
+      "兒童遊戲室"
+    ],
+    "mins_from_linkou": 160,
+    "tip": "斗六市區的親子飯店，泳池開放時段出發前先問。",
+    "near_spot_ids": [
+      "spot-050",
+      "spot-051"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-057",
+    "name": "嘉義福容voco酒店",
+    "city": "嘉義市西區",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "兒童俱樂部",
+      "室內溜滑梯",
+      "攀岩牆"
+    ],
+    "mins_from_linkou": 180,
+    "tip": "兒童俱樂部有球池、溜滑梯和攀岩牆，設施算新。",
+    "near_spot_ids": [
+      "spot-054",
+      "spot-053"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-058",
+    "name": "長榮文苑酒店 嘉義",
+    "city": "嘉義縣太保市",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide",
+      "pool"
+    ],
+    "features": [
+      "球池木製溜滑梯",
+      "戶外泳池"
+    ],
+    "mins_from_linkou": 175,
+    "tip": "離故宮南院和高鐵嘉義站都近，遊戲區質感很好。",
+    "near_spot_ids": [
+      "spot-052"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-059",
+    "name": "新悅花園酒店",
+    "city": "嘉義市",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "大球池",
+      "溜滑梯",
+      "互動投影遊戲"
+    ],
+    "mins_from_linkou": 180,
+    "tip": "很多人推的嘉義親子首選，遊戲室有互動投影。",
+    "near_spot_ids": [
+      "spot-053"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-060",
+    "name": "嘉楠風華酒店",
+    "city": "嘉義市",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "大型溜滑梯",
+      "攀岩牆"
+    ],
+    "mins_from_linkou": 180,
+    "tip": "遊戲室有大溜滑梯和攀岩牆，可能要另外收費，先問清楚。",
+    "near_spot_ids": [
+      "spot-054"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-061",
+    "name": "夏都城旅 安平館",
+    "city": "台南市安平區",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide",
+      "pool"
+    ],
+    "features": [
+      "大型室內遊戲室",
+      "頂樓沙坑戲水池"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "遊戲室很大，頂樓還有沙坑和戲水池，可以整天不出門。",
+    "near_spot_ids": [
+      "spot-059"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-062",
+    "name": "台南大員皇冠假日酒店",
+    "city": "台南市安平區",
+    "region": "南",
+    "price_tier": "$$$$",
+    "tags": [
+      "pool",
+      "play"
+    ],
+    "features": [
+      "溫水泳池",
+      "兒童戲水池",
+      "兒童遊戲室"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "有溫水泳池和兒童戲水池，可以借腳踏車逛安平。",
+    "near_spot_ids": [
+      "spot-059"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-063",
+    "name": "晶盈親旅大酒店",
+    "city": "台南市",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "大型兒童遊戲室",
+      "兒童賽車場",
+      "球池溜滑梯"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "主打親子的飯店，遊戲室有賽車場和電玩區。",
+    "near_spot_ids": [
+      "spot-055",
+      "spot-056"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-064",
+    "name": "安平雅樂軒酒店",
+    "city": "台南市安平區",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play"
+    ],
+    "features": [
+      "兒童俱樂部",
+      "近安平老街"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "遊戲區小而美，走路就到安平老街。",
+    "near_spot_ids": [
+      "spot-059"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-065",
+    "name": "高雄承億酒店",
+    "city": "高雄市前鎮區",
+    "region": "南",
+    "price_tier": "$$$$",
+    "tags": [
+      "pool",
+      "play"
+    ],
+    "features": [
+      "高空透明泳池",
+      "兒童俱樂部"
+    ],
+    "mins_from_linkou": 245,
+    "tip": "兒童俱樂部很新，高樓泳池可以看港景。",
+    "near_spot_ids": [
+      "spot-063",
+      "spot-062"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-066",
+    "name": "高雄萬豪酒店",
+    "city": "高雄市鼓山區",
+    "region": "南",
+    "price_tier": "$$$$",
+    "tags": [
+      "pool",
+      "play"
+    ],
+    "features": [
+      "泳池",
+      "兒童遊戲室",
+      "連通百貨"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "跟百貨連在一起，吃飯買東西不用出門。",
+    "near_spot_ids": [
+      "spot-061",
+      "spot-063"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-067",
+    "name": "捷絲旅 高雄站前館",
+    "city": "高雄市三民區",
+    "region": "南",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "features": [
+      "小太陽兒童主題房",
+      "近高雄車站"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "主題房裡有娃娃屋和木製賽車軌道，價位親民。",
+    "near_spot_ids": [
+      "spot-062"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-068",
+    "name": "鈞怡大飯店",
+    "city": "高雄市新興區",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "百坪室內遊戲空間",
+      "電動賽車道",
+      "攀岩牆"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "室內遊戲空間很大，有電動賽車道和大球池。",
+    "near_spot_ids": [
+      "spot-062",
+      "spot-064"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-069",
+    "name": "宮賞藝術大飯店",
+    "city": "高雄市三民區",
+    "region": "南",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "球池沙坑溜滑梯遊戲室",
+      "近高雄車站"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "遊戲室有球池、沙坑和溜滑梯，在高雄車站附近算便宜。",
+    "near_spot_ids": [
+      "spot-062"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-070",
+    "name": "華園大飯店 草衙館",
+    "city": "高雄市前鎮區",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "park"
+    ],
+    "features": [
+      "航空主題遊戲室",
+      "戶外兒童遊戲場"
+    ],
+    "mins_from_linkou": 245,
+    "tip": "就在大魯閣草衙道旁，離機場和捷運都近。",
+    "near_spot_ids": [
+      "spot-065",
+      "spot-064"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-071",
+    "name": "墾丁長灘休閒飯店",
+    "city": "屏東縣車城鄉",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "大型兒童遊樂區",
+      "泳池"
+    ],
+    "mins_from_linkou": 300,
+    "tip": "兒童遊樂區很大，離海生館很近。",
+    "near_spot_ids": [
+      "spot-067"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-072",
+    "name": "墾丁悠活渡假村",
+    "city": "屏東縣恆春鎮",
+    "region": "南",
+    "price_tier": "$$$",
+    "tags": [
+      "pool",
+      "slide",
+      "play",
+      "spa"
+    ],
+    "features": [
+      "室內外泉水池",
+      "滑水道",
+      "沙坑"
+    ],
+    "mins_from_linkou": 320,
+    "tip": "有滑水道和沙坑，飯店有 DIY 活動，離海生館不遠。",
+    "near_spot_ids": [
+      "spot-067"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-073",
+    "name": "墾丁夏都沙灘酒店",
+    "city": "屏東縣恆春鎮",
+    "region": "南",
+    "price_tier": "$$$$",
+    "tags": [
+      "pool",
+      "play"
+    ],
+    "features": [
+      "飯店前就是沙灘",
+      "泳池"
+    ],
+    "mins_from_linkou": 330,
+    "tip": "走出飯店就是沙灘，可以玩沙玩一整天。",
+    "near_spot_ids": [
+      "spot-067"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-074",
+    "name": "花蓮理想大地渡假飯店",
+    "city": "花蓮縣壽豐鄉",
+    "region": "東",
+    "price_tier": "$$$$",
+    "tags": [
+      "pool",
+      "play",
+      "park"
+    ],
+    "features": [
+      "運河遊船",
+      "兒童戲水池",
+      "兒童遊戲區"
+    ],
+    "mins_from_linkou": 205,
+    "tip": "園區有運河可以搭船，房間都在一樓，推車進出方便。",
+    "near_spot_ids": [
+      "spot-070",
+      "spot-071"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-075",
+    "name": "瑞穗天合國際觀光酒店",
+    "city": "花蓮縣瑞穗鄉",
+    "region": "東",
+    "price_tier": "$$$$",
+    "tags": [
+      "spa",
+      "pool",
+      "slide",
+      "play"
+    ],
+    "features": [
+      "溫泉水樂園",
+      "溜滑梯親子別墅",
+      "遊戲室"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "城堡造型小孩很愛，水樂園很大，預算要抓高一點。",
+    "near_spot_ids": [
+      "spot-073"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-076",
+    "name": "福容大飯店 花蓮",
+    "city": "花蓮縣花蓮市",
+    "region": "東",
+    "price_tier": "$$$",
+    "tags": [
+      "pool",
+      "play"
+    ],
+    "features": [
+      "海景泳池",
+      "兒童遊戲室"
+    ],
+    "mins_from_linkou": 190,
+    "tip": "海景第一排，樓下就是自行車道。",
+    "near_spot_ids": [
+      "spot-072",
+      "spot-070"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-077",
+    "name": "花蓮翰品酒店",
+    "city": "花蓮縣花蓮市",
+    "region": "東",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "繪本主題飯店",
+      "兒童遊戲室",
+      "泳池"
+    ],
+    "mins_from_linkou": 190,
+    "tip": "整間以繪本為主題，遊戲室算大，就在市區。",
+    "near_spot_ids": [
+      "spot-072"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-078",
+    "name": "禾風新棧度假飯店",
+    "city": "臺東縣臺東市",
+    "region": "東",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "pool",
+      "park"
+    ],
+    "features": [
+      "氣墊城堡",
+      "甩尾車",
+      "戶外泳池"
+    ],
+    "mins_from_linkou": 330,
+    "tip": "離台東火車站近，遊樂設施多，還有實境解謎活動。",
+    "near_spot_ids": [
+      "spot-074",
+      "spot-075"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-079",
+    "name": "娜路彎大酒店",
+    "city": "臺東縣臺東市",
+    "region": "東",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "pool",
+      "play"
+    ],
+    "features": [
+      "溫泉",
+      "泳池",
+      "親子設施"
+    ],
+    "mins_from_linkou": 335,
+    "tip": "在台東市區，房間大，溫泉和泳池都有。",
+    "near_spot_ids": [
+      "spot-074"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-080",
+    "name": "富野渡假酒店",
+    "city": "臺東縣卑南鄉",
+    "region": "東",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "pool"
+    ],
+    "features": [
+      "房內溫泉湯池",
+      "露天溫泉"
+    ],
+    "mins_from_linkou": 340,
+    "tip": "在知本溫泉區，房間很大，每間都有溫泉池。",
+    "near_spot_ids": [
+      "spot-075"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "name",
       "tags"
     ],
     "last_verified": "2026-11-16"
