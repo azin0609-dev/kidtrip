@@ -1,4 +1,4 @@
-import type { CostTier, Env, HotelTag, PriceTier, Region, SpotType } from '../data/schema.ts';
+import type { CostTier, Env, HotelKind, HotelTag, PriceTier, Region, SpotType } from '../data/schema.ts';
 
 // 介面文字對照表（不是景點資料）。
 
@@ -43,6 +43,11 @@ export const HOTEL_TAG_LABELS: Record<HotelTag, string> = {
   spa: '溫泉',
   park: '戶外遊戲區',
   animal: '動物',
+};
+
+export const HOTEL_KIND_LABELS: Record<HotelKind, string> = {
+  hotel: '飯店',
+  bnb: '民宿',
 };
 
 export const REGION_OPTIONS: Region[] = ['北', '中', '南', '東'];

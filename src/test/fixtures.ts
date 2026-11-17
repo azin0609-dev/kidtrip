@@ -29,6 +29,7 @@ export function makeHotel(overrides: Partial<Hotel> = {}): Hotel {
     name: '測試飯店',
     city: '宜蘭縣礁溪鄉',
     region: '北',
+    kind: 'hotel',
     price_tier: '$$$',
     tags: ['pool'],
     features: ['遊戲室'],

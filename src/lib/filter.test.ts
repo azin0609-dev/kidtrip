@@ -4,7 +4,9 @@ import {
   DEFAULT_HOTEL_FILTERS,
   DEFAULT_SPOT_FILTERS,
   filterHotels,
+  countyOf,
   filterSpots,
+  listCounties,
   matchesDrive,
   sortByDrive,
   tokenize,
@@ -128,5 +130,47 @@ describe('toggleInList', () => {
   it('有就拿掉、沒有就加上', () => {
     expect(toggleInList(['a'], 'b')).toEqual(['a', 'b']);
     expect(toggleInList(['a', 'b'], 'a')).toEqual(['b']);
+  });
+});
+
+describe('4 小時內、縣市、住宿類型', () => {
+  it('4 小時內是 240 分以內', () => {
+    expect(matchesDrive(240, '240')).toBe(true);
+    expect(matchesDrive(241, '240')).toBe(false);
+    expect(matchesDrive(200, 'overnight')).toBe(true);
+  });
+  it('countyOf：台／臺統一、去掉鄉鎮與括號', () => {
+    expect(countyOf('臺東縣臺東市')).toBe('台東縣');
+    expect(countyOf('桃園市中壢區（青埔）')).toBe('桃園市');
+    expect(countyOf('宜蘭縣')).toBe('宜蘭縣');
+    expect(countyOf('不明')).toBeNull();
+  });
+  it('listCounties：算筆數、近的排前面', () => {
+    const items = [
+      makeSpot({ id: 'spot-001', city: '宜蘭縣礁溪鄉', mins_from_linkou: 70 }),
+      makeSpot({ id: 'spot-002', city: '宜蘭縣冬山鄉', mins_from_linkou: 90 }),
+      makeSpot({ id: 'spot-003', city: '新北市林口區', mins_from_linkou: 10 }),
+      makeSpot({ id: 'spot-004', city: '台東縣卑南鄉', mins_from_linkou: 320 }),
+    ];
+    expect(listCounties(items)).toEqual([
+      { county: '新北市', count: 1 },
+      { county: '宜蘭縣', count: 2 },
+      { county: '台東縣', count: 1 },
+    ]);
+  });
+  it('選縣市只留那個縣市', () => {
+    const list = [
+      makeSpot({ id: 'spot-001', city: '宜蘭縣礁溪鄉' }),
+      makeSpot({ id: 'spot-002', city: '新北市林口區' }),
+    ];
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, county: '宜蘭縣' }, ctx))).toEqual(['spot-001']);
+    const hotels = [
+      makeHotel({ id: 'hotel-001', city: '宜蘭縣礁溪鄉' }),
+      makeHotel({ id: 'hotel-002', city: '宜蘭縣冬山鄉', kind: 'bnb' }),
+      makeHotel({ id: 'hotel-003', city: '台東縣卑南鄉', kind: 'bnb' }),
+    ];
+    expect(ids(filterHotels(hotels, { ...DEFAULT_HOTEL_FILTERS, county: '宜蘭縣' }))).toEqual(['hotel-001', 'hotel-002']);
+    expect(ids(filterHotels(hotels, { ...DEFAULT_HOTEL_FILTERS, county: '宜蘭縣', kind: 'bnb' }))).toEqual(['hotel-002']);
+    expect(ids(filterHotels(hotels, { ...DEFAULT_HOTEL_FILTERS, query: '民宿' }))).toEqual(['hotel-002', 'hotel-003']);
   });
 });

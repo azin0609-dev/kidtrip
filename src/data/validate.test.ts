@@ -30,6 +30,7 @@ function makeHotel(overrides: Record<string, unknown> = {}) {
     name: '測試飯店',
     city: '宜蘭縣礁溪鄉',
     region: '北',
+    kind: 'hotel',
     price_tier: '$$$',
     tags: ['pool'],
     features: ['遊戲室'],

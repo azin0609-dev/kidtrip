@@ -108,11 +108,12 @@
 
 - 分頁：親子景點／親子飯店／我的收藏，用網址 hash 記住分頁。
 - 景點篩選：
-  - 車程：全部、30 分內、1 小時內、2 小時內、要住一晚（> 120 分）。
+  - 車程：全部、30 分內、1 小時內、2 小時內、4 小時內（2026-11-17 新增）、要住一晚（> 120 分）。
+  - 縣市（2026-11-17 新增）：從 `city` 取出縣市，近的排前面；選了縣市就不限制北中南東。
   - 地區：北、中、南、東。
   - 條件開關：下雨也能玩（env 為 in 或 semi）、免費、推車好推、隱藏去過的。
   - 類型：多選，符合任一類型就顯示。
-- 飯店篩選：車程、地區、設施標籤（多選）。
+- 飯店篩選：車程、縣市、類型（飯店／民宿，2026-11-17 新增）、地區、設施標籤（多選）。分頁名稱改為「親子住宿」。
 - 搜尋：比對名稱、城市、說明、類型名稱、飯店特色；空白分隔多個關鍵字，全部都要符合。
 - 預設依車程由近到遠排序。
 - 卡片內容：名稱、城市、車程大數字、標籤（室內外、費用、推車、類型、badge）、一句建議、附近可住（景點卡）／順遊（飯店卡）。
@@ -242,7 +243,7 @@
 | last_verified | "YYYY-MM-DD" | 最後整理日期 |
 
 ### hotels.json 的每一筆
-id（`hotel-001`）、name、city、region、price_tier（"$$" \| "$$$" \| "$$$$"）、tags（play, slide, pool, spa, park, animal）、features（string[]）、mins_from_linkou、tip、near_spot_ids、lat、lng、google_place_id、needs_verify、last_verified。
+id（`hotel-001`）、name、city、region、kind（"hotel" \| "bnb"，飯店或民宿，2026-11-17 新增）、price_tier（"$$" \| "$$$" \| "$$$$"）、tags（play, slide, pool, spa, park, animal）、features（string[]）、mins_from_linkou、tip、near_spot_ids、lat、lng、google_place_id、needs_verify、last_verified。
 
 ### 本機儲存（Phase 1）
 ```ts

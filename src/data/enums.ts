@@ -17,6 +17,8 @@ export const ENVS = ['in', 'semi', 'mix', 'out'] as const;
 export const COST_TIERS = ['free', '$', '$$', '$$$', '?'] as const;
 export const PRICE_TIERS = ['$$', '$$$', '$$$$'] as const;
 export const HOTEL_TAGS = ['play', 'slide', 'pool', 'spa', 'park', 'animal'] as const;
+/** 住宿類型：飯店、民宿。 */
+export const HOTEL_KINDS = ['hotel', 'bnb'] as const;
 export const BADGE_KINDS = ['new', 'end'] as const;
 
 export type Region = (typeof REGIONS)[number];
@@ -25,3 +27,4 @@ export type Env = (typeof ENVS)[number];
 export type CostTier = (typeof COST_TIERS)[number];
 export type PriceTier = (typeof PRICE_TIERS)[number];
 export type HotelTag = (typeof HOTEL_TAGS)[number];
+export type HotelKind = (typeof HOTEL_KINDS)[number];

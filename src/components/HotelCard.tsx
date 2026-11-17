@@ -1,5 +1,5 @@
 import type { Hotel, Spot } from '../data/schema.ts';
-import { HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels.ts';
+import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels.ts';
 import { googleMapsUrl, hotelPriceUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { Tag, buttonBase } from './ui.tsx';
@@ -26,6 +26,7 @@ export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggle
       </header>
 
       <div className="flex flex-wrap gap-1.5">
+        {hotel.kind !== 'hotel' && <Tag tone="new">{HOTEL_KIND_LABELS[hotel.kind]}</Tag>}
         <Tag>{PRICE_LABELS[hotel.price_tier]}</Tag>
         {hotel.tags.map((t) => (
           <Tag key={t} tone="good">

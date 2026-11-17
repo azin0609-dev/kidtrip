@@ -19,6 +19,7 @@ import {
   DEFAULT_SPOT_FILTERS,
   filterHotels,
   filterSpots,
+  listCounties,
   sortByDrive,
   toggleInList,
 } from './lib/filter.ts';
@@ -106,6 +107,9 @@ export default function App() {
     () => sortByDrive(filterHotels(hotels, hotelFilters, minsOf), minsOf),
     [hotelFilters, minsOf],
   );
+
+  const spotCounties = useMemo(() => listCounties(visibleSpots, minsOf), [visibleSpots, minsOf]);
+  const hotelCounties = useMemo(() => listCounties(hotels, minsOf), [minsOf]);
 
   const favSet = new Set(stored.fav);
   const beenSet = new Set(stored.been);
@@ -226,7 +230,7 @@ export default function App() {
               renderCard={(p) => renderSpot(p.spot, false, p.reasons.join('・'))}
             />
             <h2 className="mb-3 text-lg font-bold">全部景點</h2>
-            <SpotFiltersPanel value={spotFilters} onChange={setSpotFilters} />
+            <SpotFiltersPanel value={spotFilters} onChange={setSpotFilters} counties={spotCounties} />
             <div className="mt-5 flex items-center justify-between gap-3">
               <p className="text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
                 共 {spotResults.length} 個，依車程由近到遠
@@ -266,7 +270,7 @@ export default function App() {
 
         {tab === 'hotels' && (
           <>
-            <HotelFiltersPanel value={hotelFilters} onChange={setHotelFilters} />
+            <HotelFiltersPanel value={hotelFilters} onChange={setHotelFilters} counties={hotelCounties} />
             <p className="mt-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
               共 {hotelResults.length} 間，依車程由近到遠
             </p>

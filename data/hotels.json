@@ -4,6 +4,7 @@
     "name": "福容大飯店 福隆",
     "city": "新北市貢寮區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -35,6 +36,7 @@
     "name": "福容大飯店 淡水漁人碼頭",
     "city": "新北市淡水區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -66,6 +68,7 @@
     "name": "台北喜來登大飯店",
     "city": "台北市中正區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "play"
@@ -95,6 +98,7 @@
     "name": "COZZI Blu 和逸飯店 桃園館",
     "city": "桃園市中壢區（青埔）",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play"
@@ -125,6 +129,7 @@
     "name": "煙波大飯店 新竹湖濱館",
     "city": "新竹市東區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -157,6 +162,7 @@
     "name": "關西六福莊生態度假旅館",
     "city": "新竹縣關西鎮",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "animal",
@@ -186,6 +192,7 @@
     "name": "蘭城晶英酒店",
     "city": "宜蘭縣宜蘭市",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "play",
@@ -217,6 +224,7 @@
     "name": "長榮鳳凰酒店 礁溪",
     "city": "宜蘭縣礁溪鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -247,6 +255,7 @@
     "name": "礁溪寒沐酒店",
     "city": "宜蘭縣礁溪鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -277,6 +286,7 @@
     "name": "悅川酒店",
     "city": "宜蘭縣宜蘭市",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "slide",
@@ -307,6 +317,7 @@
     "name": "村却國際溫泉酒店",
     "city": "宜蘭縣羅東鎮",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -338,6 +349,7 @@
     "name": "瓏山林蘇澳冷熱泉度假飯店",
     "city": "宜蘭縣蘇澳鎮",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -370,6 +382,7 @@
     "name": "綠舞國際觀光飯店",
     "city": "宜蘭縣五結鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "park",
@@ -401,6 +414,7 @@
     "name": "尚順君樂飯店",
     "city": "苗栗縣頭份市",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play"
@@ -429,6 +443,7 @@
     "name": "福容大飯店 麗寶樂園",
     "city": "台中市后里區",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -459,6 +474,7 @@
     "name": "台中港酒店",
     "city": "台中市梧棲區",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -489,6 +505,7 @@
     "name": "長榮桂冠酒店 台中",
     "city": "台中市西屯區",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -519,6 +536,7 @@
     "name": "雲品溫泉酒店 日月潭",
     "city": "南投縣魚池鄉",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -550,6 +568,7 @@
     "name": "劍湖山渡假大飯店",
     "city": "雲林縣古坑鄉",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -580,6 +599,7 @@
     "name": "耐斯王子大飯店",
     "city": "嘉義市東區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play"
@@ -609,6 +629,7 @@
     "name": "和逸飯店 台南西門館",
     "city": "台南市中西區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -639,6 +660,7 @@
     "name": "台南晶英酒店",
     "city": "台南市中西區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -669,6 +691,7 @@
     "name": "義大皇家酒店",
     "city": "高雄市大樹區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -699,6 +722,7 @@
     "name": "墾丁凱撒大飯店",
     "city": "屏東縣恆春鎮",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -729,6 +753,7 @@
     "name": "墾丁福華渡假飯店",
     "city": "屏東縣恆春鎮",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "pool",
@@ -759,6 +784,7 @@
     "name": "H 會館",
     "city": "屏東縣車城鄉",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -788,6 +814,7 @@
     "name": "遠雄悅來大飯店",
     "city": "花蓮縣壽豐鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "pool",
@@ -818,6 +845,7 @@
     "name": "煙波大飯店 花蓮太魯閣",
     "city": "花蓮縣新城鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "slide",
@@ -849,6 +877,7 @@
     "name": "瑞穗春天國際觀光酒店",
     "city": "花蓮縣瑞穗鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -880,6 +909,7 @@
     "name": "知本老爺酒店",
     "city": "臺東縣卑南鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -911,6 +941,7 @@
     "name": "台北美福大飯店",
     "city": "台北市中山區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "play",
@@ -942,6 +973,7 @@
     "name": "台北萬豪酒店",
     "city": "台北市中山區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "play",
@@ -973,6 +1005,7 @@
     "name": "北投大地酒店",
     "city": "台北市北投區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -1004,6 +1037,7 @@
     "name": "凱達大飯店",
     "city": "台北市萬華區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play"
@@ -1032,6 +1066,7 @@
     "name": "台北晶華酒店",
     "city": "台北市中山區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "play",
@@ -1062,6 +1097,7 @@
     "name": "野柳泊逸渡假酒店",
     "city": "新北市萬里區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1093,6 +1129,7 @@
     "name": "大溪笠復威斯汀度假酒店",
     "city": "桃園市大溪區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -1126,6 +1163,7 @@
     "name": "名人堂花園大飯店",
     "city": "桃園市龍潭區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1157,6 +1195,7 @@
     "name": "渴望會館",
     "city": "桃園市龍潭區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1189,6 +1228,7 @@
     "name": "南方莊園渡假飯店",
     "city": "桃園市中壢區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -1222,6 +1262,7 @@
     "name": "石門水庫福華渡假飯店",
     "city": "桃園市龍潭區",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1254,6 +1295,7 @@
     "name": "統一渡假村 馬武督",
     "city": "新竹縣關西鎮",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "park",
@@ -1285,6 +1327,7 @@
     "name": "冠翔泉旅",
     "city": "宜蘭縣礁溪鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -1315,6 +1358,7 @@
     "name": "川湯春天溫泉飯店 旗艦館",
     "city": "宜蘭縣礁溪鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -1345,6 +1389,7 @@
     "name": "捷絲旅 宜蘭礁溪館",
     "city": "宜蘭縣礁溪鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -1375,6 +1420,7 @@
     "name": "礁溪老爺酒店",
     "city": "宜蘭縣礁溪鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -1407,6 +1453,7 @@
     "name": "宜蘭力麗威斯汀度假酒店",
     "city": "宜蘭縣員山鄉",
     "region": "北",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -1440,6 +1487,7 @@
     "name": "馥藝金鬱金香酒店",
     "city": "苗栗縣苗栗市",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1470,6 +1518,7 @@
     "name": "台中鳳凰酒店",
     "city": "台中市西區",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1500,6 +1549,7 @@
     "name": "想窩11餐旅館",
     "city": "台中市",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1532,6 +1582,7 @@
     "name": "台中裕元花園酒店",
     "city": "台中市西屯區",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "pool",
@@ -1561,6 +1612,7 @@
     "name": "風自然親子時尚旅宿",
     "city": "台中市",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "slide"
@@ -1590,6 +1642,7 @@
     "name": "烏日璞旅",
     "city": "台中市烏日區",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "slide",
@@ -1620,6 +1673,7 @@
     "name": "日月潭力麗溫德姆溫泉酒店",
     "city": "南投縣魚池鄉",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -1650,6 +1704,7 @@
     "name": "承萬尊爵渡假酒店",
     "city": "南投縣埔里鎮",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1681,6 +1736,7 @@
     "name": "三好國際酒店",
     "city": "雲林縣斗六市",
     "region": "中",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "pool",
@@ -1712,6 +1768,7 @@
     "name": "嘉義福容voco酒店",
     "city": "嘉義市西區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1744,6 +1801,7 @@
     "name": "長榮文苑酒店 嘉義",
     "city": "嘉義縣太保市",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1774,6 +1832,7 @@
     "name": "新悅花園酒店",
     "city": "嘉義市",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1805,6 +1864,7 @@
     "name": "嘉楠風華酒店",
     "city": "嘉義市",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1835,6 +1895,7 @@
     "name": "夏都城旅 安平館",
     "city": "台南市安平區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1865,6 +1926,7 @@
     "name": "台南大員皇冠假日酒店",
     "city": "台南市安平區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -1895,6 +1957,7 @@
     "name": "晶盈親旅大酒店",
     "city": "台南市",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -1927,6 +1990,7 @@
     "name": "安平雅樂軒酒店",
     "city": "台南市安平區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play"
@@ -1955,6 +2019,7 @@
     "name": "高雄承億酒店",
     "city": "高雄市前鎮區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -1985,6 +2050,7 @@
     "name": "高雄萬豪酒店",
     "city": "高雄市鼓山區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -2016,6 +2082,7 @@
     "name": "捷絲旅 高雄站前館",
     "city": "高雄市三民區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$",
     "tags": [
       "play"
@@ -2044,6 +2111,7 @@
     "name": "鈞怡大飯店",
     "city": "高雄市新興區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -2076,6 +2144,7 @@
     "name": "宮賞藝術大飯店",
     "city": "高雄市三民區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$",
     "tags": [
       "play",
@@ -2106,6 +2175,7 @@
     "name": "華園大飯店 草衙館",
     "city": "高雄市前鎮區",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -2136,6 +2206,7 @@
     "name": "墾丁長灘休閒飯店",
     "city": "屏東縣車城鄉",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -2165,6 +2236,7 @@
     "name": "墾丁悠活渡假村",
     "city": "屏東縣恆春鎮",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "pool",
@@ -2197,6 +2269,7 @@
     "name": "墾丁夏都沙灘酒店",
     "city": "屏東縣恆春鎮",
     "region": "南",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -2227,6 +2300,7 @@
     "name": "花蓮理想大地渡假飯店",
     "city": "花蓮縣壽豐鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "pool",
@@ -2259,6 +2333,7 @@
     "name": "瑞穗天合國際觀光酒店",
     "city": "花蓮縣瑞穗鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$$",
     "tags": [
       "spa",
@@ -2291,6 +2366,7 @@
     "name": "福容大飯店 花蓮",
     "city": "花蓮縣花蓮市",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "pool",
@@ -2321,6 +2397,7 @@
     "name": "花蓮翰品酒店",
     "city": "花蓮縣花蓮市",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -2351,6 +2428,7 @@
     "name": "禾風新棧度假飯店",
     "city": "臺東縣臺東市",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "play",
@@ -2383,6 +2461,7 @@
     "name": "娜路彎大酒店",
     "city": "臺東縣臺東市",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -2414,6 +2493,7 @@
     "name": "富野渡假酒店",
     "city": "臺東縣卑南鄉",
     "region": "東",
+    "kind": "hotel",
     "price_tier": "$$$",
     "tags": [
       "spa",
@@ -2437,6 +2517,594 @@
       "tags",
       "name",
       "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-081",
+    "name": "雀客童媽吉親子旅館",
+    "city": "宜蘭縣羅東鎮",
+    "region": "北",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "室內電動車賽道",
+      "溜滑梯球池",
+      "電競遊樂室"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "專門給 0–8 歲設計的親子旅館，室內就能開電動車，下雨也不怕。",
+    "near_spot_ids": [
+      "spot-032",
+      "spot-035"
+    ],
+    "lat": 24.677033,
+    "lng": 121.766919,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-082",
+    "name": "煙波花時間 宜蘭傳藝",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "就在傳藝園區裡",
+      "球池遊戲室"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "住在傳藝中心裡面，晚上遊客走了可以慢慢逛老街。",
+    "near_spot_ids": [
+      "spot-031",
+      "spot-035"
+    ],
+    "lat": 24.68464,
+    "lng": 121.798297,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-083",
+    "name": "蘭陽烏石港海景酒店",
+    "city": "宜蘭縣頭城鎮",
+    "region": "北",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "球池積木溜滑梯遊戲區",
+      "海景房"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "走路就到蘭陽博物館和烏石港，房間看得到龜山島。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": 24.861923,
+    "lng": 121.82954,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "name",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-084",
+    "name": "礁溪福朋喜來登酒店",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "kind": "hotel",
+    "price_tier": "$$$$",
+    "tags": [
+      "spa",
+      "pool",
+      "slide",
+      "play"
+    ],
+    "features": [
+      "兒童遊戲室",
+      "有溜滑梯的兒童戲水池",
+      "露天泳池"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "兒童戲水池有溜滑梯，遊戲室有球池，設施算新。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": 24.828465,
+    "lng": 121.76949,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-085",
+    "name": "品文旅 礁溪",
+    "city": "宜蘭縣礁溪鄉",
+    "region": "北",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "pool",
+      "slide",
+      "play"
+    ],
+    "features": [
+      "遊戲室",
+      "兒童戲水園地",
+      "噴泉舞池"
+    ],
+    "mins_from_linkou": 70,
+    "tip": "有兒童戲水園地和遊戲室，價位比礁溪五星好入手。",
+    "near_spot_ids": [
+      "spot-029"
+    ],
+    "lat": 24.830089,
+    "lng": 121.774875,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-086",
+    "name": "煙波大飯店 蘇澳四季雙泉館",
+    "city": "宜蘭縣蘇澳鎮",
+    "region": "北",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "spa",
+      "pool"
+    ],
+    "features": [
+      "冷泉與溫泉",
+      "頂樓泳池"
+    ],
+    "mins_from_linkou": 100,
+    "tip": "冷泉、溫泉都有，頂樓泳池可以看蘇澳港。",
+    "near_spot_ids": [
+      "spot-035",
+      "spot-031"
+    ],
+    "lat": 24.594624,
+    "lng": 121.842653,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-087",
+    "name": "陳婆婆好宅",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide",
+      "pool",
+      "park"
+    ],
+    "features": [
+      "整棟包棟約 14 人",
+      "樹屋溜滑梯通到球池",
+      "戶外戲水池與沙坑"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "適合兩三家一起包棟，小孩在樹屋溜滑梯和球池可以玩一整晚。",
+    "near_spot_ids": [
+      "spot-031",
+      "spot-035"
+    ],
+    "lat": 24.68464,
+    "lng": 121.798297,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-088",
+    "name": "米可親子溜滑梯民宿",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide",
+      "play",
+      "pool"
+    ],
+    "features": [
+      "卡通主題房房內就有溜滑梯",
+      "有電梯",
+      "可包棟"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "房間裡就有溜滑梯；有電梯，帶推車和長輩都方便。",
+    "near_spot_ids": [
+      "spot-031",
+      "spot-035"
+    ],
+    "lat": 24.68464,
+    "lng": 121.798297,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-089",
+    "name": "宜人生活溜滑梯親子民宿",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide"
+    ],
+    "features": [
+      "溜滑梯房",
+      "可包棟約 17 人",
+      "免費停車"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "平價的溜滑梯房，離冬山河和羅東夜市都近。",
+    "near_spot_ids": [
+      "spot-035",
+      "spot-032"
+    ],
+    "lat": 24.634514,
+    "lng": 121.79228,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-090",
+    "name": "米蘭穀堡",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide",
+      "pool",
+      "park"
+    ],
+    "features": [
+      "12 人可包棟",
+      "充氣戲水池",
+      "盪鞦韆",
+      "烤肉"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "有嬰幼兒遊戲室和戲水池，12 人就能包棟烤肉。",
+    "near_spot_ids": [
+      "spot-035",
+      "spot-031"
+    ],
+    "lat": 24.634514,
+    "lng": 121.79228,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-091",
+    "name": "竹間民宿",
+    "city": "宜蘭縣員山鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide",
+      "pool"
+    ],
+    "features": [
+      "整棟包棟",
+      "球池溜滑梯遊戲室",
+      "戶外泳池"
+    ],
+    "mins_from_linkou": 85,
+    "tip": "整棟三層樓一起租，遊戲室有球池和玩具廚房。",
+    "near_spot_ids": [
+      "spot-030",
+      "spot-033"
+    ],
+    "lat": 24.743183,
+    "lng": 121.723372,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-092",
+    "name": "松楓親子民宿",
+    "city": "宜蘭縣",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide"
+    ],
+    "features": [
+      "溜滑梯房",
+      "卡通主題房"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "想住溜滑梯主題房可以看這間，訂房時確認哪幾間房有溜滑梯。",
+    "near_spot_ids": [
+      "spot-035"
+    ],
+    "lat": 24.730279,
+    "lng": 121.763115,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-093",
+    "name": "CC House",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "slide"
+    ],
+    "features": [
+      "大型家族包棟約 25 人",
+      "球池溜滑梯遊戲區"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "客廳旁就是遊戲區，大人聊天時看得到小孩，適合大家族。",
+    "near_spot_ids": [
+      "spot-031",
+      "spot-035"
+    ],
+    "lat": 24.68464,
+    "lng": 121.798297,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-094",
+    "name": "花木馬親子民宿",
+    "city": "宜蘭縣羅東鎮",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide",
+      "play",
+      "park"
+    ],
+    "features": [
+      "溜滑梯床",
+      "遊戲樹屋",
+      "戶外電動車與沙坑"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "英式小屋風格，多數房間有溜滑梯床，戶外可以開電動車、玩沙。",
+    "near_spot_ids": [
+      "spot-032",
+      "spot-035"
+    ],
+    "lat": 24.677033,
+    "lng": 121.766919,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-095",
+    "name": "希格瑪花園城堡",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$$",
+    "tags": [
+      "slide",
+      "pool",
+      "park",
+      "play"
+    ],
+    "features": [
+      "粉紅城堡",
+      "公主房賽車房等溜滑梯主題房",
+      "戲水池沙坑電動車"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "粉紅色城堡造型，有公主房和賽車房，戶外有戲水池和沙坑。",
+    "near_spot_ids": [
+      "spot-035",
+      "spot-032"
+    ],
+    "lat": 24.634514,
+    "lng": 121.79228,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-096",
+    "name": "童話村有機農場民宿",
+    "city": "宜蘭縣冬山鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide",
+      "animal"
+    ],
+    "features": [
+      "每間房都有溜滑梯",
+      "餵魚、餵奶體驗",
+      "陽台可烤肉"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "每間房裡都有溜滑梯，還可以餵魚、餵小動物，像住在小農場。",
+    "near_spot_ids": [
+      "spot-035",
+      "spot-033"
+    ],
+    "lat": 24.634514,
+    "lng": 121.79228,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-097",
+    "name": "涵天大洲會館",
+    "city": "宜蘭縣三星鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide",
+      "play"
+    ],
+    "features": [
+      "溜滑梯球池室",
+      "可包棟烤肉"
+    ],
+    "mins_from_linkou": 95,
+    "tip": "有溜滑梯球池室，可以包棟烤肉，離三星的農場近。",
+    "near_spot_ids": [
+      "spot-033",
+      "spot-034"
+    ],
+    "lat": 24.665963,
+    "lng": 121.653229,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "name",
+      "city"
+    ],
+    "last_verified": "2026-11-16"
+  },
+  {
+    "id": "hotel-098",
+    "name": "Fun輕鬆民宿",
+    "city": "宜蘭縣五結鄉",
+    "region": "北",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "pool",
+      "slide",
+      "play"
+    ],
+    "features": [
+      "戶外泳池",
+      "電動車",
+      "室內積木溜滑梯"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "戶外有泳池和電動車，室內有積木溜滑梯。",
+    "near_spot_ids": [
+      "spot-031",
+      "spot-035"
+    ],
+    "lat": 24.68464,
+    "lng": 121.798297,
+    "google_place_id": null,
+    "needs_verify": [
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "name"
     ],
     "last_verified": "2026-11-16"
   }

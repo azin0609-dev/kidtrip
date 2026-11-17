@@ -2,7 +2,7 @@ export type Tab = 'spots' | 'hotels' | 'favs';
 
 export const TABS: { id: Tab; label: string }[] = [
   { id: 'spots', label: '親子景點' },
-  { id: 'hotels', label: '親子飯店' },
+  { id: 'hotels', label: '親子住宿' },
   { id: 'favs', label: '我的收藏' },
 ];
 
