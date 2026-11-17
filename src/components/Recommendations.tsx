@@ -11,6 +11,8 @@ export interface RecommendationsProps {
   rainyIsAuto: boolean;
   weather: WeekendWeather | null;
   overnight: boolean;
+  elders: boolean;
+  onElders: (v: boolean) => void;
   onRainy: (v: boolean) => void;
   onOvernight: (v: boolean) => void;
   onShuffle: () => void;
@@ -23,6 +25,8 @@ export function Recommendations({
   rainyIsAuto,
   weather,
   overnight,
+  elders,
+  onElders,
   onRainy,
   onOvernight,
   onShuffle,
@@ -68,6 +72,9 @@ export function Recommendations({
         <Chip pressed={overnight} onClick={() => onOvernight(!overnight)}>
           這週要住一晚
         </Chip>
+        <Chip pressed={elders} onClick={() => onElders(!elders)}>
+          長輩一起去
+        </Chip>
       </div>
       {weather && rainyIsAuto && rainy && (
         <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
@@ -79,7 +86,7 @@ export function Recommendations({
         <div className="mt-3 flex flex-col items-center gap-2 rounded-3xl bg-emerald-50 p-6 text-center dark:bg-emerald-950/40">
           <Dino mood="sleepy" className="h-20 w-20" />
           <p className="text-sm text-stone-700 dark:text-stone-300">
-            這週沒有適合推薦的地方。試試打開「這週要住一晚」，或關掉「這週可能下雨」。
+            這週沒有適合推薦的地方。試試打開「這週要住一晚」，或關掉「這週可能下雨」「長輩一起去」。
           </p>
         </div>
       ) : (

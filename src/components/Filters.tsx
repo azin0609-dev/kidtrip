@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { HOTEL_KINDS, HOTEL_TAGS, SPOT_TYPES } from '../data/enums.ts';
+import { FACILITIES, HOTEL_KINDS, HOTEL_TAGS, SPOT_TYPES } from '../data/enums.ts';
 import { DRIVE_OPTIONS, type HotelFilters, type SpotFilters, toggleInList } from '../lib/filter.ts';
-import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, REGION_OPTIONS, TYPE_LABELS } from '../lib/labels.ts';
+import { FACILITY_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, REGION_OPTIONS, TYPE_LABELS } from '../lib/labels.ts';
 import { Chip, ChipGroup, SearchBox } from './ui.tsx';
 
 type DriveRegion = { drive: SpotFilters['drive']; region: SpotFilters['region']; county: string };
@@ -103,7 +103,18 @@ export function SpotFiltersPanel({
           </Chip>
         ))}
       </ChipGroup>
-      <MoreFilters label="地區、類型" active={(value.region === 'all' ? 0 : 1) + value.types.length}>
+      <MoreFilters label="設施、地區、類型" active={(value.region === 'all' ? 0 : 1) + value.types.length + value.facilities.length}>
+        <ChipGroup label="設施（選了的都要有）">
+          {FACILITIES.map((f) => (
+            <Chip
+              key={f}
+              pressed={value.facilities.includes(f)}
+              onClick={() => onChange({ ...value, facilities: toggleInList(value.facilities, f) })}
+            >
+              {FACILITY_LABELS[f]}
+            </Chip>
+          ))}
+        </ChipGroup>
         <RegionChips value={value} onChange={onChange} />
         <ChipGroup label="類型（可多選，符合任一）">
           {SPOT_TYPES.map((t) => (

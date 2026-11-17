@@ -1,6 +1,6 @@
-import type { Hotel, HotelKind, HotelTag, Region, Spot, SpotType } from '../data/schema.ts';
+import type { Facility, Hotel, HotelKind, HotelTag, Region, Spot, SpotType } from '../data/schema.ts';
 import { isSpotVisible } from './date.ts';
-import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, TYPE_LABELS } from './labels.ts';
+import { FACILITY_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, TYPE_LABELS } from './labels.ts';
 
 export type DriveFilter = 'all' | '30' | '60' | '120' | '240' | 'overnight';
 
@@ -22,6 +22,8 @@ export interface SpotFilters {
   free: boolean;
   stroller: boolean;
   hideBeen: boolean;
+  /** 設施：選了的每一項都要有。 */
+  facilities: Facility[];
   types: SpotType[];
   query: string;
 }
@@ -43,6 +45,7 @@ export const DEFAULT_SPOT_FILTERS: SpotFilters = {
   free: false,
   stroller: false,
   hideBeen: false,
+  facilities: [],
   types: [],
   query: '',
 };
@@ -111,7 +114,14 @@ function matchesAllTokens(haystack: string[], tokens: string[]): boolean {
 }
 
 export function spotSearchText(spot: Spot): string[] {
-  return [spot.name, spot.city, spot.tip, ...spot.types.map((t) => TYPE_LABELS[t])];
+  return [
+    spot.name,
+    spot.city,
+    spot.tip,
+    spot.transit ?? '',
+    ...spot.types.map((t) => TYPE_LABELS[t]),
+    ...(spot.facilities ?? []).map((f) => FACILITY_LABELS[f]),
+  ];
 }
 
 export function hotelSearchText(hotel: Hotel): string[] {
@@ -154,6 +164,7 @@ export function filterSpots(
       (!filters.free || s.cost_tier === 'free') &&
       (!filters.stroller || s.stroller_ok) &&
       (!filters.hideBeen || !been.has(s.id)) &&
+      filters.facilities.every((f) => s.facilities?.includes(f)) &&
       (filters.types.length === 0 || s.types.some((t) => filters.types.includes(t))) &&
       matchesSpotQuery(s, filters.query),
   );

@@ -205,3 +205,27 @@ describe('typesAllSame', () => {
     expect(typesAllSame([s(['park'])])).toBe(false);
   });
 });
+
+describe('季節與長輩', () => {
+  it('適合的月份加分、不適合扣分，並寫在原因裡', () => {
+    const plain = scoreSpot(makeSpot(), ctx())!; // 今天是 11 月
+    const inSeason = scoreSpot(makeSpot({ best_months: [10, 11, 12] }), ctx())!;
+    const offSeason = scoreSpot(makeSpot({ best_months: [6, 7, 8] }), ctx())!;
+    expect(inSeason.score).toBeGreaterThan(plain.score);
+    expect(offSeason.score).toBeLessThan(plain.score);
+    expect(inSeason.reasons).toContain('這個季節正適合');
+    expect(offSeason.reasons).not.toContain('這個季節正適合');
+  });
+  it('長輩一起去：只推長輩好走的', () => {
+    expect(scoreSpot(makeSpot(), ctx({ elders: true }))).toBeNull();
+    const ok = scoreSpot(makeSpot({ facilities: ['elder'] }), ctx({ elders: true }));
+    expect(ok?.reasons).toContain('長輩好走');
+    const list = [
+      ...spots.slice(0, 6).map((s) => ({ ...s, facilities: ['elder' as const] })),
+      ...spots.slice(6),
+    ];
+    const r = recommend(list, ctx({ elders: true }), weekSeed(today, linkou));
+    expect(r).toHaveLength(3);
+    expect(r.every((x) => x.spot.facilities?.includes('elder'))).toBe(true);
+  });
+});

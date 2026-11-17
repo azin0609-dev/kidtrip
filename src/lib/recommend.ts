@@ -19,6 +19,8 @@ export interface RecommendContext {
   rainy: boolean;
   /** 「這週要住一晚」：才會推超過 120 分的。 */
   overnight: boolean;
+  /** 「長輩一起去」：只推少樓梯、有地方坐的地方。沒給視為 false。 */
+  elders?: boolean;
 }
 
 export interface ScoredSpot {
@@ -81,6 +83,8 @@ export const WEIGHTS = {
   newBadge: 10,
   closingSoon: 20,
   fav: 15,
+  /** 現在是特別適合的月份加分；有標月份但現在不是，扣一樣的分。 */
+  season: 8,
   /** 每週隨機加 0–15 分，讓每週組合不一樣。 */
   jitter: 15,
 } as const;
@@ -96,6 +100,7 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   if (daysSince !== null && daysSince < RECENT_VISIT_DAYS) return null;
 
   if (ctx.rainy && spot.env !== 'in' && spot.env !== 'semi') return null;
+  if (ctx.elders && !spot.facilities?.includes('elder')) return null;
 
   const mins = ctx.minsOf(spot);
   if (mins === null) return null;
@@ -130,6 +135,18 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
       reasons.push(b.label);
     }
   }
+
+  if (spot.best_months && spot.best_months.length > 0) {
+    const month = Number(ctx.today.slice(5, 7));
+    if (spot.best_months.includes(month)) {
+      score += WEIGHTS.season;
+      reasons.push('這個季節正適合');
+    } else {
+      score -= WEIGHTS.season;
+    }
+  }
+
+  if (ctx.elders) reasons.push('長輩好走');
 
   if (ctx.fav.includes(spot.id)) {
     score += WEIGHTS.fav;

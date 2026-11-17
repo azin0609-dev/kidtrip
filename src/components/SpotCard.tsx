@@ -1,7 +1,8 @@
 import type { Hotel, Spot } from '../data/schema.ts';
 import { spotBadges } from '../lib/date.ts';
 import { formatDrive, formatEstimate } from '../lib/format.ts';
-import { COST_LABELS, ENV_LABELS, TYPE_LABELS } from '../lib/labels.ts';
+import { ageBestLabel, stayLabel } from '../lib/details.ts';
+import { COST_LABELS, ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
 import { googleMapsUrl } from '../lib/links.ts';
 import { Tag, buttonBase } from './ui.tsx';
 
@@ -20,6 +21,8 @@ export interface SpotCardProps {
   highlight?: boolean;
   /** 推薦原因，例如「離家約 25 分・室內・還沒去過」。 */
   reason?: string;
+  /** 依孩子年齡的提醒，例如「核桃（1 歲）可能還太小」。 */
+  kidNote?: string | null;
 }
 
 export function DriveBadge({ mins, originLabel }: { mins: number | null; originLabel: string }) {
@@ -46,8 +49,10 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote }: SpotCardProps) {
   const badges = spotBadges(spot, today);
+  const facts = [spot.age_best && ageBestLabel(spot.age_best), spot.stay_hours && stayLabel(spot.stay_hours)].filter(Boolean);
+  const hasMore = (spot.facilities?.length ?? 0) > 0 || spot.transit || spot.crowd_tip;
   return (
     <article
       className={`flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 dark:bg-[#16241c] ${
@@ -83,11 +88,49 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
 
       <p className="text-sm leading-relaxed text-stone-800 dark:text-stone-200">{spot.tip}</p>
 
+      {facts.length > 0 && <p className="text-sm font-medium text-emerald-900 dark:text-emerald-200">{facts.join('・')}</p>}
+
+      {kidNote && (
+        <p className="rounded-lg bg-sky-50 px-3 py-2 text-sm text-sky-950 dark:bg-sky-950 dark:text-sky-100">{kidNote}</p>
+      )}
+
       {spot.open_note && (
         <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-200">
           <span className="font-bold">出發前注意：</span>
           {spot.open_note}
         </p>
+      )}
+
+      {hasMore && (
+        <details className="group text-sm">
+          <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-lg font-medium text-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-emerald-300 [&::-webkit-details-marker]:hidden">
+            <span aria-hidden="true" className="inline-block transition-transform group-open:rotate-90">›</span>
+            設施、交通、人潮
+          </summary>
+          <div className="flex flex-col gap-2 pb-1 text-stone-700 dark:text-stone-300">
+            {(spot.facilities?.length ?? 0) > 0 && (
+              <div className="flex flex-wrap gap-1.5">
+                {spot.facilities?.map((f) => (
+                  <Tag key={f} tone="good">
+                    {FACILITY_LABELS[f]}
+                  </Tag>
+                ))}
+              </div>
+            )}
+            {spot.transit && (
+              <p>
+                <span className="font-medium">不開車：</span>
+                {spot.transit}
+              </p>
+            )}
+            {spot.crowd_tip && (
+              <p>
+                <span className="font-medium">人潮：</span>
+                {spot.crowd_tip}
+              </p>
+            )}
+          </div>
+        </details>
       )}
 
       {nearHotels.length > 0 && (

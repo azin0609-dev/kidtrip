@@ -124,6 +124,90 @@ const OPEN_NOTES: Record<string, string> = {
   國立臺灣史前文化博物館: '週一休館',
 };
 
+// 適合年齡、停留時間、設施、大眾運輸、人潮、適合月份（依一般情況整理，全部列入 needs_verify）
+// 設施代碼：N 哺乳室、D 尿布台、P 好停車、F 有賣吃的、K 可帶便當、S 有遮蔭、E 長輩好走
+const COOL = [10, 11, 12, 1, 2, 3, 4]; // 沒什麼遮蔭的戶外：涼的季節比較舒服
+const WARM = [5, 6, 7, 8, 9, 10]; // 玩水
+type Detail = [ageMin: number, ageMax: number, stay: number, fac: string, more?: { t?: string; c?: string; m?: number[] }];
+const DETAILS: Record<string, Detail> = {
+  林口樂活公園: [1, 8, 1.5, 'KE', { c: '假日傍晚人多，早上比較空' }],
+  臺北市立動物園: [1, 12, 4, 'NDPFSE', { t: '捷運動物園站出站就是', c: '假日 9 點開門就進場，下午人最多' }],
+  臺北市立兒童新樂園: [2, 10, 3, 'NDPFE', { t: '捷運劍潭站或士林站轉接駁公車', c: '假日下午排隊長，開門就去' }],
+  國立臺灣科學教育館: [3, 12, 3, 'NDPFSE', { t: '捷運士林站轉公車' }],
+  臺北市立天文科學教育館: [3, 12, 2, 'NDPSE', { t: '捷運士林站轉公車' }],
+  大安森林公園: [1, 8, 1.5, 'PKSE', { t: '捷運大安森林公園站出站就是' }],
+  花博公園舞蝶共融遊戲場: [1, 8, 1.5, 'PKE', { t: '捷運圓山站走路約 3 分' }],
+  國立臺灣博物館古生物館: [3, 10, 1.5, 'NDSE', { t: '捷運台大醫院站走路約 5 分' }],
+  華山大草原遊戲場: [1, 8, 1.5, 'KE', { t: '捷運忠孝新生站走路約 5 分' }],
+  新北大都會公園熊猴森樂園: [2, 10, 2, 'PK', { t: '機場捷運三重站走路約 10 分', c: '夏天中午溜滑梯很燙，早上或傍晚去', m: COOL }],
+  板橋435藝文特區: [1, 8, 2, 'NPKSE'],
+  新北市立十三行博物館: [3, 10, 2, 'NDPSE'],
+  新北市立鶯歌陶瓷博物館: [2, 10, 2.5, 'NDPFSE', { t: '台鐵鶯歌站走路約 10 分' }],
+  野柳海洋世界: [2, 10, 2, 'PSE'],
+  國立海洋科技博物館: [3, 12, 3, 'NDPFSE', { t: '台鐵海科館站走路約 5 分' }],
+  潮境公園: [1, 10, 1.5, 'PK', { c: '假日下午停車場常滿', m: WARM }],
+  'Xpark 都會型水生公園': [1, 12, 2, 'NDPFSE', { t: '機場捷運、高鐵桃園站走路約 5 分', c: '假日先線上買票，分時段入場' }],
+  巧虎夢想樂園: [2, 6, 3, 'NDPFSE', { t: '機場捷運、高鐵桃園站走路約 5 分' }],
+  桃園市兒童美術館: [2, 10, 1.5, 'NDPSE'],
+  小人國主題樂園: [2, 10, 5, 'NDPFS'],
+  六福村主題遊樂園: [3, 12, 6, 'NDPF'],
+  埔心牧場: [1, 8, 3, 'PFKE', { t: '台鐵埔心站走路約 10 分' }],
+  富田花園農場: [1, 8, 2, 'PF'],
+  奧爾森林學堂: [3, 10, 1.5, 'KS', { c: '假日停車位少，早點到' }],
+  新竹市立動物園: [1, 8, 1.5, 'NDSE', { t: '台鐵新竹站走路約 15 分' }],
+  青青草原: [3, 10, 2, 'PK', { c: '夏天滑梯很燙，穿長褲、挑早上去', m: COOL }],
+  綠世界生態農場: [2, 10, 4, 'NDPF'],
+  小叮噹科學主題樂園: [3, 10, 5, 'NPF'],
+  蘭陽博物館: [3, 10, 2, 'NDPSE', { t: '台鐵頭城站轉公車或計程車約 5 分' }],
+  幾米主題廣場: [1, 8, 1, 'KE', { t: '台鐵宜蘭站出站就是' }],
+  國立傳統藝術中心: [2, 10, 4, 'NDPFSE'],
+  羅東林業文化園區: [1, 8, 1.5, 'PKSE', { t: '台鐵羅東站走路約 10 分' }],
+  張美阿嬤農場: [1, 8, 1.5, 'PF', { c: '假日中午人最多，早上去比較好餵' }],
+  遛遛三星: [1, 8, 3, 'PS'],
+  冬山河生態綠舟: [1, 10, 3, 'PFK', { m: WARM }],
+  'KidZania Taipei 奇薩尼亞台北': [4, 12, 5, 'NDPFSE', { t: '捷運、台鐵、高鐵南港站走路約 5 分', c: '試營運期間只能先線上買票' }],
+  野趣森林: [3, 10, 4, 'P'],
+  尚順育樂世界: [2, 10, 4, 'NDPFSE'],
+  飛牛牧場: [1, 10, 5, 'NDPFK', { m: COOL }],
+  國立自然科學博物館: [3, 12, 4, 'NDPFSE', { c: '假日恐龍廳最擠，一進門先去' }],
+  異想新樂園: [2, 10, 4, 'NDPFS'],
+  麗寶樂園: [3, 12, 6, 'NDPF'],
+  臺中中央公園: [1, 10, 2, 'PK', { m: COOL }],
+  臺中兒童藝術館: [2, 8, 2, 'NDPSE'],
+  芊動彰化親子園區: [2, 10, 1.5, 'KS'],
+  百果山探索樂園: [3, 10, 3, 'PF'],
+  彰化扇形車庫: [2, 10, 1, 'K', { t: '台鐵彰化站走路約 10 分' }],
+  九族文化村: [3, 12, 6, 'NDPF'],
+  清境農場青青草原: [2, 10, 3, 'PF', { c: '假日上山會塞車，早上 9 點前到', m: [6, 7, 8, 9] }],
+  劍湖山世界: [3, 12, 6, 'NDPFS'],
+  千巧谷牛樂園牧場: [1, 8, 1.5, 'PFSE'],
+  國立故宮博物院南部院區: [3, 10, 3, 'NDPFSE', { t: '高鐵嘉義站轉接駁公車約 10 分' }],
+  '嘉義公園 KANO 遊戲場': [1, 10, 1.5, 'KSE'],
+  北門森鐵車庫園區: [2, 10, 1, 'KE'],
+  奇美博物館: [3, 12, 3, 'NDPFSE', { t: '台鐵保安站走路約 10 分' }],
+  十鼓仁糖文創園區: [3, 12, 3, 'PF', { t: '台鐵保安站走路約 10 分' }],
+  頑皮世界野生動物園: [1, 10, 3.5, 'NPF', { m: COOL }],
+  南瀛天文館: [4, 12, 2, 'NPSE'],
+  河樂廣場: [1, 8, 1.5, 'K', { c: '夏天假日下午人很多', m: WARM }],
+  樹谷生活科學館: [3, 10, 1.5, 'PSE'],
+  壽山動物園: [1, 10, 3, 'NDPF', { m: COOL }],
+  國立科學工藝博物館: [3, 12, 3, 'NDPFSE', { t: '台鐵科工館站走路約 5 分' }],
+  哈瑪星台灣鐵道館: [2, 10, 1.5, 'NSE', { t: '捷運西子灣站、輕軌哈瑪星站走路約 3 分' }],
+  衛武營都會公園共融遊戲場: [1, 10, 1.5, 'PKSE', { t: '捷運衛武營站走路約 5 分' }],
+  高雄親子遊樂園區: [2, 12, 2, 'S'],
+  義大遊樂世界: [3, 12, 6, 'NDPFS'],
+  國立海洋生物博物館: [2, 12, 4, 'NDPFSE'],
+  屏東縣民公園: [1, 10, 1.5, 'PK', { m: COOL }],
+  六堆客家文化園區: [1, 10, 2.5, 'NDPFSE'],
+  遠雄海洋公園: [3, 12, 5, 'NDPF'],
+  新光兆豐休閒農場: [1, 10, 4, 'NPF'],
+  知卡宣綠森林親水公園: [1, 10, 2, 'PK'],
+  瑞穗牧場: [1, 8, 1, 'PFE'],
+  國立臺灣史前文化博物館: [3, 12, 2.5, 'NDPSE', { t: '台鐵康樂站走路約 10 分' }],
+  初鹿牧場: [1, 10, 2, 'PF'],
+};
+const FAC_CODES: Record<string, string> = { N: 'nursing', D: 'diaper', P: 'parking', F: 'food', K: 'picnic', S: 'shade', E: 'elder' };
+
 type HotelRow = [name: string, city: string, region: string, price: string, tags: string[], features: string[], mins: number, tip: string, near: string[], verify?: string[], kind?: 'hotel' | 'bnb'];
 
 // 房價級距（一晚、雙人或家庭房粗估）：$$ 4,000 元以下、$$$ 4,000–8,000 元、$$$$ 8,000 元以上
@@ -266,6 +350,11 @@ const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, m
   const verify = new Set<string>(['mins_from_linkou', ...(extra?.verify ?? [])]);
   if (cost_tier === '?') verify.add('cost_tier');
   if (OPEN_NOTES[name]) verify.add('open_note');
+  const detail = DETAILS[name];
+  if (!detail) throw new Error(`缺少 DETAILS：${name}`);
+  const [ageMin, ageMax, stay, fac, more] = detail;
+  for (const key of ['age_best', 'stay_hours', 'facilities']) verify.add(key);
+  if (more?.t) verify.add('transit');
   return {
     id,
     name,
@@ -281,6 +370,12 @@ const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, m
     ...(extra?.opens_on ? { opens_on: extra.opens_on } : {}),
     ...(extra?.closes_on ? { closes_on: extra.closes_on } : {}),
     ...(OPEN_NOTES[name] ? { open_note: OPEN_NOTES[name] } : {}),
+    age_best: [ageMin, ageMax],
+    stay_hours: stay,
+    facilities: [...fac].map((c) => FAC_CODES[c]),
+    ...(more?.t ? { transit: more.t } : {}),
+    ...(more?.c ? { crowd_tip: more.c } : {}),
+    ...(more?.m ? { best_months: more.m } : {}),
     lat: old?.lat ?? null,
     lng: old?.lng ?? null,
     google_place_id: old?.google_place_id ?? null,

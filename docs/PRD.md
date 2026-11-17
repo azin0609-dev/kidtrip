@@ -237,6 +237,12 @@
 | badge | { kind: "new" \| "end", label: string }? | 選填 |
 | opens_on / closes_on | "YYYY-MM-DD"? | 選填 |
 | open_note | string? | 選填。公休日、要不要預約之類的一句提醒（例如「週一休館」），卡片上顯示成「出發前注意」。2026-11-17 新增 |
+| age_best | [number, number]? | 選填。最適合的年齡範圍（歲），上限 12 代表「以上都可以」。搭配設定裡的孩子年齡顯示提醒。2026-11-17 新增 |
+| stay_hours | number? | 選填。建議停留幾小時。2026-11-17 新增 |
+| facilities | string[]? | 選填。nursing 哺乳室、diaper 尿布台、parking 好停車、food 有賣吃的、picnic 可帶便當、shade 有遮蔭、elder 長輩好走。2026-11-17 新增 |
+| transit | string? | 選填。大眾運輸怎麼到。2026-11-17 新增 |
+| crowd_tip | string? | 選填。人潮、時段建議。2026-11-17 新增 |
+| best_months | number[]? | 選填。特別適合去的月份，推薦時加減分。2026-11-17 新增 |
 | lat / lng | number \| null | 由 geocode 腳本補上（OSM） |
 | google_place_id | string \| null | 只存 ID |
 | needs_verify | string[] | 待人工確認的欄位名稱 |

@@ -174,3 +174,20 @@ describe('4 小時內、縣市、住宿類型', () => {
     expect(ids(filterHotels(hotels, { ...DEFAULT_HOTEL_FILTERS, query: '民宿' }))).toEqual(['hotel-002', 'hotel-003']);
   });
 });
+
+describe('設施篩選', () => {
+  const list = [
+    makeSpot({ id: 'spot-001', facilities: ['nursing', 'parking', 'elder'], transit: '捷運圓山站走路 3 分' }),
+    makeSpot({ id: 'spot-002', facilities: ['parking'] }),
+    makeSpot({ id: 'spot-003' }),
+  ];
+  it('選了的每一項都要有', () => {
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, facilities: ['parking'] }, ctx))).toEqual(['spot-001', 'spot-002']);
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, facilities: ['parking', 'nursing'] }, ctx))).toEqual(['spot-001']);
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, facilities: ['elder'] }, ctx))).toEqual(['spot-001']);
+  });
+  it('可以搜尋設施名稱和大眾運輸', () => {
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, query: '哺乳室' }, ctx))).toEqual(['spot-001']);
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, query: '圓山' }, ctx))).toEqual(['spot-001']);
+  });
+});

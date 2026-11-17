@@ -23,6 +23,7 @@ import {
   sortByDrive,
   toggleInList,
 } from './lib/filter.ts';
+import { kidAgeNote } from './lib/details.ts';
 import { latestVerified, shortOriginLabel } from './lib/format.ts';
 import { defaultOrigin, makeMinsOf } from './lib/origin.ts';
 import { pickSpot } from './lib/pick.ts';
@@ -42,6 +43,7 @@ export default function App() {
   // null = 還沒手動改過，跟著天氣預報；按過開關就以使用者的選擇為準。
   const [rainyOverride, setRainyOverride] = useState<boolean | null>(null);
   const [overnight, setOvernight] = useState(false);
+  const [elders, setElders] = useState(false);
   const [shuffle, setShuffle] = useState(0);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
   const [reportFor, setReportFor] = useState<{ id: string; name: string } | null>(null);
@@ -124,11 +126,11 @@ export default function App() {
     () =>
       recommendRound(
         spots,
-        { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight },
+        { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight, elders },
         (round) => weekSeed(today, origin, round),
         shuffle,
       ),
-    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, origin, shuffle],
+    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, elders, origin, shuffle],
   );
 
   const pickedSpot = picked.id ? spotById.get(picked.id) : undefined;
@@ -155,6 +157,7 @@ export default function App() {
       onReport={() => setReportFor({ id: spot.id, name: spot.name })}
       highlight={highlight}
       reason={reason}
+      kidNote={kidAgeNote(spot, stored.kids ?? [], today)}
     />
   );
   const renderHotel = (hotel: Hotel) => (
@@ -222,6 +225,8 @@ export default function App() {
               picks={picks}
               rainy={rainy}
               overnight={overnight}
+              elders={elders}
+              onElders={setElders}
               rainyIsAuto={rainyOverride === null}
               weather={weather}
               onRainy={setRainyOverride}

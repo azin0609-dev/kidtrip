@@ -12,11 +12,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 10,
     "tip": "就在家附近，溜滑梯和沙坑夠玩一個早上，傍晚去比較不曬。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "elder"
+    ],
+    "crowd_tip": "假日傍晚人多，早上比較空",
     "lat": 25.066751,
     "lng": 121.374879,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -33,11 +46,30 @@
     "stroller_ok": true,
     "mins_from_linkou": 45,
     "tip": "園區很大，3 歲先看兒童動物區和企鵝館就好，遊園列車可以省腳力。",
+    "age_best": [
+      1,
+      12
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運動物園站出站就是",
+    "crowd_tip": "假日 9 點開門就進場，下午人最多",
     "lat": 24.995355,
     "lng": 121.586149,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -55,12 +87,30 @@
     "mins_from_linkou": 35,
     "tip": "設施是分開投幣的，小小孩先玩旋轉木馬和小火車，假日早點到。",
     "open_note": "週一公休（寒暑假、連假除外）",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "elder"
+    ],
+    "transit": "捷運劍潭站或士林站轉接駁公車",
+    "crowd_tip": "假日下午排隊長，開門就去",
     "lat": 25.097415,
     "lng": 121.514972,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -79,12 +129,30 @@
     "mins_from_linkou": 35,
     "tip": "兒童益智探索館適合學齡前，要另外買票而且分場次，先看好時間。",
     "open_note": "週一休館；兒童益智探索館分場次",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運士林站轉公車",
     "lat": 25.096127,
     "lng": 121.516704,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -102,12 +170,29 @@
     "mins_from_linkou": 35,
     "tip": "宇宙探險軌道車小孩很愛，跟科教館在隔壁，可以排同一天。",
     "open_note": "週一休館",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運士林站轉公車",
     "lat": 25.09599,
     "lng": 121.518524,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -124,11 +209,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "共融遊戲場有大沙坑，記得帶挖沙工具和替換衣物。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運大安森林公園站出站就是",
     "lat": 25.029693,
     "lng": 121.535824,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -145,11 +246,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "就在捷運圓山站旁，遊具分齡，小小孩區有圍起來比較安心。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic",
+      "elder"
+    ],
+    "transit": "捷運圓山站走路約 3 分",
     "lat": 25.064361,
     "lng": 121.533468,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -168,12 +284,28 @@
     "mins_from_linkou": 40,
     "tip": "恐龍骨架就在大廳，逛一小時剛好，下雨天的好備案。",
     "open_note": "週一休館",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運台大醫院站走路約 5 分",
     "lat": 25.043646,
     "lng": 121.514391,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -190,11 +322,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "有沙坑和滑索，玩完走去華山文創園區吃飯很方便。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "elder"
+    ],
+    "transit": "捷運忠孝新生站走路約 5 分",
     "lat": 25.032361,
     "lng": 121.518267,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -211,11 +357,35 @@
     "stroller_ok": true,
     "mins_from_linkou": 25,
     "tip": "整排堤坡溜滑梯，矮的那幾座適合 3 歲；幾乎沒有遮蔭，要防曬。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "transit": "機場捷運三重站走路約 10 分",
+    "crowd_tip": "夏天中午溜滑梯很燙，早上或傍晚去",
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 25.074665,
     "lng": 121.456278,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -233,11 +403,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 30,
     "tip": "戶外有沙坑和大草地，室內有玩具展館，晴雨都能待。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "parking",
+      "picnic",
+      "shade",
+      "elder"
+    ],
     "lat": 25.02431,
     "lng": 121.451907,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -255,12 +440,27 @@
     "mins_from_linkou": 25,
     "tip": "館內有考古體驗區，外面草地可以跑，順路去八里左岸散步。",
     "open_note": "每月第一個週一休館",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "shade",
+      "elder"
+    ],
     "lat": 25.157041,
     "lng": 121.404871,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -279,12 +479,30 @@
     "mins_from_linkou": 30,
     "tip": "後面的陶瓷公園夏天有戲水區，記得帶泳衣和毛巾。",
     "open_note": "每月第一個週一休館",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2.5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵鶯歌站走路約 10 分",
     "lat": 24.949228,
     "lng": 121.352095,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -301,11 +519,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 70,
     "tip": "海洋動物表演有固定場次，先查時間再出發，隔壁就是野柳地質公園。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "shade",
+      "elder"
+    ],
     "lat": 25.205146,
     "lng": 121.69138,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -324,12 +555,30 @@
     "mins_from_linkou": 60,
     "tip": "兒童廳適合學齡前，展區很大，挑一兩區逛就好。",
     "open_note": "週一休館",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵海科館站走路約 5 分",
     "lat": 25.142518,
     "lng": 121.800231,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -347,11 +596,32 @@
     "stroller_ok": true,
     "mins_from_linkou": 60,
     "tip": "大草地看海放風箏，風很大，幫小孩多帶一件外套。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "crowd_tip": "假日下午停車場常滿",
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
     "lat": 25.143411,
     "lng": 121.803391,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -368,11 +638,30 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "企鵝和水母區最受歡迎，建議先線上買票，平日人少很多。",
+    "age_best": [
+      1,
+      12
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "機場捷運、高鐵桃園站走路約 5 分",
+    "crowd_tip": "假日先線上買票，分時段入場",
     "lat": 25.017191,
     "lng": 121.214072,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -390,13 +679,31 @@
     "mins_from_linkou": 20,
     "tip": "專為 2–6 歲設計，跟 Xpark 同一棟；有舞台秀的場次要先預約。",
     "open_note": "舞台秀場次要先預約",
+    "age_best": [
+      2,
+      6
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "機場捷運、高鐵桃園站走路約 5 分",
     "lat": 25.017191,
     "lng": 121.214072,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
       "cost_tier",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -413,11 +720,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "展覽可以動手玩，館外有大水池和草地，逛完還能放電。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "shade",
+      "elder"
+    ],
     "lat": 25.005325,
     "lng": 121.206258,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -435,11 +757,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "室內遊樂區不怕下雨，迷你建築區推車也好走。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade"
+    ],
     "lat": 24.834216,
     "lng": 121.181726,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -457,11 +794,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 50,
     "tip": "3 歲主要看動物、搭猛獸巴士，刺激設施大多有身高限制。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 6,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food"
+    ],
     "lat": 24.820225,
     "lng": 121.181606,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -478,11 +829,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "可以餵牛餵羊，大草原很好跑，中午太陽大，帶帽子。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "parking",
+      "food",
+      "picnic",
+      "elder"
+    ],
+    "transit": "台鐵埔心站走路約 10 分",
     "lat": 24.926324,
     "lng": 121.178406,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -499,11 +866,23 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "可以餵羊駝和笑笑羊，園區不大，兩小時剛好。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "food"
+    ],
     "lat": 24.838918,
     "lng": 121.288055,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -520,11 +899,24 @@
     "stroller_ok": false,
     "mins_from_linkou": 30,
     "tip": "樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "shade"
+    ],
+    "crowd_tip": "假日停車位少，早點到",
     "lat": 25.000303,
     "lng": 121.329312,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -542,12 +934,28 @@
     "mins_from_linkou": 55,
     "tip": "小而美，一個半小時逛得完，隔壁新竹公園還有遊戲場。",
     "open_note": "週一休園",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵新竹站走路約 15 分",
     "lat": 24.800688,
     "lng": 120.979484,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -564,11 +972,33 @@
     "stroller_ok": false,
     "mins_from_linkou": 65,
     "tip": "超長磨石子溜滑梯要大人陪滑，穿長褲；園區有坡，推車比較吃力。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "crowd_tip": "夏天滑梯很燙，穿長褲、挑早上去",
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 24.770891,
     "lng": 120.93238,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -586,11 +1016,25 @@
     "stroller_ok": false,
     "mins_from_linkou": 75,
     "tip": "可以近距離看鳥和羊駝，園區在山坡上，路程抓寬一點。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food"
+    ],
     "lat": 24.712774,
     "lng": 121.070238,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -608,11 +1052,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 45,
     "tip": "有科學遊具和室內滑雪場，夏天還有戲水區，可以玩一整天。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 5,
+    "facilities": [
+      "nursing",
+      "parking",
+      "food"
+    ],
     "lat": 24.87029,
     "lng": 120.978657,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -630,12 +1087,29 @@
     "mins_from_linkou": 75,
     "tip": "兒童探索區要預約場次，建築外面的步道很好拍照。",
     "open_note": "週三休館；兒童探索區要預約",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵頭城站轉公車或計程車約 5 分",
     "lat": 24.868806,
     "lng": 121.832677,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -653,11 +1127,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 80,
     "tip": "就在宜蘭火車站旁，可以看火車進站，停留一小時就夠。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "picnic",
+      "elder"
+    ],
+    "transit": "台鐵宜蘭站出站就是",
     "lat": 24.752595,
     "lng": 121.75701,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -674,11 +1162,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 90,
     "tip": "老街有騎樓可以躲雨，童玩和 DIY 小孩會喜歡，下午有踩街表演。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
     "lat": 24.685456,
     "lng": 121.823746,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -696,11 +1200,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 90,
     "tip": "有蒸汽火車頭和貯木池，環池步道平坦好推車。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵羅東站走路約 10 分",
     "lat": 24.682994,
     "lng": 121.77304,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -718,11 +1238,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 95,
     "tip": "可以餵梅花鹿和水豚，飼料杯含在門票裡，小孩會餵到不想走。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "food"
+    ],
+    "crowd_tip": "假日中午人最多，早上去比較好餵",
     "lat": 24.674632,
     "lng": 121.676009,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -744,6 +1277,15 @@
       "kind": "new",
       "label": "2026 新開幕"
     },
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "parking",
+      "shade"
+    ],
     "lat": 24.66554,
     "lng": 121.653934,
     "google_place_id": null,
@@ -751,7 +1293,10 @@
       "mins_from_linkou",
       "cost_tier",
       "env",
-      "stroller_ok"
+      "stroller_ok",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -769,11 +1314,32 @@
     "stroller_ok": true,
     "mins_from_linkou": 90,
     "tip": "可以搭小船、玩沙和滑草，園區平坦，推車很好走。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "parking",
+      "food",
+      "picnic"
+    ],
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
     "lat": 24.637539,
     "lng": 121.787331,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -797,13 +1363,32 @@
     },
     "opens_on": "2026-11-24",
     "open_note": "試營運到 12/6，只收線上購票",
+    "age_best": [
+      4,
+      12
+    ],
+    "stay_hours": 5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運、台鐵、高鐵南港站走路約 5 分",
+    "crowd_tip": "試營運期間只能先線上買票",
     "lat": 25.059334,
     "lng": 121.617955,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
       "stroller_ok",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -826,12 +1411,23 @@
       "label": "已熄燈"
     },
     "closes_on": "2026-09-20",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "parking"
+    ],
     "lat": 24.965353,
     "lng": 121.224926,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "closes_on"
+      "closes_on",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -849,11 +1445,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 65,
     "tip": "全室內的主題樂園，下雨天首選；3 歲能玩的在幼兒區。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
     "lat": 24.68774,
     "lng": 120.902012,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -870,11 +1482,35 @@
     "stroller_ok": true,
     "mins_from_linkou": 90,
     "tip": "餵小牛喝奶有固定時間，先看場次；草原很大，推車走得動。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 24.440292,
     "lng": 120.741963,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -893,12 +1529,29 @@
     "mins_from_linkou": 110,
     "tip": "恐龍廳的機械恐龍會動會叫，膽子小的先在遠處看。",
     "open_note": "週一休館",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "crowd_tip": "假日恐龍廳最擠，一進門先去",
     "lat": 24.157316,
     "lng": 120.666761,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -916,12 +1569,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 120,
     "tip": "號稱全台最大的室內樂園，各區分開收費，先挑適合 3 歲的區。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade"
+    ],
     "lat": 24.084658,
     "lng": 120.696121,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "cost_tier"
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -939,11 +1607,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 100,
     "tip": "探索樂園有幼兒設施，夏天馬拉灣可以玩水，旁邊就有飯店。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 6,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food"
+    ],
     "lat": 24.323518,
     "lng": 120.695946,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -960,11 +1642,32 @@
     "stroller_ok": true,
     "mins_from_linkou": 110,
     "tip": "遊戲場很多座，挑一兩區玩就好；遮蔭少，下午晚一點去。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 24.196083,
     "lng": 120.650438,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -983,13 +1686,28 @@
     "mins_from_linkou": 120,
     "tip": "分場次入場，適合學齡前動手玩，跟異想新樂園很近。",
     "open_note": "分場次入場，建議先訂",
+    "age_best": [
+      2,
+      8
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "shade",
+      "elder"
+    ],
     "lat": 24.099333,
     "lng": 120.687577,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
       "cost_tier",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1010,13 +1728,25 @@
       "kind": "new",
       "label": "2026 新開幕"
     },
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "shade"
+    ],
     "lat": 24.080767,
     "lng": 120.5423,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
       "env",
-      "stroller_ok"
+      "stroller_ok",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1038,13 +1768,25 @@
       "kind": "new",
       "label": "2026 改版"
     },
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "parking",
+      "food"
+    ],
     "lat": 23.946457,
     "lng": 120.605978,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
       "cost_tier",
-      "stroller_ok"
+      "stroller_ok",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1061,11 +1803,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 125,
     "tip": "可以近看火車頭轉進車庫，火車迷必去，停留一小時左右。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "picnic"
+    ],
+    "transit": "台鐵彰化站走路約 10 分",
     "lat": 24.085852,
     "lng": 120.540121,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1082,11 +1837,25 @@
     "stroller_ok": false,
     "mins_from_linkou": 180,
     "tip": "可以搭纜車到日月潭；園區坡多階梯多，建議帶揹巾，車程長最好住一晚。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 6,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food"
+    ],
     "lat": 23.864981,
     "lng": 120.948639,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1103,11 +1872,30 @@
     "stroller_ok": false,
     "mins_from_linkou": 210,
     "tip": "綿羊秀小孩很愛；山上冷而且坡陡，推車幾乎用不到。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "parking",
+      "food"
+    ],
+    "crowd_tip": "假日上山會塞車，早上 9 點前到",
+    "best_months": [
+      6,
+      7,
+      8,
+      9
+    ],
     "lat": 24.057299,
     "lng": 121.162355,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1125,11 +1913,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 165,
     "tip": "兒童玩國在室內，適合小小孩，隔壁就是飯店。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 6,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade"
+    ],
     "lat": 23.614711,
     "lng": 120.577402,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1146,11 +1949,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 160,
     "tip": "免門票，可以看乳牛、吃冰淇淋，有遮棚不怕曬。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
     "lat": 23.760461,
     "lng": 120.366225,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1169,12 +1986,30 @@
     "mins_from_linkou": 175,
     "tip": "兒童創意中心適合學齡前，戶外園區很大，可以跑也可以野餐。",
     "open_note": "週一休館",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "高鐵嘉義站轉接駁公車約 10 分",
     "lat": 23.475883,
     "lng": 120.294031,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1191,11 +2026,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 180,
     "tip": "棒球主題的遊戲場，旁邊有射日塔，樹蔭多比較涼。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic",
+      "shade",
+      "elder"
+    ],
     "lat": 23.482073,
     "lng": 120.466239,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1212,11 +2060,23 @@
     "stroller_ok": true,
     "mins_from_linkou": 180,
     "tip": "可以看阿里山小火車的車頭和檢修庫，免門票。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "picnic",
+      "elder"
+    ],
     "lat": 23.487624,
     "lng": 120.454664,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1235,12 +2095,30 @@
     "mins_from_linkou": 215,
     "tip": "動物標本廳小孩最愛，外面草地和噴水池可以放電。",
     "open_note": "週三休館",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵保安站走路約 10 分",
     "lat": 22.934459,
     "lng": 120.226462,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1258,11 +2136,25 @@
     "stroller_ok": false,
     "mins_from_linkou": 215,
     "tip": "有小火車和擊鼓表演；舊糖廠裡階梯多，推車不太方便。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "parking",
+      "food"
+    ],
+    "transit": "台鐵保安站走路約 10 分",
     "lat": 22.93898,
     "lng": 120.230947,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1279,11 +2171,33 @@
     "stroller_ok": true,
     "mins_from_linkou": 200,
     "tip": "可以餵長頸鹿，動物表演有固定場次，先查時間。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 3.5,
+    "facilities": [
+      "nursing",
+      "parking",
+      "food"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 23.2805,
     "lng": 120.20986,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1301,12 +2215,26 @@
     "mins_from_linkou": 210,
     "tip": "星象劇場要另外買票，戶外草地視野很好。",
     "open_note": "週一休館",
+    "age_best": [
+      4,
+      12
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "nursing",
+      "parking",
+      "shade",
+      "elder"
+    ],
     "lat": 23.117613,
     "lng": 120.391056,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1324,11 +2252,31 @@
     "stroller_ok": true,
     "mins_from_linkou": 220,
     "tip": "市中心的免費戲水池，夏天最適合，記得帶泳衣和替換衣物。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "picnic"
+    ],
+    "crowd_tip": "夏天假日下午人很多",
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
     "lat": 22.993691,
     "lng": 120.194427,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1346,12 +2294,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 205,
     "tip": "有大型恐龍和古生物化石，場館不大，一個半小時剛好。",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "shade",
+      "elder"
+    ],
     "lat": 23.104167,
     "lng": 120.262627,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "cost_tier"
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1369,12 +2330,35 @@
     "mins_from_linkou": 240,
     "tip": "整修後有空中廊道，推車好走；可以搭園區接駁車省力。",
     "open_note": "週一休園",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 22.634005,
     "lng": 120.276212,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1393,12 +2377,30 @@
     "mins_from_linkou": 235,
     "tip": "兒童科學園適合學齡前，分場次入場，先線上訂。",
     "open_note": "週一休館；兒童科學園分場次",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 3,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵科工館站走路約 5 分",
     "lat": 22.6416,
     "lng": 120.322686,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1416,11 +2418,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 240,
     "tip": "超大鐵道模型很好看，戶外還有駁二小火車可以搭。",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "nursing",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運西子灣站、輕軌哈瑪星站走路約 3 分",
     "lat": 22.620849,
     "lng": 120.278425,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1437,11 +2454,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 240,
     "tip": "樹蔭多、草地大，遊戲場有沙坑和滑索。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic",
+      "shade",
+      "elder"
+    ],
+    "transit": "捷運衛武營站走路約 5 分",
     "lat": 22.620473,
     "lng": 120.340139,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1463,12 +2496,23 @@
       "kind": "new",
       "label": "2026 新開幕"
     },
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "shade"
+    ],
     "lat": 22.616265,
     "lng": 120.329128,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "stroller_ok"
+      "stroller_ok",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1486,11 +2530,26 @@
     "stroller_ok": true,
     "mins_from_linkou": 235,
     "tip": "室內區很大，下雨也能玩，3 歲可以玩的設施不少。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 6,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade"
+    ],
     "lat": 22.73087,
     "lng": 120.408988,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1508,11 +2567,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 300,
     "tip": "海底隧道和白鯨最受歡迎，可以排夜宿；車程很長，一定要住一晚。",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
     "lat": 22.045753,
     "lng": 120.699334,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1529,11 +2604,32 @@
     "stroller_ok": true,
     "mins_from_linkou": 255,
     "tip": "舊糖廠遺構改成的河濱公園，有遊戲場，傍晚去最舒服。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 1.5,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
+    "best_months": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3,
+      4
+    ],
     "lat": 22.656068,
     "lng": 120.490868,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1551,11 +2647,27 @@
     "stroller_ok": true,
     "mins_from_linkou": 260,
     "tip": "有室內兒童探索區，戶外大傘架下可以躲太陽。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 2.5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food",
+      "shade",
+      "elder"
+    ],
     "lat": 22.659921,
     "lng": 120.560183,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1573,11 +2685,25 @@
     "stroller_ok": true,
     "mins_from_linkou": 200,
     "tip": "海豚表演和水族館適合小小孩，園區依山而建，有手扶梯和纜車。",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "food"
+    ],
     "lat": 23.900974,
     "lng": 121.601425,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1595,11 +2721,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 220,
     "tip": "園區很大，可以租電動車；有可愛動物區，還能泡溫泉。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 4,
+    "facilities": [
+      "nursing",
+      "parking",
+      "food"
+    ],
     "lat": 23.787019,
     "lng": 121.48396,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1617,12 +2756,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 195,
     "tip": "遊戲場免費，夏天戲水區開放時要另外收費。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "picnic"
+    ],
     "lat": 23.952207,
     "lng": 121.583968,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "cost_tier"
+      "cost_tier",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1639,11 +2790,24 @@
     "stroller_ok": true,
     "mins_from_linkou": 240,
     "tip": "免門票，可以看乳牛、喝鮮奶、吃鮮奶饅頭。",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1,
+    "facilities": [
+      "parking",
+      "food",
+      "elder"
+    ],
     "lat": 23.480671,
     "lng": 121.34579,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1661,12 +2825,29 @@
     "mins_from_linkou": 330,
     "tip": "整修後有兒童互動展區，戶外水舞廣場小孩很愛。",
     "open_note": "週一休館",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 2.5,
+    "facilities": [
+      "nursing",
+      "diaper",
+      "parking",
+      "shade",
+      "elder"
+    ],
+    "transit": "台鐵康樂站走路約 10 分",
     "lat": 22.759707,
     "lng": 121.091738,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note"
+      "open_note",
+      "age_best",
+      "stay_hours",
+      "facilities",
+      "transit"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1683,11 +2864,23 @@
     "stroller_ok": true,
     "mins_from_linkou": 320,
     "tip": "大草原可以滑草、餵牛，鮮奶冰淇淋必吃。",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 2,
+    "facilities": [
+      "parking",
+      "food"
+    ],
     "lat": 22.863574,
     "lng": 121.109267,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "facilities"
     ],
     "last_verified": "2026-11-16"
   }

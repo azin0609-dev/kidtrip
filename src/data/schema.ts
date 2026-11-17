@@ -9,6 +9,7 @@ import {
   BADGE_KINDS,
   COST_TIERS,
   ENVS,
+  FACILITIES,
   HOTEL_KINDS,
   HOTEL_TAGS,
   PRICE_TIERS,
@@ -60,6 +61,21 @@ export const spotSchema = z.object({
   closes_on: isoDate.optional(),
   /** 選填：公休日、要不要預約之類的一句提醒，例如「週一公休」。 */
   open_note: nonEmpty.optional(),
+  /** 選填：最適合的年齡範圍 [最小, 最大]（歲）；最大 12 代表「以上都可以」。 */
+  age_best: z
+    .tuple([z.number().int().min(0).max(12), z.number().int().min(0).max(12)])
+    .refine(([min, max]) => min <= max, { message: '年齡範圍的最小值不能大於最大值' })
+    .optional(),
+  /** 選填：建議停留幾小時。 */
+  stay_hours: z.number().positive().max(12).optional(),
+  /** 選填：設施。 */
+  facilities: z.array(z.enum(FACILITIES)).optional(),
+  /** 選填：大眾運輸怎麼到，例如「捷運圓山站走路 3 分」。 */
+  transit: nonEmpty.optional(),
+  /** 選填：人潮、時段建議。 */
+  crowd_tip: nonEmpty.optional(),
+  /** 選填：特別適合去的月份（1–12）。 */
+  best_months: z.array(z.number().int().min(1).max(12)).optional(),
   lat: coordinate,
   lng: coordinate,
   google_place_id: z.string().nullable(),
