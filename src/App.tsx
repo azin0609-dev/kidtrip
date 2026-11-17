@@ -5,7 +5,7 @@ import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { FoodFiltersPanel, HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
 import { KidPick } from './components/KidPick.tsx';
-import { Passport, YearReviewCard } from './components/Passport.tsx';
+import { Memories, Passport, YearReviewCard } from './components/Passport.tsx';
 import { RestaurantCard } from './components/RestaurantCard.tsx';
 import { Recommendations } from './components/Recommendations.tsx';
 import { SettingsDialog } from './components/SettingsDialog.tsx';
@@ -37,7 +37,7 @@ import { pickSpot } from './lib/pick.ts';
 import { setStars, toggleRatingTag } from './lib/ratings.ts';
 import { recommendRound, weekSeed } from './lib/recommend.ts';
 import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
-import { DEFAULT_NAP, formatReports, toggleBeen as toggleBeenState } from './lib/storage.ts';
+import { DEFAULT_NAP, formatReports, listMemories, setMemo, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
 
 export default function App() {
@@ -189,6 +189,8 @@ export default function App() {
       reason={reason}
       kidNote={kidAgeNote(spot, stored.kids ?? [], today)}
       nap={stored.nap ?? DEFAULT_NAP}
+      memo={stored.memos?.[spot.id]}
+      onMemo={(text) => update((s) => setMemo(s, spot.id, text))}
       rating={stored.ratings?.[spot.id]}
       onStars={(n) => update((s) => ({ ...s, ratings: setStars(s.ratings ?? {}, spot.id, n) }))}
       onRatingTag={(t) => update((s) => ({ ...s, ratings: toggleRatingTag(s.ratings ?? {}, spot.id, t) }))}
@@ -365,6 +367,7 @@ export default function App() {
           <>
             <div className="mb-6 flex flex-col gap-4">
               <Passport progress={passportProgress(spots, stored.been, (s) => isSpotVisible(s, today))} beenAt={stored.beenAt ?? {}} />
+              <Memories items={listMemories(stored.memos ?? {}, stored.beenAt ?? {}, nameOf)} />
               <YearReviewCard review={yearReview(spots, stored.beenAt ?? {}, stored.ratings ?? {}, Number(today.slice(0, 4)), minsOf)} />
             </div>
             <h2 className="mb-3 text-lg font-bold">我的收藏</h2>

@@ -30,6 +30,9 @@ export interface SpotCardProps {
   rating?: Rating;
   onStars?: (stars: number) => void;
   onRatingTag?: (tag: RatingTag) => void;
+  /** 去過之後寫的一句回憶。 */
+  memo?: string;
+  onMemo?: (text: string) => void;
   /** 午睡時段，用來排出門時間。 */
   nap?: Nap;
 }
@@ -58,7 +61,7 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote, rating, onStars, onRatingTag, nap }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote, rating, onStars, onRatingTag, nap, memo, onMemo }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   const facts = [spot.age_best && ageBestLabel(spot.age_best), spot.stay_hours && stayLabel(spot.stay_hours)].filter(Boolean);
   const plan = nap && mins !== null && spot.stay_hours ? napPlan(mins, spot.stay_hours, nap) : null;
@@ -249,6 +252,21 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
                 );
               })}
             </div>
+          )}
+          {onMemo && (
+            <label className="mt-2 block text-xs text-amber-950 dark:text-amber-100">
+              寫一句回憶（只存在這支手機）
+              <input
+                key={memo ?? ''}
+                defaultValue={memo ?? ''}
+                maxLength={200}
+                placeholder="例如：果果第一次餵長頸鹿"
+                onBlur={(e) => {
+                  if (e.target.value.trim() !== (memo ?? '')) onMemo(e.target.value);
+                }}
+                className="mt-1 min-h-11 w-full rounded-xl border border-stone-300 bg-white px-3 text-base text-stone-900 placeholder:text-stone-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100"
+              />
+            </label>
           )}
         </div>
       )}

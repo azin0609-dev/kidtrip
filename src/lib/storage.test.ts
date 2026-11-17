@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { STORAGE_KEY, loadState, parseState, saveState, toggleBeen } from './storage.ts';
+import { MEMO_MAX, STORAGE_KEY, listMemories, loadState, parseState, saveState, setMemo, toggleBeen } from './storage.ts';
 
 function memoryStorage(initial: Record<string, string> = {}) {
   const data = { ...initial };
@@ -80,5 +80,28 @@ describe('storage', () => {
     expect(saveState(throwing, { fav: [], been: [] })).toBe(false);
     expect(loadState(null)).toEqual({ fav: [], been: [] });
     expect(saveState(null, { fav: [], been: [] })).toBe(false);
+  });
+});
+
+describe('回憶', () => {
+  it('寫入、清掉、限制長度', () => {
+    const a = setMemo({ fav: [], been: ['spot-001'] }, 'spot-001', '  第一次餵長頸鹿  ');
+    expect(a.memos).toEqual({ 'spot-001': '第一次餵長頸鹿' });
+    expect(setMemo(a, 'spot-001', '   ').memos).toEqual({});
+    expect(setMemo(a, 'spot-002', 'x'.repeat(500)).memos?.['spot-002']).toHaveLength(MEMO_MAX);
+  });
+  it('讀取：只留文字', () => {
+    const s = parseState(JSON.stringify({ fav: [], been: [], memos: { 'spot-001': '好玩', 'spot-002': 5, 'spot-003': '' } }));
+    expect(s.memos).toEqual({ 'spot-001': '好玩' });
+    expect(parseState(JSON.stringify({ fav: [], been: [], memos: 'x' })).memos).toBeUndefined();
+  });
+  it('清單：新的在前，沒日期的在最後', () => {
+    const list = listMemories(
+      { 'spot-001': 'a', 'spot-002': 'b', 'spot-003': 'c' },
+      { 'spot-001': '2026-03-01', 'spot-002': '2026-10-01' },
+      (id) => `名稱${id}`,
+    );
+    expect(list.map((m) => m.id)).toEqual(['spot-002', 'spot-001', 'spot-003']);
+    expect(list[0]).toEqual({ id: 'spot-002', name: '名稱spot-002', date: '2026-10-01', text: 'b' });
   });
 });

@@ -287,6 +287,7 @@ id（`food-001`）、name、city、region、cuisine（料理類型）、price_ti
 2026-11-17 另外加了這些欄位（都只存本機，舊資料沒有這些欄位也能正常讀取）：
 - `ratings?: Record<string, { stars: 1–5; tags: string[] }>`：去過之後的自家評分。標籤有 again 會再來、kidlove 小孩超愛、crowded 人太多、stroller_hard 推車難推、parking_hard 難停車。2 顆星以下不再推薦；高分的類型會多推。
 - `reports?: { id; note; date }[]`：回報「資料有誤」的紀錄。
+- `memos?: Record<string, string>`：去過之後寫的一句回憶（最多 200 字），顯示在「我的」分頁；分享連結不會帶。
 - 分享連結會帶收藏、去過、評分；不帶出發地、孩子資料。
 
 提前完成的 Phase 2 項目（做法都是純前端、只存本機）：2-4 集章護照（「我的」分頁，含給小孩看的大圖）、2-5 評分。另外新增「給小孩選」大圖模式、年度回顧、「長輩一起去」開關。

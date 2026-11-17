@@ -3,6 +3,7 @@ import type { Spot } from '../data/schema.ts';
 import { formatMonthDay } from '../lib/date.ts';
 import { TYPE_LABELS } from '../lib/labels.ts';
 import { type RegionProgress, type YearReview, passportTitle, stampsToNextTitle } from '../lib/passport.ts';
+import type { MemoryItem } from '../lib/storage.ts';
 import { Dino } from './Dino.tsx';
 import { TypeIcon } from './TypeIcon.tsx';
 import { buttonBase } from './ui.tsx';
@@ -100,6 +101,28 @@ export function Passport({
             )}
           </div>
         ))}
+    </section>
+  );
+}
+
+export function Memories({ items }: { items: MemoryItem[] }) {
+  if (items.length === 0) return null;
+  return (
+    <section aria-labelledby="memories-title" className="rounded-3xl bg-white p-4 ring-1 ring-emerald-100 dark:bg-[#16241c] dark:ring-emerald-950">
+      <h2 id="memories-title" className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">
+        我們的回憶
+      </h2>
+      <ul className="mt-2 flex flex-col gap-2">
+        {items.map((m) => (
+          <li key={m.id} className="rounded-2xl bg-amber-50 p-3 text-sm dark:bg-amber-950/40">
+            <p className="text-xs text-stone-600 dark:text-stone-400">
+              {m.date ? `${m.date}・` : ''}
+              {m.name}
+            </p>
+            <p className="mt-0.5 leading-relaxed break-words text-stone-900 dark:text-stone-100">{m.text}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

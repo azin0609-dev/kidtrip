@@ -38,6 +38,45 @@ function parseReports(v: unknown): StoredReport[] | null {
   );
 }
 
+export const MEMO_MAX = 200;
+
+function parseMemos(v: unknown): Record<string, string> | null {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return null;
+  const out: Record<string, string> = {};
+  for (const [id, text] of Object.entries(v as Record<string, unknown>)) {
+    if (typeof text === 'string' && text.trim() !== '') out[id] = text.slice(0, MEMO_MAX);
+  }
+  return out;
+}
+
+/** 寫入或清掉一則回憶（空白就刪掉）。 */
+export function setMemo(state: StoredState, id: string, text: string): StoredState {
+  const memos = { ...state.memos };
+  const clean = text.trim().slice(0, MEMO_MAX);
+  if (clean === '') delete memos[id];
+  else memos[id] = clean;
+  return { ...state, memos };
+}
+
+export interface MemoryItem {
+  id: string;
+  name: string;
+  /** 沒有記錄日期時是 null */
+  date: string | null;
+  text: string;
+}
+
+/** 回憶清單：新的排前面，沒有日期的排最後。 */
+export function listMemories(
+  memos: Readonly<Record<string, string>>,
+  beenAt: Readonly<Record<string, string>>,
+  nameOf: (id: string) => string,
+): MemoryItem[] {
+  return Object.entries(memos)
+    .map(([id, text]) => ({ id, name: nameOf(id), date: beenAt[id] ?? null, text }))
+    .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? '') || a.id.localeCompare(b.id));
+}
+
 /** 把回報整理成可以貼給別人的文字。 */
 export function formatReports(reports: readonly StoredReport[], nameOf: (id: string) => string): string {
   return reports.map((r) => `${r.date}｜${nameOf(r.id)}（${r.id}）：${r.note}`).join('\n');
@@ -53,6 +92,8 @@ export interface StoredState {
   nap?: StoredNap;
   /** 使用者回報「資料有誤」的紀錄，只存在本機，可以在設定裡複製出來。 */
   reports?: StoredReport[];
+  /** 去過之後寫的一句回憶：id → 文字（最多 200 字）。只存本機，分享連結不會帶。 */
+  memos?: Record<string, string>;
   /** 去過之後的自家評分：id → { stars, tags }。 */
   ratings?: Ratings;
   /** 不認得的欄位原樣保留，之後的版本可能會用到。 */
@@ -93,6 +134,9 @@ export function parseState(raw: string | null): StoredState {
     const reports = parseReports(obj.reports);
     if (reports) state.reports = reports;
     else delete state.reports;
+    const memos = parseMemos(obj.memos);
+    if (memos) state.memos = memos;
+    else delete state.memos;
     const ratings = parseRatings(obj.ratings);
     if (ratings) state.ratings = ratings;
     else delete state.ratings;
