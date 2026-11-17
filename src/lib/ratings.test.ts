@@ -50,6 +50,7 @@ describe('評分影響推薦', () => {
     beenAt: {},
     rainy: false,
     overnight: false,
+    maxDrive: 120,
     ...o,
   });
   it('2 顆星以下不再推', () => {
@@ -77,7 +78,7 @@ describe('評分影響推薦', () => {
     const museum = r.find((x) => x.spot.id === 'spot-004');
     expect(zoo.reasons).toContain('你們喜歡這一類');
     expect(r.some((x) => x.spot.id === 'spot-002')).toBe(false);
-    if (museum) expect(zoo.score).toBeGreaterThan(museum.score - 15); // 隨機分最多 15
+    if (museum) expect(zoo.score).toBeGreaterThan(museum.score - 6); // 隨機分最多 6
   });
 });
 

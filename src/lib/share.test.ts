@@ -1,6 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { makeSpot } from '../test/fixtures.ts';
-import { type RecommendContext, recommendRound, weekSeed } from './recommend.ts';
 import { buildShareUrl, countNew, decodeShare, encodeShare, mergeShare } from './share.ts';
 import { formatReports, parseState } from './storage.ts';
 
@@ -52,34 +50,5 @@ describe('回報資料有誤', () => {
     const state = parseState(JSON.stringify({ fav: [], been: [], reports: [{ id: 'spot-001', note: '週一沒開', date: '2026-11-17' }, { id: 3 }] }));
     expect(state.reports).toEqual([{ id: 'spot-001', note: '週一沒開', date: '2026-11-17' }]);
     expect(formatReports(state.reports!, () => '測試公園')).toBe('2026-11-17｜測試公園（spot-001）：週一沒開');
-  });
-});
-
-describe('換一組', () => {
-  const linkou = { lat: 25.0775, lng: 121.3916 };
-  const today = '2026-11-20';
-  const ctx: RecommendContext = { today, minsOf: (s) => s.mins_from_linkou, fav: [], been: [], beenAt: {}, rainy: false, overnight: false };
-  const types = ['park', 'zoo', 'farm', 'museum'] as const;
-  const spots = Array.from({ length: 8 }, (_, i) =>
-    makeSpot({ id: `spot-00${i + 1}`, types: [types[i % 4]!], mins_from_linkou: 20 + i * 5 }),
-  );
-  const seedFor = (n: number) => weekSeed(today, linkou, n);
-  const ids = (round: number) => recommendRound(spots, ctx, seedFor, round).map((r) => r.spot.id);
-
-  it('每按一次都換到沒看過的', () => {
-    const a = ids(0);
-    const b = ids(1);
-    expect(a).toHaveLength(3);
-    expect(b).toHaveLength(3);
-    expect(b.some((id) => a.includes(id))).toBe(false);
-  });
-  it('全部看完會從頭再來，而且還是 3 個', () => {
-    // 8 個景點：第 0、1 組各 3 個，剩 2 個不夠，第 2 組重新開始。
-    expect(ids(2)).toHaveLength(3);
-    expect(ids(5)).toHaveLength(3);
-  });
-  it('同樣的輸入結果固定', () => {
-    expect(ids(1)).toEqual(ids(1));
-    expect(ids(3)).toEqual(ids(3));
   });
 });

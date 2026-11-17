@@ -1,102 +1,123 @@
 import { describe, expect, it } from 'vitest';
 import {
   WEATHER_TTL_MS,
-  formatDay,
+  defaultSlot,
+  formatSlotWeather,
   isCacheFresh,
+  isSlot,
   parseForecast,
-  upcomingWeekend,
+  slotDate,
+  slotLabelWithDate,
+  slotWeather,
   weatherCacheKey,
   weatherUrl,
-  weekendWeather,
 } from './weather.ts';
 
-// Open-Meteo 的回應格式
-const sample = {
-  latitude: 25.1,
-  longitude: 121.4,
-  timezone: 'Asia/Taipei',
-  daily: {
-    time: ['2026-11-19', '2026-11-20', '2026-11-21', '2026-11-22', '2026-11-23'],
-    precipitation_probability_max: [10, 30, 70, 45, null],
-    temperature_2m_max: [24.1, 23.5, 20.2, 21.8, 22],
-    temperature_2m_min: [18.3, 18, 16.9, 17.2, 17],
-  },
-};
+// Open-Meteo 逐時回應的格式（只放需要的幾個小時）
+function hourly(rows: [string, number | null, number | null][]) {
+  return {
+    hourly: {
+      time: rows.map((r) => r[0]),
+      precipitation_probability: rows.map((r) => r[1]),
+      temperature_2m: rows.map((r) => r[2]),
+    },
+  };
+}
+const sample = hourly([
+  ['2026-11-21T08:00', 90, 15],
+  ['2026-11-21T09:00', 20, 16.2],
+  ['2026-11-21T10:00', 70, 17.8],
+  ['2026-11-21T11:00', 40, 19.6],
+  ['2026-11-21T14:00', 10, 21],
+  ['2026-11-21T15:00', 5, 21],
+  ['2026-11-21T16:00', null, 20],
+  ['2026-11-22T09:00', 59, 18],
+  ['2026-11-22T10:00', 30, 19],
+  ['2026-11-22T11:00', 30, 20],
+]);
 
-describe('upcomingWeekend', () => {
+describe('時段', () => {
   it.each([
-    ['2026-11-16', ['2026-11-21', '2026-11-22']], // 週一
-    ['2026-11-19', ['2026-11-21', '2026-11-22']], // 週四
-    ['2026-11-21', ['2026-11-21', '2026-11-22']], // 週六
-    ['2026-11-22', ['2026-11-22']], // 週日
-    ['2026-12-31', ['2027-01-02', '2027-01-03']], // 跨年
-  ])('%s → %j', (today, dates) => {
-    expect(upcomingWeekend(today)).toEqual(dates);
+    ['2026-11-16', 'sat-am', '2026-11-21'], // 週一
+    ['2026-11-19', 'sun-pm', '2026-11-22'], // 週四
+    ['2026-11-21', 'sat-pm', '2026-11-21'], // 週六當天
+    ['2026-11-22', 'sun-am', '2026-11-22'], // 週日當天
+    ['2026-11-22', 'sat-am', '2026-11-21'], // 週日選週六 → 昨天
+    ['2026-12-31', 'sat-am', '2027-01-02'], // 跨年
+  ] as const)('%s 的 %s 是 %s', (today, slot, date) => {
+    expect(slotDate(today, slot)).toBe(date);
+  });
+  it('預設時段與標籤', () => {
+    expect(defaultSlot('2026-11-19')).toBe('sat-am');
+    expect(defaultSlot('2026-11-21')).toBe('sat-am');
+    expect(defaultSlot('2026-11-22')).toBe('sun-am');
+    expect(slotLabelWithDate('2026-11-19', 'sat-am')).toBe('週六上午 11/21');
+    expect(isSlot('sun-pm')).toBe(true);
+    expect(isSlot('mon-am')).toBe(false);
   });
 });
 
 describe('parseForecast', () => {
-  it('解析每天的降雨機率與溫度', () => {
+  it('解析逐時資料', () => {
     const f = parseForecast(sample);
-    expect(f).toHaveLength(5);
-    expect(f[2]).toEqual({ date: '2026-11-21', rainProb: 70, tempMax: 20.2, tempMin: 16.9 });
-    expect(f[4]?.rainProb).toBeNull();
+    expect(f).toHaveLength(10);
+    expect(f[2]).toEqual({ date: '2026-11-21', hour: 10, rainProb: 70, temp: 17.8 });
+    expect(f[6]?.rainProb).toBeNull();
   });
   it('格式不對回傳空陣列', () => {
     expect(parseForecast(null)).toEqual([]);
     expect(parseForecast({})).toEqual([]);
-    expect(parseForecast({ daily: { time: 'x' } })).toEqual([]);
+    expect(parseForecast({ hourly: { time: 'x' } })).toEqual([]);
+    expect(parseForecast({ daily: { time: ['2026-11-21'] } })).toEqual([]);
     expect(parseForecast({ error: true, reason: 'bad' })).toEqual([]);
   });
 });
 
-describe('weekendWeather', () => {
+describe('slotWeather', () => {
   const forecast = parseForecast(sample);
-  it('取週末兩天較高的降雨機率，60% 以上算下雨', () => {
-    const w = weekendWeather(forecast, '2026-11-19');
-    expect(w?.days.map((d) => d.date)).toEqual(['2026-11-21', '2026-11-22']);
-    expect(w?.maxRainProb).toBe(70);
-    expect(w?.rainy).toBe(true);
+  it('只看那個時段的幾個小時（上午 9–12 點），取最高降雨機率', () => {
+    const w = slotWeather(forecast, '2026-11-19', 'sat-am');
+    // 8 點的 90% 不算
+    expect(w).toMatchObject({ date: '2026-11-21', rainProb: 70, tempMin: 16.2, tempMax: 19.6, rainy: true });
   });
-  it('週日只看當天', () => {
-    const w = weekendWeather(forecast, '2026-11-22');
-    expect(w?.maxRainProb).toBe(45);
-    expect(w?.rainy).toBe(false);
+  it('同一天下午可以是晴天', () => {
+    const w = slotWeather(forecast, '2026-11-19', 'sat-pm');
+    expect(w).toMatchObject({ rainProb: 10, rainy: false });
   });
-  it('剛好 60% 算下雨；沒有機率資料不算', () => {
-    const at = (p: number | null) =>
-      weekendWeather([{ date: '2026-11-21', rainProb: p, tempMax: null, tempMin: null }], '2026-11-19');
-    expect(at(60)?.rainy).toBe(true);
-    expect(at(59)?.rainy).toBe(false);
-    expect(at(null)?.rainy).toBe(false);
+  it('59% 不算下雨，60% 算', () => {
+    expect(slotWeather(forecast, '2026-11-19', 'sun-am')?.rainy).toBe(false);
+    const sixty = parseForecast(hourly([['2026-11-22T09:00', 60, 18]]));
+    expect(slotWeather(sixty, '2026-11-19', 'sun-am')?.rainy).toBe(true);
   });
-  it('預報裡沒有週末回傳 null', () => {
-    expect(weekendWeather(forecast, '2026-12-01')).toBeNull();
-    expect(weekendWeather([], '2026-11-19')).toBeNull();
+  it('預報裡沒有那個時段回傳 null', () => {
+    expect(slotWeather(forecast, '2026-11-19', 'sun-pm')).toBeNull();
+    expect(slotWeather(forecast, '2026-12-01', 'sat-am')).toBeNull();
+    expect(slotWeather([], '2026-11-19', 'sat-am')).toBeNull();
   });
 });
 
 describe('顯示與網址', () => {
-  it('formatDay', () => {
-    expect(formatDay({ date: '2026-11-21', rainProb: 70, tempMax: 20.2, tempMin: 16.9 })).toBe('週六 11/21・降雨 70%・17–20°C');
-    expect(formatDay({ date: '2026-11-22', rainProb: null, tempMax: null, tempMin: null })).toBe('週日 11/22');
+  it('formatSlotWeather', () => {
+    const w = slotWeather(parseForecast(sample), '2026-11-19', 'sat-am')!;
+    expect(formatSlotWeather(w)).toBe('降雨 70%・16–20°C');
   });
-  it('座標只送到小數 1 位', () => {
+  it('座標只送到小數 1 位，要的是逐時資料', () => {
     const url = new URL(weatherUrl({ lat: 25.07753, lng: 121.39164 }));
     expect(url.hostname).toBe('api.open-meteo.com');
     expect(url.searchParams.get('latitude')).toBe('25.1');
     expect(url.searchParams.get('longitude')).toBe('121.4');
+    expect(url.searchParams.get('hourly')).toContain('precipitation_probability');
     expect(url.searchParams.get('timezone')).toBe('Asia/Taipei');
     expect(weatherCacheKey({ lat: 25.07753, lng: 121.39164 })).toBe('25.1,121.4');
   });
 });
 
 describe('isCacheFresh', () => {
-  const cache = { key: '25.1,121.4', fetchedAt: 1_000_000, forecast: [] };
-  it('同位置、1 小時內才算新', () => {
-    expect(isCacheFresh(cache, '25.1,121.4', 1_000_000 + WEATHER_TTL_MS - 1)).toBe(true);
-    expect(isCacheFresh(cache, '25.1,121.4', 1_000_000 + WEATHER_TTL_MS)).toBe(false);
-    expect(isCacheFresh(cache, '22.6,120.4', 1_000_001)).toBe(false);
-    expect(isCacheFresh(null, '25.1,121.4', 1_000_001)).toBe(false);
+  const entry = { fetchedAt: 1_000_000, forecast: [] };
+  it('1 小時內才算新', () => {
+    expect(isCacheFresh(entry, 1_000_000 + WEATHER_TTL_MS - 1)).toBe(true);
+    expect(isCacheFresh(entry, 1_000_000 + WEATHER_TTL_MS)).toBe(false);
+    expect(isCacheFresh(null, 1_000_001)).toBe(false);
+    expect(isCacheFresh(undefined, 1_000_001)).toBe(false);
   });
 });

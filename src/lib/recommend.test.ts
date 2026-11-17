@@ -1,7 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import type { Spot } from '../data/schema.ts';
 import { makeSpot } from '../test/fixtures.ts';
-import { type RecommendContext, isoWeek, recommend, scoreSpot, seededRandom, typesAllSame, weekSeed } from './recommend.ts';
+import {
+  type RecommendContext,
+  convenienceScore,
+  driveScore,
+  familyFit,
+  isoWeek,
+  pickBackup,
+  recommend,
+  recommendRound,
+  scoreSpot,
+  seededRandom,
+  typesAllSame,
+  weekSeed,
+} from './recommend.ts';
 
 const today = '2026-11-20';
 const linkou = { lat: 25.0775, lng: 121.3916 };
@@ -15,13 +28,14 @@ function ctx(overrides: Partial<RecommendContext> = {}): RecommendContext {
     beenAt: {},
     rainy: false,
     overnight: false,
+    maxDrive: 120,
     ...overrides,
   };
 }
 
 // 12 個景點：各種類型、車程、室內外。
 const spots: Spot[] = [
-  makeSpot({ id: 'spot-001', types: ['park'], env: 'out', mins_from_linkou: 20 }),
+  makeSpot({ id: 'spot-001', types: ['park'], env: 'out', mins_from_linkou: 10 }),
   makeSpot({ id: 'spot-002', types: ['park'], env: 'out', mins_from_linkou: 25 }),
   makeSpot({ id: 'spot-003', types: ['park'], env: 'out', mins_from_linkou: 30 }),
   makeSpot({ id: 'spot-004', types: ['museum', 'dino'], env: 'in', mins_from_linkou: 45 }),
@@ -35,6 +49,7 @@ const spots: Spot[] = [
   makeSpot({ id: 'spot-012', types: ['indoorplay'], env: 'in', mins_from_linkou: 55 }),
 ];
 const ids = (xs: { spot: { id: string } }[]) => xs.map((x) => x.spot.id);
+const seeds = Array.from({ length: 20 }, (_, i) => weekSeed(today, linkou, i));
 
 describe('isoWeek / seed', () => {
   it.each([
@@ -62,7 +77,7 @@ describe('isoWeek / seed', () => {
   });
 });
 
-describe('scoreSpot 排除條件', () => {
+describe('先判斷能不能成行', () => {
   it('已熄燈、還沒開幕不推', () => {
     expect(scoreSpot(makeSpot({ closes_on: '2026-11-19' }), ctx())).toBeNull();
     expect(scoreSpot(makeSpot({ opens_on: '2026-11-24' }), ctx())).toBeNull();
@@ -72,128 +87,250 @@ describe('scoreSpot 排除條件', () => {
     expect(scoreSpot(s, ctx({ been: ['spot-001'], beenAt: { 'spot-001': '2026-09-26' } }))).toBeNull(); // 55 天
     expect(scoreSpot(s, ctx({ been: ['spot-001'], beenAt: { 'spot-001': '2026-09-25' } }))).not.toBeNull(); // 56 天
   });
+  it('8 週內去過但點過「會再來」：可以再推，只是分數比較低', () => {
+    const s = makeSpot({ id: 'spot-001' });
+    const base = { been: ['spot-001'], beenAt: { 'spot-001': '2026-11-01' } };
+    const again = scoreSpot(s, ctx({ ...base, ratings: { 'spot-001': { stars: 5, tags: ['again'] } } }));
+    expect(again?.reasons).toContain('你們說會再來');
+    expect(again!.score).toBeLessThan(scoreSpot(s, ctx())!.score);
+    expect(scoreSpot(s, ctx({ ...base, ratings: { 'spot-001': { stars: 5, tags: [] } } }))).toBeNull();
+  });
   it('舊資料沒有日期：不排除，但分數比沒去過低', () => {
     const s = makeSpot({ id: 'spot-001' });
     const unknown = scoreSpot(s, ctx({ been: ['spot-001'] }));
     expect(unknown?.reasons).toContain('去過，有一陣子了');
     expect(unknown!.score).toBeLessThan(scoreSpot(s, ctx())!.score);
   });
-  it('超過 120 分只在要住一晚時推', () => {
-    const far = makeSpot({ mins_from_linkou: 150 });
-    expect(scoreSpot(far, ctx())).toBeNull();
-    expect(scoreSpot(far, ctx({ overnight: true }))).not.toBeNull();
+  it('超過車程上限不推；沒給上限時預設 45 分', () => {
+    const s = makeSpot({ mins_from_linkou: 50 });
+    expect(scoreSpot(s, ctx({ maxDrive: 45 }))).toBeNull();
+    expect(scoreSpot(s, ctx({ maxDrive: 60 }))).not.toBeNull();
+    expect(scoreSpot(s, { ...ctx(), maxDrive: undefined })).toBeNull();
+    expect(scoreSpot(makeSpot({ mins_from_linkou: 45 }), { ...ctx(), maxDrive: undefined })).not.toBeNull();
   });
-  it('下雨只推室內、半室內', () => {
+  it('下雨只推室內、半室內，並說清楚是哪一種', () => {
     expect(scoreSpot(makeSpot({ env: 'out' }), ctx({ rainy: true }))).toBeNull();
     expect(scoreSpot(makeSpot({ env: 'mix' }), ctx({ rainy: true }))).toBeNull();
-    expect(scoreSpot(makeSpot({ env: 'in' }), ctx({ rainy: true }))).not.toBeNull();
-    expect(scoreSpot(makeSpot({ env: 'semi' }), ctx({ rainy: true }))).not.toBeNull();
+    const indoor = scoreSpot(makeSpot({ env: 'in' }), ctx({ rainy: true }))!;
+    const semi = scoreSpot(makeSpot({ env: 'semi' }), ctx({ rainy: true }))!;
+    expect(indoor.reasons).toContain('室內，下大雨也能玩');
+    expect(semi.reasons).toContain('有遮棚，小雨可玩');
+    expect(indoor.score).toBeGreaterThan(semi.score);
+  });
+  it('帶推車：只推推車好推的', () => {
+    expect(scoreSpot(makeSpot({ stroller_ok: false }), ctx({ needStroller: true }))).toBeNull();
+    expect(scoreSpot(makeSpot({ stroller_ok: false }), ctx())).not.toBeNull();
   });
   it('車程算不出來不推', () => {
     expect(scoreSpot(makeSpot(), ctx({ minsOf: () => null }))).toBeNull();
   });
-});
-
-describe('scoreSpot 加分', () => {
-  const base = (o: Partial<Spot> = {}, c: Partial<RecommendContext> = {}) => scoreSpot(makeSpot(o), ctx(c))!.score;
-  it('車程：60 分內 > 60–120 分 > 超過 120 分', () => {
-    expect(base({ mins_from_linkou: 50 })).toBeGreaterThan(base({ mins_from_linkou: 90 }));
-    expect(base({ mins_from_linkou: 90 })).toBeGreaterThan(base({ mins_from_linkou: 150 }, { overnight: true }));
-  });
-  it('去過越久加越多', () => {
-    const at = (date: string) => base({ id: 'spot-001' }, { been: ['spot-001'], beenAt: { 'spot-001': date } });
-    expect(at('2025-11-01')).toBeGreaterThan(at('2026-08-01'));
-  });
-  it('新開幕加分；21 天內熄燈加更多', () => {
-    const plain = base();
-    const fresh = base({ badge: { kind: 'new', label: '新開幕' } });
-    const ending = base({ closes_on: '2026-12-05' });
-    expect(fresh).toBeGreaterThan(plain);
-    expect(ending - plain).toBeGreaterThan(fresh - plain);
-  });
-  it('收藏加分', () => {
-    expect(base({ id: 'spot-001' }, { fav: ['spot-001'] })).toBeGreaterThan(base({ id: 'spot-001' }));
-  });
-  it('推薦原因', () => {
-    const r = scoreSpot(
-      makeSpot({ id: 'spot-001', env: 'in', mins_from_linkou: 23 }),
-      ctx({ been: ['spot-001'], beenAt: { 'spot-001': '2026-09-11' }, fav: ['spot-001'] }),
-    )!;
-    expect(r.reasons).toEqual(['離家約 25 分', '室內', '上次去是 10 週前', '收藏過']);
-    expect(scoreSpot(makeSpot({ closes_on: '2026-11-30' }), ctx())!.reasons).toContain('11/30 熄燈，最後機會');
+  it('2 顆星以下不再推', () => {
+    const s = makeSpot({ id: 'spot-001' });
+    expect(scoreSpot(s, ctx({ ratings: { 'spot-001': { stars: 2, tags: [] } } }))).toBeNull();
+    expect(scoreSpot(s, ctx({ ratings: { 'spot-001': { stars: 3, tags: [] } } }))).not.toBeNull();
   });
 });
 
-describe('recommend 組合', () => {
-  const seed = weekSeed(today, linkou);
+describe('這週要住一晚', () => {
+  const far = makeSpot({ id: 'spot-009', mins_from_linkou: 150 });
+  const near = makeSpot({ id: 'spot-001', mins_from_linkou: 30 });
+  it('只推一小時以上、而且附近有住宿的地方', () => {
+    const hasStay = (s: Spot) => s.id === 'spot-009';
+    expect(scoreSpot(far, ctx({ overnight: true, hasStay }))?.reasons).toContain('附近有住宿');
+    expect(scoreSpot(near, ctx({ overnight: true, hasStay: () => true }))).toBeNull(); // 太近不用住
+    expect(scoreSpot(far, ctx({ overnight: true, hasStay: () => false }))).toBeNull(); // 沒有住宿
+    expect(scoreSpot(far, ctx({ overnight: true }))).toBeNull();
+  });
+  it('住一晚時不受車程上限限制', () => {
+    expect(scoreSpot(far, ctx({ overnight: true, maxDrive: 30, hasStay: () => true }))).not.toBeNull();
+  });
+});
 
-  it('推 3 個，同週結果固定', () => {
-    const a = recommend(spots, ctx(), seed);
-    expect(a).toHaveLength(3);
-    expect(ids(recommend(spots, ctx(), weekSeed('2026-11-22', linkou)))).toEqual(ids(a));
-    // 資料順序不同也一樣
-    expect(ids(recommend([...spots].reverse(), ctx(), seed))).toEqual(ids(a));
+describe('分數', () => {
+  it('車程：20 分內滿分，之後逐步遞減', () => {
+    expect(driveScore(10)).toBe(35);
+    expect(driveScore(20)).toBe(35);
+    expect(driveScore(35)).toBeCloseTo(26);
+    expect(driveScore(45)).toBeCloseTo(20);
+    expect(driveScore(120)).toBeCloseTo(5);
+    expect(driveScore(10)).toBeGreaterThan(driveScore(35));
+    expect(driveScore(35)).toBeGreaterThan(driveScore(60));
+    expect(driveScore(150, true)).toBe(35);
+  });
+  it('10 分鐘的公園一定排在 35 分鐘的同類公園前面（隨機分蓋不過車程）', () => {
+    const a = makeSpot({ id: 'spot-001', mins_from_linkou: 10 });
+    const b = makeSpot({ id: 'spot-002', mins_from_linkou: 35 });
+    for (const seed of seeds) {
+      expect(recommend([a, b], ctx(), seed)[0]?.spot.id).toBe('spot-001');
+    }
+  });
+  it('兩個孩子的適配：都在年齡範圍內分數最高，並寫出原因', () => {
+    const kids = [
+      { name: '果果', age: 3.2 },
+      { name: '核桃', age: 1.3 },
+    ];
+    const both = familyFit(makeSpot({ age_best: [1, 8], stroller_ok: true, facilities: ['diaper'] }), kids);
+    const onlyOlder = familyFit(makeSpot({ age_best: [3, 10], stroller_ok: true, facilities: ['diaper'] }), kids);
+    const neither = familyFit(makeSpot({ age_best: [4, 12], stroller_ok: false }), kids);
+    expect(both.score).toBe(35);
+    expect(both.reason).toBe('果果、核桃都能玩、有地方換尿布');
+    expect(onlyOlder.score).toBeLessThan(both.score);
+    expect(onlyOlder.reason).toBeNull();
+    expect(neither.score).toBe(0);
+  });
+  it('沒設定孩子或景點沒有年齡資料：給中間分數，不寫原因', () => {
+    expect(familyFit(makeSpot({ age_best: [1, 8] }), [])).toEqual({ score: 17, reason: null });
+    expect(familyFit(makeSpot(), [{ name: '', age: 3 }])).toEqual({ score: 17, reason: null });
+  });
+  it('單一孩子的原因', () => {
+    expect(familyFit(makeSpot({ age_best: [2, 6] }), [{ name: '果果', age: 3 }]).reason).toBe('適合果果的年紀');
+    expect(familyFit(makeSpot({ age_best: [2, 6] }), [{ name: '', age: 3 }]).reason).toBe('適合孩子的年紀');
+  });
+  it('到場便利：好停車、有賣吃的等加分，要先預約的少一點', () => {
+    const easy = makeSpot({ facilities: ['parking', 'food', 'shade'], stroller_ok: true, transit: '捷運站旁' });
+    const hard = makeSpot({ facilities: [], stroller_ok: false, open_note: '要先預約' });
+    expect(convenienceScore(easy)).toBe(20);
+    expect(convenienceScore(hard)).toBe(0);
+  });
+  it('新開幕、快熄燈、收藏、季節、高分都會加分並寫在原因', () => {
+    const base = (o: Partial<Spot> = {}, c: Partial<RecommendContext> = {}) => scoreSpot(makeSpot(o), ctx(c))!;
+    const plain = base().score;
+    expect(base({ badge: { kind: 'new', label: '新開幕' } }).score).toBeGreaterThan(plain);
+    expect(base({ closes_on: '2026-12-05' }).reasons).toContain('12/5 熄燈，最後機會');
+    expect(base({ id: 'spot-001' }, { fav: ['spot-001'] }).score).toBeGreaterThan(base({ id: 'spot-001' }).score);
+    expect(base({ best_months: [10, 11, 12] }).reasons).toContain('這個季節正適合');
+    expect(base({ best_months: [6, 7, 8] }).score).toBeLessThan(plain);
+  });
+  it('長輩一起去：只推長輩好走的', () => {
+    expect(scoreSpot(makeSpot(), ctx({ elders: true }))).toBeNull();
+    expect(scoreSpot(makeSpot({ facilities: ['elder'] }), ctx({ elders: true }))?.reasons).toContain('長輩好走');
+  });
+});
+
+describe('三張推薦卡的角色', () => {
+  const seed = seeds[0]!;
+
+  it('第一張是分數最高的「最適合這次」', () => {
+    const r = recommend(spots, ctx(), seed);
+    expect(r).toHaveLength(3);
+    expect(r[0]?.role).toBe('best');
+    expect(r[0]!.score).toBeGreaterThanOrEqual(r[1]!.score);
   });
 
-  it('換一組（種子 +1）結果不同', () => {
-    const results = new Set(
-      Array.from({ length: 6 }, (_, i) => ids(recommend(spots, ctx(), weekSeed(today, linkou, i))).join(',')),
-    );
-    expect(results.size).toBeGreaterThan(1);
+  it('「車程最短」一定比第一張近；第一張已經最近時改標「再一個選擇」', () => {
+    for (const s of seeds) {
+      const r = recommend(spots, ctx(), s);
+      if (r[1]?.role === 'nearest') expect(r[1].mins).toBeLessThan(r[0]!.mins);
+      if (r[1]?.role === 'other') expect(r[1].mins).toBeGreaterThanOrEqual(r[0]!.mins);
+    }
+    // 最近的那個收藏起來變成第一名，第二張就不能叫「車程最短」
+    const r = recommend(spots, ctx({ fav: ['spot-001'] }), seed);
+    expect(r[0]?.spot.id).toBe('spot-001');
+    expect(r[1]?.role).toBe('other');
+  });
+
+  it('第三張是完全室內的「雨天備案」', () => {
+    for (const s of seeds) {
+      const r = recommend(spots, ctx(), s);
+      const backup = r.find((x) => x.role === 'backup');
+      expect(backup?.spot.env).toBe('in');
+    }
+  });
+
+  it('沒有室內景點時，第三張是「再一個選擇」', () => {
+    const outdoor = spots.filter((s) => s.env !== 'in');
+    const r = recommend(outdoor, ctx(), seed);
+    expect(r).toHaveLength(3);
+    expect(r.some((x) => x.role === 'backup')).toBe(false);
+  });
+
+  it('下雨模式三個都是室內或半室內，不再另外標雨天備案', () => {
+    for (const s of seeds) {
+      const r = recommend(spots, ctx({ rainy: true }), s);
+      expect(r).toHaveLength(3);
+      expect(r.every((x) => x.spot.env === 'in' || x.spot.env === 'semi')).toBe(true);
+      expect(r.some((x) => x.role === 'backup')).toBe(false);
+    }
   });
 
   it('三個類型不全相同', () => {
-    // 公園分數刻意拉高（收藏＋最近），仍然不會三個都是公園。
+    // 公園都收藏、分數拉高，仍然不會三個都是公園。
     const c = ctx({ fav: ['spot-001', 'spot-002', 'spot-003'] });
-    for (let i = 0; i < 20; i++) {
-      const r = recommend(spots, c, weekSeed(today, linkou, i));
-      expect(typesAllSame(r)).toBe(false);
-    }
+    for (const s of seeds) expect(typesAllSame(recommend(spots, c, s))).toBe(false);
   });
 
-  it('至少一個在 60 分內', () => {
-    // 遠的景點都收藏，仍然要有一個近的。
-    const c = ctx({ overnight: true, fav: ['spot-007', 'spot-008', 'spot-009', 'spot-010'] });
-    for (let i = 0; i < 20; i++) {
-      expect(recommend(spots, c, weekSeed(today, linkou, i)).some((r) => r.mins <= 60)).toBe(true);
-    }
+  it('同週結果固定，跟資料順序無關', () => {
+    const a = recommend(spots, ctx(), seed);
+    expect(ids(recommend(spots, ctx(), weekSeed('2026-11-22', linkou)))).toEqual(ids(a));
+    expect(ids(recommend([...spots].reverse(), ctx(), seed))).toEqual(ids(a));
   });
 
-  it('8 週內去過的不會出現', () => {
-    const c = ctx({ been: ['spot-001', 'spot-005'], beenAt: { 'spot-001': '2026-11-01', 'spot-005': '2026-10-20' } });
-    for (let i = 0; i < 20; i++) {
-      const r = ids(recommend(spots, c, weekSeed(today, linkou, i)));
-      expect(r).not.toContain('spot-001');
-      expect(r).not.toContain('spot-005');
-    }
-  });
-
-  it('下雨時三個都是室內或半室內', () => {
-    for (let i = 0; i < 20; i++) {
-      const r = recommend(spots, ctx({ rainy: true }), weekSeed(today, linkou, i));
-      expect(r).toHaveLength(3);
-      expect(r.every((x) => x.spot.env === 'in' || x.spot.env === 'semi')).toBe(true);
-    }
-  });
-
-  it('不推還沒開幕、已熄燈的', () => {
+  it('8 週內去過、還沒開幕、已熄燈的不會出現', () => {
     const extra = [
       ...spots,
       makeSpot({ id: 'spot-090', opens_on: '2026-11-24', mins_from_linkou: 10 }),
       makeSpot({ id: 'spot-091', closes_on: '2026-11-01', mins_from_linkou: 10 }),
     ];
-    for (let i = 0; i < 20; i++) {
-      const r = ids(recommend(extra, ctx(), weekSeed(today, linkou, i)));
-      expect(r).not.toContain('spot-090');
-      expect(r).not.toContain('spot-091');
+    const c = ctx({ been: ['spot-001', 'spot-005'], beenAt: { 'spot-001': '2026-11-01', 'spot-005': '2026-10-20' } });
+    for (const s of seeds) {
+      const r = ids(recommend(extra, c, s));
+      for (const id of ['spot-001', 'spot-005', 'spot-090', 'spot-091']) expect(r).not.toContain(id);
     }
   });
 
-  it('候選不夠時有幾個給幾個；條件滿足不了時放寬', () => {
+  it('符合的不到 3 個就有幾個給幾個，不會為了湊數放寬車程', () => {
     expect(recommend([], ctx(), seed)).toEqual([]);
-    const onlyParks = spots.slice(0, 3);
-    expect(recommend(onlyParks, ctx(), seed)).toHaveLength(3); // 只有公園，放寬類型
-    expect(recommend(spots.slice(0, 2), ctx(), seed)).toHaveLength(2);
+    const r = recommend(spots, ctx({ maxDrive: 25 }), seed);
+    expect(ids(r).sort()).toEqual(['spot-001', 'spot-002']);
+    expect(recommend(spots.slice(0, 3), ctx(), seed)).toHaveLength(3); // 只有公園也照給
+  });
+});
+
+describe('換一組', () => {
+  const seedFor = (n: number) => weekSeed(today, linkou, n);
+  const eight = spots.slice(0, 8);
+
+  it('每按一次都換到沒看過的', () => {
+    const a = recommendRound(eight, ctx(), seedFor, 0);
+    const b = recommendRound(eight, ctx(), seedFor, 1);
+    expect(a.status).toBe('ok');
+    expect(b.status).toBe('ok');
+    expect(b.picks).toHaveLength(3);
+    expect(ids(b.picks).some((id) => ids(a.picks).includes(id))).toBe(false);
+  });
+
+  it('新的不夠一組：先給剩下的並標 last，再按才從頭來並標 restarted', () => {
+    // 8 個：第 0、1 組各 3 個，第 2 組只剩 2 個新的，第 3 組從頭再來
+    const third = recommendRound(eight, ctx(), seedFor, 2);
+    expect(third.status).toBe('last');
+    expect(third.picks).toHaveLength(2);
+    const seen = [...ids(recommendRound(eight, ctx(), seedFor, 0).picks), ...ids(recommendRound(eight, ctx(), seedFor, 1).picks)];
+    expect(ids(third.picks).some((id) => seen.includes(id))).toBe(false);
+
+    const fourth = recommendRound(eight, ctx(), seedFor, 3);
+    expect(fourth.status).toBe('restarted');
+    expect(fourth.picks).toHaveLength(3);
+  });
+
+  it('同樣的輸入結果固定', () => {
+    expect(ids(recommendRound(eight, ctx(), seedFor, 2).picks)).toEqual(ids(recommendRound(eight, ctx(), seedFor, 2).picks));
+  });
+
+  it('本來就不到 3 個時是 ok，不算看完', () => {
+    const r = recommendRound(spots.slice(0, 2), ctx(), seedFor, 0);
+    expect(r).toMatchObject({ status: 'ok' });
+    expect(r.picks).toHaveLength(2);
+  });
+});
+
+describe('pickBackup', () => {
+  it('幫主行程挑分數最高的完全室內景點，不會挑到自己', () => {
+    const b = pickBackup(spots, ctx(), seeds[0]!, 'spot-005');
+    expect(b?.spot.env).toBe('in');
+    expect(b?.spot.id).not.toBe('spot-005');
+  });
+  it('沒有室內景點回傳 null', () => {
+    expect(pickBackup(spots.filter((s) => s.env !== 'in'), ctx(), seeds[0]!, 'spot-001')).toBeNull();
   });
 });
 
@@ -203,29 +340,5 @@ describe('typesAllSame', () => {
     expect(typesAllSame([s(['park']), s(['park', 'zoo']), s(['park'])])).toBe(true);
     expect(typesAllSame([s(['park']), s(['zoo']), s(['park'])])).toBe(false);
     expect(typesAllSame([s(['park'])])).toBe(false);
-  });
-});
-
-describe('季節與長輩', () => {
-  it('適合的月份加分、不適合扣分，並寫在原因裡', () => {
-    const plain = scoreSpot(makeSpot(), ctx())!; // 今天是 11 月
-    const inSeason = scoreSpot(makeSpot({ best_months: [10, 11, 12] }), ctx())!;
-    const offSeason = scoreSpot(makeSpot({ best_months: [6, 7, 8] }), ctx())!;
-    expect(inSeason.score).toBeGreaterThan(plain.score);
-    expect(offSeason.score).toBeLessThan(plain.score);
-    expect(inSeason.reasons).toContain('這個季節正適合');
-    expect(offSeason.reasons).not.toContain('這個季節正適合');
-  });
-  it('長輩一起去：只推長輩好走的', () => {
-    expect(scoreSpot(makeSpot(), ctx({ elders: true }))).toBeNull();
-    const ok = scoreSpot(makeSpot({ facilities: ['elder'] }), ctx({ elders: true }));
-    expect(ok?.reasons).toContain('長輩好走');
-    const list = [
-      ...spots.slice(0, 6).map((s) => ({ ...s, facilities: ['elder' as const] })),
-      ...spots.slice(6),
-    ];
-    const r = recommend(list, ctx({ elders: true }), weekSeed(today, linkou));
-    expect(r).toHaveLength(3);
-    expect(r.every((x) => x.spot.facilities?.includes('elder'))).toBe(true);
   });
 });

@@ -1,17 +1,36 @@
-/** 週末天氣（Open-Meteo，免金鑰）。解析與判斷都是純函式。 */
+/** 週末天氣（Open-Meteo，免金鑰）。看的是「選定時段」的逐時預報。解析與判斷都是純函式。 */
 
 /** 降雨機率到這個數字，推薦就自動偏向室內（PRD 2-2）。 */
 export const RAINY_THRESHOLD = 60;
 /** 快取 1 小時。 */
 export const WEATHER_TTL_MS = 60 * 60 * 1000;
 
-export interface DayForecast {
+/** 出門時段：週六或週日、上午或下午。 */
+export const SLOTS = ['sat-am', 'sat-pm', 'sun-am', 'sun-pm'] as const;
+export type Slot = (typeof SLOTS)[number];
+
+export const SLOT_LABELS: Record<Slot, string> = {
+  'sat-am': '週六上午',
+  'sat-pm': '週六下午',
+  'sun-am': '週日上午',
+  'sun-pm': '週日下午',
+};
+
+/** 各時段看哪幾個小時的預報：上午 9–12 點、下午 14–17 點。 */
+const SLOT_HOURS: Record<'am' | 'pm', number[]> = { am: [9, 10, 11], pm: [14, 15, 16] };
+
+export function isSlot(v: unknown): v is Slot {
+  return typeof v === 'string' && (SLOTS as readonly string[]).includes(v);
+}
+
+export interface HourForecast {
   /** YYYY-MM-DD（Asia/Taipei） */
   date: string;
+  /** 0–23 */
+  hour: number;
   /** 降雨機率 0–100；沒有資料是 null */
   rainProb: number | null;
-  tempMax: number | null;
-  tempMin: number | null;
+  temp: number | null;
 }
 
 /** 座標取到小數 1 位（約 10 公里）再送出：天氣夠準，也不會把精確位置傳給外部服務。 */
@@ -19,11 +38,11 @@ export function roundForWeather(n: number): number {
   return Math.round(n * 10) / 10;
 }
 
-export function weatherUrl(origin: { lat: number; lng: number }): string {
+export function weatherUrl(point: { lat: number; lng: number }): string {
   const params = new URLSearchParams({
-    latitude: String(roundForWeather(origin.lat)),
-    longitude: String(roundForWeather(origin.lng)),
-    daily: 'precipitation_probability_max,temperature_2m_max,temperature_2m_min',
+    latitude: String(roundForWeather(point.lat)),
+    longitude: String(roundForWeather(point.lng)),
+    hourly: 'precipitation_probability,temperature_2m',
     timezone: 'Asia/Taipei',
     forecast_days: '8',
   });
@@ -31,29 +50,27 @@ export function weatherUrl(origin: { lat: number; lng: number }): string {
 }
 
 /** 同一個（四捨五入後的）位置共用快取。 */
-export function weatherCacheKey(origin: { lat: number; lng: number }): string {
-  return `${roundForWeather(origin.lat)},${roundForWeather(origin.lng)}`;
+export function weatherCacheKey(point: { lat: number; lng: number }): string {
+  return `${roundForWeather(point.lat)},${roundForWeather(point.lng)}`;
 }
 
 const num = (v: unknown): number | null => (typeof v === 'number' && Number.isFinite(v) ? v : null);
 
-/** 解析 Open-Meteo 的回應；格式不對回傳空陣列。 */
-export function parseForecast(json: unknown): DayForecast[] {
+/** 解析 Open-Meteo 的逐時回應；格式不對回傳空陣列。 */
+export function parseForecast(json: unknown): HourForecast[] {
   if (!json || typeof json !== 'object') return [];
-  const daily = (json as { daily?: unknown }).daily;
-  if (!daily || typeof daily !== 'object') return [];
-  const d = daily as Record<string, unknown>;
-  const time = d.time;
+  const hourly = (json as { hourly?: unknown }).hourly;
+  if (!hourly || typeof hourly !== 'object') return [];
+  const h = hourly as Record<string, unknown>;
+  const time = h.time;
   if (!Array.isArray(time)) return [];
-  const col = (key: string) => (Array.isArray(d[key]) ? (d[key] as unknown[]) : []);
-  const rain = col('precipitation_probability_max');
-  const max = col('temperature_2m_max');
-  const min = col('temperature_2m_min');
-  return time.flatMap((date, i) =>
-    typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)
-      ? [{ date, rainProb: num(rain[i]), tempMax: num(max[i]), tempMin: num(min[i]) }]
-      : [],
-  );
+  const col = (key: string) => (Array.isArray(h[key]) ? (h[key] as unknown[]) : []);
+  const rain = col('precipitation_probability');
+  const temp = col('temperature_2m');
+  return time.flatMap((t, i) => {
+    const m = typeof t === 'string' ? /^(\d{4}-\d{2}-\d{2})T(\d{2}):/.exec(t) : null;
+    return m ? [{ date: m[1]!, hour: Number(m[2]), rainProb: num(rain[i]), temp: num(temp[i]) }] : [];
+  });
 }
 
 function addDays(isoDate: string, days: number): string {
@@ -61,50 +78,75 @@ function addDays(isoDate: string, days: number): string {
   return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10);
 }
 
-/** 這個週末的日期：週一到週六 → 這週六、日；週日 → 只有今天。 */
-export function upcomingWeekend(today: string): string[] {
-  const [y, m, d] = today.split('-').map(Number) as [number, number, number];
-  const dow = new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0 = 週日
-  if (dow === 0) return [today];
-  const sat = addDays(today, 6 - dow);
-  return [sat, addDays(sat, 1)];
+function dayOfWeek(isoDate: string): number {
+  const [y, m, d] = isoDate.split('-').map(Number) as [number, number, number];
+  return new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0 = 週日
 }
 
-export interface WeekendWeather {
-  days: DayForecast[];
-  /** 週末兩天中較高的降雨機率 */
-  maxRainProb: number | null;
+/** 這一週（週一到週日）的週六或週日是哪一天。週日當天選「週六」會得到昨天。 */
+export function slotDate(today: string, slot: Slot): string {
+  const dow = dayOfWeek(today) || 7; // 週一 = 1 … 週日 = 7
+  return addDays(today, (slot.startsWith('sat') ? 6 : 7) - dow);
+}
+
+/** 預設時段：平日和週六 → 週六上午；週日 → 週日上午。 */
+export function defaultSlot(today: string): Slot {
+  return dayOfWeek(today) === 0 ? 'sun-am' : 'sat-am';
+}
+
+/** 「週六上午 11/21」 */
+export function slotLabelWithDate(today: string, slot: Slot): string {
+  const [, m, d] = slotDate(today, slot).split('-').map(Number) as [number, number, number];
+  return `${SLOT_LABELS[slot]} ${m}/${d}`;
+}
+
+export interface SlotWeather {
+  slot: Slot;
+  date: string;
+  /** 這個時段幾個小時裡最高的降雨機率 */
+  rainProb: number | null;
+  tempMin: number | null;
+  tempMax: number | null;
   rainy: boolean;
 }
 
-export function weekendWeather(forecast: readonly DayForecast[], today: string): WeekendWeather | null {
-  const dates = upcomingWeekend(today);
-  const days = forecast.filter((f) => dates.includes(f.date));
-  if (days.length === 0) return null;
-  const probs = days.map((x) => x.rainProb).filter((p): p is number => p !== null);
-  const maxRainProb = probs.length > 0 ? Math.max(...probs) : null;
-  return { days, maxRainProb, rainy: maxRainProb !== null && maxRainProb >= RAINY_THRESHOLD };
+/** 選定時段的天氣；預報裡沒有那個時段（已經過了、或太遠）回傳 null。 */
+export function slotWeather(forecast: readonly HourForecast[], today: string, slot: Slot): SlotWeather | null {
+  const date = slotDate(today, slot);
+  const hours = SLOT_HOURS[slot.endsWith('am') ? 'am' : 'pm'];
+  const rows = forecast.filter((f) => f.date === date && hours.includes(f.hour));
+  if (rows.length === 0) return null;
+  const probs = rows.map((r) => r.rainProb).filter((p): p is number => p !== null);
+  const temps = rows.map((r) => r.temp).filter((t): t is number => t !== null);
+  const rainProb = probs.length > 0 ? Math.max(...probs) : null;
+  return {
+    slot,
+    date,
+    rainProb,
+    tempMin: temps.length > 0 ? Math.min(...temps) : null,
+    tempMax: temps.length > 0 ? Math.max(...temps) : null,
+    rainy: rainProb !== null && rainProb >= RAINY_THRESHOLD,
+  };
 }
 
-const WEEKDAYS = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
-
-/** 「週六 11/21・降雨 70%・18–24°C」 */
-export function formatDay(day: DayForecast): string {
-  const [y, m, d] = day.date.split('-').map(Number) as [number, number, number];
-  const name = WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
-  const parts = [`${name} ${m}/${d}`];
-  if (day.rainProb !== null) parts.push(`降雨 ${Math.round(day.rainProb)}%`);
-  if (day.tempMin !== null && day.tempMax !== null) parts.push(`${Math.round(day.tempMin)}–${Math.round(day.tempMax)}°C`);
+/** 「降雨 70%・17–20°C」 */
+export function formatSlotWeather(w: SlotWeather): string {
+  const parts: string[] = [];
+  if (w.rainProb !== null) parts.push(`降雨 ${Math.round(w.rainProb)}%`);
+  if (w.tempMin !== null && w.tempMax !== null) {
+    const lo = Math.round(w.tempMin);
+    const hi = Math.round(w.tempMax);
+    parts.push(lo === hi ? `${lo}°C` : `${lo}–${hi}°C`);
+  }
   return parts.join('・');
 }
 
-export interface WeatherCache {
-  key: string;
+export interface WeatherCacheEntry {
   fetchedAt: number;
-  forecast: DayForecast[];
+  forecast: HourForecast[];
 }
 
-/** 快取還能不能用：同一個位置、而且在 1 小時內。 */
-export function isCacheFresh(cache: WeatherCache | null, key: string, now: number): boolean {
-  return cache !== null && cache.key === key && now - cache.fetchedAt < WEATHER_TTL_MS && now >= cache.fetchedAt;
+/** 快取還能不能用：在 1 小時內。 */
+export function isCacheFresh(entry: WeatherCacheEntry | null | undefined, now: number): boolean {
+  return !!entry && now - entry.fetchedAt < WEATHER_TTL_MS && now >= entry.fetchedAt;
 }

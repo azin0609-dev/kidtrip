@@ -12,11 +12,12 @@ import { SettingsDialog } from './components/SettingsDialog.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
 import { TripCard } from './components/TripCard.tsx';
 import { UpdatePrompt } from './components/UpdatePrompt.tsx';
+import { IncomingPlan, WeekPlanCard } from './components/WeekPlanCard.tsx';
 import { Chip, buttonBase } from './components/ui.tsx';
 import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, spots, trips } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
-import { useWeekendWeather } from './hooks/useWeekendWeather.ts';
+import { useForecast } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, todayInTaipei } from './lib/date.ts';
 import {
   DEFAULT_FOOD_FILTERS,
@@ -29,13 +30,16 @@ import {
   sortByDrive,
   toggleInList,
 } from './lib/filter.ts';
-import { kidAgeNote } from './lib/details.ts';
+import { ageYears, kidAgeNote } from './lib/details.ts';
 import { latestVerified, shortOriginLabel } from './lib/format.ts';
 import { defaultOrigin, makeMinsOf } from './lib/origin.ts';
 import { passportProgress, yearReview } from './lib/passport.ts';
 import { pickSpot } from './lib/pick.ts';
 import { setStars, toggleRatingTag } from './lib/ratings.ts';
-import { recommendRound, weekSeed } from './lib/recommend.ts';
+import { napPlan } from './lib/plan.ts';
+import { DEFAULT_MAX_DRIVE, type RecommendContext, pickBackup, recommendRound, weekSeed } from './lib/recommend.ts';
+import { type Slot, defaultSlot, slotLabelWithDate, slotWeather } from './lib/weather.ts';
+import { PLAN_PARAM, type WeekPlan, buildPlanUrl, decodePlan, isCurrentPlan, makePlan, swapToBackup } from './lib/weekplan.ts';
 import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
 import { DEFAULT_NAP, formatReports, listMemories, setMemo, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
@@ -52,6 +56,15 @@ export default function App() {
   // null = 還沒手動改過，跟著天氣預報；按過開關就以使用者的選擇為準。
   const [rainyOverride, setRainyOverride] = useState<boolean | null>(null);
   const [overnight, setOvernight] = useState(false);
+  const [slot, setSlot] = useState<Slot>(() => defaultSlot(today));
+  const [maxDrive, setMaxDrive] = useState<number>(DEFAULT_MAX_DRIVE);
+  // null = 還沒手動改過：有 3 歲以下的孩子就預設帶推車。
+  const [strollerOverride, setStrollerOverride] = useState<boolean | null>(null);
+  // 打開的是行程連結（?plan=...）：先問要不要存，並把參數從網址拿掉。
+  const [incomingPlan, setIncomingPlan] = useState<WeekPlan | null>(() => {
+    const code = new URL(window.location.href).searchParams.get(PLAN_PARAM);
+    return code ? decodePlan(code) : null;
+  });
   const [elders, setElders] = useState(false);
   const [kidPickOpen, setKidPickOpen] = useState(false);
   const [tripCountry, setTripCountry] = useState('all');
@@ -66,8 +79,9 @@ export default function App() {
   });
   useEffect(() => {
     const url = new URL(window.location.href);
-    if (!url.searchParams.has(SHARE_PARAM)) return;
+    if (!url.searchParams.has(SHARE_PARAM) && !url.searchParams.has(PLAN_PARAM)) return;
     url.searchParams.delete(SHARE_PARAM);
+    url.searchParams.delete(PLAN_PARAM);
     window.history.replaceState(null, '', url.toString());
   }, []);
 
@@ -105,8 +119,18 @@ export default function App() {
   const origin = stored.origin ?? fallbackOrigin;
   const minsOf = useMemo(() => makeMinsOf(origin), [origin]);
   const originShort = shortOriginLabel(origin.label);
-  const weather = useWeekendWeather(origin, today);
+  const originForecast = useForecast(origin);
+  const weather = originForecast ? slotWeather(originForecast, today, slot) : null;
   const rainy = rainyOverride ?? weather?.rainy ?? false;
+  const kidsInfo = useMemo(
+    () =>
+      (stored.kids ?? []).flatMap((k) => {
+        const age = ageYears(k.birthYm, today);
+        return age === null ? [] : [{ name: k.nickname, age }];
+      }),
+    [stored.kids, today],
+  );
+  const needStroller = strollerOverride ?? kidsInfo.some((k) => k.age < 3);
 
   const visibleSpots = useMemo(() => spots.filter((s) => isSpotVisible(s, today)), [today]);
   const spotById = useMemo(() => new Map(visibleSpots.map((s) => [s.id, s])), [visibleSpots]);
@@ -153,16 +177,63 @@ export default function App() {
   const toggleFav = (id: string) => update((s) => ({ ...s, fav: toggleInList(s.fav, id) }));
   const toggleBeen = (id: string) => update((s) => toggleBeenState(s, id, today));
 
-  const picks = useMemo(
-    () =>
-      recommendRound(
-        spots,
-        { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight, elders, ratings: stored.ratings },
-        (round) => weekSeed(today, origin, round),
-        shuffle,
-      ),
-    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, elders, origin, shuffle, stored.ratings],
+  const recommendCtx = useMemo<RecommendContext>(
+    () => ({
+      today,
+      minsOf,
+      fav: stored.fav,
+      been: stored.been,
+      beenAt: stored.beenAt ?? {},
+      rainy,
+      overnight,
+      maxDrive,
+      needStroller,
+      kids: kidsInfo,
+      hasStay: (spot) => (hotelsBySpot.get(spot.id)?.length ?? 0) > 0,
+      elders,
+      ratings: stored.ratings,
+    }),
+    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, maxDrive, needStroller, kidsInfo, hotelsBySpot, elders, stored.ratings],
   );
+  const round = useMemo(
+    () => recommendRound(spots, recommendCtx, (n) => weekSeed(today, origin, n), shuffle),
+    [recommendCtx, today, origin, shuffle],
+  );
+  const picks = round.picks;
+
+  // ── 這週要去 ──
+  const plan = isCurrentPlan(stored.plan, today) ? stored.plan : null;
+  const planSpot = plan ? spots.find((s) => s.id === plan.spotId) : undefined;
+  const planBackup = plan?.backupId ? (spots.find((s) => s.id === plan.backupId) ?? null) : null;
+  const planForecast = useForecast(planSpot && planSpot.lat !== null && planSpot.lng !== null ? { lat: planSpot.lat, lng: planSpot.lng } : null);
+  const planWeather = plan && planForecast ? slotWeather(planForecast, today, plan.slot) : null;
+  const planMins = planSpot ? minsOf(planSpot) : null;
+  const choosePlan = (spot: Spot) => {
+    const backup = pickBackup(spots, recommendCtx, weekSeed(today, origin, 0), spot.id);
+    update((s) => ({ ...s, plan: makePlan(today, spot.id, slot, backup?.spot.id) }));
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  };
+  const clearPlan = () =>
+    update((s) => {
+      const next = { ...s };
+      delete next.plan;
+      return next;
+    });
+  const sharePlan = async () => {
+    if (!plan || !planSpot) return '';
+    const url = buildPlanUrl(window.location.href, plan);
+    const text = `${slotLabelWithDate(today, plan.slot)}去${planSpot.name}${planBackup ? `，下雨改去${planBackup.name}` : ''}`;
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: '這週去哪玩', text, url });
+        return '已經打開分享選單。';
+      } catch {
+        // 使用者取消或不支援，改用複製
+      }
+    }
+    return copyText(`${text}\n${url}`, '行程連結已複製，貼到 LINE 給另一半就可以了。');
+  };
+  const incomingSpot = incomingPlan ? spots.find((s) => s.id === incomingPlan.spotId) : undefined;
 
   const pickedSpot = picked.id ? spotById.get(picked.id) : undefined;
   const doPick = () => {
@@ -272,19 +343,74 @@ export default function App() {
       <main className="mx-auto max-w-6xl px-4 pt-4">
         {tab === 'spots' && (
           <>
+            {incomingPlan && incomingSpot && (
+              <IncomingPlan
+                spotName={incomingSpot.name}
+                backupName={incomingPlan.backupId ? (spots.find((s) => s.id === incomingPlan.backupId)?.name ?? null) : null}
+                when={slotLabelWithDate(today, incomingPlan.slot)}
+                expired={!isCurrentPlan(incomingPlan, today)}
+                onAccept={() => {
+                  update((s) => ({ ...s, plan: incomingPlan }));
+                  setIncomingPlan(null);
+                }}
+                onDecline={() => setIncomingPlan(null)}
+              />
+            )}
+            {plan && planSpot && (
+              <WeekPlanCard
+                spot={planSpot}
+                backup={planBackup}
+                when={slotLabelWithDate(today, plan.slot)}
+                mins={planMins}
+                weather={planWeather}
+                napText={
+                  planMins !== null && planSpot.stay_hours
+                    ? (napPlan(planMins, planSpot.stay_hours, stored.nap ?? DEFAULT_NAP)?.text ?? null)
+                    : null
+                }
+                onSwapToBackup={() => update((s) => (s.plan ? { ...s, plan: swapToBackup(s.plan) } : s))}
+                onClear={clearPlan}
+                onShare={sharePlan}
+              />
+            )}
             <Recommendations
-              picks={picks}
-              rainy={rainy}
-              overnight={overnight}
-              elders={elders}
-              onElders={setElders}
-              rainyIsAuto={rainyOverride === null}
+              today={today}
+              round={round}
+              slot={slot}
+              onSlot={setSlot}
               weather={weather}
-              onRainy={setRainyOverride}
-              onOvernight={setOvernight}
+              maxDrive={maxDrive}
+              onMaxDrive={(m) => {
+                setMaxDrive(m);
+                setOvernight(false);
+                setShuffle(0);
+              }}
+              needStroller={needStroller}
+              onNeedStroller={(v) => {
+                setStrollerOverride(v);
+                setShuffle(0);
+              }}
+              rainy={rainy}
+              rainyIsAuto={rainyOverride === null}
+              onRainy={(v) => {
+                setRainyOverride(v);
+                setShuffle(0);
+              }}
+              overnight={overnight}
+              onOvernight={(v) => {
+                setOvernight(v);
+                setShuffle(0);
+              }}
+              elders={elders}
+              onElders={(v) => {
+                setElders(v);
+                setShuffle(0);
+              }}
               onShuffle={() => setShuffle((n) => n + 1)}
               onKidPick={() => setKidPickOpen(true)}
-              renderCard={(p) => renderSpot(p.spot, false, p.reasons.join('・'))}
+              chosenId={plan?.spotId ?? null}
+              onChoose={choosePlan}
+              renderFull={(p) => renderSpot(p.spot)}
             />
             <h2 className="mb-3 text-lg font-bold">全部景點</h2>
             <SpotFiltersPanel value={spotFilters} onChange={setSpotFilters} counties={spotCounties} />
@@ -453,7 +579,7 @@ export default function App() {
         }}
         onDecline={() => setIncoming(null)}
       />
-      <KidPick open={kidPickOpen} picks={picks} onClose={() => setKidPickOpen(false)} />
+      <KidPick open={kidPickOpen} picks={picks} onClose={() => setKidPickOpen(false)} onChoose={(p) => choosePlan(p.spot)} />
       <UpdatePrompt />
     </div>
   );

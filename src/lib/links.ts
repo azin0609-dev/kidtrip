@@ -22,6 +22,11 @@ export function directionsUrl(place: { name: string; city: string; google_place_
   return `https://www.google.com/maps/dir/?${params.toString()}`;
 }
 
+/** 找官方資訊：有官方網址就直接連，沒有就用 Google 搜尋景點名稱。 */
+export function officialInfoUrl(spot: { name: string; official_url?: string }): string {
+  return spot.official_url ?? `https://www.google.com/search?${new URLSearchParams({ q: `${spot.name} 官方 開放時間` }).toString()}`;
+}
+
 /** 查房價：Google 旅遊的飯店搜尋，不帶任何推薦碼。 */
 export function hotelPriceUrl(hotel: Pick<Hotel, 'name' | 'city'>): string {
   const params = new URLSearchParams({ q: `${hotel.name} ${stripParens(hotel.city)}` });

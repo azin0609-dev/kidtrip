@@ -13,7 +13,18 @@ const TILE_COLORS = [
 ];
 
 /** 給小孩選：把這週推薦的三個地方用大圖顯示，讓小孩自己點一個。 */
-export function KidPick({ open, picks, onClose }: { open: boolean; picks: ScoredSpot[]; onClose: () => void }) {
+export function KidPick({
+  open,
+  picks,
+  onClose,
+  onChoose,
+}: {
+  open: boolean;
+  picks: ScoredSpot[];
+  onClose: () => void;
+  /** 小孩選好了：記成「這週要去」。 */
+  onChoose: (pick: ScoredSpot) => void;
+}) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const [chosenId, setChosenId] = useState<string | null>(null);
@@ -58,6 +69,7 @@ export function KidPick({ open, picks, onClose }: { open: boolean; picks: Scored
           <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
             <TypeIcon type={chosen.spot.types[0] ?? 'park'} className="h-40 w-40" />
             <p className="text-3xl leading-snug font-extrabold">我們去{chosen.spot.name}！</p>
+            <p className="text-base text-stone-700 dark:text-stone-300">已經記成「這週要去」，關掉也還在。</p>
             <div className="grid w-full grid-cols-2 gap-3">
               <button
                 type="button"
@@ -86,11 +98,15 @@ export function KidPick({ open, picks, onClose }: { open: boolean; picks: Scored
                 <li key={p.spot.id} className="flex flex-1">
                   <button
                     type="button"
-                    onClick={() => setChosenId(p.spot.id)}
+                    onClick={() => {
+                      setChosenId(p.spot.id);
+                      onChoose(p);
+                    }}
                     className={`flex min-h-36 w-full flex-1 items-center gap-4 rounded-[2rem] p-5 text-left shadow-md transition-transform focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:scale-95 ${TILE_COLORS[i % TILE_COLORS.length]}`}
                   >
                     <TypeIcon type={p.spot.types[0] ?? 'park'} className="h-24 w-24 shrink-0" />
                     <span className="min-w-0">
+                      {p.spot.kid_label && <span className="block text-lg font-bold opacity-90">{p.spot.kid_label}</span>}
                       <span className="block text-2xl leading-snug font-extrabold break-words">{p.spot.name}</span>
                       <span className="mt-1 block text-base opacity-80">
                         坐車約 {d.value} {d.unit}

@@ -76,6 +76,10 @@ export const spotSchema = z.object({
   transit: nonEmpty.optional(),
   /** 選填：人潮、時段建議。 */
   crowd_tip: nonEmpty.optional(),
+  /** 選填：給小孩看的短標籤，到了會先玩什麼，例如「捷運溜滑梯」「看企鵝」。 */
+  kid_label: nonEmpty.optional(),
+  /** 選填：官方網站。 */
+  official_url: z.string().url().optional(),
   /** 選填：特別適合去的月份（1–12）。 */
   best_months: z.array(z.number().int().min(1).max(12)).optional(),
   lat: coordinate,

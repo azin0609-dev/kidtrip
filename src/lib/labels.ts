@@ -7,7 +7,7 @@ export const TYPE_LABELS: Record<SpotType, string> = {
   zoo: '動物園',
   farm: '農場',
   theme: '主題樂園',
-  sea: '海邊',
+  sea: '海洋・水族',
   museum: '博物館',
   indoorplay: '室內遊戲',
   train: '火車',
