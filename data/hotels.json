@@ -51,8 +51,8 @@
     "near_spot_ids": [
       "spot-012"
     ],
-    "lat": 25.181304,
-    "lng": 121.453148,
+    "lat": 25.182307,
+    "lng": 121.415333,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -110,8 +110,8 @@
       "spot-018",
       "spot-019"
     ],
-    "lat": 24.965353,
-    "lng": 121.224926,
+    "lat": 25.017526,
+    "lng": 121.213677,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -142,8 +142,8 @@
       "spot-025",
       "spot-026"
     ],
-    "lat": 24.804733,
-    "lng": 120.973626,
+    "lat": 24.775627,
+    "lng": 120.967914,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -171,8 +171,8 @@
     "near_spot_ids": [
       "spot-021"
     ],
-    "lat": 24.792632,
-    "lng": 121.175891,
+    "lat": 24.820225,
+    "lng": 121.181606,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -535,8 +535,8 @@
     "near_spot_ids": [
       "spot-048"
     ],
-    "lat": 23.896356,
-    "lng": 120.93606,
+    "lat": 23.871162,
+    "lng": 120.923419,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -564,8 +564,8 @@
     "near_spot_ids": [
       "spot-050"
     ],
-    "lat": 23.642568,
-    "lng": 120.562043,
+    "lat": 23.615295,
+    "lng": 120.576926,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -624,8 +624,8 @@
     "near_spot_ids": [
       "spot-059"
     ],
-    "lat": 22.992152,
-    "lng": 120.205958,
+    "lat": 22.986936,
+    "lng": 120.19805,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -773,8 +773,8 @@
     "near_spot_ids": [
       "spot-067"
     ],
-    "lat": 22.073946,
-    "lng": 120.714193,
+    "lat": 22.167332,
+    "lng": 120.697315,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -803,8 +803,8 @@
     "near_spot_ids": [
       "spot-070"
     ],
-    "lat": 23.870668,
-    "lng": 121.508943,
+    "lat": 23.900974,
+    "lng": 121.601425,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -833,8 +833,8 @@
     "near_spot_ids": [
       "spot-072"
     ],
-    "lat": 24.039092,
-    "lng": 121.604246,
+    "lat": 23.98709,
+    "lng": 121.622513,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1078,8 +1078,8 @@
       "spot-014",
       "spot-015"
     ],
-    "lat": 25.181234,
-    "lng": 121.688687,
+    "lat": 25.204071,
+    "lng": 121.69005,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1206,8 +1206,8 @@
       "spot-019",
       "spot-017"
     ],
-    "lat": 24.965353,
-    "lng": 121.224926,
+    "lat": 24.967284,
+    "lng": 121.177906,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1270,8 +1270,8 @@
     "near_spot_ids": [
       "spot-021"
     ],
-    "lat": 24.792632,
-    "lng": 121.175891,
+    "lat": 24.76797,
+    "lng": 121.281423,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1300,8 +1300,8 @@
     "near_spot_ids": [
       "spot-029"
     ],
-    "lat": 24.823646,
-    "lng": 121.771348,
+    "lat": 24.826979,
+    "lng": 121.775329,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1330,8 +1330,8 @@
     "near_spot_ids": [
       "spot-029"
     ],
-    "lat": 24.823646,
-    "lng": 121.771348,
+    "lat": 24.826979,
+    "lng": 121.775329,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1391,8 +1391,8 @@
     "near_spot_ids": [
       "spot-029"
     ],
-    "lat": 24.823646,
-    "lng": 121.771348,
+    "lat": 24.827701,
+    "lng": 121.755692,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1516,8 +1516,8 @@
       "spot-040",
       "spot-043"
     ],
-    "lat": 24.163162,
-    "lng": 120.647828,
+    "lat": 24.137342,
+    "lng": 120.662537,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1605,8 +1605,8 @@
       "spot-041",
       "spot-044"
     ],
-    "lat": 24.104696,
-    "lng": 120.623806,
+    "lat": 24.111677,
+    "lng": 120.615841,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -1850,8 +1850,8 @@
     "near_spot_ids": [
       "spot-059"
     ],
-    "lat": 22.995114,
-    "lng": 120.167979,
+    "lat": 22.967109,
+    "lng": 120.185417,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -2029,8 +2029,8 @@
     "near_spot_ids": [
       "spot-062"
     ],
-    "lat": 22.647695,
-    "lng": 120.299622,
+    "lat": 22.635124,
+    "lng": 120.302482,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
@@ -2182,8 +2182,8 @@
     "near_spot_ids": [
       "spot-067"
     ],
-    "lat": 22.002656,
-    "lng": 120.744692,
+    "lat": 21.997466,
+    "lng": 120.705078,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
