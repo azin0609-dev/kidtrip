@@ -205,8 +205,8 @@
 - 「出國」分頁列出行程卡（天數、適合季節、適合年齡、住哪裡），可展開看「出發前先知道」和逐日行程。
 - 每個點有 Google Maps 連結（用當地名稱搜尋）、室內或戶外、給小小孩家長的一句提醒、需不需要先訂票。
 - 行程可以收藏（id 是 `trip-xxx`），分享連結也會帶。
-- 範圍是東北亞（日本、韓國），分頁上可以依國家篩選。
-- 目前八套：北海道七日、東京五日、大阪五日、沖繩五日（自駕）、福岡由布院五日、名古屋四日、福井恐龍四日、釜山四日。
+- 範圍是東北亞（日本、韓國、香港、上海），分頁上可以依國家或地區篩選，也可以只看有迪士尼的行程。
+- 目前十套：北海道七日、東京五日、大阪五日、沖繩五日（自駕）、福岡由布院五日、名古屋四日、福井恐龍四日、釜山四日、香港迪士尼四日、上海迪士尼四日。
 
 **資料：**`data/trips.json`，每一筆有 id、title、country、region、days、best_seasons、age_hint、base_cities、summary、tips、itinerary（day、title、stay?、stops[]：name、query?、area、indoor、tip、booking?）、needs_verify、last_verified。`validate:data` 會檢查 days 跟逐日行程一致。
 

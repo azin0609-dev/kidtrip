@@ -354,18 +354,18 @@ export default function App() {
           <>
             <h2 className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">帶小孩去東北亞玩</h2>
             <p className="mt-1 text-sm text-stone-700 dark:text-stone-300">
-              日本、韓國的親子行程骨架：每天只排兩三個點，留時間午睡。是大方向，細節出發前再查官方資訊。
+              日本、韓國、香港、上海的親子行程骨架：每天只排兩三個點，留時間午睡。是大方向，細節出發前再查官方資訊。
             </p>
-            <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="國家">
-              {['all', ...tripCountries].map((c) => (
+            <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="篩選行程">
+              {['all', 'disney', ...tripCountries].map((c) => (
                 <Chip key={c} pressed={tripCountry === c} onClick={() => setTripCountry(c)}>
-                  {c === 'all' ? '全部' : c}
+                  {c === 'all' ? '全部' : c === 'disney' ? '有迪士尼' : c}
                 </Chip>
               ))}
             </div>
             <div className={`mt-4 ${grid}`}>
               {trips
-                .filter((t) => tripCountry === 'all' || t.country === tripCountry)
+                .filter((t) => tripCountry === 'all' || (tripCountry === 'disney' ? tripHasDisney(t) : t.country === tripCountry))
                 .map((t) => (
                   <TripCard key={t.id} trip={t} isFav={favSet.has(t.id)} onToggleFav={() => toggleFav(t.id)} />
                 ))}
@@ -457,6 +457,11 @@ export default function App() {
       <UpdatePrompt />
     </div>
   );
+}
+
+/** 行程裡有沒有迪士尼樂園。 */
+function tripHasDisney(trip: { itinerary: { stops: { name: string }[] }[] }): boolean {
+  return trip.itinerary.some((d) => d.stops.some((s) => s.name.includes('迪士尼')));
 }
 
 function EmptyState({ text }: { text: string }) {
