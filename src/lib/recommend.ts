@@ -183,7 +183,14 @@ function bestCombo(pool: readonly ScoredSpot[], size: number, valid: (c: ScoredS
  * 條件滿足不了時依序放寬（先放寬類型，再放寬 60 分），候選不到 3 個就有幾個給幾個。
  * 同樣的 seed 一定得到同樣的結果。
  */
-export function recommend(spots: readonly Spot[], ctx: RecommendContext, seed: string, count = 3): ScoredSpot[] {
+export function recommend(
+  spots: readonly Spot[],
+  ctx: RecommendContext,
+  seed: string,
+  count = 3,
+  /** 不要推薦的 id（「換一組」時排除已經看過的）。 */
+  exclude: ReadonlySet<string> = new Set(),
+): ScoredSpot[] {
   const random = seededRandom(seed);
   // 依 id 排序後再加隨機分，確保跟資料順序無關。
   const scored = [...spots]
@@ -193,7 +200,7 @@ export function recommend(spots: readonly Spot[], ctx: RecommendContext, seed: s
       const jitter = random() * WEIGHTS.jitter;
       return base ? { ...base, score: base.score + jitter } : null;
     })
-    .filter((x): x is ScoredSpot => x !== null)
+    .filter((x): x is ScoredSpot => x !== null && !exclude.has(x.spot.id))
     .sort((a, b) => b.score - a.score || a.spot.id.localeCompare(b.spot.id));
 
   const size = Math.min(count, scored.length);
@@ -213,4 +220,29 @@ export function recommend(spots: readonly Spot[], ctx: RecommendContext, seed: s
     }
   }
   return scored.slice(0, size);
+}
+
+/**
+ * 第 round 組推薦（0 是這週的第一組，按一次「換一組」加 1）。
+ * 每一組都排除前面幾組出現過的景點，所以按「換一組」一定會換到新的；
+ * 全部看完（剩下不到 count 個）就從頭再來。同樣的輸入一定得到同樣的結果。
+ */
+export function recommendRound(
+  spots: readonly Spot[],
+  ctx: RecommendContext,
+  seedFor: (round: number) => string,
+  round: number,
+  count = 3,
+): ScoredSpot[] {
+  let seen = new Set<string>();
+  let result: ScoredSpot[] = [];
+  for (let i = 0; i <= Math.min(round, 200); i++) {
+    result = recommend(spots, ctx, seedFor(i), count, seen);
+    if (result.length < count && seen.size > 0) {
+      seen = new Set();
+      result = recommend(spots, ctx, seedFor(i), count, seen);
+    }
+    for (const r of result) seen.add(r.spot.id);
+  }
+  return result;
 }

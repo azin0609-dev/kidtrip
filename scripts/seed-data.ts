@@ -101,6 +101,29 @@ const SPOTS: SpotRow[] = [
   ['初鹿牧場', '臺東縣卑南鄉', '東', ['farm'], 'out', '$', 1, 320, '大草原可以滑草、餵牛，鮮奶冰淇淋必吃。'],
 ];
 
+// 公休日與預約提醒（依各館慣例整理，出發前仍以官方公告為準；都列入 needs_verify）
+const OPEN_NOTES: Record<string, string> = {
+  臺北市立兒童新樂園: '週一公休（寒暑假、連假除外）',
+  國立臺灣科學教育館: '週一休館；兒童益智探索館分場次',
+  臺北市立天文科學教育館: '週一休館',
+  國立臺灣博物館古生物館: '週一休館',
+  新北市立十三行博物館: '每月第一個週一休館',
+  新北市立鶯歌陶瓷博物館: '每月第一個週一休館',
+  國立海洋科技博物館: '週一休館',
+  新竹市立動物園: '週一休園',
+  蘭陽博物館: '週三休館；兒童探索區要預約',
+  巧虎夢想樂園: '舞台秀場次要先預約',
+  'KidZania Taipei 奇薩尼亞台北': '試營運到 12/6，只收線上購票',
+  國立自然科學博物館: '週一休館',
+  臺中兒童藝術館: '分場次入場，建議先訂',
+  國立故宮博物院南部院區: '週一休館',
+  奇美博物館: '週三休館',
+  南瀛天文館: '週一休館',
+  壽山動物園: '週一休園',
+  國立科學工藝博物館: '週一休館；兒童科學園分場次',
+  國立臺灣史前文化博物館: '週一休館',
+};
+
 type HotelRow = [name: string, city: string, region: string, price: string, tags: string[], features: string[], mins: number, tip: string, near: string[], verify?: string[]];
 
 // 房價級距（一晚、雙人或家庭房粗估）：$$ 4,000 元以下、$$$ 4,000–8,000 元、$$$$ 8,000 元以上
@@ -220,6 +243,7 @@ const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, m
   const old = oldSpots.get(id);
   const verify = new Set<string>(['mins_from_linkou', ...(extra?.verify ?? [])]);
   if (cost_tier === '?') verify.add('cost_tier');
+  if (OPEN_NOTES[name]) verify.add('open_note');
   return {
     id,
     name,
@@ -234,6 +258,7 @@ const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, m
     ...(extra?.badge ? { badge: extra.badge } : {}),
     ...(extra?.opens_on ? { opens_on: extra.opens_on } : {}),
     ...(extra?.closes_on ? { closes_on: extra.closes_on } : {}),
+    ...(OPEN_NOTES[name] ? { open_note: OPEN_NOTES[name] } : {}),
     lat: old?.lat ?? null,
     lng: old?.lng ?? null,
     google_place_id: old?.google_place_id ?? null,

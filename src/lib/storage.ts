@@ -18,7 +18,29 @@ export interface StoredNap {
   end: string;
 }
 
+export interface StoredReport {
+  /** 景點或飯店的 id */
+  id: string;
+  note: string;
+  /** YYYY-MM-DD */
+  date: string;
+}
+
 export const DEFAULT_NAP: StoredNap = { start: '13:00', end: '15:00' };
+
+function parseReports(v: unknown): StoredReport[] | null {
+  if (!Array.isArray(v)) return null;
+  return v.flatMap((r) =>
+    r && typeof r === 'object' && typeof r.id === 'string' && typeof r.note === 'string' && typeof r.date === 'string'
+      ? [{ id: r.id as string, note: (r.note as string).slice(0, 500), date: r.date as string }]
+      : [],
+  );
+}
+
+/** 把回報整理成可以貼給別人的文字。 */
+export function formatReports(reports: readonly StoredReport[], nameOf: (id: string) => string): string {
+  return reports.map((r) => `${r.date}｜${nameOf(r.id)}（${r.id}）：${r.note}`).join('\n');
+}
 
 export interface StoredState {
   fav: string[];
@@ -28,6 +50,8 @@ export interface StoredState {
   origin?: StoredOrigin;
   kids?: StoredKid[];
   nap?: StoredNap;
+  /** 使用者回報「資料有誤」的紀錄，只存在本機，可以在設定裡複製出來。 */
+  reports?: StoredReport[];
   /** 不認得的欄位原樣保留，之後的版本可能會用到。 */
   [key: string]: unknown;
 }
@@ -63,6 +87,9 @@ export function parseState(raw: string | null): StoredState {
     const nap = parseNap(obj.nap);
     if (nap) state.nap = nap;
     else delete state.nap;
+    const reports = parseReports(obj.reports);
+    if (reports) state.reports = reports;
+    else delete state.reports;
     return state;
   } catch {
     return emptyState();

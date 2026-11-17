@@ -54,11 +54,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "設施是分開投幣的，小小孩先玩旋轉木馬和小火車，假日早點到。",
+    "open_note": "週一公休（寒暑假、連假除外）",
     "lat": 25.097415,
     "lng": 121.514972,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -76,11 +78,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "兒童益智探索館適合學齡前，要另外買票而且分場次，先看好時間。",
+    "open_note": "週一休館；兒童益智探索館分場次",
     "lat": 25.096127,
     "lng": 121.516704,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -97,11 +101,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "宇宙探險軌道車小孩很愛，跟科教館在隔壁，可以排同一天。",
+    "open_note": "週一休館",
     "lat": 25.09599,
     "lng": 121.518524,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -161,11 +167,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "恐龍骨架就在大廳，逛一小時剛好，下雨天的好備案。",
+    "open_note": "週一休館",
     "lat": 25.032361,
     "lng": 121.518267,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -246,11 +254,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 25,
     "tip": "館內有考古體驗區，外面草地可以跑，順路去八里左岸散步。",
+    "open_note": "每月第一個週一休館",
     "lat": 25.157041,
     "lng": 121.404871,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -268,11 +278,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 30,
     "tip": "後面的陶瓷公園夏天有戲水區，記得帶泳衣和毛巾。",
+    "open_note": "每月第一個週一休館",
     "lat": 24.949228,
     "lng": 121.352095,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -311,11 +323,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 60,
     "tip": "兒童廳適合學齡前，展區很大，挑一兩區逛就好。",
+    "open_note": "週一休館",
     "lat": 25.142518,
     "lng": 121.800231,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -375,12 +389,14 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "專為 2–6 歲設計，跟 Xpark 同一棟；有舞台秀的場次要先預約。",
+    "open_note": "舞台秀場次要先預約",
     "lat": 24.965353,
     "lng": 121.224926,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "cost_tier"
+      "cost_tier",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -525,11 +541,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 55,
     "tip": "小而美，一個半小時逛得完，隔壁新竹公園還有遊戲場。",
+    "open_note": "週一休園",
     "lat": 24.800688,
     "lng": 120.979484,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -611,11 +629,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 75,
     "tip": "兒童探索區要預約場次，建築外面的步道很好拍照。",
+    "open_note": "週三休館；兒童探索區要預約",
     "lat": 24.868806,
     "lng": 121.832677,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -776,12 +796,14 @@
       "label": "11/24 開幕"
     },
     "opens_on": "2026-11-24",
+    "open_note": "試營運到 12/6，只收線上購票",
     "lat": 25.054578,
     "lng": 121.6066,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "stroller_ok"
+      "stroller_ok",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -870,11 +892,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 110,
     "tip": "恐龍廳的機械恐龍會動會叫，膽子小的先在遠處看。",
+    "open_note": "週一休館",
     "lat": 24.157316,
     "lng": 120.666761,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -958,12 +982,14 @@
     "stroller_ok": true,
     "mins_from_linkou": 120,
     "tip": "分場次入場，適合學齡前動手玩，跟異想新樂園很近。",
+    "open_note": "分場次入場，建議先訂",
     "lat": 24.099333,
     "lng": 120.687577,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "cost_tier"
+      "cost_tier",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1142,11 +1168,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 175,
     "tip": "兒童創意中心適合學齡前，戶外園區很大，可以跑也可以野餐。",
+    "open_note": "週一休館",
     "lat": 23.475883,
     "lng": 120.294031,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1206,11 +1234,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 215,
     "tip": "動物標本廳小孩最愛，外面草地和噴水池可以放電。",
+    "open_note": "週三休館",
     "lat": 22.934459,
     "lng": 120.226462,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1270,11 +1300,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 210,
     "tip": "星象劇場要另外買票，戶外草地視野很好。",
+    "open_note": "週一休館",
     "lat": 23.117613,
     "lng": 120.391056,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1336,11 +1368,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 240,
     "tip": "整修後有空中廊道，推車好走；可以搭園區接駁車省力。",
+    "open_note": "週一休園",
     "lat": 22.634005,
     "lng": 120.276212,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1358,11 +1392,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 235,
     "tip": "兒童科學園適合學齡前，分場次入場，先線上訂。",
+    "open_note": "週一休館；兒童科學園分場次",
     "lat": 22.6416,
     "lng": 120.322686,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },
@@ -1624,11 +1660,13 @@
     "stroller_ok": true,
     "mins_from_linkou": 330,
     "tip": "整修後有兒童互動展區，戶外水舞廣場小孩很愛。",
+    "open_note": "週一休館",
     "lat": 22.759707,
     "lng": 121.091738,
     "google_place_id": null,
     "needs_verify": [
-      "mins_from_linkou"
+      "mins_from_linkou",
+      "open_note"
     ],
     "last_verified": "2026-11-16"
   },

@@ -16,6 +16,7 @@ export interface SpotCardProps {
   isBeen: boolean;
   onToggleFav: () => void;
   onToggleBeen: () => void;
+  onReport: () => void;
   highlight?: boolean;
   /** 推薦原因，例如「離家約 25 分・室內・還沒去過」。 */
   reason?: string;
@@ -45,7 +46,7 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, highlight, reason }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   return (
     <article
@@ -81,6 +82,13 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
       </div>
 
       <p className="text-sm leading-relaxed text-stone-800 dark:text-stone-200">{spot.tip}</p>
+
+      {spot.open_note && (
+        <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-200">
+          <span className="font-bold">出發前注意：</span>
+          {spot.open_note}
+        </p>
+      )}
 
       {nearHotels.length > 0 && (
         <p className="text-sm text-stone-600 dark:text-stone-400">
@@ -123,6 +131,13 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, isFav, is
           {isBeen ? '去過了' : '去過'}
         </button>
       </div>
+      <button
+        type="button"
+        onClick={onReport}
+        className="-mt-1 inline-flex min-h-11 items-center self-start rounded-lg text-xs text-stone-600 underline underline-offset-2 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-stone-400 dark:hover:text-stone-100"
+      >
+        資料有誤？告訴小恐龍
+      </button>
     </article>
   );
 }

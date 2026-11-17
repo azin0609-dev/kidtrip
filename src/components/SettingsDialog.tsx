@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ageLabel, findTown, nearestTown, type Origin, type OriginsFile } from '../lib/origin.ts';
-import { DEFAULT_NAP, type StoredKid, type StoredNap } from '../lib/storage.ts';
+import { DEFAULT_NAP, type StoredKid, type StoredNap, type StoredReport } from '../lib/storage.ts';
 import { buttonBase } from './ui.tsx';
 
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
@@ -19,12 +19,20 @@ export interface SettingsDialogProps {
   nap: StoredNap | undefined;
   onNapChange: (n: StoredNap) => void;
   today: string;
+  /** 產生分享連結；回傳要顯示的結果訊息。 */
+  onShare: () => Promise<string>;
+  reports: StoredReport[];
+  nameOf: (id: string) => string;
+  onCopyReports: () => Promise<string>;
+  onClearReports: () => void;
 }
 
 type GeoStatus = { kind: 'idle' } | { kind: 'loading' } | { kind: 'error'; message: string };
 
 export function SettingsDialog(props: SettingsDialogProps) {
-  const { open, onClose, origins, origin, defaultOrigin, onOriginChange, kids, onKidsChange, nap, onNapChange, today } = props;
+  const { open, onClose, origins, origin, defaultOrigin, onOriginChange, kids, onKidsChange, nap, onNapChange, today, onShare, reports, nameOf, onCopyReports, onClearReports } = props;
+  const [shareMsg, setShareMsg] = useState('');
+  const [reportMsg, setReportMsg] = useState('');
   const ref = useRef<HTMLDialogElement>(null);
   const countyRef = useRef<HTMLSelectElement>(null);
   const titleId = useId();
@@ -225,6 +233,57 @@ export function SettingsDialog(props: SettingsDialogProps) {
             </label>
           </div>
           <p className="text-xs text-stone-600 dark:text-stone-400">之後會用來建議出發時間。</p>
+        </section>
+
+        <section className="flex flex-col gap-3">
+          <h3 className="font-bold">跟另一半同步收藏</h3>
+          <p className="text-sm text-stone-700 dark:text-stone-300">
+            把連結傳給另一半，對方打開後按「加進來」，你的收藏和去過紀錄就會合併到對方手機。對方再傳一次回來，兩邊就一樣了。
+          </p>
+          <div>
+            <button type="button" onClick={() => void onShare().then(setShareMsg)} className={ghost}>
+              分享我的清單
+            </button>
+          </div>
+          {shareMsg && (
+            <p role="status" className="text-sm text-emerald-800 dark:text-emerald-300">
+              {shareMsg}
+            </p>
+          )}
+          <p className="text-xs text-stone-600 dark:text-stone-400">連結裡只有收藏和去過紀錄，不包含出發地和孩子資料。</p>
+        </section>
+
+        <section className="flex flex-col gap-3">
+          <h3 className="font-bold">回報的資料問題（{reports.length}）</h3>
+          {reports.length === 0 ? (
+            <p className="text-sm text-stone-600 dark:text-stone-400">還沒有。卡片下方按「資料有誤？」就會記在這裡。</p>
+          ) : (
+            <>
+              <ul className="flex flex-col gap-2 text-sm">
+                {reports.map((r, i) => (
+                  <li key={i} className="rounded-xl bg-white p-3 ring-1 ring-stone-200 dark:bg-stone-900 dark:ring-stone-800">
+                    <span className="font-medium">{nameOf(r.id)}</span>
+                    <span className="text-stone-500 dark:text-stone-400">・{r.date}</span>
+                    <br />
+                    {r.note}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2">
+                <button type="button" onClick={() => void onCopyReports().then(setReportMsg)} className={ghost}>
+                  全部複製
+                </button>
+                <button type="button" onClick={onClearReports} className={ghost}>
+                  清空
+                </button>
+              </div>
+              {reportMsg && (
+                <p role="status" className="text-sm text-emerald-800 dark:text-emerald-300">
+                  {reportMsg}
+                </p>
+              )}
+            </>
+          )}
         </section>
 
         <p className="text-xs text-stone-600 dark:text-stone-400">這些設定只存在這支手機，不會上傳。</p>

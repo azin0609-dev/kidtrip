@@ -57,6 +57,8 @@ export const spotSchema = z.object({
   badge: badgeSchema.optional(),
   opens_on: isoDate.optional(),
   closes_on: isoDate.optional(),
+  /** 選填：公休日、要不要預約之類的一句提醒，例如「週一公休」。 */
+  open_note: nonEmpty.optional(),
   lat: coordinate,
   lng: coordinate,
   google_place_id: z.string().nullable(),

@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ImportDialog, ReportDialog } from './components/Dialogs.tsx';
 import { Dino, DinoEgg } from './components/Dino.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
@@ -23,8 +24,9 @@ import {
 import { latestVerified, shortOriginLabel } from './lib/format.ts';
 import { defaultOrigin, makeMinsOf } from './lib/origin.ts';
 import { pickSpot } from './lib/pick.ts';
-import { recommend, weekSeed } from './lib/recommend.ts';
-import { toggleBeen as toggleBeenState } from './lib/storage.ts';
+import { recommendRound, weekSeed } from './lib/recommend.ts';
+import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
+import { formatReports, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
 
 export default function App() {
@@ -39,6 +41,43 @@ export default function App() {
   const [overnight, setOvernight] = useState(false);
   const [shuffle, setShuffle] = useState(0);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
+  const [reportFor, setReportFor] = useState<{ id: string; name: string } | null>(null);
+  // 打開的是分享連結（?share=...）：先問要不要合併，並把參數從網址拿掉。
+  const [incoming, setIncoming] = useState<SharePayload | null>(() => {
+    const code = new URL(window.location.href).searchParams.get(SHARE_PARAM);
+    return code ? decodeShare(code) : null;
+  });
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (!url.searchParams.has(SHARE_PARAM)) return;
+    url.searchParams.delete(SHARE_PARAM);
+    window.history.replaceState(null, '', url.toString());
+  }, []);
+
+  const nameOf = useCallback(
+    (id: string) => spots.find((s) => s.id === id)?.name ?? hotels.find((h) => h.id === id)?.name ?? id,
+    [],
+  );
+  const copyText = async (text: string, done: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      return done;
+    } catch {
+      return `沒辦法自動複製，請手動複製：${text}`;
+    }
+  };
+  const shareList = async () => {
+    const url = buildShareUrl(window.location.href, stored);
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: '這週去哪玩', text: '我的收藏清單', url });
+        return '已經打開分享選單。';
+      } catch {
+        // 使用者取消或不支援，改用複製
+      }
+    }
+    return copyText(url, '連結已複製，貼給另一半就可以了。');
+  };
 
   const fallbackOrigin = useMemo(() => defaultOrigin(origins), []);
   const origin = stored.origin ?? fallbackOrigin;
@@ -75,10 +114,11 @@ export default function App() {
 
   const picks = useMemo(
     () =>
-      recommend(
+      recommendRound(
         spots,
         { today, minsOf, fav: stored.fav, been: stored.been, beenAt: stored.beenAt ?? {}, rainy, overnight },
-        weekSeed(today, origin, shuffle),
+        (round) => weekSeed(today, origin, round),
+        shuffle,
       ),
     [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, origin, shuffle],
   );
@@ -104,6 +144,7 @@ export default function App() {
       isBeen={beenSet.has(spot.id)}
       onToggleFav={() => toggleFav(spot.id)}
       onToggleBeen={() => toggleBeen(spot.id)}
+      onReport={() => setReportFor({ id: spot.id, name: spot.name })}
       highlight={highlight}
       reason={reason}
     />
@@ -117,6 +158,7 @@ export default function App() {
       nearSpots={hotel.near_spot_ids.flatMap((id) => spotById.get(id) ?? [])}
       isFav={favSet.has(hotel.id)}
       onToggleFav={() => toggleFav(hotel.id)}
+      onReport={() => setReportFor({ id: hotel.id, name: hotel.name })}
     />
   );
 
@@ -261,6 +303,28 @@ export default function App() {
         nap={stored.nap}
         onNapChange={(nap) => update((s) => ({ ...s, nap }))}
         today={today}
+        onShare={shareList}
+        reports={stored.reports ?? []}
+        nameOf={nameOf}
+        onCopyReports={() => copyText(formatReports(stored.reports ?? [], nameOf), '已複製，可以貼給負責改資料的人。')}
+        onClearReports={() => update((s) => ({ ...s, reports: [] }))}
+      />
+      <ReportDialog
+        target={reportFor}
+        onClose={() => setReportFor(null)}
+        onSubmit={(note) => {
+          const id = reportFor?.id;
+          if (id) update((s) => ({ ...s, reports: [...(s.reports ?? []), { id, note, date: today }] }));
+          setReportFor(null);
+        }}
+      />
+      <ImportDialog
+        incoming={incoming ? countNew(stored, incoming) : null}
+        onAccept={() => {
+          if (incoming) update((s) => mergeShare(s, incoming));
+          setIncoming(null);
+        }}
+        onDecline={() => setIncoming(null)}
       />
       <UpdatePrompt />
     </div>

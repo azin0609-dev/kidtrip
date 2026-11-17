@@ -11,9 +11,10 @@ export interface HotelCardProps {
   nearSpots: Spot[];
   isFav: boolean;
   onToggleFav: () => void;
+  onReport: () => void;
 }
 
-export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggleFav }: HotelCardProps) {
+export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: HotelCardProps) {
   return (
     <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-stone-200 dark:bg-[#16241c] dark:ring-stone-800">
       <header className="flex items-start justify-between gap-3">
@@ -76,6 +77,13 @@ export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggle
           {isFav ? '已收藏' : '收藏'}
         </button>
       </div>
+      <button
+        type="button"
+        onClick={onReport}
+        className="-mt-1 inline-flex min-h-11 items-center self-start rounded-lg text-xs text-stone-600 underline underline-offset-2 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-stone-400 dark:hover:text-stone-100"
+      >
+        資料有誤？告訴小恐龍
+      </button>
     </article>
   );
 }
