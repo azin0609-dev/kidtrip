@@ -12,7 +12,7 @@ import { SettingsDialog } from './components/SettingsDialog.tsx';
 import { SpotCard } from './components/SpotCard.tsx';
 import { TripCard } from './components/TripCard.tsx';
 import { UpdatePrompt } from './components/UpdatePrompt.tsx';
-import { buttonBase } from './components/ui.tsx';
+import { Chip, buttonBase } from './components/ui.tsx';
 import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, spots, trips } from './data/index.ts';
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
@@ -54,6 +54,8 @@ export default function App() {
   const [overnight, setOvernight] = useState(false);
   const [elders, setElders] = useState(false);
   const [kidPickOpen, setKidPickOpen] = useState(false);
+  const [tripCountry, setTripCountry] = useState('all');
+  const tripCountries = useMemo(() => [...new Set(trips.map((t) => t.country))], []);
   const [shuffle, setShuffle] = useState(0);
   const closeSettings = useCallback(() => setSettingsOpen(false), []);
   const [reportFor, setReportFor] = useState<{ id: string; name: string } | null>(null);
@@ -350,14 +352,23 @@ export default function App() {
 
         {tab === 'trips' && (
           <>
-            <h2 className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">帶小孩出國玩</h2>
+            <h2 className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">帶小孩去東北亞玩</h2>
             <p className="mt-1 text-sm text-stone-700 dark:text-stone-300">
-              給 3–6 歲小孩的行程骨架：每天只排兩三個點，留時間午睡。是大方向，細節出發前再查官方資訊。
+              日本、韓國的親子行程骨架：每天只排兩三個點，留時間午睡。是大方向，細節出發前再查官方資訊。
             </p>
-            <div className={`mt-4 ${grid}`}>
-              {trips.map((t) => (
-                <TripCard key={t.id} trip={t} isFav={favSet.has(t.id)} onToggleFav={() => toggleFav(t.id)} />
+            <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="國家">
+              {['all', ...tripCountries].map((c) => (
+                <Chip key={c} pressed={tripCountry === c} onClick={() => setTripCountry(c)}>
+                  {c === 'all' ? '全部' : c}
+                </Chip>
               ))}
+            </div>
+            <div className={`mt-4 ${grid}`}>
+              {trips
+                .filter((t) => tripCountry === 'all' || t.country === tripCountry)
+                .map((t) => (
+                  <TripCard key={t.id} trip={t} isFav={favSet.has(t.id)} onToggleFav={() => toggleFav(t.id)} />
+                ))}
             </div>
             {trips.length === 0 && <EmptyState text="還沒有整理出國行程。" />}
           </>
