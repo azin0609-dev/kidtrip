@@ -4,6 +4,7 @@ import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { ageBestLabel, stayLabel } from '../lib/details.ts';
 import { COST_LABELS, ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
 import { googleMapsUrl } from '../lib/links.ts';
+import { type Nap, napPlan, packingList } from '../lib/plan.ts';
 import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
 import { Tag, buttonBase } from './ui.tsx';
 
@@ -29,6 +30,8 @@ export interface SpotCardProps {
   rating?: Rating;
   onStars?: (stars: number) => void;
   onRatingTag?: (tag: RatingTag) => void;
+  /** 午睡時段，用來排出門時間。 */
+  nap?: Nap;
 }
 
 export function DriveBadge({ mins, originLabel }: { mins: number | null; originLabel: string }) {
@@ -55,10 +58,11 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
   );
 }
 
-export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote, rating, onStars, onRatingTag }: SpotCardProps) {
+export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood = [], isFav, isBeen, onToggleFav, onToggleBeen, onReport, highlight, reason, kidNote, rating, onStars, onRatingTag, nap }: SpotCardProps) {
   const badges = spotBadges(spot, today);
   const facts = [spot.age_best && ageBestLabel(spot.age_best), spot.stay_hours && stayLabel(spot.stay_hours)].filter(Boolean);
-  const hasMore = (spot.facilities?.length ?? 0) > 0 || spot.transit || spot.crowd_tip;
+  const plan = nap && mins !== null && spot.stay_hours ? napPlan(mins, spot.stay_hours, nap) : null;
+  const packing = packingList(spot, Number(today.slice(5, 7)));
   return (
     <article
       className={`flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 dark:bg-[#16241c] ${
@@ -107,11 +111,17 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
         </p>
       )}
 
-      {hasMore && (
-        <details className="group text-sm">
+      {plan && (
+        <p className="text-sm text-stone-700 dark:text-stone-300">
+          <span className="font-medium text-stone-900 dark:text-stone-100">配合午睡：</span>
+          {plan.text}
+        </p>
+      )}
+
+      <details className="group text-sm">
           <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-lg font-medium text-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-emerald-300 [&::-webkit-details-marker]:hidden">
             <span aria-hidden="true" className="inline-block transition-transform group-open:rotate-90">›</span>
-            設施、交通、人潮
+            設施、交通、要帶什麼
           </summary>
           <div className="flex flex-col gap-2 pb-1 text-stone-700 dark:text-stone-300">
             {(spot.facilities?.length ?? 0) > 0 && (
@@ -135,9 +145,12 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
                 {spot.crowd_tip}
               </p>
             )}
+            <p>
+              <span className="font-medium">要帶：</span>
+              {packing.join('、')}
+            </p>
           </div>
-        </details>
-      )}
+      </details>
 
       {nearFood.length > 0 && (
         <p className="text-sm text-stone-600 dark:text-stone-400">

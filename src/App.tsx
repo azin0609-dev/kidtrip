@@ -37,7 +37,7 @@ import { pickSpot } from './lib/pick.ts';
 import { setStars, toggleRatingTag } from './lib/ratings.ts';
 import { recommendRound, weekSeed } from './lib/recommend.ts';
 import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
-import { formatReports, toggleBeen as toggleBeenState } from './lib/storage.ts';
+import { DEFAULT_NAP, formatReports, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
 
 export default function App() {
@@ -188,6 +188,7 @@ export default function App() {
       highlight={highlight}
       reason={reason}
       kidNote={kidAgeNote(spot, stored.kids ?? [], today)}
+      nap={stored.nap ?? DEFAULT_NAP}
       rating={stored.ratings?.[spot.id]}
       onStars={(n) => update((s) => ({ ...s, ratings: setStars(s.ratings ?? {}, spot.id, n) }))}
       onRatingTag={(t) => update((s) => ({ ...s, ratings: toggleRatingTag(s.ratings ?? {}, spot.id, t) }))}
