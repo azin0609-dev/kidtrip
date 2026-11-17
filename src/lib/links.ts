@@ -12,6 +12,16 @@ export function googleMapsUrl(place: { name: string; city: string; google_place_
   return `https://www.google.com/maps/search/?${params.toString()}`;
 }
 
+/**
+ * Google Maps 的路線連結（免金鑰）：從使用者目前位置導航到目的地。
+ * https://developers.google.com/maps/documentation/urls/get-started#directions-action
+ */
+export function directionsUrl(place: { name: string; city: string; google_place_id: string | null }): string {
+  const params = new URLSearchParams({ api: '1', destination: `${place.name} ${stripParens(place.city)}`.trim() });
+  if (place.google_place_id) params.set('destination_place_id', place.google_place_id);
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
+
 /** 查房價：Google 旅遊的飯店搜尋，不帶任何推薦碼。 */
 export function hotelPriceUrl(hotel: Pick<Hotel, 'name' | 'city'>): string {
   const params = new URLSearchParams({ q: `${hotel.name} ${stripParens(hotel.city)}` });

@@ -3,7 +3,7 @@ import { spotBadges } from '../lib/date.ts';
 import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { ageBestLabel, stayLabel } from '../lib/details.ts';
 import { COST_LABELS, ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
-import { googleMapsUrl } from '../lib/links.ts';
+import { directionsUrl } from '../lib/links.ts';
 import { type Nap, napPlan, packingList } from '../lib/plan.ts';
 import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
 import { Tag, buttonBase } from './ui.tsx';
@@ -171,7 +171,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
 
       <div className="mt-auto grid grid-cols-3 gap-2">
         <a
-          href={googleMapsUrl(spot)}
+          href={directionsUrl(spot)}
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}

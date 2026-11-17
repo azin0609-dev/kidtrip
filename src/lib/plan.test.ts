@@ -13,31 +13,37 @@ describe('formatClock', () => {
 
 describe('napPlan', () => {
   it('上午去：午睡開始時上車', () => {
-    const p = napPlan(25, 2, nap)!; // 13:00 − 2h − 25 分 = 10:35 出門
+    const p = napPlan(25, 2, nap)!; // 13:00 − 2h −（25 分車程＋10 分緩衝）= 10:25 出門
     expect(p.kind).toBe('morning');
-    expect(p.leaveHome).toBe(10 * 60 + 35);
+    expect(p.leaveHome).toBe(10 * 60 + 25);
     expect(p.leaveSpot).toBe(13 * 60);
-    expect(p.text).toBe('10:35 出門，11:00 到，玩到 13:00 上車，回程剛好睡午覺');
+    expect(p.text).toBe('10:25 出門，11:00 到，玩到 13:00 上車，回程剛好睡午覺');
   });
   it('要玩很久的地方：最早 9:00 到，提醒挑重點玩', () => {
-    const p = napPlan(60, 6, nap)!; // 8:00 出門，9:00 到，玩 4 小時
+    const p = napPlan(60, 6, nap)!; // 7:50 出門，9:00 到，玩 4 小時
     expect(p.kind).toBe('morning');
-    expect(p.leaveHome).toBe(8 * 60);
-    expect(p.text).toContain('8:00 出門，9:00 到');
+    expect(p.leaveHome).toBe(7 * 60 + 50);
+    expect(p.text).toContain('7:50 出門，9:00 到');
     expect(p.text).toContain('挑重點玩');
+    expect(p.text).toContain('先確認幾點開門');
   });
   it('單程超過 90 分鐘建議住一晚', () => {
     expect(napPlan(91, 3, nap)?.kind).toBe('overnight');
     expect(napPlan(90, 3, nap)?.kind).toBe('morning');
     expect(napPlan(200, 3, nap)?.text).toBe('單程約 3.5 小時，當天來回小孩會太累，建議住一晚');
     // 車程再短也不會 7:30 前出門
-    expect(napPlan(85, 6, nap)?.leaveHome).toBe(7 * 60 + 35);
+    expect(napPlan(85, 6, nap)?.leaveHome).toBe(7 * 60 + 30);
   });
   it('午睡很早、上午玩不到 75 分鐘：改成午睡後出發', () => {
     const p = napPlan(60, 2, { start: '09:30', end: '11:00' })!; // 最早 9:00 到，只能玩 30 分
     expect(p.kind).toBe('afternoon');
     expect(p.leaveHome).toBe(11 * 60 + 15);
-    expect(p.text).toContain('11:15 出門，12:15 到');
+    expect(p.text).toContain('11:15 出門，12:25 到');
+  });
+  it('建議只待 1 小時的近公園，上午去不會被說太趕', () => {
+    const p = napPlan(10, 1, nap)!; // 林口立功公園：車程 10 分、建議 1 小時
+    expect(p.kind).toBe('morning');
+    expect(p.text).toBe('11:40 出門，12:00 到，玩到 13:00 上車，回程剛好睡午覺');
   });
   it('午睡時段格式不對就不排', () => {
     expect(napPlan(30, 2, { start: 'x', end: '15:00' })).toBeNull();

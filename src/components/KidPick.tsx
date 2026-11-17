@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { formatDrive } from '../lib/format.ts';
-import { googleMapsUrl } from '../lib/links.ts';
+import { directionsUrl } from '../lib/links.ts';
 import type { ScoredSpot } from '../lib/recommend.ts';
 import { Dino } from './Dino.tsx';
 import { TypeIcon } from './TypeIcon.tsx';
@@ -67,7 +67,7 @@ export function KidPick({ open, picks, onClose }: { open: boolean; picks: Scored
                 再選一次
               </button>
               <a
-                href={googleMapsUrl(chosen.spot)}
+                href={directionsUrl(chosen.spot)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${buttonBase} min-h-14 bg-emerald-700 text-base text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950`}

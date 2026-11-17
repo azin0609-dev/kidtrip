@@ -1,6 +1,6 @@
 import type { Restaurant, Spot } from '../data/schema.ts';
 import { FOOD_PRICE_LABELS, FOOD_TAG_LABELS } from '../lib/labels.ts';
-import { googleMapsUrl } from '../lib/links.ts';
+import { directionsUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { Tag, buttonBase } from './ui.tsx';
 
@@ -58,7 +58,7 @@ export function RestaurantCard({ restaurant: r, mins, originLabel, nearSpots, is
 
       <div className="mt-auto grid grid-cols-2 gap-2">
         <a
-          href={googleMapsUrl(r)}
+          href={directionsUrl(r)}
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}

@@ -402,7 +402,8 @@
     "cost_tier": "free",
     "stroller_ok": true,
     "mins_from_linkou": 30,
-    "tip": "戶外有沙坑和大草地，室內有玩具展館，晴雨都能待。",
+    "tip": "戶外有沙坑和大草地，免費；室內的玩具博物館要另外買票，下雨時可以進去玩。",
+    "open_note": "園區免費；玩具博物館要另外買票（約 50 元），開館時間跟園區不同",
     "age_best": [
       1,
       8
@@ -420,6 +421,7 @@
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
+      "open_note",
       "age_best",
       "stay_hours",
       "facilities"
@@ -3491,7 +3493,7 @@
   {
     "id": "spot-092",
     "name": "吳福洋襪子故事館",
-    "city": "桃園市蘆竹區",
+    "city": "新北市林口區",
     "region": "北",
     "types": [
       "museum"
@@ -3499,8 +3501,9 @@
     "env": "in",
     "cost_tier": "?",
     "stroller_ok": true,
-    "mins_from_linkou": 20,
-    "tip": "襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的近郊備案。",
+    "mins_from_linkou": 10,
+    "tip": "就在林口工業區的襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的首選備案。",
+    "open_note": "假日的 DIY 有固定場次，出發前先查",
     "age_best": [
       3,
       10
@@ -3511,14 +3514,13 @@
       "shade",
       "elder"
     ],
-    "lat": 25.050645,
-    "lng": 121.291732,
+    "lat": 25.077531,
+    "lng": 121.391602,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "city",
-      "single_source",
       "cost_tier",
+      "open_note",
       "age_best",
       "stay_hours",
       "facilities"

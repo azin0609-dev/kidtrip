@@ -236,13 +236,13 @@ export function SettingsDialog(props: SettingsDialogProps) {
         </section>
 
         <section className="flex flex-col gap-3">
-          <h3 className="font-bold">跟另一半同步收藏</h3>
+          <h3 className="font-bold">把收藏與紀錄傳到另一支手機</h3>
           <p className="text-sm text-stone-700 dark:text-stone-300">
-            把連結傳給另一半，對方打開後按「加進來」，你的收藏和去過紀錄就會合併到對方手機。對方再傳一次回來，兩邊就一樣了。
+            把連結傳給另一半，對方打開後按「加進來」，你的收藏、去過紀錄和評分就會合併到對方手機。這是一次性的匯入，不會自動同步；之後有新增要再傳一次。
           </p>
           <div>
             <button type="button" onClick={() => void onShare().then(setShareMsg)} className={ghost}>
-              分享我的清單
+              產生匯入連結
             </button>
           </div>
           {shareMsg && (
@@ -250,7 +250,10 @@ export function SettingsDialog(props: SettingsDialogProps) {
               {shareMsg}
             </p>
           )}
-          <p className="text-xs text-stone-600 dark:text-stone-400">連結裡只有收藏和去過紀錄，不包含出發地和孩子資料。</p>
+          <p className="text-xs text-stone-600 dark:text-stone-400">
+            連結會帶：收藏、去過的地方與日期、你給的星星和標籤。不會帶：出發地、孩子資料、寫的回憶、回報紀錄。
+            同一個地方兩邊都評過分時，各自保留自己的評分。
+          </p>
         </section>
 
         <section className="flex flex-col gap-3">

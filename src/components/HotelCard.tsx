@@ -1,6 +1,6 @@
 import type { Hotel, Spot } from '../data/schema.ts';
 import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels.ts';
-import { googleMapsUrl, hotelPriceUrl } from '../lib/links.ts';
+import { directionsUrl, hotelPriceUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { Tag, buttonBase } from './ui.tsx';
 
@@ -50,7 +50,7 @@ export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggle
 
       <div className="mt-auto grid grid-cols-3 gap-2">
         <a
-          href={googleMapsUrl(hotel)}
+          href={directionsUrl(hotel)}
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonBase} border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`}

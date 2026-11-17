@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { makeHotel, makeSpot } from '../test/fixtures.ts';
 import { formatDrive, latestVerified, shortOriginLabel } from './format.ts';
-import { googleMapsUrl, hotelPriceUrl, stripParens } from './links.ts';
+import { directionsUrl, googleMapsUrl, hotelPriceUrl, stripParens } from './links.ts';
 import { tabFromHash } from './tabs.ts';
 
 describe('links', () => {
@@ -18,6 +18,13 @@ describe('links', () => {
   it('有 place_id 就帶上', () => {
     const url = new URL(googleMapsUrl(makeSpot({ google_place_id: 'ChIJabc' })));
     expect(url.searchParams.get('query_place_id')).toBe('ChIJabc');
+  });
+  it('路線連結', () => {
+    const url = new URL(directionsUrl(makeSpot({ name: '恐龍館', city: '台北市（士林）', google_place_id: 'ChIJabc' })));
+    expect(url.origin + url.pathname).toBe('https://www.google.com/maps/dir/');
+    expect(url.searchParams.get('destination')).toBe('恐龍館 台北市');
+    expect(url.searchParams.get('destination_place_id')).toBe('ChIJabc');
+    expect(url.searchParams.has('origin')).toBe(false);
   });
   it('查房價連結', () => {
     const url = new URL(hotelPriceUrl(makeHotel({ name: '親子飯店', city: '宜蘭縣礁溪鄉' })));

@@ -98,12 +98,12 @@ export function ImportDialog({
       <div className="flex flex-col items-center gap-3 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-center">
         <Dino className="h-20 w-20" />
         <h2 id={titleId} className="text-lg font-bold">
-          收到一份分享的清單
+          收到一份收藏與紀錄
         </h2>
         <p className="text-sm text-stone-700 dark:text-stone-300">
           {nothingNew
             ? '裡面的收藏和去過紀錄，這支手機都已經有了。'
-            : `加進來會多 ${incoming?.fav ?? 0} 個收藏、${incoming?.been ?? 0} 個去過紀錄。原本的不會被刪掉。`}
+            : `加進來會多 ${incoming?.fav ?? 0} 個收藏、${incoming?.been ?? 0} 個去過紀錄，還有對方的評分（你評過的以你的為準）。原本的不會被刪掉。`}
         </p>
         <div className="grid w-full grid-cols-2 gap-2">
           <button type="button" onClick={onDecline} className={ghost}>
