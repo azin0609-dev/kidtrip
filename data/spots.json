@@ -22,6 +22,14 @@
       "elder"
     ],
     "crowd_tip": "假日傍晚人多，早上比較空",
+    "kid_label": "捷運車廂溜滑梯",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址"
+      ],
+      "source": "blog"
+    },
     "lat": 25.066751,
     "lng": 121.374879,
     "google_place_id": null,
@@ -61,6 +69,7 @@
     ],
     "transit": "捷運動物園站出站就是",
     "crowd_tip": "假日 9 點開門就進場，下午人最多",
+    "kid_label": "看無尾熊和企鵝",
     "lat": 24.995355,
     "lng": 121.586149,
     "google_place_id": null,
@@ -101,6 +110,7 @@
     ],
     "transit": "捷運劍潭站或士林站轉接駁公車",
     "crowd_tip": "假日下午排隊長，開門就去",
+    "kid_label": "旋轉木馬和小火車",
     "lat": 25.097415,
     "lng": 121.514972,
     "google_place_id": null,
@@ -260,6 +270,7 @@
     "lat": 25.064361,
     "lng": 121.533468,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -296,6 +307,7 @@
       "elder"
     ],
     "transit": "捷運台大醫院站走路約 5 分",
+    "kid_label": "看恐龍骨頭",
     "lat": 25.043646,
     "lng": 121.514391,
     "google_place_id": null,
@@ -335,6 +347,7 @@
     "lat": 25.032361,
     "lng": 121.518267,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -377,6 +390,7 @@
       3,
       4
     ],
+    "kid_label": "一整排堤坡溜滑梯",
     "lat": 25.074665,
     "lng": 121.456278,
     "google_place_id": null,
@@ -416,6 +430,15 @@
       "shade",
       "elder"
     ],
+    "kid_label": "沙坑和玩具",
+    "official_url": "https://www.435.culture.ntpc.gov.tw/",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "玩具博物館票價"
+      ],
+      "source": "official"
+    },
     "lat": 25.02431,
     "lng": 121.451907,
     "google_place_id": null,
@@ -454,6 +477,8 @@
       "shade",
       "elder"
     ],
+    "kid_label": "考古挖寶",
+    "official_url": "https://www.sshm.ntpc.gov.tw/",
     "lat": 25.157041,
     "lng": 121.404871,
     "google_place_id": null,
@@ -480,7 +505,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 30,
     "tip": "後面的陶瓷公園夏天有戲水區，記得帶泳衣和毛巾。",
-    "open_note": "每月第一個週一休館",
+    "open_note": "每月第一個週一休館；未滿 12 歲和新北市民免費；戲水區只在夏天開放，週一、二不開",
     "age_best": [
       2,
       10
@@ -495,6 +520,18 @@
       "elder"
     ],
     "transit": "台鐵鶯歌站走路約 10 分",
+    "kid_label": "玩陶和戲水",
+    "official_url": "https://www.ceramics.ntpc.gov.tw/",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "開放時間",
+        "休館日",
+        "票價",
+        "戲水區開放期間"
+      ],
+      "source": "official"
+    },
     "lat": 24.949228,
     "lng": 121.352095,
     "google_place_id": null,
@@ -640,6 +677,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "企鵝和水母區最受歡迎，建議先線上買票，平日人少很多。",
+    "open_note": "分時段入場，假日先線上買票；4 歲以下免費（以官方公告為準）",
     "age_best": [
       1,
       12
@@ -655,11 +693,24 @@
     ],
     "transit": "機場捷運、高鐵桃園站走路約 5 分",
     "crowd_tip": "假日先線上買票，分時段入場",
+    "kid_label": "看企鵝和水母",
+    "official_url": "https://www.xpark.com.tw/",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址",
+        "營業時間",
+        "票價"
+      ],
+      "source": "blog",
+      "note": "票價是 2025 年的資料"
+    },
     "lat": 25.017191,
     "lng": 121.214072,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
+      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
@@ -680,7 +731,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "專為 2–6 歲設計，跟 Xpark 同一棟；有舞台秀的場次要先預約。",
-    "open_note": "舞台秀場次要先預約",
+    "open_note": "分場次入場、每場約 2.5 小時，要先線上預約；票價以官方最新公告為準",
     "age_best": [
       2,
       6
@@ -695,6 +746,15 @@
       "elder"
     ],
     "transit": "機場捷運、高鐵桃園站走路約 5 分",
+    "kid_label": "跟巧虎一起玩",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址"
+      ],
+      "source": "media",
+      "note": "票價與場次只查到 2020–2021 年的舊資料，沒有採用"
+    },
     "lat": 25.017191,
     "lng": 121.214072,
     "google_place_id": null,
@@ -722,6 +782,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "展覽可以動手玩，館外有大水池和草地，逛完還能放電。",
+    "open_note": "週二休館；未滿 18 歲免費",
     "age_best": [
       2,
       10
@@ -734,11 +795,25 @@
       "shade",
       "elder"
     ],
+    "kid_label": "動手玩的展覽",
+    "official_url": "https://tmofa.tycg.gov.tw/",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址",
+        "開放時間",
+        "休館日",
+        "票價"
+      ],
+      "source": "media",
+      "note": "2024–2025 年的報導"
+    },
     "lat": 25.005325,
     "lng": 121.206258,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
+      "open_note",
       "age_best",
       "stay_hours",
       "facilities"
@@ -900,7 +975,7 @@
     "cost_tier": "free",
     "stroller_ok": false,
     "mins_from_linkou": 30,
-    "tip": "樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。",
+    "tip": "樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。旁邊孔廟的停車位只有約 30 個，假日早點到。",
     "age_best": [
       3,
       10
@@ -911,6 +986,16 @@
       "shade"
     ],
     "crowd_tip": "假日停車位少，早點到",
+    "kid_label": "樹林裡的木頭遊戲場",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址",
+        "免門票",
+        "停車"
+      ],
+      "source": "blog"
+    },
     "lat": 25.000303,
     "lng": 121.329312,
     "google_place_id": null,
@@ -1424,6 +1509,7 @@
     "lat": 24.965353,
     "lng": 121.224926,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "closes_on",
@@ -1545,6 +1631,7 @@
       "elder"
     ],
     "crowd_tip": "假日恐龍廳最擠，一進門先去",
+    "kid_label": "會動的恐龍",
     "lat": 24.157316,
     "lng": 120.666761,
     "google_place_id": null,
@@ -1742,6 +1829,7 @@
     "lat": 24.080767,
     "lng": 120.5423,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "env",
@@ -3064,6 +3152,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -3172,6 +3261,7 @@
     "lat": 24.751954,
     "lng": 121.753334,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "open_note",
@@ -3207,6 +3297,7 @@
     "lat": 24.751954,
     "lng": 121.753334,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "city",
@@ -3354,6 +3445,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 10,
     "tip": "海洋主題，超長的水管溜滑梯和攀爬網很能放電，旁邊有足球場可以跑。",
+    "open_note": "2025 年 11 月曾有設施損壞、封鎖檢修，去之前先確認遊具有沒有全部開放",
     "age_best": [
       3,
       10
@@ -3371,11 +3463,21 @@
       3,
       4
     ],
+    "kid_label": "水管溜滑梯",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "2025 年 11 月設施損壞事件"
+      ],
+      "source": "media",
+      "note": "沒查到目前是否已修好"
+    },
     "lat": 25.074614,
     "lng": 121.396357,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
+      "open_note",
       "age_best",
       "stay_hours",
       "facilities"
@@ -3404,6 +3506,7 @@
       "picnic",
       "elder"
     ],
+    "kid_label": "海盜船",
     "lat": 25.065311,
     "lng": 121.368839,
     "google_place_id": null,
@@ -3445,6 +3548,7 @@
       3,
       4
     ],
+    "kid_label": "高塔溜滑梯和沙坑",
     "lat": 25.08027,
     "lng": 121.37576,
     "google_place_id": null,
@@ -3479,9 +3583,11 @@
       "shade",
       "elder"
     ],
+    "kid_label": "大草地野餐",
     "lat": 25.077531,
     "lng": 121.391602,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -3499,11 +3605,11 @@
       "museum"
     ],
     "env": "in",
-    "cost_tier": "?",
+    "cost_tier": "$",
     "stroller_ok": true,
     "mins_from_linkou": 10,
     "tip": "就在林口工業區的襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的首選備案。",
-    "open_note": "假日的 DIY 有固定場次，出發前先查",
+    "open_note": "門票 100 元可抵館內消費；假日導覽和 DIY 有固定場次，出發前先查",
     "age_best": [
       3,
       10
@@ -3514,12 +3620,23 @@
       "shade",
       "elder"
     ],
+    "kid_label": "自己織襪子",
+    "official_url": "https://www.socksmuseum.com/",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址",
+        "票價"
+      ],
+      "source": "official",
+      "note": "地址來自官網；票價與導覽場次來自旅遊網站，沒有標日期"
+    },
     "lat": 25.077531,
     "lng": 121.391602,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
-      "cost_tier",
       "open_note",
       "age_best",
       "stay_hours",
@@ -3557,6 +3674,7 @@
       3,
       4
     ],
+    "kid_label": "竹筍高塔溜滑梯",
     "lat": 25.105248,
     "lng": 121.453188,
     "google_place_id": null,
@@ -3580,7 +3698,7 @@
     "cost_tier": "free",
     "stroller_ok": true,
     "mins_from_linkou": 25,
-    "tip": "鯨魚造型的地景溜滑梯是無障礙設計，坡度緩，小小孩也能溜。",
+    "tip": "鯨魚造型的地景溜滑梯是無障礙設計，坡度緩，小小孩也能溜。附近沒有便利商店，水和點心先帶好。",
     "age_best": [
       1,
       8
@@ -3591,9 +3709,19 @@
       "picnic",
       "elder"
     ],
+    "kid_label": "鯨魚溜滑梯",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "主要遊具",
+        "適合年齡"
+      ],
+      "source": "media"
+    },
     "lat": 25.145692,
     "lng": 121.403511,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -3624,6 +3752,7 @@
       "picnic",
       "shade"
     ],
+    "kid_label": "巨獸攀爬",
     "lat": 25.02452,
     "lng": 121.46319,
     "google_place_id": null,
@@ -3709,6 +3838,15 @@
       3,
       4
     ],
+    "kid_label": "滾輪溜滑梯",
+    "verified": {
+      "date": "2026-11-17",
+      "fields": [
+        "地址",
+        "全天開放"
+      ],
+      "source": "blog"
+    },
     "lat": 25.001709,
     "lng": 121.291442,
     "google_place_id": null,
@@ -3743,6 +3881,7 @@
     "facilities": [
       "picnic"
     ],
+    "kid_label": "滑索和玩水",
     "lat": 25.012613,
     "lng": 121.321031,
     "google_place_id": null,
@@ -3776,6 +3915,7 @@
       "picnic",
       "elder"
     ],
+    "kid_label": "彩色溜滑梯",
     "lat": 24.996273,
     "lng": 121.327747,
     "google_place_id": null,

@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from 'react';
+import { REPORT_KINDS } from '../lib/storage.ts';
 import { Dino } from './Dino.tsx';
 import { buttonBase } from './ui.tsx';
 
@@ -27,7 +28,8 @@ export function ReportDialog({
 }: {
   target: { id: string; name: string } | null;
   onClose: () => void;
-  onSubmit: (note: string) => void;
+  /** copy 為 true 時，記下來之後順便把這一則複製到剪貼簿。 */
+  onSubmit: (note: string, kind: string, copy: boolean) => void;
 }) {
   const ref = useDialog(target !== null);
   const titleId = useId();
@@ -39,10 +41,13 @@ export function ReportDialog({
         onSubmit={(e) => {
           e.preventDefault();
           const form = e.currentTarget;
-          const note = String(new FormData(form).get('note') ?? '').trim();
+          const data = new FormData(form);
+          const note = String(data.get('note') ?? '').trim();
           if (!note) return;
+          const kind = String(data.get('kind') ?? '其他');
+          const copy = (e.nativeEvent as SubmitEvent).submitter?.getAttribute('data-copy') === '1';
           form.reset();
-          onSubmit(note);
+          onSubmit(note, kind, copy);
         }}
       >
         <h2 id={titleId} className="text-lg font-bold">
@@ -50,7 +55,21 @@ export function ReportDialog({
         </h2>
         <p className="text-sm text-stone-700 dark:text-stone-300">{target?.name}</p>
         <label className="flex flex-col gap-1 text-xs text-stone-600 dark:text-stone-400">
-          寫一句就好，例如「週一沒開」「票價變了」「推車其實不好推」
+          是哪一種問題？
+          <select
+            name="kind"
+            defaultValue={REPORT_KINDS[0]}
+            className={`min-h-11 rounded-xl border border-stone-300 bg-white px-3 text-base text-stone-900 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 ${focus}`}
+          >
+            {REPORT_KINDS.map((k) => (
+              <option key={k} value={k}>
+                {k}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex flex-col gap-1 text-xs text-stone-600 dark:text-stone-400">
+          寫一句就好，例如「週一沒開」「票價變了」「推車在入口那段要搬」
           <textarea
             name="note"
             rows={3}
@@ -74,6 +93,9 @@ export function ReportDialog({
             記下來
           </button>
         </div>
+        <button type="submit" data-copy="1" className={ghost}>
+          記下來，並複製這一則（可以貼到 LINE）
+        </button>
         <p className="text-xs text-stone-600 dark:text-stone-400">會先記在這支手機，到「設定」可以一次複製出來。</p>
       </form>
     </dialog>

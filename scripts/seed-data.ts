@@ -11,6 +11,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const TODAY = '2026-11-16';
+/** 逐筆查證的日期。 */
+const TODAY_VERIFIED = '2026-11-17';
 
 type Extra = { badge?: { kind: 'new' | 'end'; label: string }; opens_on?: string; closes_on?: string; verify?: string[] };
 type SpotRow = [name: string, city: string, region: string, types: string[], env: string, cost: string, stroller: 0 | 1, mins: number, tip: string, extra?: Extra];
@@ -41,7 +43,7 @@ const SPOTS: SpotRow[] = [
   ['六福村主題遊樂園', '新竹縣關西鎮', '北', ['theme', 'zoo'], 'out', '$$$', 1, 50, '3 歲主要看動物、搭猛獸巴士，刺激設施大多有身高限制。'],
   ['埔心牧場', '桃園市楊梅區', '北', ['farm'], 'out', '$$', 1, 35, '可以餵牛餵羊，大草原很好跑，中午太陽大，帶帽子。'],
   ['富田花園農場', '桃園市大溪區', '北', ['farm'], 'out', '$', 1, 40, '可以餵羊駝和笑笑羊，園區不大，兩小時剛好。'],
-  ['奧爾森林學堂', '桃園市桃園區', '北', ['park'], 'out', 'free', 0, 30, '樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。'],
+  ['奧爾森林學堂', '桃園市桃園區', '北', ['park'], 'out', 'free', 0, 30, '樹林裡的木造遊戲場，有些步道是階梯，推車不好推，建議用揹的。旁邊孔廟的停車位只有約 30 個，假日早點到。'],
   ['新竹市立動物園', '新竹市東區', '北', ['zoo'], 'out', '$', 1, 55, '小而美，一個半小時逛得完，隔壁新竹公園還有遊戲場。'],
   ['青青草原', '新竹市香山區', '北', ['park'], 'out', 'free', 0, 65, '超長磨石子溜滑梯要大人陪滑，穿長褲；園區有坡，推車比較吃力。'],
   ['綠世界生態農場', '新竹縣北埔鄉', '北', ['farm', 'zoo'], 'out', '$$', 0, 75, '可以近距離看鳥和羊駝，園區在山坡上，路程抓寬一點。'],
@@ -119,9 +121,9 @@ const SPOTS: SpotRow[] = [
   ['林口立功公園', '新北市林口區', '北', ['park'], 'out', 'free', 1, 10, '海盜船造型的遊戲場，設施不高，是給小小孩玩的，核桃這個年紀也能玩。'],
   ['林口吉祥公園', '新北市林口區', '北', ['park'], 'out', 'free', 1, 10, '影視主題公園，有 6 公尺高的電波塔溜滑梯和大沙坑，帶挖沙工具。'],
   ['林口社區運動公園（小熊公園）', '新北市林口區', '北', ['park'], 'out', 'free', 1, 10, '大家叫它小熊公園，草地大、適合野餐，旁邊就是國家檔案館。'],
-  ['吳福洋襪子故事館', '新北市林口區', '北', ['museum'], 'in', '?', 1, 10, '就在林口工業區的襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的首選備案。', { verify: ['cost_tier'] }],
+  ['吳福洋襪子故事館', '新北市林口區', '北', ['museum'], 'in', '$', 1, 10, '就在林口工業區的襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的首選備案。'],
   ['五股成德公園', '新北市五股區', '北', ['park'], 'out', 'free', 1, 20, '綠竹筍造型的 10 公尺高塔溜滑梯，還有環狀溜索和彈跳床，適合大一點的小孩。'],
-  ['八里商港公園（鯨魚滑梯）', '新北市八里區', '北', ['park'], 'out', 'free', 1, 25, '鯨魚造型的地景溜滑梯是無障礙設計，坡度緩，小小孩也能溜。'],
+  ['八里商港公園（鯨魚滑梯）', '新北市八里區', '北', ['park'], 'out', 'free', 1, 25, '鯨魚造型的地景溜滑梯是無障礙設計，坡度緩，小小孩也能溜。附近沒有便利商店，水和點心先帶好。'],
   ['板橋四維公園', '新北市板橋區', '北', ['park'], 'out', 'free', 1, 30, '巨獸造型的攀爬遊戲場，要先爬上去才能溜磨石子滑梯，適合愛爬的小孩。'],
   ['八德楓樹腳公園', '桃園市八德區', '北', ['park'], 'out', 'free', 1, 35, '2025 年啟用的旗艦公園，16 公尺高的長頸鹿遊戲塔很醒目，還有滑索和水道。', { verify: ['single_source'] }],
   ['桃園風禾公園', '桃園市桃園區', '北', ['park'], 'out', 'free', 1, 25, '有 50 公尺長的滾輪溜滑梯、六座磨石子滑梯和沙坑，可以玩很久。', { verify: ['city'] }],
@@ -136,11 +138,11 @@ const OPEN_NOTES: Record<string, string> = {
   臺北市立天文科學教育館: '週一休館',
   國立臺灣博物館古生物館: '週一休館',
   新北市立十三行博物館: '每月第一個週一休館',
-  新北市立鶯歌陶瓷博物館: '每月第一個週一休館',
+  新北市立鶯歌陶瓷博物館: '每月第一個週一休館；未滿 12 歲和新北市民免費；戲水區只在夏天開放，週一、二不開',
   國立海洋科技博物館: '週一休館',
   新竹市立動物園: '週一休園',
   蘭陽博物館: '週三休館；兒童探索區要預約',
-  巧虎夢想樂園: '舞台秀場次要先預約',
+  巧虎夢想樂園: '分場次入場、每場約 2.5 小時，要先線上預約；票價以官方最新公告為準',
   'KidZania Taipei 奇薩尼亞台北': '試營運到 12/6，只收線上購票',
   國立自然科學博物館: '週一休館',
   臺中兒童藝術館: '分場次入場，建議先訂',
@@ -153,7 +155,10 @@ const OPEN_NOTES: Record<string, string> = {
   斑比山丘: '假日人多，建議先預約',
   宜農牧場: '公休日各家說法不一（有的說週四休），去之前先確認',
   蜡藝蠟筆城堡: 'DIY 分場次，建議先預約',
-  吳福洋襪子故事館: '假日的 DIY 有固定場次，出發前先查',
+  吳福洋襪子故事館: '門票 100 元可抵館內消費；假日導覽和 DIY 有固定場次，出發前先查',
+  'Xpark 都會型水生公園': '分時段入場，假日先線上買票；4 歲以下免費（以官方公告為準）',
+  桃園市兒童美術館: '週二休館；未滿 18 歲免費',
+  林口足夢運動公園: '2025 年 11 月曾有設施損壞、封鎖檢修，去之前先確認遊具有沒有全部開放',
   板橋435藝文特區: '園區免費；玩具博物館要另外買票（約 50 元），開館時間跟園區不同',
   橘之鄉蜜餞形象館: '蜜餞 DIY 要先預約',
 };
@@ -265,6 +270,61 @@ const DETAILS: Record<string, Detail> = {
   龜山中興兒二公園: [1, 8, 1, 'KE'],
 };
 const FAC_CODES: Record<string, string> = { N: 'nursing', D: 'diaper', P: 'parking', F: 'food', K: 'picnic', S: 'shade', E: 'elder' };
+
+// 給小孩看的短標籤：到了會先玩什麼（「給小孩選」和推薦短卡會顯示）。
+const KID_LABELS: Record<string, string> = {
+  林口樂活公園: '捷運車廂溜滑梯',
+  林口足夢運動公園: '水管溜滑梯',
+  林口立功公園: '海盜船',
+  林口吉祥公園: '高塔溜滑梯和沙坑',
+  '林口社區運動公園（小熊公園）': '大草地野餐',
+  吳福洋襪子故事館: '自己織襪子',
+  龜山中興兒二公園: '彩色溜滑梯',
+  'Xpark 都會型水生公園': '看企鵝和水母',
+  巧虎夢想樂園: '跟巧虎一起玩',
+  桃園市兒童美術館: '動手玩的展覽',
+  五股成德公園: '竹筍高塔溜滑梯',
+  新北大都會公園熊猴森樂園: '一整排堤坡溜滑梯',
+  新北市立十三行博物館: '考古挖寶',
+  '八里商港公園（鯨魚滑梯）': '鯨魚溜滑梯',
+  桃園風禾公園: '滾輪溜滑梯',
+  大有梯田生態公園: '滑索和玩水',
+  板橋435藝文特區: '沙坑和玩具',
+  新北市立鶯歌陶瓷博物館: '玩陶和戲水',
+  奧爾森林學堂: '樹林裡的木頭遊戲場',
+  板橋四維公園: '巨獸攀爬',
+  臺北市立動物園: '看無尾熊和企鵝',
+  臺北市立兒童新樂園: '旋轉木馬和小火車',
+  國立臺灣博物館古生物館: '看恐龍骨頭',
+  國立自然科學博物館: '會動的恐龍',
+};
+
+// 官方網站（只放確定的）。
+const OFFICIAL_URLS: Record<string, string> = {
+  'Xpark 都會型水生公園': 'https://www.xpark.com.tw/',
+  新北市立鶯歌陶瓷博物館: 'https://www.ceramics.ntpc.gov.tw/',
+  新北市立十三行博物館: 'https://www.sshm.ntpc.gov.tw/',
+  板橋435藝文特區: 'https://www.435.culture.ntpc.gov.tw/',
+  吳福洋襪子故事館: 'https://www.socksmuseum.com/',
+  桃園市兒童美術館: 'https://tmofa.tycg.gov.tw/',
+};
+
+// 逐筆查證紀錄（2026-11-17 查林口 30 分鐘內的 20 個景點）。
+// source：official 官方網站或官方文件、media 新聞媒體、blog 旅遊部落格。只列真的查到的欄位。
+type VerifiedSource = 'official' | 'media' | 'blog';
+const VERIFIED: Record<string, { fields: string[]; source: VerifiedSource; note?: string }> = {
+  新北市立鶯歌陶瓷博物館: { fields: ['開放時間', '休館日', '票價', '戲水區開放期間'], source: 'official' },
+  吳福洋襪子故事館: { fields: ['地址', '票價'], source: 'official', note: '地址來自官網；票價與導覽場次來自旅遊網站，沒有標日期' },
+  板橋435藝文特區: { fields: ['玩具博物館票價'], source: 'official' },
+  桃園市兒童美術館: { fields: ['地址', '開放時間', '休館日', '票價'], source: 'media', note: '2024–2025 年的報導' },
+  'Xpark 都會型水生公園': { fields: ['地址', '營業時間', '票價'], source: 'blog', note: '票價是 2025 年的資料' },
+  巧虎夢想樂園: { fields: ['地址'], source: 'media', note: '票價與場次只查到 2020–2021 年的舊資料，沒有採用' },
+  桃園風禾公園: { fields: ['地址', '全天開放'], source: 'blog' },
+  奧爾森林學堂: { fields: ['地址', '免門票', '停車'], source: 'blog' },
+  林口樂活公園: { fields: ['地址'], source: 'blog' },
+  林口足夢運動公園: { fields: ['2025 年 11 月設施損壞事件'], source: 'media', note: '沒查到目前是否已修好' },
+  '八里商港公園（鯨魚滑梯）': { fields: ['主要遊具', '適合年齡'], source: 'media' },
+};
 
 type HotelRow = [name: string, city: string, region: string, price: string, tags: string[], features: string[], mins: number, tip: string, near: string[], verify?: string[], kind?: 'hotel' | 'bnb'];
 
@@ -401,6 +461,19 @@ function loadExisting(file: string): Map<string, Existing> {
   }
 }
 
+// 座標如果剛好等於某個鄉鎮或縣市的代表座標，代表是 geocode --fallback-town 補的，不是實際位置。
+const centroids = new Set<string>();
+{
+  const o = JSON.parse(readFileSync(`${root}data/origins.json`, 'utf8')) as {
+    counties: { lat: number | null; lng: number | null; towns: { lat: number | null; lng: number | null }[] }[];
+  };
+  for (const c of o.counties) {
+    if (c.lat !== null) centroids.add(`${c.lat},${c.lng}`);
+    for (const t of c.towns) if (t.lat !== null) centroids.add(`${t.lat},${t.lng}`);
+  }
+}
+const coordArea = (old: Existing | undefined) => (old && old.lat !== null && centroids.has(`${old.lat},${old.lng}`) ? { coord_area: true } : {});
+
 const oldSpots = loadExisting('spots.json');
 const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, mins, tip, extra], i) => {
   const id = `spot-${String(i + 1).padStart(3, '0')}`;
@@ -434,15 +507,22 @@ const spots = SPOTS.map(([name, city, region, types, env, cost_tier, stroller, m
     ...(more?.t ? { transit: more.t } : {}),
     ...(more?.c ? { crowd_tip: more.c } : {}),
     ...(more?.m ? { best_months: more.m } : {}),
+    ...(KID_LABELS[name] ? { kid_label: KID_LABELS[name] } : {}),
+    ...(OFFICIAL_URLS[name] ? { official_url: OFFICIAL_URLS[name] } : {}),
+    ...(VERIFIED[name] ? { verified: { date: TODAY_VERIFIED, ...VERIFIED[name] } } : {}),
     lat: old?.lat ?? null,
     lng: old?.lng ?? null,
     google_place_id: old?.google_place_id ?? null,
+    ...coordArea(old),
     needs_verify: [...verify],
     last_verified: TODAY,
   };
 });
 
 const idByName = new Map(spots.map((s) => [s.name, s.id]));
+for (const name of [...Object.keys(KID_LABELS), ...Object.keys(OFFICIAL_URLS), ...Object.keys(VERIFIED), ...Object.keys(OPEN_NOTES), ...Object.keys(DETAILS)]) {
+  if (!idByName.has(name)) throw new Error(`對照表裡的景點名稱找不到：${name}`);
+}
 
 // 宜蘭各鄉鎮附近的景點：住宿、餐廳原本列的不到 3 個時，用這張表補到 3 個。
 const YILAN_NEAR: Record<string, string[]> = {
@@ -486,6 +566,7 @@ const hotels = HOTELS.map(([name, city, region, price_tier, tags, features, mins
     lat: old?.lat ?? null,
     lng: old?.lng ?? null,
     google_place_id: old?.google_place_id ?? null,
+    ...coordArea(old),
     needs_verify: ['mins_from_linkou', 'price_tier', 'tags', ...(verify ?? [])],
     last_verified: TODAY,
   };
@@ -548,6 +629,7 @@ const foods = FOODS.map(([name, city, region, cuisine, price_tier, tags, mins, t
     lat: old?.lat ?? null,
     lng: old?.lng ?? null,
     google_place_id: old?.google_place_id ?? null,
+    ...coordArea(old),
     needs_verify: ['still_open', 'mins_from_linkou', 'price_tier', 'tags', ...(verify ?? [])],
     last_verified: TODAY,
   };

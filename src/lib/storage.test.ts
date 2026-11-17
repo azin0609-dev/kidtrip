@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MEMO_MAX, STORAGE_KEY, listMemories, loadState, parseState, saveState, setMemo, toggleBeen } from './storage.ts';
+import { MEMO_MAX, STORAGE_KEY, formatReports, listMemories, loadState, parseState, saveState, setMemo, toggleBeen } from './storage.ts';
 
 function memoryStorage(initial: Record<string, string> = {}) {
   const data = { ...initial };
@@ -103,5 +103,25 @@ describe('回憶', () => {
     );
     expect(list.map((m) => m.id)).toEqual(['spot-002', 'spot-001', 'spot-003']);
     expect(list[0]).toEqual({ id: 'spot-002', name: '名稱spot-002', date: '2026-10-01', text: 'b' });
+  });
+});
+
+describe('回報的問題類型', () => {
+  it('存取類型，不認得的類型丟掉；整理成文字時帶上類型', () => {
+    const s = parseState(
+      JSON.stringify({
+        fav: [],
+        been: [],
+        reports: [
+          { id: 'spot-001', note: '週一沒開', date: '2026-11-17', kind: '沒開或時間不對' },
+          { id: 'spot-002', note: '舊資料', date: '2026-11-16' },
+          { id: 'spot-003', note: 'x', date: '2026-11-16', kind: '亂寫的' },
+        ],
+      }),
+    );
+    expect(s.reports?.map((r) => r.kind)).toEqual(['沒開或時間不對', undefined, undefined]);
+    expect(formatReports(s.reports!, (id) => `名稱${id}`)).toBe(
+      '2026-11-17｜名稱spot-001（spot-001）｜沒開或時間不對：週一沒開\n2026-11-16｜名稱spot-002（spot-002）：舊資料\n2026-11-16｜名稱spot-003（spot-003）：x',
+    );
   });
 });

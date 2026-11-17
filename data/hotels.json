@@ -278,6 +278,7 @@
     "lat": 24.823646,
     "lng": 121.771348,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -938,6 +939,7 @@
     "lat": 22.793727,
     "lng": 121.077838,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -1291,6 +1293,7 @@
     "lat": 24.863851,
     "lng": 121.216392,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -1520,6 +1523,7 @@
     "lat": 24.561483,
     "lng": 120.819233,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -1643,6 +1647,7 @@
     "lat": 24.163162,
     "lng": 120.647828,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -1896,6 +1901,7 @@
     "lat": 23.481109,
     "lng": 120.453541,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2176,6 +2182,7 @@
     "lat": 22.647695,
     "lng": 120.299622,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2208,6 +2215,7 @@
     "lat": 22.620335,
     "lng": 120.312038,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2368,6 +2376,7 @@
     "lat": 23.496817,
     "lng": 121.375992,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2399,6 +2408,7 @@
     "lat": 23.982074,
     "lng": 121.60681,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2525,6 +2535,7 @@
     "lat": 22.793727,
     "lng": 121.077838,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2560,6 +2571,7 @@
     "lat": 24.677033,
     "lng": 121.766919,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2592,6 +2604,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2727,6 +2740,7 @@
     "lat": 24.594624,
     "lng": 121.842653,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2762,6 +2776,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2796,6 +2811,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2828,6 +2844,7 @@
     "lat": 24.634514,
     "lng": 121.79228,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2863,6 +2880,7 @@
     "lat": 24.634514,
     "lng": 121.79228,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2898,6 +2916,7 @@
     "lat": 24.743183,
     "lng": 121.723372,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2927,6 +2946,7 @@
     "lat": 24.730279,
     "lng": 121.763115,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2960,6 +2980,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2994,6 +3015,7 @@
     "lat": 24.677033,
     "lng": 121.766919,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -3030,6 +3052,7 @@
     "lat": 24.634514,
     "lng": 121.79228,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -3063,6 +3086,7 @@
     "lat": 24.634514,
     "lng": 121.79228,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -3095,6 +3119,7 @@
     "lat": 24.665963,
     "lng": 121.653229,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -3131,6 +3156,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",

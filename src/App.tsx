@@ -153,7 +153,9 @@ export default function App() {
 
   const foodBySpot = useMemo(() => {
     const map = new Map<string, Restaurant[]>();
-    for (const r of sortByDrive(restaurants, minsOf)) {
+    // 位置確定的餐廳排前面，只知道在哪一區的排後面。
+    const ordered = [...sortByDrive(restaurants, minsOf)].sort((a, b) => Number(!!a.coord_area) - Number(!!b.coord_area));
+    for (const r of ordered) {
       for (const id of r.near_spot_ids) map.set(id, [...(map.get(id) ?? []), r]);
     }
     return map;
@@ -565,9 +567,13 @@ export default function App() {
       <ReportDialog
         target={reportFor}
         onClose={() => setReportFor(null)}
-        onSubmit={(note) => {
+        onSubmit={(note, kind, copy) => {
           const id = reportFor?.id;
-          if (id) update((s) => ({ ...s, reports: [...(s.reports ?? []), { id, note, date: today }] }));
+          if (id) {
+            const report = { id, note, date: today, kind };
+            update((s) => ({ ...s, reports: [...(s.reports ?? []), report] }));
+            if (copy) void copyText(formatReports([report], nameOf), '');
+          }
           setReportFor(null);
         }}
       />

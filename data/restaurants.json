@@ -20,6 +20,7 @@
     "lat": 25.077531,
     "lng": 121.391602,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -48,6 +49,7 @@
     "lat": 25.077531,
     "lng": 121.391602,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -75,6 +77,7 @@
     "lat": 25.077531,
     "lng": 121.391602,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -137,6 +140,7 @@
     "lat": 25.09184,
     "lng": 121.524207,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -167,6 +171,7 @@
     "lat": 25.069664,
     "lng": 121.588998,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -224,6 +229,7 @@
     "lat": 24.965353,
     "lng": 121.224926,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -251,6 +257,7 @@
     "lat": 24.993,
     "lng": 121.301,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -282,6 +289,7 @@
     "lat": 24.804733,
     "lng": 120.973626,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -309,6 +317,7 @@
     "lat": 24.818754,
     "lng": 120.960044,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -337,6 +346,7 @@
     "lat": 24.839682,
     "lng": 121.004078,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -368,6 +378,7 @@
     "lat": 24.823646,
     "lng": 121.771348,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -395,6 +406,7 @@
     "lat": 24.823646,
     "lng": 121.771348,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -426,6 +438,7 @@
     "lat": 24.634514,
     "lng": 121.79228,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -459,6 +472,7 @@
     "lat": 24.68464,
     "lng": 121.798297,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -489,6 +503,7 @@
     "lat": 24.677033,
     "lng": 121.766919,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -520,6 +535,7 @@
     "lat": 24.677033,
     "lng": 121.766919,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -548,6 +564,7 @@
     "lat": 24.634514,
     "lng": 121.79228,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -577,6 +594,7 @@
     "lat": 25.069664,
     "lng": 121.588998,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -604,6 +622,7 @@
     "lat": 25.084923,
     "lng": 121.4737,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -633,6 +652,7 @@
     "lat": 25.035772,
     "lng": 121.450248,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -662,6 +682,7 @@
     "lat": 24.823646,
     "lng": 121.771348,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -692,6 +713,7 @@
     "lat": 24.863851,
     "lng": 121.216392,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -720,6 +742,7 @@
     "lat": 24.863851,
     "lng": 121.216392,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",
@@ -749,6 +772,7 @@
     "lat": 25.181304,
     "lng": 121.453148,
     "google_place_id": null,
+    "coord_area": true,
     "needs_verify": [
       "still_open",
       "mins_from_linkou",

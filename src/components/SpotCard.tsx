@@ -3,7 +3,8 @@ import { spotBadges } from '../lib/date.ts';
 import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { ageBestLabel, stayLabel } from '../lib/details.ts';
 import { COST_LABELS, ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
-import { directionsUrl } from '../lib/links.ts';
+import { VERIFIED_SOURCE_LABELS } from '../lib/labels.ts';
+import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
 import { type Nap, napPlan, packingList } from '../lib/plan.ts';
 import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
 import { Tag, buttonBase } from './ui.tsx';
@@ -37,7 +38,16 @@ export interface SpotCardProps {
   nap?: Nap;
 }
 
-export function DriveBadge({ mins, originLabel }: { mins: number | null; originLabel: string }) {
+export function DriveBadge({
+  mins,
+  originLabel,
+  areaOnly = false,
+}: {
+  mins: number | null;
+  originLabel: string;
+  /** 座標只到鄉鎮，而且車程是用公式算的：誤差會比較大。 */
+  areaOnly?: boolean;
+}) {
   if (mins === null) {
     return (
       <div className="shrink-0 text-right">
@@ -55,7 +65,7 @@ export function DriveBadge({ mins, originLabel }: { mins: number | null; originL
         <span className="ml-0.5 text-sm font-normal">{d.unit}</span>
       </div>
       <div className="mt-1 text-xs text-stone-600 dark:text-stone-400">
-        <span className="sr-only">{formatEstimate(mins)}，</span>從{originLabel}・粗估
+        <span className="sr-only">{formatEstimate(mins)}，</span>從{originLabel}・{areaOnly ? '只知道在哪一區' : '粗估'}
       </div>
     </div>
   );
@@ -77,7 +87,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
           <h3 className="text-lg leading-snug font-bold break-words">{spot.name}</h3>
           <p className="text-sm text-stone-600 dark:text-stone-400">{spot.city}</p>
         </div>
-        <DriveBadge mins={mins} originLabel={originLabel} />
+        <DriveBadge mins={mins} originLabel={originLabel} areaOnly={spot.coord_area && originLabel !== '林口區'} />
       </header>
 
       {reason && (
@@ -151,6 +161,14 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
             <p>
               <span className="font-medium">要帶：</span>
               {packing.join('、')}
+            </p>
+            <p className="text-xs text-stone-600 dark:text-stone-400">
+              {spot.verified
+                ? `${spot.verified.date} 查過（${VERIFIED_SOURCE_LABELS[spot.verified.source]}）：${spot.verified.fields.join('、')}。${spot.verified.note ?? ''}其他項目還沒逐一確認。`
+                : '這筆資料還沒逐項查證，開放時間、票價請以官方公告為準。'}{' '}
+              <a href={officialInfoUrl(spot)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                {spot.official_url ? '官方網站' : '查官方資訊'}
+              </a>
             </p>
           </div>
       </details>

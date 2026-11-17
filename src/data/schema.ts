@@ -80,11 +80,25 @@ export const spotSchema = z.object({
   kid_label: nonEmpty.optional(),
   /** 選填：官方網站。 */
   official_url: z.string().url().optional(),
+  /**
+   * 選填：逐筆查證紀錄。有這欄才代表真的對過來源；fields 是查過的項目，
+   * source 是來源等級（official 官方、media 新聞媒體、blog 旅遊部落格）。
+   */
+  verified: z
+    .object({
+      date: isoDate,
+      fields: z.array(nonEmpty).min(1),
+      source: z.enum(['official', 'media', 'blog']),
+      note: nonEmpty.optional(),
+    })
+    .optional(),
   /** 選填：特別適合去的月份（1–12）。 */
   best_months: z.array(z.number().int().min(1).max(12)).optional(),
   lat: coordinate,
   lng: coordinate,
   google_place_id: z.string().nullable(),
+  /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點，不是實際位置。 */
+  coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,
 });
@@ -104,6 +118,8 @@ export const hotelSchema = z.object({
   lat: coordinate,
   lng: coordinate,
   google_place_id: z.string().nullable(),
+  /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點。 */
+  coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,
 });
@@ -124,6 +140,8 @@ export const restaurantSchema = z.object({
   lat: coordinate,
   lng: coordinate,
   google_place_id: z.string().nullable(),
+  /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點。 */
+  coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,
 });

@@ -22,7 +22,7 @@ export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggle
           <h3 className="text-lg leading-snug font-bold break-words">{hotel.name}</h3>
           <p className="text-sm text-stone-600 dark:text-stone-400">{hotel.city}</p>
         </div>
-        <DriveBadge mins={mins} originLabel={originLabel} />
+        <DriveBadge mins={mins} originLabel={originLabel} areaOnly={hotel.coord_area && originLabel !== '林口區'} />
       </header>
 
       <div className="flex flex-wrap gap-1.5">

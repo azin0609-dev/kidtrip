@@ -24,7 +24,7 @@ export function RestaurantCard({ restaurant: r, mins, originLabel, nearSpots, is
             {r.city}・{r.cuisine}
           </p>
         </div>
-        <DriveBadge mins={mins} originLabel={originLabel} />
+        <DriveBadge mins={mins} originLabel={originLabel} areaOnly={r.coord_area && originLabel !== '林口區'} />
       </header>
 
       <div className="flex flex-wrap gap-1.5">

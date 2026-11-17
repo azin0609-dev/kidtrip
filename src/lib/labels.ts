@@ -71,6 +71,12 @@ export const FOOD_PRICE_LABELS: Record<FoodPriceTier, string> = {
   $$$: '$$$',
 };
 
+export const VERIFIED_SOURCE_LABELS: Record<'official' | 'media' | 'blog', string> = {
+  official: '官方資料',
+  media: '新聞報導',
+  blog: '旅遊部落格',
+};
+
 export const HOTEL_KIND_LABELS: Record<HotelKind, string> = {
   hotel: '飯店',
   bnb: '民宿',

@@ -26,7 +26,12 @@ export interface StoredReport {
   note: string;
   /** YYYY-MM-DD */
   date: string;
+  /** 問題類型（REPORT_KINDS 其中之一）；舊資料沒有。 */
+  kind?: string;
 }
+
+/** 回報的問題類型：都是會讓家長撲空或白跑的事。 */
+export const REPORT_KINDS = ['沒開或時間不對', '票價不對', '要預約或有場次', '推車不好走', '設施跟寫的不一樣', '其他'] as const;
 
 export const DEFAULT_NAP: StoredNap = { start: '13:00', end: '15:00' };
 
@@ -34,7 +39,14 @@ function parseReports(v: unknown): StoredReport[] | null {
   if (!Array.isArray(v)) return null;
   return v.flatMap((r) =>
     r && typeof r === 'object' && typeof r.id === 'string' && typeof r.note === 'string' && typeof r.date === 'string'
-      ? [{ id: r.id as string, note: (r.note as string).slice(0, 500), date: r.date as string }]
+      ? [
+          {
+            id: r.id as string,
+            note: (r.note as string).slice(0, 500),
+            date: r.date as string,
+            ...(typeof r.kind === 'string' && (REPORT_KINDS as readonly string[]).includes(r.kind) ? { kind: r.kind as string } : {}),
+          },
+        ]
       : [],
   );
 }
@@ -80,7 +92,7 @@ export function listMemories(
 
 /** 把回報整理成可以貼給別人的文字。 */
 export function formatReports(reports: readonly StoredReport[], nameOf: (id: string) => string): string {
-  return reports.map((r) => `${r.date}｜${nameOf(r.id)}（${r.id}）：${r.note}`).join('\n');
+  return reports.map((r) => `${r.date}｜${nameOf(r.id)}（${r.id}）${r.kind ? `｜${r.kind}` : ''}：${r.note}`).join('\n');
 }
 
 export interface StoredState {
