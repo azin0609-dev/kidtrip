@@ -51,6 +51,15 @@ function parseReports(v: unknown): StoredReport[] | null {
   );
 }
 
+function parsePrefs(v: unknown): StoredState['prefs'] | null {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return null;
+  const o = v as Record<string, unknown>;
+  const out: NonNullable<StoredState['prefs']> = {};
+  if (typeof o.maxDrive === 'number' && [30, 45, 60, 120].includes(o.maxDrive)) out.maxDrive = o.maxDrive;
+  if (typeof o.stroller === 'boolean') out.stroller = o.stroller;
+  return Object.keys(out).length > 0 ? out : null;
+}
+
 export const MEMO_MAX = 200;
 
 function parseMemos(v: unknown): Record<string, string> | null {
@@ -105,6 +114,8 @@ export interface StoredState {
   nap?: StoredNap;
   /** 使用者回報「資料有誤」的紀錄，只存在本機，可以在設定裡複製出來。 */
   reports?: StoredReport[];
+  /** 推薦區記住的條件：單程最多幾分鐘、帶不帶推車。 */
+  prefs?: { maxDrive?: number; stroller?: boolean };
   /** 「這週要去」的行程；過了那一週就不再顯示。 */
   plan?: WeekPlan;
   /** 去過之後寫的一句回憶：id → 文字（最多 200 字）。只存本機，分享連結不會帶。 */
@@ -149,6 +160,9 @@ export function parseState(raw: string | null): StoredState {
     const reports = parseReports(obj.reports);
     if (reports) state.reports = reports;
     else delete state.reports;
+    const prefs = parsePrefs(obj.prefs);
+    if (prefs) state.prefs = prefs;
+    else delete state.prefs;
     const plan = parsePlan(obj.plan);
     if (plan) state.plan = plan;
     else delete state.plan;

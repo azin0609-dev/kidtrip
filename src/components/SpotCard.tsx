@@ -3,6 +3,7 @@ import { spotBadges } from '../lib/date.ts';
 import { formatDrive, formatEstimate } from '../lib/format.ts';
 import { ageBestLabel, stayLabel } from '../lib/details.ts';
 import { COST_LABELS, ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
+import { freshnessNote } from '../lib/freshness.ts';
 import { VERIFIED_SOURCE_LABELS } from '../lib/labels.ts';
 import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
 import { type Nap, napPlan, packingList } from '../lib/plan.ts';
@@ -115,6 +116,12 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
 
       {kidNote && (
         <p className="rounded-lg bg-sky-50 px-3 py-2 text-sm text-sky-950 dark:bg-sky-950 dark:text-sky-100">{kidNote}</p>
+      )}
+
+      {freshnessNote(spot, 'spot', today) && (
+        <p className="rounded-lg bg-stone-100 px-3 py-2 text-sm text-stone-800 dark:bg-stone-800 dark:text-stone-200">
+          {freshnessNote(spot, 'spot', today)}
+        </p>
       )}
 
       {spot.open_note && (

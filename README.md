@@ -21,7 +21,8 @@ npm run build        # 正式建置到 dist/
 ## 資料
 
 - `data/restaurants.json`（親子餐廳）、`data/trips.json`（出國行程）、`data/origins.json`（出發地選單座標）格式也都定義在 `src/data/schema.ts`。
-- 景點、住宿、餐廳的初版是用 `scripts/seed-data.ts` 產生的；要大量增修可以改那支再執行 `node scripts/seed-data.ts`（會保留已查到的座標），小修改直接改 JSON 也可以，但之後重跑 seed 會被蓋掉。
+- **`data/*.json` 是唯一的資料來源，直接改 JSON。** 初版是 `scripts/legacy/seed-data.ts` 產生的，已封存、不要再跑（會蓋掉修改）。
+- 每筆資料確認過營業狀態後，更新 `verified`（日期、查過的欄位、來源）；`npm run validate:data` 會列出太久沒確認的資料（餐廳、民宿 90 天，景點、飯店 180 天）。
 - `data/spots.json`、`data/hotels.json` 是景點、飯店的唯一資料來源，格式定義在 `src/data/schema.ts`（依 PRD 第 7 節）。
 - 改完資料先跑 `npm run validate:data`，有錯會列出 id、欄位與原因，結束碼非 0。
 

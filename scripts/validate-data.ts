@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { type FreshKind, freshness, lastChecked } from '../src/lib/freshness.ts';
+import { todayInTaipei } from '../src/lib/date.ts';
 import { formatIssues, validateData, validateOrigins, validateRestaurants, validateTrips } from '../src/data/validate.ts';
 
 const dataDir = fileURLToPath(new URL('../data/', import.meta.url));
@@ -30,6 +32,25 @@ if (issues.length > 0) {
   console.error(formatIssues(issues));
   console.error(`\n資料檢查失敗：共 ${issues.length} 個問題。`);
   process.exit(1);
+}
+
+// 新鮮度：只是提醒，不會讓檢查失敗。
+const today = todayInTaipei();
+const stale: string[] = [];
+const checkFresh = (file: string, list: unknown, kindOf: (x: Record<string, unknown>) => FreshKind) => {
+  if (!Array.isArray(list)) return;
+  for (const x of list as Record<string, unknown>[]) {
+    const item = x as { id: string; name: string; last_verified: string; verified?: { date: string } };
+    const f = freshness(item, kindOf(x), today);
+    if (f !== 'fresh') stale.push(`${file} ${item.id} ${item.name}：${lastChecked(item)} 之後沒再確認（${f === 'expired' ? '已不推薦' : '快過期'}）`);
+  }
+};
+checkFresh('spots.json', spots, () => 'spot');
+checkFresh('hotels.json', hotels, (x) => (x.kind === 'bnb' ? 'bnb' : 'hotel'));
+checkFresh('restaurants.json', restaurants, () => 'food');
+if (stale.length > 0) {
+  console.warn(`⚠ ${stale.length} 筆資料該重新確認了：`);
+  for (const line of stale) console.warn(`  ${line}`);
 }
 
 const count = (v: unknown) => (Array.isArray(v) ? v.length : 0);

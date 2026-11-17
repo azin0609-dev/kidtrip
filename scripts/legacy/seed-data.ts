@@ -1,5 +1,9 @@
 /**
- * 一次性的資料建立腳本：node scripts/seed-data.ts
+ * 【已封存，2026-11-17】從現在起 data/*.json 才是唯一的資料來源，請直接改 JSON。
+ * 這支腳本只留著當紀錄（下架餐廳的原因、各欄位當初的依據）。
+ * 重跑會用舊資料蓋掉 JSON 裡的修改，所以預設不執行；真的要跑請加 --force。
+ *
+ * 原說明：一次性的資料建立腳本：node scripts/seed-data.ts
  * 產生 data/spots.json、data/hotels.json 的初版（2026-11-16 整理）。
  * 之後請直接編輯 JSON；重跑這支會覆蓋 JSON（但會保留已經查到的 lat / lng / google_place_id）。
  *
@@ -9,7 +13,12 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const root = fileURLToPath(new URL('../', import.meta.url));
+if (!process.argv.includes('--force')) {
+  console.error('這支腳本已封存：data/*.json 才是資料來源，請直接改 JSON。真的要重跑請加 --force（會蓋掉 JSON 的修改）。');
+  process.exit(1);
+}
+
+const root = fileURLToPath(new URL('../../', import.meta.url));
 const TODAY = '2026-11-16';
 /** 逐筆查證的日期。 */
 const TODAY_VERIFIED = '2026-11-17';

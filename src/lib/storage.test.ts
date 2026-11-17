@@ -125,3 +125,11 @@ describe('回報的問題類型', () => {
     );
   });
 });
+
+describe('記住推薦條件', () => {
+  it('只留合法的值', () => {
+    expect(parseState(JSON.stringify({ fav: [], been: [], prefs: { maxDrive: 60, stroller: false } })).prefs).toEqual({ maxDrive: 60, stroller: false });
+    expect(parseState(JSON.stringify({ fav: [], been: [], prefs: { maxDrive: 999, stroller: 'yes' } })).prefs).toBeUndefined();
+    expect(parseState(JSON.stringify({ fav: [], been: [], prefs: 'x' })).prefs).toBeUndefined();
+  });
+});

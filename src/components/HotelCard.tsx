@@ -1,4 +1,5 @@
 import type { Hotel, Spot } from '../data/schema.ts';
+import { freshnessNote } from '../lib/freshness.ts';
 import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels.ts';
 import { directionsUrl, hotelPriceUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
@@ -6,6 +7,7 @@ import { Tag, buttonBase } from './ui.tsx';
 
 export interface HotelCardProps {
   hotel: Hotel;
+  today: string;
   mins: number | null;
   originLabel: string;
   nearSpots: Spot[];
@@ -14,7 +16,7 @@ export interface HotelCardProps {
   onReport: () => void;
 }
 
-export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: HotelCardProps) {
+export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: HotelCardProps) {
   return (
     <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-stone-200 dark:bg-[#16241c] dark:ring-stone-800">
       <header className="flex items-start justify-between gap-3">
@@ -34,6 +36,11 @@ export function HotelCard({ hotel, mins, originLabel, nearSpots, isFav, onToggle
           </Tag>
         ))}
       </div>
+
+      <p className="text-xs text-stone-600 dark:text-stone-400">
+        {freshnessNote(hotel, hotel.kind === 'bnb' ? 'bnb' : 'hotel', today) ??
+          '這間還沒用 Google 地圖逐間確認，設施和房價是粗估，訂房前先看官方或訂房網站。'}
+      </p>
 
       {hotel.features.length > 0 && (
         <p className="text-sm text-stone-700 dark:text-stone-300">{hotel.features.join('・')}</p>

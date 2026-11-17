@@ -8,6 +8,7 @@ import type { Spot, SpotType } from '../data/schema.ts';
 import { daysBetween, spotBadges, spotDateStatus } from './date.ts';
 import type { MinsOf } from './filter.ts';
 import { formatDrive } from './format.ts';
+import { freshness } from './freshness.ts';
 import { ENV_LABELS } from './labels.ts';
 import { type Ratings, preferenceFor, typePreference } from './ratings.ts';
 
@@ -191,6 +192,8 @@ export function convenienceScore(spot: Spot): number {
 export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null {
   const status = spotDateStatus(spot, ctx.today);
   if (status.closed || status.notYetOpen) return null;
+  // 太久沒確認的資料不推薦（可能已經改變）。
+  if (freshness(spot, 'spot', ctx.today) === 'expired') return null;
 
   const myRating = ctx.ratings?.[spot.id];
   if (myRating && myRating.stars <= 2) return null;

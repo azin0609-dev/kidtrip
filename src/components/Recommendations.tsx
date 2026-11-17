@@ -222,7 +222,7 @@ export function Recommendations(props: RecommendationsProps) {
         <div className="mt-3 flex flex-col items-center gap-2 rounded-3xl bg-emerald-50 p-6 text-center dark:bg-emerald-950/40">
           <Dino mood="sleepy" className="h-20 w-20" />
           <p className="text-sm text-stone-700 dark:text-stone-300">
-            這些條件下沒有適合的地方。試試把「單程最多」調遠一點，或關掉幾個條件。
+            這些條件下沒有適合的地方。試試把「單程最多」調遠一點，或關掉幾個條件。太久沒確認的景點也不會推薦，如果一直是空的，代表資料該更新了。
           </p>
         </div>
       ) : (

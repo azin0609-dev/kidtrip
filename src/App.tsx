@@ -57,9 +57,17 @@ export default function App() {
   const [rainyOverride, setRainyOverride] = useState<boolean | null>(null);
   const [overnight, setOvernight] = useState(false);
   const [slot, setSlot] = useState<Slot>(() => defaultSlot(today));
-  const [maxDrive, setMaxDrive] = useState<number>(DEFAULT_MAX_DRIVE);
+  const [maxDrive, setMaxDriveState] = useState<number>(() => stored.prefs?.maxDrive ?? DEFAULT_MAX_DRIVE);
   // null = 還沒手動改過：有 3 歲以下的孩子就預設帶推車。
-  const [strollerOverride, setStrollerOverride] = useState<boolean | null>(null);
+  const [strollerOverride, setStrollerState] = useState<boolean | null>(() => stored.prefs?.stroller ?? null);
+  const setMaxDrive = (m: number) => {
+    setMaxDriveState(m);
+    update((s) => ({ ...s, prefs: { ...s.prefs, maxDrive: m } }));
+  };
+  const setStrollerOverride = (v: boolean) => {
+    setStrollerState(v);
+    update((s) => ({ ...s, prefs: { ...s.prefs, stroller: v } }));
+  };
   // 打開的是行程連結（?plan=...）：先問要不要存，並把參數從網址拿掉。
   const [incomingPlan, setIncomingPlan] = useState<WeekPlan | null>(() => {
     const code = new URL(window.location.href).searchParams.get(PLAN_PARAM);
@@ -238,6 +246,8 @@ export default function App() {
   const incomingSpot = incomingPlan ? spots.find((s) => s.id === incomingPlan.spotId) : undefined;
 
   const pickedSpot = picked.id ? spotById.get(picked.id) : undefined;
+  // 有用篩選或搜尋時，「找其他地方」保持展開。
+  const spotFiltersActive = JSON.stringify(spotFilters) !== JSON.stringify(DEFAULT_SPOT_FILTERS) || picked.id !== null;
   const doPick = () => {
     const result = pickSpot(spotResults, { today, been: stored.been, lastId: picked.id });
     setPicked({ id: result?.id ?? picked.id, empty: result === null });
@@ -275,6 +285,7 @@ export default function App() {
     <HotelCard
       key={hotel.id}
       hotel={hotel}
+      today={today}
       mins={minsOf(hotel)}
       originLabel={originShort}
       nearSpots={hotel.near_spot_ids.flatMap((id) => spotById.get(id) ?? [])}
@@ -288,6 +299,7 @@ export default function App() {
     <RestaurantCard
       key={r.id}
       restaurant={r}
+      today={today}
       mins={minsOf(r)}
       originLabel={originShort}
       nearSpots={r.near_spot_ids.flatMap((id) => spotById.get(id) ?? [])}
@@ -414,7 +426,18 @@ export default function App() {
               onChoose={choosePlan}
               renderFull={(p) => renderSpot(p.spot)}
             />
-            <h2 className="mb-3 text-lg font-bold">全部景點</h2>
+            <details
+              className="group rounded-3xl bg-white p-4 ring-1 ring-emerald-100 dark:bg-[#16241c] dark:ring-emerald-950"
+              open={spotFiltersActive || undefined}
+            >
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-lg text-lg font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 [&::-webkit-details-marker]:hidden">
+                <span>找其他地方</span>
+                <span className="text-sm font-normal text-stone-600 dark:text-stone-400">
+                  搜尋、篩選、全部 {visibleSpots.length} 個景點
+                  <span aria-hidden="true" className="ml-1 inline-block transition-transform group-open:rotate-90">›</span>
+                </span>
+              </summary>
+              <div className="mt-3">
             <SpotFiltersPanel value={spotFilters} onChange={setSpotFilters} counties={spotCounties} />
             <div className="mt-5 flex items-center justify-between gap-3">
               <p className="text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
@@ -450,11 +473,16 @@ export default function App() {
             )}
             <div className={`mt-4 ${grid}`}>{spotResults.map((s) => renderSpot(s))}</div>
             {spotResults.length === 0 && <EmptyState text="沒有符合的景點，試試少選幾個條件。" />}
+              </div>
+            </details>
           </>
         )}
 
         {tab === 'hotels' && (
           <>
+            <p className="mb-4 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950/60 dark:text-amber-100">
+              住宿資料還沒用 Google 地圖逐間確認，設施和房價是粗估。看到喜歡的，訂房前先看官方網站或訂房網站；發現不對請按卡片上的「資料有誤？」。
+            </p>
             <HotelFiltersPanel value={hotelFilters} onChange={setHotelFilters} counties={hotelCounties} />
             <p className="mt-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
               共 {hotelResults.length} 間，依車程由近到遠
@@ -482,7 +510,10 @@ export default function App() {
           <>
             <h2 className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">帶小孩去東北亞玩</h2>
             <p className="mt-1 text-sm text-stone-700 dark:text-stone-300">
-              日本、韓國、香港、上海的親子行程骨架：每天只排兩三個點，留時間午睡。是大方向，細節出發前再查官方資訊。
+              日本、韓國、香港、上海的親子行程骨架：每天只排兩三個點，留時間午睡。
+            </p>
+            <p className="mt-2 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950/60 dark:text-amber-100">
+              這些是「參考骨架」，景點的營業時間、票價、預約方式還沒逐項確認。真的要去時，請把那一套行程的每個點再查一次官方資訊。
             </p>
             <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="篩選行程">
               {['all', 'disney', ...tripCountries].map((c) => (

@@ -276,6 +276,12 @@ export function SettingsDialog(props: SettingsDialogProps) {
                 <button type="button" onClick={() => void onCopyReports().then(setReportMsg)} className={ghost}>
                   全部複製
                 </button>
+                <a
+                  href={`mailto:?${new URLSearchParams({ subject: '這週去哪玩：資料回報', body: reports.map((r) => `${r.date}｜${nameOf(r.id)}（${r.id}）${r.kind ? `｜${r.kind}` : ''}：${r.note}`).join('\n') }).toString().replace(/\+/g, '%20')}`}
+                  className={ghost}
+                >
+                  用 Email 寄出
+                </a>
                 <button type="button" onClick={onClearReports} className={ghost}>
                   清空
                 </button>

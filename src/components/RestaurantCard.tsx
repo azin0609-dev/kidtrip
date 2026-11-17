@@ -1,4 +1,5 @@
 import type { Restaurant, Spot } from '../data/schema.ts';
+import { freshnessNote } from '../lib/freshness.ts';
 import { FOOD_PRICE_LABELS, FOOD_TAG_LABELS } from '../lib/labels.ts';
 import { directionsUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
@@ -6,6 +7,7 @@ import { Tag, buttonBase } from './ui.tsx';
 
 export interface RestaurantCardProps {
   restaurant: Restaurant;
+  today: string;
   mins: number | null;
   originLabel: string;
   nearSpots: Spot[];
@@ -14,7 +16,7 @@ export interface RestaurantCardProps {
   onReport: () => void;
 }
 
-export function RestaurantCard({ restaurant: r, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant: r, today, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: RestaurantCardProps) {
   return (
     <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-[#16241c] dark:ring-emerald-950">
       <header className="flex items-start justify-between gap-3">
@@ -47,7 +49,7 @@ export function RestaurantCard({ restaurant: r, mins, originLabel, nearSpots, is
 
       <p className="text-xs text-stone-600 dark:text-stone-400">
         {r.verified ? `${r.verified.date} 查過還在營業（${r.verified.note ?? '網路資料'}），` : ''}
-        親子餐廳常改時間或歇業，出發前在 Google 地圖或電話確認一下。
+        {freshnessNote(r, 'food', today) ?? '親子餐廳常改時間或歇業，出發前在 Google 地圖或電話確認一下。'}
       </p>
 
       {nearSpots.length > 0 && (
