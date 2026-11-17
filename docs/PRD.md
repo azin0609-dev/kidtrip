@@ -234,6 +234,7 @@
 | tip | string | 給 3 歲小孩家長的一句建議 |
 | badge | { kind: "new" \| "end", label: string }? | 選填 |
 | opens_on / closes_on | "YYYY-MM-DD"? | 選填 |
+| open_note | string? | 選填。公休日、要不要預約之類的一句提醒（例如「週一休館」），卡片上顯示成「出發前注意」。2026-11-17 新增 |
 | lat / lng | number \| null | 由 geocode 腳本補上（OSM） |
 | google_place_id | string \| null | 只存 ID |
 | needs_verify | string[] | 待人工確認的欄位名稱 |
