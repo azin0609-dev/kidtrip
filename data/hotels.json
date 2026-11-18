@@ -116,13 +116,23 @@
     ],
     "lat": 25.017526,
     "lng": 121.213677,
-    "google_place_id": null,
+    "google_place_id": "ChIJo7H85KchaDQRMivDRCdSJuk",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市中壢區"
+    }
   },
   {
     "id": "hotel-005",
@@ -213,13 +223,23 @@
     ],
     "lat": 24.753757,
     "lng": 121.750377,
-    "google_place_id": null,
+    "google_place_id": "ChIJqaSyg8PkZzQRfUMyAyJbbTE",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣宜蘭市"
+    }
   },
   {
     "id": "hotel-008",
@@ -245,13 +265,23 @@
     ],
     "lat": 24.831188,
     "lng": 121.774965,
-    "google_place_id": null,
+    "google_place_id": "ChIJ66YrdDf6ZzQR2lB0b7Fs1uU",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉"
+    }
   },
   {
     "id": "hotel-009",
@@ -277,14 +307,24 @@
     ],
     "lat": 24.823646,
     "lng": 121.771348,
-    "google_place_id": null,
+    "google_place_id": "ChIJh0IT98cCaDQRvENEngtvnBo",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉"
+    }
   },
   {
     "id": "hotel-010",
@@ -311,13 +351,23 @@
     ],
     "lat": 24.769841,
     "lng": 121.756318,
-    "google_place_id": null,
+    "google_place_id": "ChIJRxwn2-rkZzQRvh2SDMLR5zg",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣宜蘭市"
+    }
   },
   {
     "id": "hotel-011",
@@ -344,13 +394,23 @@
     ],
     "lat": 24.673747,
     "lng": 121.775567,
-    "google_place_id": null,
+    "google_place_id": "ChIJUc8xQHrmZzQRoOqRdaW2XfY",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣羅東鎮"
+    }
   },
   {
     "id": "hotel-012",
@@ -378,13 +438,23 @@
     ],
     "lat": 24.59708,
     "lng": 121.847387,
-    "google_place_id": null,
+    "google_place_id": "ChIJxWkOBzfoZzQRBaM8LHyh5_c",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣蘇澳鎮"
+    }
   },
   {
     "id": "hotel-013",
@@ -411,13 +481,23 @@
     ],
     "lat": 24.702799,
     "lng": 121.818707,
-    "google_place_id": null,
+    "google_place_id": "ChIJ92RDjXrvZzQRgelA9jH1jt4",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   },
   {
     "id": "hotel-014",
@@ -1161,13 +1241,23 @@
     ],
     "lat": 24.882119,
     "lng": 121.326594,
-    "google_place_id": null,
+    "google_place_id": "ChIJTcDPb8MZaDQRfY9NkkvvWpY",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市大溪區；Google 上的名稱是「The Westin Tashee Resort, Taoyuan」"
+    }
   },
   {
     "id": "hotel-038",
@@ -1193,13 +1283,23 @@
     ],
     "lat": 24.843204,
     "lng": 121.228358,
-    "google_place_id": null,
+    "google_place_id": "ChIJSyab2oc9aDQRnsENHKRP3KA",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市龍潭區"
+    }
   },
   {
     "id": "hotel-039",
@@ -1226,13 +1326,23 @@
     ],
     "lat": 24.839476,
     "lng": 121.184013,
-    "google_place_id": null,
+    "google_place_id": "ChIJ95noR208aDQRGOpE21ZddUI",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市龍潭區"
+    }
   },
   {
     "id": "hotel-040",
@@ -1259,14 +1369,24 @@
     ],
     "lat": 24.967284,
     "lng": 121.177906,
-    "google_place_id": null,
+    "google_place_id": "ChIJObHbu4wjaDQRhUgtv_paoSo",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "features"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市中壢區"
+    }
   },
   {
     "id": "hotel-041",
@@ -1292,7 +1412,7 @@
     ],
     "lat": 24.863851,
     "lng": 121.216392,
-    "google_place_id": null,
+    "google_place_id": "ChIJP_cpBuk9aDQRwWnSEg8H7zs",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -1300,7 +1420,17 @@
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市龍潭區"
+    }
   },
   {
     "id": "hotel-042",
@@ -1358,13 +1488,23 @@
     ],
     "lat": 24.826979,
     "lng": 121.775329,
-    "google_place_id": null,
+    "google_place_id": "ChIJi0cOPoX7ZzQR7-mJ76TJYrQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉"
+    }
   },
   {
     "id": "hotel-044",
@@ -1390,13 +1530,23 @@
     ],
     "lat": 24.826979,
     "lng": 121.775329,
-    "google_place_id": null,
+    "google_place_id": "ChIJcbySIen7ZzQRfj2jJLQKAsA",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉；Google 上的名稱是「川湯春天旗艦館」"
+    }
   },
   {
     "id": "hotel-045",
@@ -1422,13 +1572,23 @@
     ],
     "lat": 24.828697,
     "lng": 121.772666,
-    "google_place_id": null,
+    "google_place_id": "ChIJj1Oc30n6ZzQR0XyW4zlJgLo",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉"
+    }
   },
   {
     "id": "hotel-046",
@@ -1455,14 +1615,24 @@
     ],
     "lat": 24.827701,
     "lng": 121.755692,
-    "google_place_id": null,
+    "google_place_id": "ChIJ_1cIzbD7ZzQRrvCeHD793SQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉"
+    }
   },
   {
     "id": "hotel-047",
@@ -1490,14 +1660,24 @@
     ],
     "lat": 24.751823,
     "lng": 121.71202,
-    "google_place_id": null,
+    "google_place_id": "ChIJA784a2TjZzQR6wJ_8nOElQc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣員山鄉；Google 上的名稱是「The Westin Yilan Resort」"
+    }
   },
   {
     "id": "hotel-048",
@@ -2570,14 +2750,24 @@
     ],
     "lat": 24.677033,
     "lng": 121.766919,
-    "google_place_id": null,
+    "google_place_id": "ChIJIQnI1WLnZzQR3B9EBdI09H8",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣羅東鎮"
+    }
   },
   {
     "id": "hotel-082",
@@ -2603,7 +2793,7 @@
     ],
     "lat": 24.68464,
     "lng": 121.798297,
-    "google_place_id": null,
+    "google_place_id": "ChIJydbzE67vZzQRZfNbqByVbRo",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -2611,7 +2801,17 @@
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   },
   {
     "id": "hotel-083",
@@ -2636,7 +2836,7 @@
     ],
     "lat": 24.861923,
     "lng": 121.82954,
-    "google_place_id": null,
+    "google_place_id": "ChIJjXnNChj3ZzQRvjfyz7I-Eoc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -2644,7 +2844,17 @@
       "name",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣頭城鎮"
+    }
   },
   {
     "id": "hotel-084",
@@ -2672,13 +2882,23 @@
     ],
     "lat": 24.828465,
     "lng": 121.76949,
-    "google_place_id": null,
+    "google_place_id": "ChIJx8DwP0r6ZzQRct5Wv9RtL3o",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉；Google 上的名稱是「Four Points by Sheraton Yilan Jiaoxi」"
+    }
   },
   {
     "id": "hotel-085",
@@ -2706,14 +2926,24 @@
     ],
     "lat": 24.830089,
     "lng": 121.774875,
-    "google_place_id": null,
+    "google_place_id": "ChIJeyd8Q337ZzQRcIkqXRtIh9c",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣礁溪鄉"
+    }
   },
   {
     "id": "hotel-086",
@@ -2739,14 +2969,24 @@
     ],
     "lat": 24.594624,
     "lng": 121.842653,
-    "google_place_id": null,
+    "google_place_id": "ChIJEbWXfUroZzQRx3wGzYHglE0",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣蘇澳鎮"
+    }
   },
   {
     "id": "hotel-087",
@@ -2775,14 +3015,24 @@
     ],
     "lat": 24.68464,
     "lng": 121.798297,
-    "google_place_id": null,
+    "google_place_id": "ChIJ3Xol3yXlZzQR5g3JiCccOQ0",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   },
   {
     "id": "hotel-088",
@@ -2810,14 +3060,24 @@
     ],
     "lat": 24.68464,
     "lng": 121.798297,
-    "google_place_id": null,
+    "google_place_id": "ChIJs0ksRBXlZzQRERBvFoWkR-w",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉；Google 上的名稱是「米可民宿」"
+    }
   },
   {
     "id": "hotel-089",
@@ -2843,19 +3103,29 @@
     ],
     "lat": 24.634514,
     "lng": 121.79228,
-    "google_place_id": null,
+    "google_place_id": "ChIJo-EULVfmZzQRtp93pFHUfno",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣冬山鄉"
+    }
   },
   {
     "id": "hotel-090",
     "name": "米蘭穀堡",
-    "city": "宜蘭縣冬山鄉",
+    "city": "宜蘭縣五結鄉",
     "region": "北",
     "kind": "bnb",
     "price_tier": "$$",
@@ -2879,15 +3149,24 @@
     ],
     "lat": 24.634514,
     "lng": 121.79228,
-    "google_place_id": null,
+    "google_place_id": "ChIJwTnnX5rlZzQRA_9hcimzRv8",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   },
   {
     "id": "hotel-091",
@@ -2915,19 +3194,29 @@
     ],
     "lat": 24.743183,
     "lng": 121.723372,
-    "google_place_id": null,
+    "google_place_id": "ChIJ9c0KjgvjZzQRwjKzwdb3Nts",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣員山鄉"
+    }
   },
   {
     "id": "hotel-092",
     "name": "松楓親子民宿",
-    "city": "宜蘭縣",
+    "city": "宜蘭縣五結鄉",
     "region": "北",
     "kind": "bnb",
     "price_tier": "$$",
@@ -2945,15 +3234,24 @@
     ],
     "lat": 24.730279,
     "lng": 121.763115,
-    "google_place_id": null,
+    "google_place_id": "ChIJozPnSPvlZzQRh-L6JfRRi18",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   },
   {
     "id": "hotel-093",
@@ -2979,14 +3277,24 @@
     ],
     "lat": 24.68464,
     "lng": 121.798297,
-    "google_place_id": null,
+    "google_place_id": "ChIJH23w_zbvZzQRDenifmSXRXc",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   },
   {
     "id": "hotel-094",
@@ -3014,7 +3322,7 @@
     ],
     "lat": 24.677033,
     "lng": 121.766919,
-    "google_place_id": null,
+    "google_place_id": "ChIJmVhpvVPlZzQR-vK1KFRnR4Y",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -3022,7 +3330,17 @@
       "tags",
       "city"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣羅東鎮"
+    }
   },
   {
     "id": "hotel-095",
@@ -3058,7 +3376,18 @@
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "risk_flags": [
+      "location_unknown"
+    ],
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業狀態"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖找不到這間；舊遊記寫在員山鄉，跟資料的冬山鄉不同，營業狀態和位置都沒確認"
+    }
   },
   {
     "id": "hotel-096",
@@ -3085,14 +3414,24 @@
     ],
     "lat": 24.634514,
     "lng": 121.79228,
-    "google_place_id": null,
+    "google_place_id": "ChIJ4xI8qOrmZzQRJfnh6pt8jfI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣冬山鄉"
+    }
   },
   {
     "id": "hotel-097",
@@ -3118,7 +3457,7 @@
     ],
     "lat": 24.665963,
     "lng": 121.653229,
-    "google_place_id": null,
+    "google_place_id": "ChIJFRuiOSjjZzQRVyztqrOKyBw",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -3127,7 +3466,17 @@
       "name",
       "city"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣三星鄉"
+    }
   },
   {
     "id": "hotel-098",
@@ -3155,7 +3504,7 @@
     ],
     "lat": 24.68464,
     "lng": 121.798297,
-    "google_place_id": null,
+    "google_place_id": "ChIJdZq3B5HlZzQRA9rE-N_No9A",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -3163,6 +3512,16 @@
       "tags",
       "name"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業中",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：宜蘭縣五結鄉"
+    }
   }
 ]

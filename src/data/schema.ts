@@ -169,6 +169,13 @@ export const spotSchema = z.object({
   last_verified: isoDate,
 });
 
+const verifiedSchema = z.object({
+  date: isoDate,
+  fields: z.array(nonEmpty).min(1),
+  source: z.enum(VERIFY_SOURCES),
+  note: nonEmpty.optional(),
+});
+
 export const hotelSchema = z.object({
   id: z.string().regex(/^hotel-\d{3,}$/, { message: 'id 格式必須是 hotel-001' }),
   name: nonEmpty,
@@ -189,16 +196,11 @@ export const hotelSchema = z.object({
   /** 選填：高風險的未確認項目（見 RISK_FLAGS），有的話暫停自動推薦，卡片上會寫出來。 */
   risk_flags: z.array(z.enum(RISK_FLAGS)).optional(),
   coord_area: z.boolean().optional(),
+  /** 選填：查證紀錄（跟景點、餐廳同格式）。2026-11-18 新增 */
+  verified: verifiedSchema.optional(),
   needs_verify: z.array(z.string()),
   /** 最後整理日期（資料最後一次被整理、修改的日期，不是實際查證日期；實際查證看 verified）。欄位名稱沿用舊的，避免舊資料失效。 */
   last_verified: isoDate,
-});
-
-const verifiedSchema = z.object({
-  date: isoDate,
-  fields: z.array(nonEmpty).min(1),
-  source: z.enum(VERIFY_SOURCES),
-  note: nonEmpty.optional(),
 });
 
 export const restaurantSchema = z.object({
