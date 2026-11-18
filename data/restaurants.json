@@ -212,7 +212,7 @@
     ],
     "lat": 24.839682,
     "lng": 121.004078,
-    "google_place_id": null,
+    "google_place_id": "ChIJuwlanFU2aDQR8QWCRKc563I",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -252,7 +252,7 @@
     ],
     "lat": 24.823646,
     "lng": 121.771348,
-    "google_place_id": null,
+    "google_place_id": "ChIJASzqDnD6ZzQRLyWiw4khYo0",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -294,7 +294,7 @@
     ],
     "lat": 24.68464,
     "lng": 121.798297,
-    "google_place_id": null,
+    "google_place_id": "ChIJ13AOinPvZzQRUzs2Ia0JQ78",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -334,7 +334,7 @@
     ],
     "lat": 24.823646,
     "lng": 121.771348,
-    "google_place_id": null,
+    "google_place_id": "ChIJs3Zy57L7ZzQR-9HJ8VVFsRI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -372,7 +372,7 @@
     ],
     "lat": 24.863851,
     "lng": 121.216392,
-    "google_place_id": null,
+    "google_place_id": "ChIJ3ScsTAA9aDQRha4RRxr99Go",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -405,7 +405,7 @@
     "near_spot_ids": [],
     "lat": 25.031403,
     "lng": 121.514902,
-    "google_place_id": null,
+    "google_place_id": "ChIJo5uKl5ipQjQRUDGwOBCHUWs",
     "needs_verify": [
       "cuisine",
       "mins_from_linkou",
@@ -437,7 +437,7 @@
     "near_spot_ids": [],
     "lat": 25.069664,
     "lng": 121.588998,
-    "google_place_id": null,
+    "google_place_id": "ChIJVQR_uWusQjQRYNp5Wdmei40",
     "needs_verify": [
       "cuisine",
       "mins_from_linkou",
@@ -472,7 +472,7 @@
     "near_spot_ids": [],
     "lat": 24.972201,
     "lng": 121.443348,
-    "google_place_id": null,
+    "google_place_id": "ChIJAQBKehUdaDQRphXCRHAnNB0",
     "needs_verify": [
       "cuisine",
       "mins_from_linkou",
@@ -506,7 +506,7 @@
     "near_spot_ids": [],
     "lat": 25.251878,
     "lng": 121.471693,
-    "google_place_id": null,
+    "google_place_id": "ChIJicOdAeWwQjQRef0UFSdaol8",
     "needs_verify": [
       "cuisine",
       "mins_from_linkou",
@@ -538,7 +538,7 @@
     "near_spot_ids": [],
     "lat": 25.00967,
     "lng": 121.459099,
-    "google_place_id": null,
+    "google_place_id": "ChIJN4mrxwKoQjQRZBN_J-9N7BA",
     "needs_verify": [
       "cuisine",
       "mins_from_linkou",
