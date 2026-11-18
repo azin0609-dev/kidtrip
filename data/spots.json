@@ -5176,7 +5176,7 @@
     "stay_hours": 2,
     "lat": 25.132419,
     "lng": 121.501379,
-    "google_place_id": null,
+    "google_place_id": "ChIJAR1NMwCvQjQRQxjNz63yjSI",
     "needs_verify": [
       "name",
       "city",
@@ -5440,7 +5440,7 @@
     ],
     "lat": 24.999397,
     "lng": 121.49898,
-    "google_place_id": null,
+    "google_place_id": "ChIJCwbfBiioQjQRNWRSLlAsPOU",
     "needs_verify": [
       "name",
       "env",
@@ -5484,7 +5484,7 @@
     "stay_hours": 1,
     "lat": 25.100195,
     "lng": 121.755264,
-    "google_place_id": null,
+    "google_place_id": "ChIJLTDpDgBRXTQRscPW__EbKH4",
     "needs_verify": [
       "env",
       "cost_tier",
@@ -5590,7 +5590,7 @@
     "stay_hours": 1,
     "lat": 24.938661,
     "lng": 121.217292,
-    "google_place_id": null,
+    "google_place_id": "ChIJvzdhNlUiaDQRQo01KepeoeQ",
     "needs_verify": [
       "env",
       "cost_tier",
@@ -5778,7 +5778,7 @@
     "stay_hours": 1,
     "lat": 22.991235,
     "lng": 120.184982,
-    "google_place_id": null,
+    "google_place_id": "ChIJCbyytQB3bjQRGu9RWrjABzE",
     "needs_verify": [
       "env",
       "cost_tier",

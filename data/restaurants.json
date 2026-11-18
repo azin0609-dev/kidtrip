@@ -21,7 +21,7 @@
     ],
     "lat": 25.029256,
     "lng": 121.522716,
-    "google_place_id": null,
+    "google_place_id": "ChIJaSZ-CpupQjQRaqvVbaJ4FaM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -60,7 +60,7 @@
     ],
     "lat": 25.09184,
     "lng": 121.524207,
-    "google_place_id": null,
+    "google_place_id": "ChIJsS8FHNyvQjQRwtaRVpPMyAI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -99,7 +99,7 @@
     ],
     "lat": 25.069664,
     "lng": 121.588998,
-    "google_place_id": null,
+    "google_place_id": "ChIJoZlomYarQjQRQ6dO-drU7eg",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -137,7 +137,7 @@
     "near_spot_ids": [],
     "lat": 25.080868,
     "lng": 121.585738,
-    "google_place_id": null,
+    "google_place_id": "ChIJfepvyousQjQRq2rFXvS-esU",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -174,7 +174,7 @@
     ],
     "lat": 24.965353,
     "lng": 121.224926,
-    "google_place_id": null,
+    "google_place_id": "ChIJnz4C-FchaDQR-jivc0eMVhM",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
