@@ -1,6 +1,6 @@
 import type { Restaurant, Spot } from '../data/schema.ts';
 import { freshnessNote } from '../lib/freshness.ts';
-import { FOOD_PRICE_LABELS, FOOD_TAG_LABELS } from '../lib/labels.ts';
+import { FOOD_PRICE_LABELS, FOOD_TAG_LABELS, VERIFIED_SOURCE_LABELS } from '../lib/labels.ts';
 import { directionsUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { Tag, buttonBase } from './ui.tsx';
@@ -48,7 +48,7 @@ export function RestaurantCard({ restaurant: r, today, mins, originLabel, nearSp
       )}
 
       <p className="text-xs text-stone-600 dark:text-stone-400">
-        {r.verified ? `${r.verified.date} 查過還在營業（${r.verified.note ?? '網路資料'}），` : ''}
+        {r.verified ? `${r.verified.date} 查過還在營業（${r.verified.note ?? VERIFIED_SOURCE_LABELS[r.verified.source]}），` : ''}
         {freshnessNote(r, 'food', today) ?? '親子餐廳常改時間或歇業，出發前在 Google 地圖或電話確認一下。'}
       </p>
 

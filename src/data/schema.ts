@@ -17,6 +17,7 @@ import {
   PRICE_TIERS,
   REGIONS,
   SPOT_TYPES,
+  VERIFY_SOURCES,
 } from './enums.ts';
 
 export * from './enums.ts';
@@ -82,13 +83,13 @@ export const spotSchema = z.object({
   official_url: z.string().url().optional(),
   /**
    * 選填：逐筆查證紀錄。有這欄才代表真的對過來源；fields 是查過的項目，
-   * source 是來源等級（official 官方、media 新聞媒體、blog 旅遊部落格）。
+   * source 是來源（official 官方、media 新聞媒體、blog 旅遊部落格、google_maps Google 地圖）。
    */
   verified: z
     .object({
       date: isoDate,
       fields: z.array(nonEmpty).min(1),
-      source: z.enum(['official', 'media', 'blog']),
+      source: z.enum(VERIFY_SOURCES),
       note: nonEmpty.optional(),
     })
     .optional(),
@@ -127,7 +128,7 @@ export const hotelSchema = z.object({
 const verifiedSchema = z.object({
   date: isoDate,
   fields: z.array(nonEmpty).min(1),
-  source: z.enum(['official', 'media', 'blog']),
+  source: z.enum(VERIFY_SOURCES),
   note: nonEmpty.optional(),
 });
 

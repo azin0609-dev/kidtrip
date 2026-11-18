@@ -220,6 +220,12 @@ describe('validateRestaurants', () => {
     expect(text).toContain('rest-1:id');
     expect(text).toContain('找不到景點 spot-999');
   });
+  it('查證來源可以是 Google 地圖，不認得的來源要報錯', () => {
+    const verified = (source: string) => ({ date: '2026-11-18', fields: ['營業中'], source });
+    expect(validateRestaurants([food({ verified: verified('google_maps') })], [makeSpot()])).toEqual([]);
+    const issues = validateRestaurants([food({ verified: verified('google_rating') })], [makeSpot()]);
+    expect(issues.map((i) => i.field).join('|')).toContain('verified.source');
+  });
 });
 
 describe('validateTrips', () => {

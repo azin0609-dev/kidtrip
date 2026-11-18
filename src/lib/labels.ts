@@ -1,4 +1,4 @@
-import type { CostTier, Env, Facility, FoodPriceTier, FoodTag, HotelKind, HotelTag, PriceTier, Region, SpotType } from '../data/schema.ts';
+import type { CostTier, Env, Facility, FoodPriceTier, FoodTag, HotelKind, HotelTag, PriceTier, Region, SpotType, VerifySource } from '../data/schema.ts';
 
 // 介面文字對照表（不是景點資料）。
 
@@ -71,10 +71,11 @@ export const FOOD_PRICE_LABELS: Record<FoodPriceTier, string> = {
   $$$: '$$$',
 };
 
-export const VERIFIED_SOURCE_LABELS: Record<'official' | 'media' | 'blog', string> = {
+export const VERIFIED_SOURCE_LABELS: Record<VerifySource, string> = {
   official: '官方資料',
   media: '新聞報導',
   blog: '旅遊部落格',
+  google_maps: 'Google 地圖',
 };
 
 export const HOTEL_KIND_LABELS: Record<HotelKind, string> = {

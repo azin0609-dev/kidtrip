@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import {
   type GeocodeOutcome,
   type NominatimResult,
+  LOW_SIMILARITY,
   annotateDistance,
   buildReport,
   nameSimilarity,
@@ -155,6 +156,7 @@ interface Place {
   city: string;
   lat: number | null;
   lng: number | null;
+  coord_area?: boolean;
 }
 
 async function geocodePlaces() {
@@ -204,15 +206,17 @@ async function geocodePlaces() {
       }
     }
 
-    // --fallback-town：查不到、或查到的結果不在同縣市時，先用鄉鎮市區（沒有就用縣市）的代表座標代替。
-    // 車程本來就是粗估，有個大概位置比「車程未知」好用；報告會列出來等人工修正。
-    if (FALLBACK_TOWN && (outcome.status === 'not_found' || (outcome.status === 'ok' && outcome.countyMatched === false))) {
+    // --fallback-town：查不到、查到的結果不在同縣市、或名稱完全對不上時，先用鄉鎮市區（沒有就用縣市）的代表座標代替，
+    // 並標上 coord_area。車程本來就是粗估，有個大概位置比「車程未知」好用；報告會列出來等人工修正。
+    const unlikely = outcome.status === 'ok' && (outcome.countyMatched === false || (outcome.similarity ?? 1) < LOW_SIMILARITY);
+    if (FALLBACK_TOWN && (outcome.status === 'not_found' || unlikely)) {
       const c = origins?.counties.find((x) => x.name === county);
       const t = c?.towns.find((x) => x.name === town);
       const point = t && t.lat !== null && t.lng !== null ? t : c && c.lat !== null && c.lng !== null ? c : null;
       if (c && point && point.lat !== null && point.lng !== null) {
         place.lat = point.lat;
         place.lng = point.lng;
+        place.coord_area = true;
         writeJson(file, data[file]);
         outcome = { ...base, query: outcome.query, status: 'error', error: `查不到，先用「${c.name}${point === c ? '' : point.name}」的代表座標代替` };
       }
@@ -223,6 +227,7 @@ async function geocodePlaces() {
     if (outcome.status === 'ok' && outcome.lat !== undefined && outcome.lng !== undefined) {
       place.lat = outcome.lat;
       place.lng = outcome.lng;
+      delete place.coord_area;
       writeJson(file, data[file]);
     }
     console.log(`[${i + 1}/${todo.length}] ${outcome.status === 'ok' ? '✓' : '✗'} ${place.id} ${place.name}`);

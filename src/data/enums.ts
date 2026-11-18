@@ -29,6 +29,8 @@ export const FOOD_PRICE_TIERS = ['$', '$$', '$$$'] as const;
 /** 住宿類型：飯店、民宿。 */
 export const HOTEL_KINDS = ['hotel', 'bnb'] as const;
 export const BADGE_KINDS = ['new', 'end'] as const;
+/** 查證來源：官方、新聞媒體、旅遊部落格、Google 地圖（只記「哪天看過、看了什麼」，不存 Google 的內容）。 */
+export const VERIFY_SOURCES = ['official', 'media', 'blog', 'google_maps'] as const;
 
 export type Region = (typeof REGIONS)[number];
 export type SpotType = (typeof SPOT_TYPES)[number];
@@ -40,3 +42,4 @@ export type Facility = (typeof FACILITIES)[number];
 export type FoodTag = (typeof FOOD_TAGS)[number];
 export type FoodPriceTier = (typeof FOOD_PRICE_TIERS)[number];
 export type HotelKind = (typeof HOTEL_KINDS)[number];
+export type VerifySource = (typeof VERIFY_SOURCES)[number];
