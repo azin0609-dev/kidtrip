@@ -150,7 +150,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "兒童益智探索館適合學齡前，要另外買票而且分場次，先看好時間。",
-    "open_note": "週一休館；兒童益智探索館分場次",
+    "open_note": "平日 09:00–17:00，週末到 18:00，週一休館；兒童益智探索館分場次",
     "age_best": [
       3,
       12
@@ -176,13 +176,42 @@
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "附設收費室內停車場（Google 地圖）"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "尿布台",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-005",
@@ -197,7 +226,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "宇宙探險軌道車小孩很愛，跟科教館在隔壁，可以排同一天。",
-    "open_note": "週一休館",
+    "open_note": "09:00–17:00，週六到 20:00，週一休館",
     "age_best": [
       3,
       12
@@ -222,13 +251,42 @@
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費室內停車場（Google 地圖）"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "尿布台",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-006",
@@ -324,7 +382,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 40,
     "tip": "恐龍骨架就在大廳，逛一小時剛好，下雨天的好備案。",
-    "open_note": "週一休館",
+    "open_note": "09:30–17:00，週一休館",
     "age_best": [
       3,
       10
@@ -343,13 +401,41 @@
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "尿布台",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-009",
@@ -437,7 +523,37 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公共遊戲場"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "新北大都會公園停車場（Google 地圖有無障礙停車）"
+    },
+    "open_note": "06:00–23:00，Google 地圖標週二不開放",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "開放時間",
+        "公共廁所",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-011",
@@ -571,14 +687,14 @@
     "kid_label": "玩陶和戲水",
     "official_url": "https://www.ceramics.ntpc.gov.tw/",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "開放時間",
-        "休館日",
-        "票價",
-        "戲水區開放期間"
+        "營業時間",
+        "尿布台",
+        "洗手間"
       ],
-      "source": "official"
+      "source": "blog",
+      "note": "Google 地圖：平日 09:30–17:00，週末到 18:00"
     },
     "image": {
       "url": "photos/spot-013.jpg",
@@ -597,7 +713,26 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "unknown",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費停車場（Google 地圖）"
+    }
   },
   {
     "id": "spot-014",
@@ -749,7 +884,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "企鵝和水母區最受歡迎，建議先線上買票，平日人少很多。",
-    "open_note": "分時段入場，假日先線上買票；4 歲以下免費（以官方公告為準）",
+    "open_note": "10:00–18:00，週六到 20:00；分時段入場，現場票可能賣完，先線上買票",
     "age_best": [
       1,
       12
@@ -768,14 +903,15 @@
     "kid_label": "看企鵝和水母",
     "official_url": "https://www.xpark.com.tw/",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "地址",
         "營業時間",
-        "票價"
+        "分時段入場",
+        "洗手間",
+        "無障礙入口"
       ],
       "source": "blog",
-      "note": "票價是 2025 年的資料"
+      "note": "Google 地圖與 2026 年報導"
     },
     "image": {
       "url": "photos/spot-017.jpg",
@@ -787,20 +923,33 @@
       "reservation": "unknown",
       "advance_ticket": "yes",
       "timed_entry": "yes",
-      "source": "整理自景點說明（未查證）"
+      "source": "Google 地圖「建議預先購票」；2026 年報導寫分時段入場、每場有人數上限",
+      "url": "https://www.xpark.com.tw/"
     },
     "lat": 25.017191,
     "lng": 121.214072,
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "附設收費室內停車場（Google 地圖）"
+    }
   },
   {
     "id": "spot-018",
@@ -815,7 +964,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "專為 2–6 歲設計，跟 Xpark 同一棟；有舞台秀的場次要先預約。",
-    "open_note": "分場次入場、每場約 2.5 小時，要先線上預約；票價以官方最新公告為準",
+    "open_note": "平日 11:30–18:00，週末 10:00–18:30；先線上買票，場次以官方公告為準",
     "age_best": [
       2,
       6
@@ -832,18 +981,20 @@
     "transit": "機場捷運、高鐵桃園站走路約 5 分",
     "kid_label": "跟巧虎一起玩",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "地址"
+        "營業時間",
+        "地址",
+        "洗手間"
       ],
-      "source": "media",
-      "note": "票價與場次只查到 2020–2021 年的舊資料，沒有採用"
+      "source": "blog",
+      "note": "Google 地圖：置地廣場 1 樓"
     },
     "booking": {
-      "reservation": "yes",
+      "reservation": "unknown",
       "advance_ticket": "yes",
-      "timed_entry": "yes",
-      "source": "整理自景點說明（未查證）"
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」；場次制是 2020 年報導，未確認現況"
     },
     "lat": 25.017191,
     "lng": 121.214072,
@@ -851,13 +1002,25 @@
     "needs_verify": [
       "mins_from_linkou",
       "cost_tier",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "置地廣場附設停車場（Google 地圖）"
+    }
   },
   {
     "id": "spot-019",
@@ -872,7 +1035,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 20,
     "tip": "展覽可以動手玩，館外有大水池和草地，逛完還能放電。",
-    "open_note": "週二休館；未滿 18 歲免費",
+    "open_note": "09:30–17:00，週二休館；未滿 18 歲免費",
     "age_best": [
       2,
       10
@@ -888,15 +1051,13 @@
     "kid_label": "動手玩的展覽",
     "official_url": "https://tmofa.tycg.gov.tw/",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "地址",
-        "開放時間",
-        "休館日",
-        "票價"
+        "營業時間",
+        "週二休館"
       ],
-      "source": "media",
-      "note": "2024–2025 年的報導"
+      "source": "blog",
+      "note": "Google 地圖（業主公告）"
     },
     "image": {
       "url": "photos/spot-019.jpg",
@@ -909,12 +1070,30 @@
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "unknown",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "maintenance_note": "2026-09-14 前方高鐵南路二段曾封路一天（已過）"
+    }
   },
   {
     "id": "spot-020",
@@ -3596,7 +3775,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 10,
     "tip": "海洋主題，超長的水管溜滑梯和攀爬網很能放電，旁邊有足球場可以跑。",
-    "open_note": "2025 年 11 月曾有設施損壞、封鎖檢修，去之前先確認遊具有沒有全部開放",
+    "open_note": "2025 年 11 月有器材零件掉落砸傷小孩，景觀處封鎖修繕；2026-11-18 還查不到修好的公告，去之前先確認",
     "age_best": [
       3,
       10
@@ -3616,12 +3795,14 @@
     ],
     "kid_label": "水管溜滑梯",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "2025 年 11 月設施損壞事件"
+        "開放時間",
+        "公共廁所",
+        "事故報導"
       ],
       "source": "media",
-      "note": "沒查到目前是否已修好"
+      "note": "Google 地圖與 2025 年 11 月新聞"
     },
     "risk_flags": [
       "facility_unknown"
@@ -3636,7 +3817,26 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園、24 小時開放"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖、新聞",
+      "checked_at": "2026-11-18",
+      "maintenance_note": "2025-11 器材零件掉落砸傷小孩，封鎖修繕；2026-11-18 查不到修好的公告"
+    }
   },
   {
     "id": "spot-089",
@@ -3763,7 +3963,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 10,
     "tip": "就在林口工業區的襪子觀光工廠，可以用手搖織襪機自己做襪子，下雨天的首選備案。",
-    "open_note": "門票 100 元可抵館內消費；假日導覽和 DIY 有固定場次，出發前先查",
+    "open_note": "每天 09:30–17:30；門票 100 元可抵館內消費；假日 DIY 有固定場次",
     "age_best": [
       3,
       10
@@ -3777,13 +3977,14 @@
     "kid_label": "自己織襪子",
     "official_url": "https://www.socksmuseum.com/",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "地址",
-        "票價"
+        "營業時間",
+        "洗手間",
+        "停車"
       ],
-      "source": "official",
-      "note": "地址來自官網；票價與導覽場次來自旅遊網站，沒有標日期"
+      "source": "blog",
+      "note": "Google 地圖與遊記"
     },
     "lat": 25.077531,
     "lng": 121.391602,
@@ -3791,12 +3992,31 @@
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "unknown",
+      "timed_entry": "no",
+      "source": "遊記：一般遊客不用預約；DIY 有固定場次，襪子娃娃 DIY 限 20 人以上團體預約",
+      "url": "https://www.socksmuseum.com/"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "附設停車場，附近也有免費路邊停車格（Google 地圖）"
+    }
   },
   {
     "id": "spot-093",
@@ -4256,7 +4476,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 35,
     "tip": "公園裡有一區恐龍園區，附近住的話可以順路去。",
-    "open_note": "找到的資料比較舊，恐龍設施還在不在，出發前先確認",
+    "open_note": "員山公園本身還在（長溜滑梯、滑草、沙坑），但 2026 年的遊記都沒提到恐龍設施，恐龍區可能已經不在",
     "age_best": [
       1,
       8
@@ -4270,7 +4490,6 @@
     "google_place_id": null,
     "needs_verify": [
       "name",
-      "city",
       "env",
       "cost_tier",
       "stroller_ok",
@@ -4280,12 +4499,20 @@
       "tip"
     ],
     "last_verified": "2026-11-18",
-    "coord_area": true
+    "coord_area": true,
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "地址"
+      ],
+      "source": "blog",
+      "note": "Google 地圖找得到員山公園；遊記沒有恐龍設施"
+    }
   },
   {
     "id": "spot-105",
     "name": "碇安公園",
-    "city": "基隆市",
+    "city": "基隆市暖暖區",
     "region": "北",
     "types": [
       "park",
@@ -4296,21 +4523,16 @@
     "stroller_ok": true,
     "mins_from_linkou": 45,
     "tip": "小公園裡藏著粉色和藍色的恐龍，人比較少。",
-    "open_note": "在基隆哪一區、怎麼停車還沒確認，出發前先用地圖查",
+    "open_note": "在暖暖區碇內街；附近停車位置還沒確認",
     "age_best": [
       1,
       8
     ],
     "stay_hours": 1,
-    "risk_flags": [
-      "location_unknown"
-    ],
     "lat": 25.100195,
     "lng": 121.755264,
     "google_place_id": null,
     "needs_verify": [
-      "name",
-      "city",
       "env",
       "cost_tier",
       "stroller_ok",
@@ -4319,7 +4541,15 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "所在區"
+      ],
+      "source": "blog",
+      "note": "Google 地圖：基隆市暖暖區碇內街"
+    }
   },
   {
     "id": "spot-106",
@@ -4371,21 +4601,16 @@
     "stroller_ok": true,
     "mins_from_linkou": 30,
     "tip": "恐龍主題的社區公園。",
-    "open_note": "有哪些恐龍設施還沒確認",
+    "open_note": "恐龍主題共融遊戲場：恐龍地墊、埋恐龍化石的沙坑（有遮陽簾）、攀岩牆、鳥巢鞦韆，由平鎮區公所維管",
     "age_best": [
       1,
       8
     ],
     "stay_hours": 1,
-    "risk_flags": [
-      "facility_unknown"
-    ],
     "lat": 24.938661,
     "lng": 121.217292,
     "google_place_id": null,
     "needs_verify": [
-      "name",
-      "city",
       "env",
       "cost_tier",
       "stroller_ok",
@@ -4394,7 +4619,16 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-18",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "地址",
+        "恐龍設施"
+      ],
+      "source": "blog",
+      "note": "Google 地圖、桃園特色公園網站與遊記"
+    }
   },
   {
     "id": "spot-108",
@@ -4516,7 +4750,7 @@
   {
     "id": "spot-111",
     "name": "神秘恐龍公園（長谷鳳凰城）",
-    "city": "台南市",
+    "city": "台南市安南區",
     "region": "南",
     "types": [
       "park",
@@ -4527,22 +4761,16 @@
     "stroller_ok": true,
     "mins_from_linkou": 215,
     "tip": "藏在住宅社區裡的恐龍公園，侏儸紀氣氛很足。",
-    "open_note": "在住宅社區裡，能不能進去、在哪一區都還沒確認，請保持安靜",
+    "open_note": "在長谷鳳凰城社區旁，24 小時開放、免費，請放低音量；只有 3 隻大恐龍，部分遊具壞了，停車不方便",
     "age_best": [
       1,
       10
     ],
     "stay_hours": 1,
-    "risk_flags": [
-      "access_unknown",
-      "location_unknown"
-    ],
     "lat": 22.991235,
     "lng": 120.184982,
     "google_place_id": null,
     "needs_verify": [
-      "name",
-      "city",
       "env",
       "cost_tier",
       "stroller_ok",
@@ -4552,6 +4780,15 @@
       "tip"
     ],
     "last_verified": "2026-11-18",
-    "coord_area": true
+    "coord_area": true,
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "所在區",
+        "可以自由進出"
+      ],
+      "source": "blog",
+      "note": "Google 地圖：安南區北安路二段 60 巷；遊記寫 24 小時開放"
+    }
   }
 ]
