@@ -7,7 +7,7 @@
 - 查到的寫進 `amenities`（設施）和 `booking`（預約購票），`source` 寫來源（例如「官網」「Google 地圖」「電話」），`checked_at` 寫日期。
 - 查證完把 `verified` 的日期和確認過的項目更新，`needs_verify` 拿掉查過的欄位。
 - 來源互相矛盾：加 `risk_flags: ["status_conflict"]`，不要寫「還在營業」。
-- 只能存 place_id、名稱、地址；Google 的評分、評論、照片不能存。
+- 從 Google 地圖只能長期存 place_id（AGENTS.md）；Google 的地址、評分、評論、照片都不能存進 JSON。
 
 ## 1. 先處理：暫停自動推薦的景點（`risk_flags`）
 這些資料還在，清單和搜尋找得到，但不會被推薦，查清楚後拿掉 `risk_flags` 就會恢復。
