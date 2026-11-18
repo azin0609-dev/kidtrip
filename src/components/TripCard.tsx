@@ -1,29 +1,36 @@
 import type { Trip } from '../data/schema.ts';
 import { googleMapsUrl } from '../lib/links.ts';
-import { Tag, buttonBase } from './ui.tsx';
+import { Tag, buttonBase, cardBase, primaryButton } from './ui.tsx';
 
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
 
 export function TripCard({ trip, isFav, onToggleFav }: { trip: Trip; isFav: boolean; onToggleFav: () => void }) {
   return (
-    <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
-      <header className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <h3 className="text-lg leading-snug font-bold break-words">{trip.title}</h3>
-          <p className="text-sm text-stone-600 dark:text-stone-400">
-            {trip.country}・{trip.region}・住 {trip.base_cities.join('、')}
-          </p>
+    <article className={`${cardBase} flex min-w-0 flex-col gap-3 p-4`}>
+      {/* 目的地視覺：用文字和路線圖形表現目的地，不放冒充的風景照。 */}
+      <div aria-hidden="true" className="relative -mx-4 -mt-4 h-28 overflow-hidden bg-gradient-to-br from-sky-50 via-stone-50 to-amber-50 dark:from-[#18283a] dark:via-card-dark dark:to-card-dark-2">
+        <svg viewBox="0 0 320 112" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
+          <path d="M-10 92 C60 60 110 100 170 70 S260 30 330 46" fill="none" stroke="#2e8b6e" strokeOpacity="0.35" strokeWidth="2" strokeDasharray="1 7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+        </svg>
+        <svg viewBox="0 0 24 24" className="absolute top-4 right-16 h-7 w-7 -rotate-12 text-sky-700 dark:text-sky-300" fill="currentColor">
+          <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" />
+        </svg>
+        <div className="absolute bottom-3 left-4">
+          <p className="text-xs font-bold text-stone-600 dark:text-stone-400">{trip.country}</p>
+          <p className="text-2xl leading-tight font-black text-stone-900 dark:text-stone-50">{trip.region}</p>
         </div>
-        <div className="shrink-0 text-right">
-          <div className="text-2xl leading-none font-bold">
-            {trip.days}
-            <span className="ml-0.5 text-sm font-normal">天</span>
-          </div>
-        </div>
+        <span className="absolute top-3 right-3 rounded-full bg-white/90 px-2.5 py-1 text-sm font-black text-stone-900 shadow-sm dark:bg-black/40 dark:text-stone-50">
+          {trip.days} 天
+        </span>
+      </div>
+
+      <header className="min-w-0">
+        <h3 className="text-lg leading-snug font-bold break-words">{trip.title}</h3>
+        <p className="text-sm text-stone-600 dark:text-stone-400">住 {trip.base_cities.join('、')}</p>
       </header>
 
       <div className="flex flex-wrap gap-1.5">
-        <Tag tone="good">{trip.age_hint}</Tag>
+        <Tag tone="good">適合：{trip.age_hint}</Tag>
         {trip.best_seasons.map((s) => (
           <Tag key={s}>{s}</Tag>
         ))}
@@ -33,7 +40,7 @@ export function TripCard({ trip, isFav, onToggleFav }: { trip: Trip; isFav: bool
 
       <details className="group">
         <summary
-          className={`${buttonBase} w-full cursor-pointer list-none bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300 [&::-webkit-details-marker]:hidden`}
+          className={`${primaryButton} w-full cursor-pointer list-none [&::-webkit-details-marker]:hidden`}
         >
           <span className="group-open:hidden">看每天的行程</span>
           <span className="hidden group-open:inline">收起行程</span>
@@ -51,14 +58,14 @@ export function TripCard({ trip, isFav, onToggleFav }: { trip: Trip; isFav: bool
 
           <ol className="flex flex-col gap-3">
             {trip.itinerary.map((day) => (
-              <li key={day.day} className="rounded-2xl bg-emerald-50 p-3 dark:bg-emerald-950/40">
-                <h4 className="font-bold text-emerald-950 dark:text-emerald-100">
+              <li key={day.day} className="rounded-2xl bg-stone-100 p-3 dark:bg-card-dark-2">
+                <h4 className="font-bold text-stone-900 dark:text-stone-50">
                   第 {day.day} 天・{day.title}
                 </h4>
                 {day.stay && <p className="text-xs text-stone-600 dark:text-stone-400">住：{day.stay}</p>}
                 <ul className="mt-2 flex flex-col gap-2">
                   {day.stops.map((stop) => (
-                    <li key={stop.name} className="rounded-xl bg-white p-3 dark:bg-stone-900">
+                    <li key={stop.name} className="rounded-xl bg-white p-3 dark:bg-card-dark">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
                           <p className="font-medium break-words">{stop.name}</p>
@@ -103,7 +110,7 @@ export function TripCard({ trip, isFav, onToggleFav }: { trip: Trip; isFav: bool
         className={`${buttonBase} border ${
           isFav
             ? 'border-rose-300 bg-rose-50 text-rose-800 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-200'
-            : 'border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800'
+            : 'border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-stone-800'
         }`}
       >
         {isFav ? '已收藏這個行程' : '收藏這個行程'}

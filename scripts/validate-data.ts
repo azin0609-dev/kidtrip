@@ -1,8 +1,9 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { type FreshKind, freshness, lastChecked } from '../src/lib/freshness.ts';
 import { todayInTaipei } from '../src/lib/date.ts';
-import { formatIssues, validateData, validateOrigins, validateRestaurants, validateTrips } from '../src/data/validate.ts';
+import { type DataIssue, formatIssues, validateData, validateOrigins, validateRestaurants, validateTrips } from '../src/data/validate.ts';
+import { isAllowedPhotoLicense } from './photos-lib.ts';
 
 const dataDir = fileURLToPath(new URL('../data/', import.meta.url));
 
@@ -21,12 +22,28 @@ const hotels = readJson('hotels.json');
 const origins = readJson('origins.json');
 const restaurants = readJson('restaurants.json');
 const trips = readJson('trips.json');
-const issues = [
+const issues: DataIssue[] = [
   ...validateData(spots, hotels),
   ...validateRestaurants(restaurants, spots),
   ...validateTrips(trips),
   ...validateOrigins(origins),
 ];
+
+// 照片：授權要能用、檔案要真的在 public/ 底下。
+const publicDir = fileURLToPath(new URL('../public/', import.meta.url));
+for (const [file, list] of [['spots.json', spots], ['hotels.json', hotels], ['restaurants.json', restaurants]] as const) {
+  if (!Array.isArray(list)) continue;
+  for (const x of list as { id?: string; image?: { url: string; license: string } }[]) {
+    if (!x.image) continue;
+    const id = x.id ?? '?';
+    if (!isAllowedPhotoLicense(x.image.license)) {
+      issues.push({ file, id, field: 'image.license', message: `照片授權「${x.image.license}」不能用（只收 CC BY、CC BY-SA、CC0、公有領域、自己拍的）` });
+    }
+    if (!/^https?:\/\//.test(x.image.url) && !existsSync(`${publicDir}${x.image.url.replace(/^\/+/, '')}`)) {
+      issues.push({ file, id, field: 'image.url', message: `找不到照片檔 public/${x.image.url}` });
+    }
+  }
+}
 
 if (issues.length > 0) {
   console.error(formatIssues(issues));

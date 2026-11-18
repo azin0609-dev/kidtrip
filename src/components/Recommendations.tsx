@@ -7,11 +7,9 @@ import { MAX_DRIVE_OPTIONS, ROLE_LABELS, type RoundResult, type ScoredSpot } fro
 import { SLOTS, type Slot, type SlotWeather, formatSlotWeather, slotLabelWithDate } from '../lib/weather.ts';
 import { Bolt, SleepySun } from './Brand.tsx';
 import { SpotArt } from './SpotArt.tsx';
-import { Chip, buttonBase } from './ui.tsx';
+import { Chip, buttonBase, cardBase, primaryButton, secondaryButton } from './ui.tsx';
 
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
-const ghost = `${buttonBase} border border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-200 dark:hover:bg-stone-800`;
-const panel = 'rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950';
 
 /** 設施裡最影響帶小小孩出門的幾項，卡片上顯示第一個符合的（完整設施在「看詳細」）。 */
 const KEY_FACILITIES = ['nursing', 'diaper', 'parking', 'shade'] as const;
@@ -44,134 +42,153 @@ export interface RecommendationsProps {
   renderFull: (pick: ScoredSpot) => ReactNode;
 }
 
-/**
- * 推薦卡：只放會影響決定的資訊。
- * 第一張（本週首選）是完整大卡；手機上後面兩張用精簡版，桌面三張都用大卡並排。
- */
-function PickCard({
-  pick,
-  compact,
-  chosen,
-  onChoose,
-  children,
-}: {
-  pick: ScoredSpot;
-  compact: boolean;
-  chosen: boolean;
-  onChoose: () => void;
-  children: ReactNode;
-}) {
+/** 卡片上的重點：建議年齡、推車、最重要的一個設施。 */
+function factsOf(spot: Spot): string[] {
+  const facility = (spot.facilities ?? []).find((f): f is (typeof KEY_FACILITIES)[number] => (KEY_FACILITIES as readonly string[]).includes(f));
+  return [
+    spot.age_best && `建議 ${spot.age_best[0]}–${spot.age_best[1]}${spot.age_best[1] === 12 ? '+' : ''} 歲`,
+    spot.stroller_ok ? '推車 OK' : '推車不方便',
+    facility && FACILITY_LABELS[facility],
+  ].filter((x): x is string => Boolean(x));
+}
+
+/** 推薦理由：能玩什麼＋分數裡會影響決定的原因（前兩個是車程和室內外，卡片上已經有）。 */
+function whyOf(pick: ScoredSpot): { canDo: string; why: string } {
+  return {
+    canDo: pick.spot.kid_label ?? pick.spot.types.map((t) => TYPE_LABELS[t]).join('、'),
+    why: pick.reasons.slice(2).join('・'),
+  };
+}
+
+function Reminder({ text, small }: { text: string; small?: boolean }) {
+  return (
+    <p
+      className={`rounded-xl bg-amber-50 text-amber-950 ring-1 ring-amber-200 dark:bg-[#2b2719] dark:text-amber-100 dark:ring-amber-900/60 ${
+        small ? 'px-2.5 py-1.5 text-xs' : 'px-3 py-2 text-sm'
+      }`}
+    >
+      <span className="font-bold">出發前先知道：</span>
+      {text}
+    </p>
+  );
+}
+
+function ChooseButtons({ chosen, open, onChoose, onToggle, big }: { chosen: boolean; open: boolean; onChoose: () => void; onToggle: () => void; big?: boolean }) {
+  return (
+    <div className={`grid gap-2 ${big ? 'grid-cols-[1.6fr_1fr]' : 'grid-cols-2'}`}>
+      <button
+        type="button"
+        aria-pressed={chosen}
+        onClick={onChoose}
+        className={`${
+          chosen
+            ? `${buttonBase} border border-emerald-600 bg-emerald-50 text-emerald-900 dark:border-emerald-400 dark:bg-emerald-950 dark:text-emerald-100`
+            : primaryButton
+        } ${big ? 'min-h-12 text-base' : ''}`}
+      >
+        {chosen ? '已選這裡' : '就去這裡'}
+      </button>
+      <button type="button" aria-expanded={open} onClick={onToggle} className={`${secondaryButton} ${big ? 'min-h-12 text-base' : ''}`}>
+        {open ? '收起詳細' : '看詳細'}
+      </button>
+    </div>
+  );
+}
+
+/** 本週首選：大圖＋完整資訊，是這一區最顯眼的卡。 */
+function HeroCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chosen: boolean; onChoose: () => void; children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { spot } = pick;
   const d = formatDrive(pick.mins);
-  const canDo = spot.kid_label ?? spot.types.map((t) => TYPE_LABELS[t]).join('、');
-  // 前兩個原因是車程和室內外，卡片上已經有了；只留後面會影響決定的。
-  const why = pick.reasons.slice(2).join('・');
+  const { canDo, why } = whyOf(pick);
   const reminder = spot.open_note ?? spot.crowd_tip;
-  const facilities = (spot.facilities ?? []).filter((f): f is (typeof KEY_FACILITIES)[number] =>
-    (KEY_FACILITIES as readonly string[]).includes(f),
-  );
-  const facts = [
-    ENV_LABELS[spot.env],
-    spot.age_best && `建議 ${spot.age_best[0]}–${spot.age_best[1]}${spot.age_best[1] === 12 ? '+' : ''} 歲`,
-    spot.stroller_ok ? '推車 OK' : '推車不方便',
-    ...facilities.slice(0, 1).map((f) => FACILITY_LABELS[f]),
-  ].filter((x): x is string => Boolean(x));
-
   return (
-    <li
-      className={`flex min-w-0 flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 dark:bg-card-dark ${
-        chosen ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : 'ring-emerald-100 dark:ring-emerald-950'
-      }`}
-    >
-      <div className={compact ? 'flex gap-3 p-3 pb-0 md:block md:p-0' : ''}>
-        <div className={`relative shrink-0 ${compact ? 'md:w-full' : ''}`}>
-          <SpotArt
-            name={spot.name}
-            type={spot.types[0] ?? 'park'}
-            image={spot.image}
-            className={compact ? 'h-20 w-20 rounded-2xl md:h-32 md:w-full md:rounded-none' : 'h-24 w-full md:h-32'}
-            iconClassName={compact ? 'h-12 w-12 md:h-20 md:w-20' : 'h-16 w-16 md:h-20 md:w-20'}
-          />
-          {pick.role && (
-            <span
-              className={`absolute top-2 left-2 rounded-full bg-emerald-700 px-2.5 py-1 text-xs font-bold text-white shadow-sm dark:bg-emerald-400 dark:text-stone-950 ${
-                compact ? 'hidden md:inline-block' : ''
-              }`}
-            >
-              {ROLE_LABELS[pick.role]}
-            </span>
-          )}
-        </div>
-        {compact && (
-          <div className="min-w-0 flex-1 md:hidden">
-            {pick.role && <p className="text-xs font-bold text-emerald-800 dark:text-emerald-300">{ROLE_LABELS[pick.role]}</p>}
-            <h3 className="text-base leading-snug font-bold break-words">{spot.name}</h3>
-            <p className="text-sm text-stone-600 dark:text-stone-400">
-              {spot.city}・約 {d.value} {d.unit}
-              <span className="text-xs">（粗估）</span>
-            </p>
-          </div>
+    <article className={`${cardBase} shadow-md ${chosen ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : ''}`}>
+      <div className="relative">
+        <SpotArt
+          name={spot.name}
+          type={spot.types[0] ?? 'park'}
+          image={spot.image}
+          className="h-[200px] w-full md:h-[300px]"
+          iconClassName="h-24 w-24 md:h-28 md:w-28"
+        />
+        {pick.role && (
+          <span className="absolute top-3 left-3 rounded-full bg-amber-400 px-3 py-1 text-sm font-black text-stone-950 shadow">
+            {ROLE_LABELS[pick.role]}
+          </span>
         )}
       </div>
-
-      <div className="flex flex-1 flex-col gap-2 p-4 pt-3">
-        <div className={`flex items-start justify-between gap-3 ${compact ? 'hidden md:flex' : ''}`}>
+      <div className="flex flex-col gap-3 p-4 md:p-5">
+        <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="text-lg leading-snug font-bold break-words">{spot.name}</h3>
-            <p className="text-sm text-stone-600 dark:text-stone-400">{spot.city}</p>
+            <h3 className="text-xl leading-snug font-black break-words md:text-2xl">{spot.name}</h3>
+            <p className="text-sm text-stone-600 dark:text-stone-400">
+              {spot.city}・{ENV_LABELS[spot.env]}
+            </p>
           </div>
           <div className="shrink-0 text-right">
-            <div className="text-2xl leading-none font-black text-emerald-800 dark:text-emerald-300">
-              <span className="mr-0.5 text-sm font-normal">約</span>
+            <div className="text-[1.75rem] leading-none font-black text-emerald-800 dark:text-emerald-300">
+              <span className="mr-0.5 text-sm font-medium">約</span>
               {d.value}
-              <span className="ml-0.5 text-sm font-normal">{d.unit}</span>
+              <span className="ml-0.5 text-sm font-medium">{d.unit}</span>
             </div>
-            <div className="mt-1 text-[11px] text-stone-600 dark:text-stone-400">車程粗估</div>
+            <div className="mt-1 text-xs text-stone-500 dark:text-stone-400">車程粗估</div>
           </div>
         </div>
-
         <ul className="flex flex-wrap gap-1.5" aria-label="重點">
-          {facts.map((f) => (
-            <li key={f} className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-900 dark:bg-emerald-950 dark:text-emerald-100">
+          {factsOf(spot).map((f) => (
+            <li key={f} className="rounded-full bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-800 dark:bg-stone-800 dark:text-stone-200">
               {f}
             </li>
           ))}
         </ul>
-
-        <p className="text-sm text-stone-800 dark:text-stone-200">
-          <span className="font-bold">可以玩：</span>
+        <p className="text-[15px] leading-relaxed text-stone-800 dark:text-stone-200">
+          <span className="font-bold">為什麼推薦：</span>
           {canDo}
           {why && <span className="text-stone-600 dark:text-stone-400">・{why}</span>}
         </p>
-
-        {reminder && (
-          <p className="rounded-xl bg-amber-50 px-3 py-2 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2f2614] dark:text-amber-100 dark:ring-amber-900">
-            <span className="font-bold">出發前先知道：</span>
-            {reminder}
-          </p>
-        )}
-
-        <div className="mt-auto grid grid-cols-2 gap-2 pt-1">
-          <button
-            type="button"
-            aria-pressed={chosen}
-            onClick={onChoose}
-            className={`${buttonBase} ${
-              chosen
-                ? 'border border-emerald-600 bg-emerald-50 text-emerald-900 dark:border-emerald-400 dark:bg-emerald-950 dark:text-emerald-100'
-                : 'bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300'
-            }`}
-          >
-            {chosen ? '已選這裡' : '就去這裡'}
-          </button>
-          <button type="button" aria-expanded={open} onClick={() => setOpen(!open)} className={ghost}>
-            {open ? '收起詳細' : '看詳細'}
-          </button>
-        </div>
-
-        {open && <div className="mt-1">{children}</div>}
+        {reminder && <Reminder text={reminder} />}
+        <ChooseButtons big chosen={chosen} open={open} onChoose={onChoose} onToggle={() => setOpen(!open)} />
+        {open && <div>{children}</div>}
       </div>
+    </article>
+  );
+}
+
+/** 第二、三個選擇：縮圖＋重點，一樣有清楚的操作按鈕。 */
+function CompactCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chosen: boolean; onChoose: () => void; children: ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const { spot } = pick;
+  const d = formatDrive(pick.mins);
+  const reminder = spot.open_note ?? spot.crowd_tip;
+  const facts = factsOf(spot).slice(0, 2).join('・');
+  return (
+    <li className={`${cardBase} flex flex-col gap-2.5 p-3 ${chosen ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : ''}`}>
+      <div className="flex gap-3">
+        <SpotArt
+          name={spot.name}
+          type={spot.types[0] ?? 'park'}
+          image={spot.image}
+          small
+          className="h-24 w-24 shrink-0 rounded-2xl"
+          iconClassName="h-12 w-12"
+        />
+        <div className="min-w-0 flex-1">
+          {pick.role && <p className="text-xs font-bold text-emerald-800 dark:text-emerald-300">{ROLE_LABELS[pick.role]}</p>}
+          <h3 className="leading-snug font-bold break-words">{spot.name}</h3>
+          <p className="text-sm text-stone-600 dark:text-stone-400">{spot.city}</p>
+          <p className="mt-0.5 text-sm text-stone-800 dark:text-stone-200">
+            <span className="font-bold">
+              約 {d.value} {d.unit}
+            </span>
+            <span className="text-xs text-stone-500 dark:text-stone-400">（粗估）</span>
+            {facts && `・${facts}`}
+          </p>
+        </div>
+      </div>
+      {reminder && <Reminder small text={reminder} />}
+      <ChooseButtons chosen={chosen} open={open} onChoose={onChoose} onToggle={() => setOpen(!open)} />
+      {open && <div>{children}</div>}
     </li>
   );
 }
@@ -179,149 +196,146 @@ function PickCard({
 export function Recommendations(props: RecommendationsProps) {
   const { today, round, slot, weather, maxDrive, rainy, overnight, elders, needStroller, chosenId } = props;
   const { picks, status } = round;
+  const [hero, ...others] = picks;
   const summary = conditionSummary({ maxDrive, overnight, needStroller, rainy, elders });
+  const weatherText = (weather && formatSlotWeather(weather)) || '還沒有預報，不代表不會下雨';
 
   return (
     <section aria-labelledby="recommend-title" className="mb-8">
-      <div className={panel}>
-        <h2 id="recommend-title" className="text-2xl font-black text-emerald-900 dark:text-emerald-50">
-          本週放電提案
-        </h2>
-        <p className="text-sm text-stone-600 dark:text-stone-400">幫你挑好 3 個適合全家的地方</p>
-
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <label className="flex items-center gap-2 text-sm">
-            <span className="sr-only">什麼時候去</span>
-            <select
-              value={slot}
-              onChange={(e) => props.onSlot(e.target.value as Slot)}
-              className={`min-h-11 rounded-full border border-emerald-200 bg-white px-3 text-sm font-bold text-emerald-900 dark:border-emerald-800 dark:bg-card-dark-2 dark:text-emerald-50 ${focus}`}
-            >
-              {SLOTS.map((s) => (
-                <option key={s} value={s}>
-                  {slotLabelWithDate(today, s)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <p
-            className={`rounded-full px-3 py-1.5 text-sm ${
-              weather?.rainy
-                ? 'bg-sky-100 text-sky-950 dark:bg-sky-950 dark:text-sky-100'
-                : weather
-                  ? 'bg-amber-50 text-amber-950 dark:bg-[#2f2614] dark:text-amber-100'
-                  : 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
-            }`}
-          >
-            {(weather && formatSlotWeather(weather)) || '還沒有預報（不代表不會下雨）'}
-          </p>
+      <div className="flex items-end justify-between gap-3">
+        <div className="min-w-0">
+          <h2 id="recommend-title" className="text-2xl font-black text-stone-900 md:text-3xl dark:text-stone-50">
+            本週放電提案
+          </h2>
+          <p className="text-sm text-stone-600 dark:text-stone-400">幫你挑好 3 個適合全家的地方</p>
         </div>
-
-        <details className="group mt-2">
-          <summary
-            className={`flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-xl bg-emerald-50 px-3 text-sm dark:bg-card-dark-2 [&::-webkit-details-marker]:hidden ${focus}`}
-          >
-            <span className="min-w-0">
-              <span className="font-bold text-emerald-900 dark:text-emerald-100">條件：</span>
-              <span className="text-stone-700 dark:text-stone-300">{summary}</span>
-            </span>
-            <span className="shrink-0 font-bold text-emerald-800 dark:text-emerald-300">
-              調整
-              <span aria-hidden="true" className="ml-1 inline-block transition-transform group-open:rotate-90">
-                ›
-              </span>
-            </span>
-          </summary>
-          <div className="mt-2 flex flex-col gap-3 px-1">
-            <div className="flex flex-wrap items-center gap-2" role="group" aria-label="單程最多開多久">
-              <span className="w-full text-xs font-medium text-stone-600 dark:text-stone-400">單程最多（車程是粗估）</span>
-              {MAX_DRIVE_OPTIONS.map((m) => (
-                <Chip key={m} pressed={!overnight && maxDrive === m} onClick={() => props.onMaxDrive(m)}>
-                  {DRIVE_LABELS[m]}
-                </Chip>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2" role="group" aria-label="出門狀況">
-              <span className="w-full text-xs font-medium text-stone-600 dark:text-stone-400">出門狀況</span>
-              <Chip pressed={needStroller} onClick={() => props.onNeedStroller(!needStroller)}>
-                帶推車
-              </Chip>
-              <Chip pressed={rainy} onClick={() => props.onRainy(!rainy)}>
-                可能下雨
-              </Chip>
-              <Chip pressed={elders} onClick={() => props.onElders(!elders)}>
-                長輩同行
-              </Chip>
-              <Chip pressed={overnight} onClick={() => props.onOvernight(!overnight)}>
-                這週要住一晚
-              </Chip>
-            </div>
-            {overnight && (
-              <p className="text-xs text-stone-600 dark:text-stone-400">住一晚時只推車程 1 小時以上、附近有整理好住宿的地方。</p>
-            )}
-          </div>
-        </details>
-        {weather?.rainy && props.rainyIsAuto && rainy && (
-          <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
-            那個時段降雨機率高，已自動打開「可能下雨」，只推室內或有遮棚的；想去戶外可以在「調整」裡關掉。
-          </p>
-        )}
-
-        <div className="mt-3 grid grid-cols-2 gap-2 md:max-w-md">
-          <button type="button" onClick={props.onShuffle} disabled={picks.length === 0} className={`${ghost} disabled:opacity-50`}>
-            <Bolt className="h-4 w-4 text-amber-400" />
-            再找一組
-          </button>
-          <button
-            type="button"
-            onClick={props.onKidPick}
-            disabled={picks.length === 0}
-            className={`${buttonBase} bg-amber-400 text-stone-950 hover:bg-amber-300 disabled:opacity-50`}
-          >
-            換我決定！
-          </button>
-        </div>
+        <button type="button" onClick={props.onShuffle} disabled={picks.length === 0} className={`${secondaryButton} shrink-0 disabled:opacity-50`}>
+          <Bolt className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+          再找一組
+        </button>
       </div>
 
+      {/* 日期和天氣排成一行。 */}
+      <div className="mt-3 flex items-center gap-2 rounded-2xl bg-white p-1 pr-3 shadow-sm ring-1 ring-stone-200 md:max-w-xl dark:bg-card-dark dark:ring-stone-800">
+        <label className="shrink-0">
+          <span className="sr-only">什麼時候去</span>
+          <select
+            value={slot}
+            onChange={(e) => props.onSlot(e.target.value as Slot)}
+            className={`min-h-11 rounded-xl bg-stone-100 px-2.5 text-sm font-bold text-stone-900 dark:bg-card-dark-2 dark:text-stone-50 ${focus}`}
+          >
+            {SLOTS.map((s) => (
+              <option key={s} value={s}>
+                {slotLabelWithDate(today, s)}
+              </option>
+            ))}
+          </select>
+        </label>
+        <p className={`min-w-0 text-[13px] leading-snug ${weather?.rainy ? 'font-bold text-sky-800 dark:text-sky-300' : 'text-stone-700 dark:text-stone-300'}`}>
+          {weatherText}
+        </p>
+      </div>
+
+      {/* 條件：收起來只有一行摘要，點開才調整。 */}
+      <details className="group mt-2 md:max-w-xl">
+        <summary
+          className={`flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-xl px-1 text-sm [&::-webkit-details-marker]:hidden ${focus}`}
+        >
+          <span className="shrink-0 font-bold text-stone-900 dark:text-stone-100">條件</span>
+          <span className="min-w-0 flex-1 truncate text-stone-600 dark:text-stone-400">{summary}</span>
+          <span className="shrink-0 font-bold text-emerald-800 dark:text-emerald-300">
+            調整
+            <span aria-hidden="true" className="ml-0.5 inline-block transition-transform group-open:rotate-90">
+              ›
+            </span>
+          </span>
+        </summary>
+        <div className={`${cardBase} mt-1 flex flex-col gap-3 p-4`}>
+          <div className="flex flex-wrap items-center gap-2" role="group" aria-label="單程最多開多久">
+            <span className="w-full text-xs font-medium text-stone-600 dark:text-stone-400">單程最多（車程是粗估）</span>
+            {MAX_DRIVE_OPTIONS.map((m) => (
+              <Chip key={m} pressed={!overnight && maxDrive === m} onClick={() => props.onMaxDrive(m)}>
+                {DRIVE_LABELS[m]}
+              </Chip>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="出門狀況">
+            <span className="w-full text-xs font-medium text-stone-600 dark:text-stone-400">出門狀況</span>
+            <Chip pressed={needStroller} onClick={() => props.onNeedStroller(!needStroller)}>
+              帶推車
+            </Chip>
+            <Chip pressed={rainy} onClick={() => props.onRainy(!rainy)}>
+              可能下雨
+            </Chip>
+            <Chip pressed={elders} onClick={() => props.onElders(!elders)}>
+              長輩同行
+            </Chip>
+            <Chip pressed={overnight} onClick={() => props.onOvernight(!overnight)}>
+              這週要住一晚
+            </Chip>
+          </div>
+          {overnight && <p className="text-xs text-stone-600 dark:text-stone-400">住一晚時只推車程 1 小時以上、附近有整理好住宿的地方。</p>}
+        </div>
+      </details>
+      {weather?.rainy && props.rainyIsAuto && rainy && (
+        <p className="px-1 text-xs text-stone-600 dark:text-stone-400">
+          那個時段降雨機率高，已自動打開「可能下雨」，只推室內或有遮棚的；想去戶外可以在「調整」裡關掉。
+        </p>
+      )}
+
       {status === 'last' && (
-        <p role="status" className={`${panel} mt-3 text-sm text-stone-700 dark:text-stone-300`}>
+        <p role="status" className="mt-2 rounded-xl bg-stone-100 p-3 text-sm text-stone-700 dark:bg-card-dark dark:text-stone-300">
           符合條件的只剩這{picks.length === 1 ? '一個' : '幾個'}沒看過。再按「再找一組」會從頭開始。
         </p>
       )}
       {status === 'restarted' && (
-        <p role="status" className={`${panel} mt-3 text-sm text-stone-700 dark:text-stone-300`}>
+        <p role="status" className="mt-2 rounded-xl bg-stone-100 p-3 text-sm text-stone-700 dark:bg-card-dark dark:text-stone-300">
           符合條件的都看過了，這一組是從頭再來的。想看更多可以把「單程最多」調遠一點。
         </p>
       )}
 
-      {picks.length === 0 ? (
-        <div className={`${panel} mt-3 flex flex-col items-center gap-2 text-center`}>
+      {!hero ? (
+        <div className={`${cardBase} mt-3 flex flex-col items-center gap-2 p-6 text-center`}>
           <SleepySun className="h-16 w-24" />
           <p className="text-sm text-stone-700 dark:text-stone-300">
             這些條件下沒有適合的地方。試試把「單程最多」調遠一點，或關掉幾個條件。太久沒確認的景點也不會推薦，如果一直是空的，代表資料該更新了。
           </p>
         </div>
       ) : (
-        <>
-          {picks.length < 3 && status === 'ok' && (
-            <p className={`${panel} mt-3 text-sm text-stone-700 dark:text-stone-300`}>
-              符合條件的只有 {picks.length} 個。想多看幾個可以把「單程最多」調遠一點。
-            </p>
-          )}
-          <ul className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3" aria-live="polite">
-            {picks.map((p, i) => (
-              <PickCard
-                key={p.spot.id}
-                pick={p}
-                compact={i > 0}
-                chosen={chosenId === p.spot.id}
-                onChoose={() => props.onChoose(p.spot)}
-              >
-                {props.renderFull(p)}
-              </PickCard>
-            ))}
-          </ul>
-        </>
+        <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-3" aria-live="polite">
+          <div className="md:col-span-2">
+            <HeroCard pick={hero} chosen={chosenId === hero.spot.id} onChoose={() => props.onChoose(hero.spot)}>
+              {props.renderFull(hero)}
+            </HeroCard>
+          </div>
+          <div className="flex flex-col gap-3">
+            {others.length > 0 && (
+              <>
+                <h3 className="px-1 text-sm font-bold text-stone-600 dark:text-stone-400">也可以考慮</h3>
+                <ul className="flex flex-col gap-3">
+                  {others.map((p) => (
+                    <CompactCard key={p.spot.id} pick={p} chosen={chosenId === p.spot.id} onChoose={() => props.onChoose(p.spot)}>
+                      {props.renderFull(p)}
+                    </CompactCard>
+                  ))}
+                </ul>
+              </>
+            )}
+            {picks.length < 3 && status === 'ok' && (
+              <p className="px-1 text-sm text-stone-600 dark:text-stone-400">
+                符合條件的只有 {picks.length} 個。想多看幾個可以把「單程最多」調遠一點。
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={props.onKidPick}
+              className={`${buttonBase} min-h-14 w-full flex-col gap-0 rounded-2xl bg-amber-400 text-stone-950 hover:bg-amber-300`}
+            >
+              <span className="text-base font-black">換我決定！</span>
+              <span className="text-xs font-medium">讓小孩從這 {picks.length} 個裡挑一個</span>
+            </button>
+          </div>
+        </div>
       )}
     </section>
   );

@@ -42,7 +42,7 @@ export function Passport({
   const toNext = stampsToNextTitle(count);
 
   return (
-    <section aria-labelledby="passport-title" className="rounded-3xl bg-white p-4 ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+    <section aria-labelledby="passport-title" className="rounded-3xl bg-white p-4 ring-1 ring-stone-200 dark:bg-card-dark dark:ring-stone-800">
       <div className="flex items-center gap-3">
         <BrandMark className={`h-14 w-14 shrink-0 ${count === 0 ? 'opacity-60 grayscale' : ''}`} />
         <div className="min-w-0 flex-1">
@@ -108,7 +108,7 @@ export function Passport({
 export function Memories({ items }: { items: MemoryItem[] }) {
   if (items.length === 0) return null;
   return (
-    <section aria-labelledby="memories-title" className="rounded-3xl bg-white p-4 ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+    <section aria-labelledby="memories-title" className="rounded-3xl bg-white p-4 ring-1 ring-stone-200 dark:bg-card-dark dark:ring-stone-800">
       <h2 id="memories-title" className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">
         我們的回憶
       </h2>
@@ -131,7 +131,7 @@ export function YearReviewCard({ review }: { review: YearReview }) {
   if (review.count === 0) return null;
   const max = Math.max(1, ...review.byMonth);
   return (
-    <section aria-labelledby="review-title" className="rounded-3xl bg-white p-4 ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+    <section aria-labelledby="review-title" className="rounded-3xl bg-white p-4 ring-1 ring-stone-200 dark:bg-card-dark dark:ring-stone-800">
       <h2 id="review-title" className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">
         {review.year} 年的出遊回顧
       </h2>

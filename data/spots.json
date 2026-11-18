@@ -70,6 +70,12 @@
     "transit": "捷運動物園站出站就是",
     "crowd_tip": "假日 9 點開門就進場，下午人最多",
     "kid_label": "看無尾熊和企鵝",
+    "image": {
+      "url": "photos/spot-002.jpg",
+      "credit": "Yu tptw／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Taipei_Zoo_Entrance.jpg"
+    },
     "lat": 24.995355,
     "lng": 121.586149,
     "google_place_id": null,
@@ -111,6 +117,12 @@
     "transit": "捷運劍潭站或士林站轉接駁公車",
     "crowd_tip": "假日下午排隊長，開門就去",
     "kid_label": "旋轉木馬和小火車",
+    "image": {
+      "url": "photos/spot-003.jpg",
+      "credit": "Junyu-K／Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:202604_View_of_Taipei_Children%27s_Amusement_Park_02.jpg"
+    },
     "lat": 25.097415,
     "lng": 121.514972,
     "google_place_id": null,
@@ -153,6 +165,12 @@
       "elder"
     ],
     "transit": "捷運士林站轉公車",
+    "image": {
+      "url": "photos/spot-004.jpg",
+      "credit": "Kiyoteru Awaji／Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:National_Taiwan_Science_Education_Center.jpg"
+    },
     "lat": 25.096127,
     "lng": 121.516704,
     "google_place_id": null,
@@ -193,6 +211,12 @@
       "elder"
     ],
     "transit": "捷運士林站轉公車",
+    "image": {
+      "url": "photos/spot-005.jpg",
+      "credit": "Wutthichai Charoenburi／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Taipei_Astronomical_Museum_Entrance_20230324.jpg"
+    },
     "lat": 25.09599,
     "lng": 121.518524,
     "google_place_id": null,
@@ -241,7 +265,13 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-16",
+    "image": {
+      "url": "photos/spot-006.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Daan_Forest_Park_%E5%A4%A7%E5%AE%89%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9C%92_-_panoramio_(4).jpg"
+    }
   },
   {
     "id": "spot-007",
@@ -391,6 +421,12 @@
       4
     ],
     "kid_label": "一整排堤坡溜滑梯",
+    "image": {
+      "url": "photos/spot-010.jpg",
+      "credit": "Ralff Nestor Nacor／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:New_Taipei_Metropolitan_Park,_Nov_2024_(2).jpg"
+    },
     "lat": 25.074665,
     "lng": 121.456278,
     "google_place_id": null,
@@ -439,6 +475,12 @@
       ],
       "source": "official"
     },
+    "image": {
+      "url": "photos/spot-011.jpg",
+      "credit": "阿道／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E6%9D%BF%E6%A9%8B435%E8%97%9D%E6%96%87%E7%89%B9%E5%8D%80_%E6%96%B0%E6%9C%88%E7%B4%85%E6%A8%93_20250902.jpg"
+    },
     "lat": 25.02431,
     "lng": 121.451907,
     "google_place_id": null,
@@ -479,6 +521,12 @@
     ],
     "kid_label": "考古挖寶",
     "official_url": "https://www.sshm.ntpc.gov.tw/",
+    "image": {
+      "url": "photos/spot-012.jpg",
+      "credit": "Taiwankengo／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2014_Shihsanhang_Museum_of_Archaeology.jpg"
+    },
     "lat": 25.157041,
     "lng": 121.404871,
     "google_place_id": null,
@@ -532,6 +580,12 @@
       ],
       "source": "official"
     },
+    "image": {
+      "url": "photos/spot-013.jpg",
+      "credit": "Allervous／Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Yingge_Ceramics_Museum_(20250129131743).jpg"
+    },
     "lat": 24.949228,
     "lng": 121.352095,
     "google_place_id": null,
@@ -568,6 +622,12 @@
       "shade",
       "elder"
     ],
+    "image": {
+      "url": "photos/spot-014.jpg",
+      "credit": "Yue gowua YT／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Yehliu_Ocean_World_hall_and_taxis_20190812.jpg"
+    },
     "lat": 25.205146,
     "lng": 121.69138,
     "google_place_id": null,
@@ -608,6 +668,12 @@
       "elder"
     ],
     "transit": "台鐵海科館站走路約 5 分",
+    "image": {
+      "url": "photos/spot-015.jpg",
+      "credit": "Taiwankengo／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Marine_Science_and_TechnologyFUJI8408c.jpg"
+    },
     "lat": 25.142518,
     "lng": 121.800231,
     "google_place_id": null,
@@ -653,6 +719,12 @@
       9,
       10
     ],
+    "image": {
+      "url": "photos/spot-016.jpg",
+      "credit": "Taiwankengo／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2021_Chaojing_Park.jpg"
+    },
     "lat": 25.143411,
     "lng": 121.803391,
     "google_place_id": null,
@@ -704,6 +776,12 @@
       ],
       "source": "blog",
       "note": "票價是 2025 年的資料"
+    },
+    "image": {
+      "url": "photos/spot-017.jpg",
+      "credit": "阿道／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Interior_of_Xpark-_05.2024-06-11.jpg"
     },
     "lat": 25.017191,
     "lng": 121.214072,
@@ -808,6 +886,12 @@
       "source": "media",
       "note": "2024–2025 年的報導"
     },
+    "image": {
+      "url": "photos/spot-019.jpg",
+      "credit": "桃園市兒童美術館／Wikimedia Commons",
+      "license": "Attribution",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Taoyuan_Children%27s_Art_center_2023.jpg"
+    },
     "lat": 25.005325,
     "lng": 121.206258,
     "google_place_id": null,
@@ -846,6 +930,12 @@
       "food",
       "shade"
     ],
+    "image": {
+      "url": "photos/spot-020.jpg",
+      "credit": "曾 成訓／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mini_models_of_buildings_in_WOC.jpg"
+    },
     "lat": 24.834216,
     "lng": 121.181726,
     "google_place_id": null,
@@ -882,6 +972,12 @@
       "parking",
       "food"
     ],
+    "image": {
+      "url": "photos/spot-021.jpg",
+      "credit": "milst1／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flying_Horses_Leofoo_Village_Theme_Park.jpg"
+    },
     "lat": 24.820225,
     "lng": 121.181606,
     "google_place_id": null,
@@ -1033,6 +1129,12 @@
       "elder"
     ],
     "transit": "台鐵新竹站走路約 15 分",
+    "image": {
+      "url": "photos/spot-025.jpg",
+      "credit": "Allervous／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hsinchu_Zoo-20250329.jpg"
+    },
     "lat": 24.800688,
     "lng": 120.979484,
     "google_place_id": null,
@@ -1078,6 +1180,12 @@
       3,
       4
     ],
+    "image": {
+      "url": "photos/spot-026.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E9%9D%92%E9%9D%92%E8%8D%89%E5%8E%9F_qingqing_grassland_-_panoramio.jpg"
+    },
     "lat": 24.770891,
     "lng": 120.93238,
     "google_place_id": null,
@@ -1114,6 +1222,12 @@
       "parking",
       "food"
     ],
+    "image": {
+      "url": "photos/spot-027.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E7%B6%A0%E4%B8%96%E7%95%8C%E7%94%9F%E6%85%8B%E8%BE%B2%E5%A0%B4_Green_World_Ecological_Farm_-_panoramio.jpg"
+    },
     "lat": 24.712774,
     "lng": 121.070238,
     "google_place_id": null,
@@ -1149,6 +1263,12 @@
       "parking",
       "food"
     ],
+    "image": {
+      "url": "photos/spot-028.jpg",
+      "credit": "曾成訓／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2015-08-22_Indoor_ski_slope_at_the_Little_Ding-Dong_Science_Theme_Park.jpg"
+    },
     "lat": 24.87029,
     "lng": 120.978657,
     "google_place_id": null,
@@ -1187,6 +1307,12 @@
       "elder"
     ],
     "transit": "台鐵頭城站轉公車或計程車約 5 分",
+    "image": {
+      "url": "photos/spot-029.jpg",
+      "credit": "周秉宇 (PCC) / Ping-yu Chou／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lanyang_Museum_during_a_sunny_afternoon.jpg"
+    },
     "lat": 24.868806,
     "lng": 121.832677,
     "google_place_id": null,
@@ -1632,6 +1758,12 @@
     ],
     "crowd_tip": "假日恐龍廳最擠，一進門先去",
     "kid_label": "會動的恐龍",
+    "image": {
+      "url": "photos/spot-040.jpg",
+      "credit": "Yu tptw／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Natural_Science_Dinosaur_models.jpg"
+    },
     "lat": 24.157316,
     "lng": 120.666761,
     "google_place_id": null,
@@ -3719,6 +3851,12 @@
       ],
       "source": "media"
     },
+    "image": {
+      "url": "photos/spot-094.jpg",
+      "credit": "Junyu-K／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E7%BF%BB%E4%BF%AE%E5%BE%8C%E7%9A%84%E6%96%B0%E5%8C%97%E5%B8%82%E5%85%AB%E9%87%8C%E5%95%86%E6%B8%AF%E5%85%AC%E5%9C%92%E7%9A%84%E5%85%B1%E8%9E%8D%E5%BC%8F%E9%81%8A%E6%88%B2%E5%A0%B4_202409.jpg"
+    },
     "lat": 25.145692,
     "lng": 121.403511,
     "google_place_id": null,
@@ -3883,6 +4021,12 @@
       "picnic"
     ],
     "kid_label": "滑索和玩水",
+    "image": {
+      "url": "photos/spot-098.jpg",
+      "credit": "Jirka Matousek／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Da_You_Ecological_Park_%E5%A4%A7%E6%9C%89%E6%A2%AF%E7%94%B0%E7%94%9F%E6%85%8B%E5%85%AC%E5%9C%92.jpg"
+    },
     "lat": 25.012613,
     "lng": 121.321031,
     "google_place_id": null,
@@ -4281,6 +4425,12 @@
     ],
     "kid_label": "看化石",
     "stay_hours": 2,
+    "image": {
+      "url": "photos/spot-109.jpg",
+      "credit": "Pbdragonwang／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E8%87%BA%E5%8D%97%E5%B7%A6%E9%8E%AE%E5%8C%96%E7%9F%B3%E5%9C%92%E5%8D%80.jpg"
+    },
     "lat": 23.062982,
     "lng": 120.389616,
     "google_place_id": null,

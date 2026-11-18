@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { ImportDialog, ReportDialog } from './components/Dialogs.tsx';
-import { BrandMark, Bolt, SleepySun, TabIcon } from './components/Brand.tsx';
+import { BrandMark, Bolt, Pin, SleepySun, TabIcon } from './components/Brand.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { FoodFiltersPanel, HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
@@ -313,25 +313,26 @@ export default function App() {
 
   return (
     <div className="relative min-h-dvh text-stone-900 dark:text-stone-50">
-      <div className="app-backdrop" aria-hidden="true" />
-      <header className="sticky top-0 z-10 border-b border-emerald-100/70 bg-paper/80 pt-[env(safe-area-inset-top)] backdrop-blur-md dark:border-emerald-950 dark:bg-ink/80">
-        <div className="mx-auto max-w-6xl px-4 py-3 md:pb-0">
+      <div className="top-band" aria-hidden="true" />
+      <header className="sticky top-0 z-10 bg-paper/85 pt-[env(safe-area-inset-top)] backdrop-blur-md dark:bg-ink/85">
+        <div className="mx-auto max-w-6xl px-4 py-2 md:pt-3 md:pb-0">
           <div className="flex items-center justify-between gap-3">
             <h1 className="flex min-w-0 items-center gap-2">
-              <BrandMark className="h-10 w-10 shrink-0" />
+              <BrandMark className="h-8 w-8 shrink-0 md:h-9 md:w-9" />
               <span className="min-w-0">
-                <span className="block truncate text-xl leading-tight font-black tracking-wide text-emerald-900 dark:text-emerald-50">放電研究所</span>
-                <span className="block truncate text-[11px] leading-tight text-stone-600 dark:text-stone-400">孩子負責放電，我們負責找地方。</span>
+                <span className="block truncate text-lg leading-tight font-black tracking-wide text-stone-900 dark:text-stone-50">放電研究所</span>
+                <span className="hidden truncate text-xs leading-tight text-stone-600 md:block dark:text-stone-400">孩子負責放電，我們負責找地方。</span>
               </span>
             </h1>
             <button
               type="button"
               onClick={() => setSettingsOpen(true)}
               aria-label={`設定，目前從${origin.label}出發`}
-              className={`${buttonBase} min-w-0 shrink-0 border border-emerald-200 bg-white/90 text-emerald-900 hover:bg-emerald-50 dark:border-emerald-800 dark:bg-card-dark dark:text-emerald-100 dark:hover:bg-card-dark-2`}
+              className={`${buttonBase} min-w-0 shrink-0 gap-1 border border-stone-200 bg-white text-stone-800 shadow-sm hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-card-dark-2`}
             >
+              <Pin className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
               <span className="truncate">{originShort}出發</span>
-              <span aria-hidden="true">›</span>
+              <span aria-hidden="true" className="text-stone-500">▾</span>
             </button>
           </div>
           {/* 桌面：分頁放在頂端。 */}
@@ -363,7 +364,7 @@ export default function App() {
       {/* 手機：分頁固定在底部，大拇指好按。 */}
       <nav
         aria-label="分頁"
-        className="fixed inset-x-0 bottom-0 z-10 flex border-t border-emerald-100 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden dark:border-emerald-950 dark:bg-ink/95"
+        className="fixed inset-x-0 bottom-0 z-10 flex border-t border-stone-200 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden dark:border-stone-800 dark:bg-ink/95"
       >
         {TABS.map((t) => (
           <a
@@ -467,7 +468,7 @@ export default function App() {
               renderFull={(p) => renderSpot(p.spot)}
             />
             <details
-              className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950"
+              className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-stone-200 backdrop-blur dark:bg-card-dark/90 dark:ring-stone-800"
               open={spotFiltersActive || undefined}
             >
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-lg text-lg font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 [&::-webkit-details-marker]:hidden">
@@ -679,8 +680,8 @@ function tripHasDisney(trip: { itinerary: { stops: { name: string }[] }[] }): bo
 /** 分頁開頭的標題和一句說明。 */
 function TabIntro({ title, text }: { title: string; text: string }) {
   return (
-    <div className="mb-3 rounded-3xl bg-white/90 px-4 py-3 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950">
-      <h2 className="text-2xl font-black text-emerald-900 dark:text-emerald-50">{title}</h2>
+    <div className="mb-3 px-1">
+      <h2 className="text-2xl font-black text-stone-900 md:text-3xl dark:text-stone-50">{title}</h2>
       <p className="text-sm text-stone-600 dark:text-stone-400">{text}</p>
     </div>
   );
@@ -690,7 +691,7 @@ function TabIntro({ title, text }: { title: string; text: string }) {
 function FilterBox({ active, children }: { active: boolean; children: ReactNode }) {
   return (
     <details
-      className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950"
+      className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-stone-200 backdrop-blur dark:bg-card-dark/90 dark:ring-stone-800"
       open={active || undefined}
     >
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-lg font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 [&::-webkit-details-marker]:hidden">
@@ -707,7 +708,7 @@ function FilterBox({ active, children }: { active: boolean; children: ReactNode 
 
 function EmptyState({ text }: { text: string }) {
   return (
-    <div className="mt-6 flex flex-col items-center gap-2 rounded-3xl bg-white/90 p-6 text-center ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+    <div className="mt-6 flex flex-col items-center gap-2 rounded-3xl bg-white/90 p-6 text-center ring-1 ring-stone-200 dark:bg-card-dark dark:ring-stone-800">
       <SleepySun className="h-16 w-24" />
       <p className="text-sm text-stone-700 dark:text-stone-300">{text}</p>
     </div>

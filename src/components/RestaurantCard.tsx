@@ -4,7 +4,7 @@ import { FOOD_PRICE_LABELS, FOOD_TAG_LABELS, VERIFIED_SOURCE_LABELS } from '../l
 import { directionsUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { PlacePhoto } from './SpotArt.tsx';
-import { Tag, buttonBase } from './ui.tsx';
+import { Tag, buttonBase, cardBase, primaryButton } from './ui.tsx';
 
 export interface RestaurantCardProps {
   restaurant: Restaurant;
@@ -19,7 +19,7 @@ export interface RestaurantCardProps {
 
 export function RestaurantCard({ restaurant: r, today, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: RestaurantCardProps) {
   return (
-    <article className="flex min-w-0 flex-col gap-3 overflow-hidden rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+    <article className={`${cardBase} flex min-w-0 flex-col gap-3 p-4`}>
       <PlacePhoto name={r.name} image={r.image} />
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -66,7 +66,7 @@ export function RestaurantCard({ restaurant: r, today, mins, originLabel, nearSp
           href={directionsUrl(r)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}
+          className={`${primaryButton}`}
         >
           導航
         </a>
@@ -77,7 +77,7 @@ export function RestaurantCard({ restaurant: r, today, mins, originLabel, nearSp
           className={`${buttonBase} border ${
             isFav
               ? 'border-rose-300 bg-rose-50 text-rose-800 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-200'
-              : 'border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800'
+              : 'border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-stone-800'
           }`}
         >
           {isFav ? '已收藏' : '收藏'}

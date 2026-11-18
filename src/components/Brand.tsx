@@ -5,16 +5,20 @@ import type { Tab } from '../lib/tabs.ts';
 
 const GREEN = '#176B57';
 const YELLOW = '#F3C66D';
-const MINT = '#9DE3BE';
 const CORAL = '#EF9E83';
 
-/** Logo：森林綠圓角方塊裡一道暖黃閃電，底下一條虛線路線。 */
+/**
+ * Logo：「閃電 × 旅行路線 × 終點」。一條從起點（黃點）出發、折成閃電形狀的路線，終點插著旗子。
+ * 線條粗、元素少，24px 的分頁圖示和 48px 的 App 圖示都看得清楚。
+ */
 export function BrandMark({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true" focusable="false">
-      <rect width="48" height="48" rx="14" fill={GREEN} />
-      <path d="M27.5 7 L14 26.5 h9 L19.5 41 L34 20 h-9.5z" fill={YELLOW} stroke="#FFF5DD" strokeWidth="1.2" strokeLinejoin="round" />
-      <path d="M6 40 q9 -5 17 -1 t19 -2" fill="none" stroke={MINT} strokeWidth="2" strokeLinecap="round" strokeDasharray="0.5 4" />
+      <rect width="48" height="48" rx="13" fill={GREEN} />
+      <path d="M12 37.5 L26.5 24.5 L19.5 21.5 L31 12.5" fill="none" stroke="#FFF5DD" strokeWidth="4.8" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="37.5" r="3.6" fill={YELLOW} />
+      <path d="M31 13 V5.5" stroke="#FFF5DD" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M32 5.5 h8.5 l-2.4 3.2 l2.4 3.2 h-8.5z" fill={CORAL} />
     </svg>
   );
 }
@@ -68,8 +72,14 @@ export function SleepySun({ className = '' }: { className?: string }) {
 /** 分頁圖示（線條風，跟著文字顏色）。 */
 export function TabIcon({ tab, className = '' }: { tab: Tab; className?: string }) {
   const paths: Record<Tab, ReactNode> = {
-    // 去放電：閃電
-    spots: <path d="M13.5 2.5 L5.5 13.5 h5.5 L9.5 21.5 l9-12 h-6z" />,
+    // 去放電：跟 Logo 同一條閃電路線＋終點旗
+    spots: (
+      <>
+        <path d="M4.5 20 L13 12.5 L9 10.5 L15.5 5" />
+        <path d="M15.5 5.5 V2.5 h5 l-1.300 1.700 1.300 1.700 h-5" />
+        <circle cx="4.5" cy="20" r="1.4" fill="currentColor" />
+      </>
+    ),
     // 住一晚：房子
     hotels: (
       <>
@@ -108,6 +118,16 @@ export function TabIcon({ tab, className = '' }: { tab: Tab; className?: string 
       focusable="false"
     >
       {paths[tab]}
+    </svg>
+  );
+}
+
+/** 定位圖示：用在出發地按鈕。 */
+export function Pin({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" focusable="false">
+      <path d="M12 2.5a7 7 0 0 0-7 7c0 5 7 12 7 12s7-7 7-12a7 7 0 0 0-7-7z" fill="currentColor" />
+      <circle cx="12" cy="9.5" r="2.6" fill="#fff" />
     </svg>
   );
 }

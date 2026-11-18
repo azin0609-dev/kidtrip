@@ -5,6 +5,11 @@ const focus =
 
 export const buttonBase = `inline-flex min-h-11 items-center justify-center gap-1 rounded-full px-3 text-sm font-bold transition-colors ${focus}`;
 
+/** 全站統一的按鈕和卡片樣式：主要按鈕（森林綠實心）、次要按鈕（白底框線）、卡片外框。 */
+export const primaryButton = `${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`;
+export const secondaryButton = `${buttonBase} border border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-stone-800`;
+export const cardBase = 'overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-stone-200 dark:bg-card-dark dark:ring-stone-800';
+
 export function Chip({
   pressed,
   onClick,

@@ -37,8 +37,17 @@ export default defineConfig({
       workbox: {
         // app shell＋景點飯店資料（資料在建置時打包進 JS）全部預先快取，離線也能開。
         globPatterns: ['**/*.{js,css,html,svg,png,webmanifest}'],
+        globIgnores: ['photos/**'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
+        // 景點照片不預先下載（太大），看過一次就存起來，之後離線也看得到。
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/photos/'),
+            handler: 'CacheFirst',
+            options: { cacheName: 'kidtrip-photos', expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 90 } },
+          },
+        ],
       },
     }),
   ],

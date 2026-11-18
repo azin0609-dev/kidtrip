@@ -2,7 +2,7 @@ import { RouteLine } from './Brand.tsx';
 
 export function Footer({ verifiedOn, originLabel }: { verifiedOn: string | null; originLabel: string }) {
   return (
-    <footer className="mt-10 mb-28 rounded-3xl bg-white/85 p-4 text-xs leading-relaxed text-stone-600 ring-1 ring-emerald-100 backdrop-blur md:mb-24 dark:bg-card-dark/85 dark:text-stone-400 dark:ring-emerald-950">
+    <footer className="mt-10 mb-28 rounded-3xl bg-white/85 p-4 text-xs leading-relaxed text-stone-600 ring-1 ring-stone-200 backdrop-blur md:mb-24 dark:bg-card-dark/85 dark:text-stone-400 dark:ring-stone-800">
       <RouteLine className="mb-3 h-7 w-48 text-emerald-600 dark:text-emerald-400" />
       <p className="mb-2 font-bold text-stone-700 dark:text-stone-300">放電研究所：孩子負責放電，我們負責找地方。</p>
       {verifiedOn && <p>資料整理日期：{verifiedOn}</p>}

@@ -4,7 +4,7 @@ import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels
 import { directionsUrl, hotelPriceUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { PlacePhoto } from './SpotArt.tsx';
-import { Tag, buttonBase } from './ui.tsx';
+import { Tag, buttonBase, cardBase, primaryButton, secondaryButton } from './ui.tsx';
 
 export interface HotelCardProps {
   hotel: Hotel;
@@ -19,7 +19,7 @@ export interface HotelCardProps {
 
 export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: HotelCardProps) {
   return (
-    <article className="flex min-w-0 flex-col gap-3 overflow-hidden rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+    <article className={`${cardBase} flex min-w-0 flex-col gap-3 p-4`}>
       <PlacePhoto name={hotel.name} image={hotel.image} />
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -39,13 +39,12 @@ export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, o
         ))}
       </div>
 
-      <p className="text-xs text-stone-600 dark:text-stone-400">
-        {freshnessNote(hotel, hotel.kind === 'bnb' ? 'bnb' : 'hotel', today) ??
-          '這間還沒用 Google 地圖逐間確認，設施和房價是粗估，訂房前先看官方或訂房網站。'}
-      </p>
 
       {hotel.features.length > 0 && (
-        <p className="text-sm text-stone-700 dark:text-stone-300">{hotel.features.join('・')}</p>
+        <p className="text-sm text-stone-800 dark:text-stone-200">
+          <span className="font-bold">親子設施：</span>
+          {hotel.features.join('・')}
+        </p>
       )}
 
       <p className="text-sm leading-relaxed text-stone-800 dark:text-stone-200">{hotel.tip}</p>
@@ -57,12 +56,16 @@ export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, o
         </p>
       )}
 
+      <p className="text-xs text-stone-600 dark:text-stone-400">
+        {freshnessNote(hotel, hotel.kind === 'bnb' ? 'bnb' : 'hotel', today) ??
+          '這間還沒用 Google 地圖逐間確認，設施和房價是粗估，訂房前先看官方或訂房網站。'}
+      </p>
       <div className="mt-auto grid grid-cols-3 gap-2">
         <a
           href={directionsUrl(hotel)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${buttonBase} border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`}
+          className={`${secondaryButton}`}
         >
           導航
         </a>
@@ -70,7 +73,7 @@ export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, o
           href={hotelPriceUrl(hotel)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}
+          className={`${primaryButton}`}
         >
           查房價
         </a>
@@ -81,7 +84,7 @@ export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, o
           className={`${buttonBase} border ${
             isFav
               ? 'border-rose-300 bg-rose-50 text-rose-800 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-200'
-              : 'border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800'
+              : 'border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-stone-800'
           }`}
         >
           {isFav ? '已收藏' : '收藏'}

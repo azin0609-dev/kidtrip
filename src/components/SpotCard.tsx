@@ -9,7 +9,7 @@ import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
 import { type Nap, napPlan, packingList } from '../lib/plan.ts';
 import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
 import { PlacePhoto } from './SpotArt.tsx';
-import { Tag, buttonBase } from './ui.tsx';
+import { Tag, buttonBase, cardBase, primaryButton } from './ui.tsx';
 
 export interface SpotCardProps {
   spot: Spot;
@@ -80,8 +80,8 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
   const packing = packingList(spot, Number(today.slice(5, 7)));
   return (
     <article
-      className={`flex min-w-0 flex-col gap-3 overflow-hidden rounded-3xl bg-white p-4 shadow-sm ring-1 dark:bg-card-dark ${
-        highlight ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : 'ring-emerald-100 dark:ring-emerald-950'
+      className={`${cardBase} flex min-w-0 flex-col gap-3 p-4 ${
+        highlight ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : 'ring-stone-200 dark:ring-stone-800'
       }`}
     >
       <PlacePhoto name={spot.name} image={spot.image} />
@@ -179,6 +179,20 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
                 {spot.official_url ? '官方網站' : '查官方資訊'}
               </a>
             </p>
+            {spot.image && (
+              <p className="text-xs text-stone-600 dark:text-stone-400">
+                照片：{spot.image.credit}，授權 {spot.image.license}
+                {spot.image.source_url && (
+                  <>
+                    {'，'}
+                    <a href={spot.image.source_url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                      看原始照片與授權
+                    </a>
+                  </>
+                )}
+                。
+              </p>
+            )}
           </div>
       </details>
 
@@ -201,7 +215,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
           href={directionsUrl(spot)}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`}
+          className={`${primaryButton}`}
         >
           導航
         </a>
@@ -212,7 +226,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
           className={`${buttonBase} border ${
             isFav
               ? 'border-rose-300 bg-rose-50 text-rose-800 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-200'
-              : 'border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800'
+              : 'border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-stone-800'
           }`}
         >
           {isFav ? '已收藏' : '收藏'}
@@ -224,7 +238,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
           className={`${buttonBase} border ${
             isBeen
               ? 'border-stone-400 bg-stone-200 text-stone-900 dark:border-stone-500 dark:bg-stone-700 dark:text-stone-100'
-              : 'border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800'
+              : 'border-stone-300 bg-white text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:bg-card-dark dark:text-stone-100 dark:hover:bg-stone-800'
           }`}
         >
           {isBeen ? '去過了' : '去過'}

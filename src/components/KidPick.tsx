@@ -61,7 +61,7 @@ export function KidPick({
       ref={ref}
       aria-labelledby={titleId}
       onClose={close}
-      className="m-0 h-dvh max-h-none w-screen max-w-none bg-paper p-0 text-stone-900 dark:bg-ink dark:text-stone-50"
+      className="m-0 h-dvh max-h-none w-screen max-w-none bg-amber-50 p-0 text-stone-900 dark:bg-ink dark:text-stone-50"
     >
       <div className="mx-auto flex min-h-full max-w-lg flex-col gap-4 p-5 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.25rem,env(safe-area-inset-bottom))]">
         <header className="flex items-center justify-between gap-3">
@@ -151,17 +151,17 @@ export function KidPick({
             {picks.map((p, i) => {
               const d = formatDrive(p.mins);
               return (
-                <li key={p.spot.id} className="flex flex-1">
+                <li key={p.spot.id} className="flex">
                   <button
                     type="button"
                     onClick={() => dispatch({ type: 'select', id: p.spot.id })}
-                    className={`flex min-h-44 w-full flex-1 flex-col overflow-hidden rounded-[2rem] bg-white text-left shadow-md ring-4 transition-transform focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:scale-[0.98] dark:bg-card-dark ${RINGS[i % RINGS.length]}`}
+                    className={`flex w-full flex-col overflow-hidden rounded-[2rem] bg-white text-left shadow-md ring-4 transition-transform focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:scale-[0.98] dark:bg-card-dark ${RINGS[i % RINGS.length]}`}
                   >
                     <SpotArt
                       name={p.spot.name}
                       type={p.spot.types[0] ?? 'park'}
                       image={p.spot.image}
-                      className="min-h-24 w-full flex-1"
+                      className="h-32 w-full shrink-0 sm:h-40"
                       iconClassName="h-20 w-20"
                     />
                     <span className="flex items-end justify-between gap-3 px-5 py-3">
