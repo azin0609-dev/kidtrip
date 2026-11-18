@@ -2129,7 +2129,7 @@
   {
     "id": "hotel-068",
     "name": "鈞怡大飯店",
-    "city": "高雄市新興區",
+    "city": "高雄市前金區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2157,7 +2157,7 @@
       "tags",
       "city"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18"
   },
   {
     "id": "hotel-069",

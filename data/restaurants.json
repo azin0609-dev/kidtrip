@@ -193,42 +193,6 @@
     "last_verified": "2026-11-17"
   },
   {
-    "id": "food-009",
-    "name": "貝兒絲樂園 桃園館",
-    "city": "桃園市桃園區",
-    "region": "北",
-    "cuisine": "簡餐",
-    "price_tier": "$$",
-    "tags": [
-      "play",
-      "slide",
-      "fee"
-    ],
-    "mins_from_linkou": 30,
-    "tip": "在家樂福經國店 2 樓，主題遊戲區很多，比較像室內樂園附餐點。",
-    "open_note": "遊戲區另外收門票",
-    "near_spot_ids": [],
-    "lat": 24.993923,
-    "lng": 121.30168,
-    "google_place_id": null,
-    "coord_area": true,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "verified": {
-      "date": "2026-11-17",
-      "fields": [
-        "2026 年仍在營業",
-        "地址"
-      ],
-      "source": "blog",
-      "note": "2026 年 3 月的遊記與訂位平台"
-    },
-    "last_verified": "2026-11-17"
-  },
-  {
     "id": "food-012",
     "name": "La Play 樂玩親子空間",
     "city": "新竹縣竹北市",
@@ -424,5 +388,1386 @@
       "note": "2026 年的整理文與官方 Threads"
     },
     "last_verified": "2026-11-17"
+  },
+  {
+    "id": "food-027",
+    "name": "農人餐桌",
+    "city": "台北市中正區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "遊戲區不大，但有小朋友愛玩的體驗廚房；吃得比較健康。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-028",
+    "name": "Ho'me廚房&親子友善餐廳",
+    "city": "台北市內湖區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-029",
+    "name": "公主樂糕殿 Princess Land",
+    "city": "新北市土城區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "樂高店附設餐廳，平日要先預約用餐。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-030",
+    "name": "海豚咖啡",
+    "city": "新北市三芝區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "sand"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "室內有遊戲區，戶外有沙坑，可以順路去北海岸。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-031",
+    "name": "在一起 One&Together",
+    "city": "新北市板橋區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 30,
+    "tip": "開放式遊戲區，不限時。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-032",
+    "name": "Tina廚房（鶯歌店）",
+    "city": "新北市鶯歌區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "play"
+    ],
+    "mins_from_linkou": 30,
+    "tip": "戶外有兒童遊戲區，去陶瓷博物館可以順便吃。",
+    "near_spot_ids": [
+      "spot-013"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-033",
+    "name": "我們的家休閒小棧",
+    "city": "新北市土城區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "animal",
+      "outdoor"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "有浣熊等動物可以看。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-034",
+    "name": "桃樂絲柚香農場",
+    "city": "新北市八里區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "農場型餐廳，可以搭十三行博物館一起玩。",
+    "near_spot_ids": [
+      "spot-012"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-035",
+    "name": "Babywonderland童話愛樂園",
+    "city": "新北市中和區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "以室內遊戲為主，用餐選擇要先確認。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-036",
+    "name": "Nose.Y Café 諾奇意咖啡",
+    "city": "桃園市龜山區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor"
+    ],
+    "mins_from_linkou": 15,
+    "tip": "在體大旁、離林口很近，大草地可以跑。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-037",
+    "name": "嗨Hi悠然食光親子餐廳",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-038",
+    "name": "葛瑞絲的家親子餐廳",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-039",
+    "name": "小矮人親子藝文空間",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "有陪玩姐姐，可以玩擠牛奶、撿雞蛋等扮演遊戲；用餐選擇要先確認。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-040",
+    "name": "林場肉羹",
+    "city": "宜蘭縣羅東鎮",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "sand"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "傳統小吃，戶外有沙坑和盪鞦韆；離羅東夜市近。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-041",
+    "name": "小島3.5°親子餐廳 臺中冒險館",
+    "city": "台中市北屯區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "sand"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "二樓整層遊戲區，有球池、沙坑、溜滑梯；用餐限時。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-042",
+    "name": "赤腳丫生態農莊",
+    "city": "台中市大雅區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "animal",
+      "sand"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "有動物、沙坑、戲水池和樹屋溜滑梯，停車方便。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-043",
+    "name": "蘋果堡親子餐廳",
+    "city": "台中市豐原區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-044",
+    "name": "森林小徑（文心店）",
+    "city": "台中市北屯區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "animal"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-045",
+    "name": "威爾森的農場 親子餐廳",
+    "city": "台中市豐原區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "animal",
+      "sand"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "有動物和沙坑，假日早點到，動物比較有精神。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-046",
+    "name": "8818 比薩屋",
+    "city": "台南市中西區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "二樓有溜滑梯和球池的遊戲室。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-047",
+    "name": "大窩與小宅（小宅店）",
+    "city": "台南市中西區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-048",
+    "name": "給小孩 Little Muddy Boots",
+    "city": "台南市善化區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "play"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "比較像兒童俱樂部，用餐方式要先確認。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-049",
+    "name": "孟菲斯美式親子餐廳",
+    "city": "高雄市三民區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "上百坪的兒童遊戲區。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-050",
+    "name": "瑪莉桃桃生活餐廳",
+    "city": "高雄市三民區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "歐式鄉村風，親子和寵物都友善。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-051",
+    "name": "Zone Cafe 弄咖啡親子餐廳（大東店）",
+    "city": "高雄市鳳山區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "野餐風的遊戲區。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-052",
+    "name": "Happy Mama 親子餐廳",
+    "city": "高雄市大社區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "常辦抓周、生日派對，假日先訂位。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-053",
+    "name": "森林中的馬戲團（糖廍）",
+    "city": "高雄市橋頭區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "sand",
+      "outdoor"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "在橋頭糖廠旁，室外玩沙、室內玩玩具。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-054",
+    "name": "淨園農場",
+    "city": "高雄市小港區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "animal"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "農場型，可以帶小孩出門放風。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-055",
+    "name": "草太長 L.GRASS",
+    "city": "花蓮縣吉安鄉",
+    "region": "東",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "play"
+    ],
+    "mins_from_linkou": 195,
+    "tip": "有城堡溜滑梯和大草坪。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-056",
+    "name": "L行旅－秘密花園",
+    "city": "台東縣台東市",
+    "region": "東",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor",
+      "animal"
+    ],
+    "mins_from_linkou": 330,
+    "tip": "草坪寬，有小動物。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-057",
+    "name": "淘憩時光親子餐廳",
+    "city": "台北市中山區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 35,
+    "tip": "義大利麵、燉飯、鬆餅，可以包場辦派對。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-058",
+    "name": "子木咖啡",
+    "city": "台北市松山區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 40,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-059",
+    "name": "拾貳籃早午餐",
+    "city": "新北市板橋區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 30,
+    "tip": "親子友善早午餐，靠近江子翠站，不收服務費。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-060",
+    "name": "鯨歎號",
+    "city": "新北市板橋區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 30,
+    "tip": "健康餐盒為主，親子和寵物都友善。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-061",
+    "name": "cafe 4 fun咖啡趣",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 25,
+    "tip": "有兒童遊戲區的休閒餐廳。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-062",
+    "name": "JK•1991•親子找餐",
+    "city": "桃園市中壢區",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 20,
+    "tip": "平日午晚餐、假日早午餐。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-063",
+    "name": "卡菲努努親子寵物餐廳",
+    "city": "新竹縣竹東鎮",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 50,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-064",
+    "name": "蹦啾柴比友善餐廳",
+    "city": "新竹縣竹北市",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 50,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-065",
+    "name": "牛bb牛排親子餐廳",
+    "city": "宜蘭縣羅東鎮",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-066",
+    "name": "可美love 泰雅簡餐.鍋物親子餐廳",
+    "city": "宜蘭縣大同鄉",
+    "region": "北",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 90,
+    "tip": "山區的簡餐鍋物，往太平山路上可以停。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-067",
+    "name": "童遊森林親子餐廳",
+    "city": "台中市西屯區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "常辦抓周和生日派對，晚餐要預約，偶爾包場先打電話。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-068",
+    "name": "咱們小時候親子餐廳",
+    "city": "台中市北屯區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "有遊戲室和兒童餐。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-069",
+    "name": "米蘭廚房",
+    "city": "台中市西屯區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-070",
+    "name": "寶熊漁樂碼頭",
+    "city": "台中市潭子區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "outdoor"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "觀光工廠附設親子餐廳，吃完可以逛園區。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-071",
+    "name": "紙箱王創意園區（博館店）",
+    "city": "台中市北區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "在科博館地下室，看完恐龍可以直接吃。",
+    "near_spot_ids": [
+      "spot-040"
+    ],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-072",
+    "name": "綠朵休閒農場 Green Door Garden",
+    "city": "台中市龍井區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "綠意很多的休閒餐廳，有草地可以跑。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-073",
+    "name": "嗨嗨親子早午餐",
+    "city": "台中市北屯區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "只做到下午 4 點收客，店休日看 IG。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-074",
+    "name": "公老坪夢想廚房 Dream Kitchen",
+    "city": "台中市豐原區",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "在山上，景觀好。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-075",
+    "name": "義點甜親子料理坊",
+    "city": "台南市東區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-076",
+    "name": "寶寶夢想城堡",
+    "city": "台南市新營區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "離南瀛親子館不遠，可以排同一天。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-077",
+    "name": "貳木言午 X 弎籽早午餐",
+    "city": "高雄市苓雅區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "日式定食，少油煙，親子友善。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-078",
+    "name": "小樹的家繪本咖啡館",
+    "city": "高雄市苓雅區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "繪本主題咖啡館，適合安靜的小小孩。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-079",
+    "name": "217好食複合式餐廳",
+    "city": "高雄市三民區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "客家和中式合菜，適合全家聚餐。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-080",
+    "name": "沃野山丘餐廳",
+    "city": "高雄市燕巢區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "出發前先在 Google 地圖確認營業時間。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-081",
+    "name": "水庫沒關",
+    "city": "高雄市燕巢區",
+    "region": "南",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "outdoor"
+    ],
+    "mins_from_linkou": 240,
+    "tip": "阿公店水庫旁的庭園農場餐廳。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-082",
+    "name": "洄瀾灣景觀餐廳（親子農場）",
+    "city": "花蓮縣秀林鄉",
+    "region": "東",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [
+      "animal",
+      "outdoor"
+    ],
+    "mins_from_linkou": 200,
+    "tip": "景觀餐廳附親子農場和動物區。",
+    "near_spot_ids": [],
+    "lat": null,
+    "lng": null,
+    "google_place_id": null,
+    "needs_verify": [
+      "cuisine",
+      "mins_from_linkou",
+      "price_tier",
+      "tags"
+    ],
+    "last_verified": "2026-11-18"
   }
 ]
