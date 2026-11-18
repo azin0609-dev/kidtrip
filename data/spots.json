@@ -768,7 +768,7 @@
     },
     "lat": 25.02431,
     "lng": 121.451907,
-    "google_place_id": null,
+    "google_place_id": "ChIJofNkVQ6oQjQRiBbrtFG_FJ8",
     "needs_verify": [
       "mins_from_linkou",
       "open_note",
@@ -832,7 +832,7 @@
     },
     "lat": 25.157041,
     "lng": 121.404871,
-    "google_place_id": null,
+    "google_place_id": "ChIJcZhVeAOlQjQRvj7a8XTvhVA",
     "needs_verify": [
       "mins_from_linkou",
       "open_note",
@@ -921,7 +921,7 @@
     },
     "lat": 24.949228,
     "lng": 121.352095,
-    "google_place_id": null,
+    "google_place_id": "ChIJp7loxaoeaDQRVcHeX2NHQUc",
     "needs_verify": [
       "mins_from_linkou",
       "open_note",
@@ -982,7 +982,7 @@
     },
     "lat": 25.205146,
     "lng": 121.69138,
-    "google_place_id": null,
+    "google_place_id": "ChIJ_XWXKXRMXTQRHRNq6ov7-rQ",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -1058,7 +1058,7 @@
     },
     "lat": 25.142518,
     "lng": 121.800231,
-    "google_place_id": null,
+    "google_place_id": "ChIJXavXB3hPXTQRhE9ZGVfFBeA",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -1234,7 +1234,7 @@
     },
     "lat": 25.017191,
     "lng": 121.214072,
-    "google_place_id": null,
+    "google_place_id": "ChIJd3rqSgUhaDQR7zOGQANlvj8",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -1304,7 +1304,7 @@
     },
     "lat": 25.017191,
     "lng": 121.214072,
-    "google_place_id": null,
+    "google_place_id": "ChIJHV1NqbkhaDQRJqEdKv2dGd8",
     "needs_verify": [
       "mins_from_linkou",
       "cost_tier",
@@ -1373,7 +1373,7 @@
     },
     "lat": 25.005325,
     "lng": 121.206258,
-    "google_place_id": null,
+    "google_place_id": "ChIJV_GeZHYhaDQR0U6naTTEg3A",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -1435,7 +1435,7 @@
     },
     "lat": 24.834216,
     "lng": 121.181726,
-    "google_place_id": null,
+    "google_place_id": "ChIJIVlPqhY8aDQRcSMa0PLZrkk",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -1573,7 +1573,7 @@
     "transit": "台鐵埔心站走路約 10 分",
     "lat": 24.926324,
     "lng": 121.178406,
-    "google_place_id": null,
+    "google_place_id": "ChIJHQzvohcjaDQRB17Edit8-x4",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
