@@ -1,6 +1,7 @@
 import type { Hotel, Spot } from '../data/schema.ts';
 import { freshnessNote } from '../lib/freshness.ts';
-import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels.ts';
+import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS, VERIFIED_SOURCE_LABELS } from '../lib/labels.ts';
+import { RISK_LABELS, canClaimOpen } from '../lib/verification.ts';
 import { directionsUrl, hotelPriceUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
 import { PlacePhoto } from './SpotArt.tsx';
@@ -57,8 +58,12 @@ export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, o
       )}
 
       <p className="text-xs text-stone-600 dark:text-stone-400">
-        {freshnessNote(hotel, hotel.kind === 'bnb' ? 'bnb' : 'hotel', today) ??
-          '這間還沒用 Google 地圖逐間確認，設施和房價是粗估，訂房前先看官方或訂房網站。'}
+        {(hotel.risk_flags ?? []).length > 0
+          ? `${(hotel.risk_flags ?? []).map((r) => RISK_LABELS[r]).join('、')}（${hotel.verified?.note ?? '待確認'}），訂房前先確認。`
+          : canClaimOpen(hotel) && hotel.verified
+            ? `${hotel.verified.date} 用${VERIFIED_SOURCE_LABELS[hotel.verified.source]}查過還在營業；設施和房價是粗估，訂房前先看官方或訂房網站。`
+            : '這間還沒查證，設施和房價是粗估，訂房前先看官方或訂房網站。'}{' '}
+        {freshnessNote(hotel, hotel.kind === 'bnb' ? 'bnb' : 'hotel', today)}
       </p>
       <div className="mt-auto grid grid-cols-3 gap-2">
         <a

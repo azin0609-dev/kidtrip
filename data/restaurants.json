@@ -675,6 +675,9 @@
     "mins_from_linkou": 25,
     "tip": "以室內遊戲為主，用餐選擇要先確認。",
     "near_spot_ids": [],
+    "risk_flags": [
+      "location_unknown"
+    ],
     "lat": 24.999397,
     "lng": 121.49898,
     "google_place_id": "ChIJfwIFiEADaDQRRLmH5ZQaBAY",
@@ -694,7 +697,8 @@
       ],
       "source": "google_maps"
     },
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-18",
+    "open_note": "Google 地圖上的位置看起來在桃園附近，跟資料寫的新北市中和區不同，位置待確認"
   },
   {
     "id": "food-036",
@@ -1721,6 +1725,9 @@
     "mins_from_linkou": 90,
     "tip": "山區的簡餐鍋物，往太平山路上可以停。",
     "near_spot_ids": [],
+    "risk_flags": [
+      "location_unknown"
+    ],
     "lat": 24.677051,
     "lng": 121.607875,
     "google_place_id": "ChIJQ__XykgLaDQRotjCFQuEjc8",
@@ -1739,7 +1746,8 @@
       ],
       "source": "google_maps"
     },
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-18",
+    "open_note": "Google 地圖上的位置看起來在桃園，跟資料寫的宜蘭縣大同鄉不同，位置待確認"
   },
   {
     "id": "food-067",

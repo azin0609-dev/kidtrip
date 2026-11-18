@@ -21,6 +21,7 @@ import { useForecast } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible } from './lib/date.ts';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
+import { isRecommendable } from './lib/verification.ts';
 import {
   DEFAULT_FOOD_FILTERS,
   DEFAULT_HOTEL_FILTERS,
@@ -155,7 +156,8 @@ export default function App() {
   const spotById = useMemo(() => new Map(visibleSpots.map((s) => [s.id, s])), [visibleSpots]);
   const hotelsBySpot = useMemo(() => {
     const map = new Map<string, Hotel[]>();
-    for (const h of sortByDrive(hotels, minsOf)) {
+    // 位置或營業狀態有疑問的住宿，不算「附近有住宿」。
+    for (const h of sortByDrive(hotels.filter(isRecommendable), minsOf)) {
       for (const id of h.near_spot_ids) map.set(id, [...(map.get(id) ?? []), h]);
     }
     return map;
@@ -537,7 +539,7 @@ export default function App() {
           <>
             <TabIntro title="住一晚" text="親子飯店和民宿，玩累了就住下來。" />
             <p className="mb-3 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2f2614] dark:text-amber-100 dark:ring-amber-900">
-              住宿資料還沒用 Google 地圖逐間確認，設施和房價是粗估。看到喜歡的，訂房前先看官方網站或訂房網站；發現不對請按卡片上的「資料有誤？」。
+              {hotels.filter((h) => h.verified && isRecommendable(h)).length} 間（宜蘭、桃園為主）用 Google 地圖查過還在營業，其他還沒查。設施和房價都是粗估，訂房前先看官方網站或訂房網站；發現不對請按卡片上的「資料有誤？」。
             </p>
             <FilterBox active={JSON.stringify(hotelFilters) !== JSON.stringify(DEFAULT_HOTEL_FILTERS)}>
               <HotelFiltersPanel value={hotelFilters} onChange={setHotelFilters} counties={hotelCounties} />
