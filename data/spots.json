@@ -1138,14 +1138,44 @@
     },
     "lat": 25.143411,
     "lng": 121.803391,
-    "google_place_id": null,
+    "google_place_id": "ChIJGTT2a3lPXTQRjkhw37cYOJM",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：戶外公園、24 小時開放"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費停車場（Google 地圖）"
+    },
+    "open_note": "24 小時開放、免費",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "開放時間",
+        "公共廁所",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：基隆市中正區"
+    }
   },
   {
     "id": "spot-017",
@@ -1477,14 +1507,44 @@
     },
     "lat": 24.820225,
     "lng": 121.181606,
-    "google_place_id": null,
+    "google_place_id": "ChIJV-Ai7AQ8aDQRU-Dpi0F7gUE",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "high",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "平日 09:30–17:00，週五到 19:30，週末 09:00–19:30；假日常要排隊",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "洗手間",
+        "無障礙入口",
+        "常要等候"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-022",
@@ -1578,14 +1638,44 @@
     ],
     "lat": 24.838918,
     "lng": 121.288055,
-    "google_place_id": null,
+    "google_place_id": "ChIJmU6gC7cXaDQRMjiZqEthVzE",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "免費停車場（Google 地圖）"
+    },
+    "open_note": "平日 10:00–17:00，週末 09:00–18:00，週三休息；Google 地圖上叫「富田香草休閒農場」",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "停車",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市大溪區，名稱是富田香草休閒農場"
+    }
   },
   {
     "id": "spot-024",
@@ -1644,7 +1734,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 55,
     "tip": "小而美，一個半小時逛得完，隔壁新竹公園還有遊戲場。",
-    "open_note": "週一休園",
+    "open_note": "09:00–17:00，週一休園",
     "age_best": [
       1,
       8
@@ -1665,16 +1755,44 @@
     },
     "lat": 24.800688,
     "lng": 120.979484,
-    "google_place_id": null,
+    "google_place_id": "ChIJl78Wnt01aDQRz1shOsBVUGU",
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "附近是收費路邊停車格（Google 地圖）"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-026",
@@ -1799,14 +1917,44 @@
     },
     "lat": 24.87029,
     "lng": 120.978657,
-    "google_place_id": null,
+    "google_place_id": "ChIJP1TeZfkzaDQRzOAPuuWWoj4",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費停車場（Google 地圖）"
+    },
+    "open_note": "平日 09:30–17:00，週末 09:00–17:00",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-029",
@@ -2191,7 +2339,7 @@
     ],
     "lat": 24.965353,
     "lng": 121.224926,
-    "google_place_id": null,
+    "google_place_id": "ChIJEVktOggjaDQR50wGsx-Ilh0",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -2200,7 +2348,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "unknown",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "maintenance_note": "已在 2026-09-20 結束營業"
+    },
+    "open_note": "已在 2026-09-20 結束營業（Google 地圖顯示永久歇業）",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業狀態"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖顯示永久歇業"
+    },
+    "risk_flags": [
+      "status_conflict"
+    ]
   },
   {
     "id": "spot-038",
@@ -4526,14 +4705,41 @@
     "kid_label": "竹筍高塔溜滑梯",
     "lat": 25.105248,
     "lng": 121.453188,
-    "google_place_id": null,
+    "google_place_id": "ChIJDaYqvlCvQjQRY2UrGQJ7w74",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "所在區",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：名稱是成德公園，新北市五股區；沒列廁所"
+    }
   },
   {
     "id": "spot-094",
@@ -4631,14 +4837,43 @@
     "kid_label": "巨獸攀爬",
     "lat": 25.02452,
     "lng": 121.46319,
-    "google_place_id": null,
+    "google_place_id": "ChIJAdOgEPapQjQRMEu0mYnepf8",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "24 小時開放、免費",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "開放時間",
+        "公共廁所",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-096",
@@ -4673,15 +4908,42 @@
     ],
     "lat": 24.934589,
     "lng": 121.295243,
-    "google_place_id": null,
+    "google_place_id": "ChIJseGgHOYYaDQRBRJHkyFgx58",
     "needs_verify": [
       "mins_from_linkou",
-      "single_source",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：桃園市八德區"
+    }
   },
   {
     "id": "spot-097",
@@ -4787,14 +5049,42 @@
     },
     "lat": 25.012613,
     "lng": 121.321031,
-    "google_place_id": null,
+    "google_place_id": "ChIJ80rU2OUfaDQRl70j9w3Z1ZY",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "Google 地圖標 24 小時開放、週二不開放",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "開放時間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-099",
