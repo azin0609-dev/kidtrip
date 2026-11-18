@@ -122,6 +122,8 @@ export interface StoredState {
   memos?: Record<string, string>;
   /** 去過之後的自家評分：id → { stars, tags }。 */
   ratings?: Ratings;
+  /** 第一次打開的歡迎畫面看過了（選過出發地或按了先用預設）。 */
+  welcomed?: boolean;
   /** 不認得的欄位原樣保留，之後的版本可能會用到。 */
   [key: string]: unknown;
 }
@@ -169,6 +171,7 @@ export function parseState(raw: string | null): StoredState {
     const memos = parseMemos(obj.memos);
     if (memos) state.memos = memos;
     else delete state.memos;
+    if (typeof obj.welcomed !== 'boolean') delete state.welcomed;
     const ratings = parseRatings(obj.ratings);
     if (ratings) state.ratings = ratings;
     else delete state.ratings;

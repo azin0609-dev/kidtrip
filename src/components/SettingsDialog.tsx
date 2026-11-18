@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { ageLabel, findTown, nearestTown, type Origin, type OriginsFile } from '../lib/origin.ts';
+import { ageLabel, type Origin, type OriginsFile } from '../lib/origin.ts';
+import { OriginPicker } from './OriginPicker.tsx';
 import { DEFAULT_NAP, type StoredKid, type StoredNap, type StoredReport } from '../lib/storage.ts';
 import { buttonBase } from './ui.tsx';
 
@@ -27,17 +28,12 @@ export interface SettingsDialogProps {
   onClearReports: () => void;
 }
 
-type GeoStatus = { kind: 'idle' } | { kind: 'loading' } | { kind: 'error'; message: string };
-
 export function SettingsDialog(props: SettingsDialogProps) {
   const { open, onClose, origins, origin, defaultOrigin, onOriginChange, kids, onKidsChange, nap, onNapChange, today, onShare, reports, nameOf, onCopyReports, onClearReports } = props;
   const [shareMsg, setShareMsg] = useState('');
   const [reportMsg, setReportMsg] = useState('');
   const ref = useRef<HTMLDialogElement>(null);
-  const countyRef = useRef<HTMLSelectElement>(null);
   const titleId = useId();
-  const [geo, setGeo] = useState<GeoStatus>({ kind: 'idle' });
-  const [county, setCounty] = useState('');
 
   useEffect(() => {
     const d = ref.current;
@@ -45,38 +41,6 @@ export function SettingsDialog(props: SettingsDialogProps) {
     if (open && !d.open) d.showModal();
     if (!open && d.open) d.close();
   }, [open]);
-
-  const countyData = origins.counties.find((c) => c.name === county);
-  const usableCounties = origins.counties.filter((c) => c.towns.some((t) => t.lat !== null));
-
-  const useMyLocation = () => {
-    if (!('geolocation' in navigator)) {
-      setGeo({ kind: 'error', message: '這個瀏覽器不能定位，請從下面的縣市、鄉鎮選單選出發地。' });
-      countyRef.current?.focus();
-      return;
-    }
-    setGeo({ kind: 'loading' });
-    // 只有使用者按下按鈕才要求定位權限。
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const point = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        const near = nearestTown(origins, point);
-        onOriginChange({ label: near ? `目前位置（${near.county}${near.town}附近）` : '目前位置', ...point });
-        setGeo({ kind: 'idle' });
-      },
-      (err) => {
-        setGeo({
-          kind: 'error',
-          message:
-            err.code === err.PERMISSION_DENIED
-              ? '沒有拿到定位權限。可以從下面的縣市、鄉鎮選單選出發地，或到瀏覽器設定打開定位。'
-              : '暫時抓不到位置，請從下面的縣市、鄉鎮選單選出發地。',
-        });
-        countyRef.current?.focus();
-      },
-      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 10 * 60_000 },
-    );
-  };
 
   const currentNap = nap ?? DEFAULT_NAP;
   const updateKid = (i: number, patch: Partial<StoredKid>) => onKidsChange(kids.map((k, j) => (i === j ? { ...k, ...patch } : k)));
@@ -106,57 +70,11 @@ export function SettingsDialog(props: SettingsDialogProps) {
           <p className="text-sm text-stone-700 dark:text-stone-300">
             目前：<span className="font-medium">{origin.label}</span>
           </p>
-          <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={useMyLocation} disabled={geo.kind === 'loading'} className={ghost}>
-              {geo.kind === 'loading' ? '定位中…' : '用目前位置'}
+          <OriginPicker origins={origins} onPick={onOriginChange} />
+          {origin.label !== defaultOrigin.label && (
+            <button type="button" onClick={() => onOriginChange(defaultOrigin)} className={`${ghost} self-start`}>
+              改回{defaultOrigin.label}
             </button>
-            {origin.label !== defaultOrigin.label && (
-              <button type="button" onClick={() => onOriginChange(defaultOrigin)} className={ghost}>
-                改回{defaultOrigin.label}
-              </button>
-            )}
-          </div>
-          {geo.kind === 'error' && (
-            <p role="alert" className="rounded-xl bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-200">
-              {geo.message}
-            </p>
-          )}
-          <div className="grid grid-cols-2 gap-2">
-            <label className="flex flex-col gap-1 text-xs text-stone-600 dark:text-stone-400">
-              縣市
-              <select ref={countyRef} value={county} onChange={(e) => setCounty(e.target.value)} className={field}>
-                <option value="">請選擇</option>
-                {usableCounties.map((c) => (
-                  <option key={c.name} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="flex flex-col gap-1 text-xs text-stone-600 dark:text-stone-400">
-              鄉鎮市區
-              <select
-                value=""
-                disabled={!countyData}
-                onChange={(e) => {
-                  const o = findTown(origins, county, e.target.value);
-                  if (o) onOriginChange(o);
-                }}
-                className={`${field} disabled:opacity-50`}
-              >
-                <option value="">{countyData ? '請選擇' : '先選縣市'}</option>
-                {countyData?.towns
-                  .filter((t) => t.lat !== null)
-                  .map((t) => (
-                    <option key={t.name} value={t.name}>
-                      {t.name}
-                    </option>
-                  ))}
-              </select>
-            </label>
-          </div>
-          {usableCounties.length === 0 && (
-            <p className="text-sm text-stone-600 dark:text-stone-400">鄉鎮座標還沒產生（要先跑 npm run geocode -- --origins）。</p>
           )}
         </section>
 

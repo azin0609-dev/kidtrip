@@ -1,5 +1,5 @@
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import { ImportDialog, ReportDialog } from './components/Dialogs.tsx';
+import { ImportDialog, ReportDialog, WelcomeDialog } from './components/Dialogs.tsx';
 import { BrandMark, Bolt, Pin, SleepySun, TabIcon } from './components/Brand.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
@@ -685,6 +685,17 @@ export default function App() {
         currentPlanName={planSpot?.name ?? null}
         onClose={() => setKidPickOpen(false)}
         onChoose={(p) => choosePlan(p.spot)}
+      />
+      <WelcomeDialog
+        // 分享連結、行程連結的確認畫面優先，處理完才問出發地。
+        open={!stored.origin && !stored.welcomed && !incoming && !incomingPlan}
+        origins={origins}
+        defaultLabel={shortOriginLabel(fallbackOrigin.label)}
+        onPick={(o) => {
+          update((s) => ({ ...s, origin: o, welcomed: true }));
+          setRainyOverride(null);
+        }}
+        onSkip={() => update((s) => ({ ...s, welcomed: true }))}
       />
       <UpdatePrompt />
     </div>

@@ -168,3 +168,11 @@ describe('10. 既有 localStorage 資料升級後仍正常', () => {
     expect(STORAGE_KEY).toBe('kidtrip.v1');
   });
 });
+
+describe('第一次打開的歡迎畫面', () => {
+  it('welcomed 只接受 true／false，舊資料沒有這欄也正常', () => {
+    expect(parseState(JSON.stringify({ fav: [], been: [], welcomed: true })).welcomed).toBe(true);
+    expect(parseState(JSON.stringify({ fav: [], been: [], welcomed: 'yes' })).welcomed).toBeUndefined();
+    expect(parseState(JSON.stringify({ fav: [], been: [] })).welcomed).toBeUndefined();
+  });
+});

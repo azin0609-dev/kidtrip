@@ -1,6 +1,8 @@
 import { useEffect, useId, useRef } from 'react';
 import { REPORT_KINDS } from '../lib/storage.ts';
-import { Flag } from './Brand.tsx';
+import type { Origin, OriginsFile } from '../lib/origin.ts';
+import { BrandMark, Flag } from './Brand.tsx';
+import { OriginPicker } from './OriginPicker.tsx';
 import { buttonBase } from './ui.tsx';
 
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
@@ -137,6 +139,50 @@ export function ImportDialog({
             </button>
           )}
         </div>
+      </div>
+    </dialog>
+  );
+}
+
+/**
+ * 第一次打開：先選出發地，車程和推薦才會準（不然有人會以為只適用林口）。
+ * 出發地只存在這支手機。可以先用預設的林口試試看。
+ */
+export function WelcomeDialog({
+  open,
+  origins,
+  defaultLabel,
+  onPick,
+  onSkip,
+}: {
+  open: boolean;
+  origins: OriginsFile;
+  defaultLabel: string;
+  onPick: (o: Origin) => void;
+  onSkip: () => void;
+}) {
+  const ref = useDialog(open);
+  const titleId = useId();
+  return (
+    <dialog ref={ref} aria-labelledby={titleId} onClose={onSkip} className={sheet}>
+      <div className="flex flex-col gap-4 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <div className="flex items-center gap-3">
+          <BrandMark className="h-12 w-12 shrink-0" />
+          <div>
+            <h2 id={titleId} className="text-xl font-black">
+              歡迎來到放電研究所
+            </h2>
+            <p className="text-sm text-stone-600 dark:text-stone-400">孩子負責放電，我們負責找地方。</p>
+          </div>
+        </div>
+        <p className="text-base text-stone-800 dark:text-stone-200">
+          先告訴我們你從哪裡出發，車程和每週推薦才會準。<span className="text-stone-600 dark:text-stone-400">全台灣都可以選。</span>
+        </p>
+        <OriginPicker origins={origins} onPick={onPick} big />
+        <p className="text-xs text-stone-600 dark:text-stone-400">出發地只存在這支手機，不會上傳；之後可以在右上角改。</p>
+        <button type="button" onClick={onSkip} className={`${ghost} self-center`}>
+          先用{defaultLabel}試試看
+        </button>
       </div>
     </dialog>
   );
