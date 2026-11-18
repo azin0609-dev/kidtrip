@@ -250,6 +250,9 @@
       "spot-029",
       "spot-085"
     ],
+    "risk_flags": [
+      "status_conflict"
+    ],
     "lat": 24.823646,
     "lng": 121.771348,
     "google_place_id": null,

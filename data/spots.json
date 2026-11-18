@@ -783,6 +783,12 @@
       "license": "CC BY-SA 4.0",
       "source_url": "https://commons.wikimedia.org/wiki/File:Interior_of_Xpark-_05.2024-06-11.jpg"
     },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "yes",
+      "source": "整理自景點說明（未查證）"
+    },
     "lat": 25.017191,
     "lng": 121.214072,
     "google_place_id": null,
@@ -832,6 +838,12 @@
       ],
       "source": "media",
       "note": "票價與場次只查到 2020–2021 年的舊資料，沒有採用"
+    },
+    "booking": {
+      "reservation": "yes",
+      "advance_ticket": "yes",
+      "timed_entry": "yes",
+      "source": "整理自景點說明（未查證）"
     },
     "lat": 25.017191,
     "lng": 121.214072,
@@ -1591,6 +1603,12 @@
     ],
     "transit": "捷運、台鐵、高鐵南港站走路約 5 分",
     "crowd_tip": "試營運期間只能先線上買票",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "整理自景點說明（未查證）"
+    },
     "lat": 25.059334,
     "lng": 121.617955,
     "google_place_id": null,
@@ -3605,6 +3623,9 @@
       "source": "media",
       "note": "沒查到目前是否已修好"
     },
+    "risk_flags": [
+      "facility_unknown"
+    ],
     "lat": 25.074614,
     "lng": 121.396357,
     "google_place_id": null,
@@ -4241,6 +4262,9 @@
       8
     ],
     "stay_hours": 1,
+    "risk_flags": [
+      "facility_unknown"
+    ],
     "lat": 24.999397,
     "lng": 121.49898,
     "google_place_id": null,
@@ -4278,6 +4302,9 @@
       8
     ],
     "stay_hours": 1,
+    "risk_flags": [
+      "location_unknown"
+    ],
     "lat": 25.100195,
     "lng": 121.755264,
     "google_place_id": null,
@@ -4350,6 +4377,9 @@
       8
     ],
     "stay_hours": 1,
+    "risk_flags": [
+      "facility_unknown"
+    ],
     "lat": 24.938661,
     "lng": 121.217292,
     "google_place_id": null,
@@ -4503,6 +4533,10 @@
       10
     ],
     "stay_hours": 1,
+    "risk_flags": [
+      "access_unknown",
+      "location_unknown"
+    ],
     "lat": 22.991235,
     "lng": 120.184982,
     "google_place_id": null,

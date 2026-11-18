@@ -45,6 +45,17 @@ for (const [file, list] of [['spots.json', spots], ['hotels.json', hotels], ['re
   }
 }
 
+// 資料衝突：查證說明裡寫了「矛盾」「暫停營業」，就一定要標 status_conflict，畫面才不會說「查過還在營業」。
+for (const [file, list] of [['spots.json', spots], ['hotels.json', hotels], ['restaurants.json', restaurants]] as const) {
+  if (!Array.isArray(list)) continue;
+  for (const x of list as { id?: string; verified?: { note?: string }; open_note?: string; risk_flags?: string[] }[]) {
+    const text = `${x.verified?.note ?? ''} ${x.open_note ?? ''}`;
+    if (/矛盾|暫停營業/.test(text) && !x.risk_flags?.includes('status_conflict')) {
+      issues.push({ file, id: x.id ?? '?', field: 'risk_flags', message: '說明提到來源矛盾或暫停營業，要加上 status_conflict，等再次確認' });
+    }
+  }
+}
+
 if (issues.length > 0) {
   console.error(formatIssues(issues));
   console.error(`\n資料檢查失敗：共 ${issues.length} 個問題。`);

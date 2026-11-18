@@ -9,7 +9,19 @@ import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
 import { type Nap, napPlan, packingList } from '../lib/plan.ts';
 import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
 import { PlacePhoto } from './SpotArt.tsx';
+import { RISK_LABELS, VERIFICATION_LABELS, verificationOf } from '../lib/verification.ts';
 import { Tag, buttonBase, cardBase, primaryButton } from './ui.tsx';
+
+/** 查證狀態的說明：分開寫「整理日期」和「實際查證」，有疑問的直接寫出來。 */
+function verificationText(spot: Spot): string {
+  const v = verificationOf(spot);
+  const head = `【${VERIFICATION_LABELS[v.status]}】`;
+  const checked = spot.verified
+    ? `${spot.verified.date} 查過（${VERIFIED_SOURCE_LABELS[spot.verified.source]}）：${spot.verified.fields.join('、')}。${spot.verified.note ?? ''}`
+    : `資料整理於 ${v.lastUpdated}，還沒實際查證。`;
+  const risks = v.risks.length > 0 ? `${v.risks.map((r) => RISK_LABELS[r]).join('、')}，先不自動推薦。` : '';
+  return `${head}${checked}${risks}開放時間、票價以官方公告為準。`;
+}
 
 export interface SpotCardProps {
   spot: Spot;
@@ -172,9 +184,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
               {packing.join('、')}
             </p>
             <p className="text-xs text-stone-600 dark:text-stone-400">
-              {spot.verified
-                ? `${spot.verified.date} 查過（${VERIFIED_SOURCE_LABELS[spot.verified.source]}）：${spot.verified.fields.join('、')}。${spot.verified.note ?? ''}其他項目還沒逐一確認。`
-                : '這筆資料還沒逐項查證，開放時間、票價請以官方公告為準。'}{' '}
+              {verificationText(spot)}{' '}
               <a href={officialInfoUrl(spot)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
                 {spot.official_url ? '官方網站' : '查官方資訊'}
               </a>

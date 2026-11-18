@@ -133,3 +133,38 @@ describe('記住推薦條件', () => {
     expect(parseState(JSON.stringify({ fav: [], been: [], prefs: 'x' })).prefs).toBeUndefined();
   });
 });
+
+describe('10. 既有 localStorage 資料升級後仍正常', () => {
+  it('舊版存的收藏、去過、評分、行程、回憶、設定都還在，不認得的欄位原樣保留', () => {
+    const legacy = {
+      fav: ['spot-017', 'hotel-003', 'food-004', 'trip-hokkaido-7d'],
+      been: ['spot-092', 'spot-001'],
+      beenAt: { 'spot-092': '2026-10-03' },
+      origin: { label: '新北市林口區', lat: 25.0775, lng: 121.3916 },
+      kids: [
+        { nickname: '果果', birthYm: '2023-06' },
+        { nickname: '核桃', birthYm: '2026-03' },
+      ],
+      nap: { start: '13:00', end: '15:00' },
+      prefs: { maxDrive: 60, stroller: true },
+      plan: { week: '2026-W47', spotId: 'spot-017', backupId: 'spot-019', slot: 'sat-am' },
+      memos: { 'spot-092': '果果自己織了一隻襪子' },
+      ratings: { 'spot-092': { stars: 5, tags: ['again'] } },
+      reports: [{ id: 'food-013', note: '電話沒人接', date: '2026-11-17', kind: '沒開或時間不對' }],
+      somethingFromNextVersion: { keep: true },
+    };
+    const state = parseState(JSON.stringify(legacy));
+    expect(state.fav).toEqual(legacy.fav);
+    expect(state.been).toEqual(legacy.been);
+    expect(state.beenAt).toEqual(legacy.beenAt);
+    expect(state.origin).toEqual(legacy.origin);
+    expect(state.kids).toEqual(legacy.kids);
+    expect(state.prefs).toEqual(legacy.prefs);
+    expect(state.plan).toEqual(legacy.plan);
+    expect(state.memos).toEqual(legacy.memos);
+    expect(state.ratings).toEqual(legacy.ratings);
+    expect(state.reports).toEqual(legacy.reports);
+    expect(state.somethingFromNextVersion).toEqual({ keep: true });
+    expect(STORAGE_KEY).toBe('kidtrip.v1');
+  });
+});

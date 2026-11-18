@@ -11,7 +11,7 @@ const RINGS = ['ring-coral-300', 'ring-sky-300', 'ring-amber-300'];
 
 /**
  * 換我決定！：把這週推薦的三個地方做成大圖卡，讓小孩自己點一個。
- * 小孩點完只是暫選；家長按「確認這個地方」才存成這週放電計畫，關掉不會動到原本的計畫。
+ * 小孩點完只是暫選；家長按「確定這週去」才存成這週放電計畫，關掉不會動到原本的計畫。
  */
 export function KidPick({
   open,
@@ -69,7 +69,7 @@ export function KidPick({
             <Flag className="h-12 w-12 shrink-0" />
             <div className="min-w-0">
               <h2 id={titleId} className="text-2xl font-black text-emerald-900 dark:text-emerald-50">
-                {state.confirmed ? '決定了！' : selected ? '就是這裡嗎？' : '換我決定！'}
+                {state.confirmed ? '決定了！這週就去這裡！' : selected ? '你想去這裡呀！' : '換我決定！'}
               </h2>
               {!selected && <p className="text-base text-stone-700 dark:text-stone-300">想去哪裡放電？點一張</p>}
             </div>
@@ -93,7 +93,8 @@ export function KidPick({
               className="h-52 w-full rounded-[2rem]"
               iconClassName="h-32 w-32"
             />
-            <p className="text-3xl leading-snug font-black">我們去{selected.spot.name}！</p>
+            <p className="text-3xl leading-snug font-black">{selected.spot.kid_label ?? selected.spot.name}</p>
+            {selected.spot.kid_label && <p className="-mt-2 text-lg font-bold text-stone-700 dark:text-stone-300">{selected.spot.name}</p>}
 
             {state.confirmed ? (
               <>
@@ -117,7 +118,7 @@ export function KidPick({
             ) : (
               <>
                 <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-950 ring-1 ring-amber-200 dark:bg-[#2f2614] dark:text-amber-100 dark:ring-amber-900">
-                  請爸爸媽媽確認，按了才會存下來。
+                  請爸爸媽媽看看能不能出發
                   {replacing && (
                     <>
                       <br />
@@ -138,7 +139,7 @@ export function KidPick({
                     onClick={() => dispatch({ type: 'confirm' })}
                     className={`${buttonBase} min-h-14 bg-emerald-700 text-base text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950`}
                   >
-                    確認這個地方
+                    確定這週去
                   </button>
                 </div>
               </>

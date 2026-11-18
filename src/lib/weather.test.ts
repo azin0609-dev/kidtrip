@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   WEATHER_TTL_MS,
+  availableSlots,
   defaultSlot,
+  normalizeSlot,
   formatSlotWeather,
   isCacheFresh,
   isSlot,
@@ -119,5 +121,18 @@ describe('isCacheFresh', () => {
     expect(isCacheFresh(entry, 1_000_000 + WEATHER_TTL_MS)).toBe(false);
     expect(isCacheFresh(null, 1_000_001)).toBe(false);
     expect(isCacheFresh(undefined, 1_000_001)).toBe(false);
+  });
+});
+
+describe('8. 星期日切換出遊日期', () => {
+  it('週日只能選週日的時段，不會選到已經過去的週六', () => {
+    expect(availableSlots('2026-11-22')).toEqual(['sun-am', 'sun-pm']); // 週日
+    expect(availableSlots('2026-11-21')).toEqual(['sat-am', 'sat-pm', 'sun-am', 'sun-pm']); // 週六
+    expect(availableSlots('2026-11-18')).toHaveLength(4); // 週三
+  });
+  it('週六選好的時段，到了週日自動換成週日上午', () => {
+    expect(normalizeSlot('2026-11-22', 'sat-pm')).toBe('sun-am');
+    expect(normalizeSlot('2026-11-22', 'sun-pm')).toBe('sun-pm');
+    expect(normalizeSlot('2026-11-18', 'sat-pm')).toBe('sat-pm');
   });
 });

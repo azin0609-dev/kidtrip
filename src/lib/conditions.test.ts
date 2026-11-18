@@ -11,6 +11,6 @@ describe('條件摘要', () => {
     expect(conditionSummary({ ...base, needStroller: true, rainy: true, elders: true })).toBe('單程 45 分內・帶推車・可能下雨・長輩同行');
   });
   it('住一晚時不顯示單程上限', () => {
-    expect(conditionSummary({ ...base, overnight: true })).toBe('住一晚（車程 1 小時以上）');
+    expect(conditionSummary({ ...base, overnight: true })).toBe('住一晚（附近有住宿）');
   });
 });

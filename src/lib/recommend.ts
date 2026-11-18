@@ -9,8 +9,10 @@ import { daysBetween, spotBadges, spotDateStatus } from './date.ts';
 import type { MinsOf } from './filter.ts';
 import { formatDrive } from './format.ts';
 import { freshness } from './freshness.ts';
+import { distanceKm } from './geo.ts';
 import { ENV_LABELS } from './labels.ts';
 import { type Ratings, preferenceFor, typePreference } from './ratings.ts';
+import { isRecommendable } from './verification.ts';
 
 /** 8 週內去過的不推（除非評分時點了「會再來」）。 */
 export const RECENT_VISIT_DAYS = 56;
@@ -35,8 +37,10 @@ export interface RecommendContext {
   beenAt: Readonly<Record<string, string>>;
   /** 可能下雨：只推室內（下大雨也行）或半室內（有遮棚、小雨可玩），室內優先。 */
   rainy: boolean;
-  /** 這週要住一晚：只推車程 1 小時以上、而且附近有整理好住宿的地方。 */
+  /** 這週要住一晚：只推附近有整理好住宿的地方；車程近也可以，只是稍微少一點分。 */
   overnight: boolean;
+  /** 那個時段很熱（最高溫 30 度以上）：有冷氣、遮蔭的加分，沒遮蔭的戶外扣分。 */
+  hot?: boolean;
   /** 當天來回時單程最多幾分鐘，沒給用 DEFAULT_MAX_DRIVE。住一晚時不看這個。 */
   maxDrive?: number;
   /** 帶推車：只推推車好推的。 */
@@ -142,40 +146,64 @@ export const WEIGHTS = {
 
 /** 車程分數：當天來回 20 分鐘內滿分，之後逐步遞減；住一晚時 1–3 小時最好。 */
 export function driveScore(mins: number, overnight = false): number {
-  if (overnight) return mins <= 180 ? WEIGHTS.drive : Math.max(15, WEIGHTS.drive - (mins - 180) * 0.1);
+  if (overnight) {
+    // 住一晚不排除近的，但 45 分內的通常當天來回就好，少一點分。
+    if (mins < 45) return WEIGHTS.drive - 8;
+    return mins <= 180 ? WEIGHTS.drive : Math.max(15, WEIGHTS.drive - (mins - 180) * 0.1);
+  }
   if (mins <= 20) return WEIGHTS.drive;
   if (mins <= 45) return WEIGHTS.drive - (mins - 20) * 0.6; // 45 分 → 20
   return Math.max(5, 20 - (mins - 45) * 0.2); // 120 分 → 5
 }
 
-/** 孩子適配：年齡合不合（25）＋有小小孩時推車與換尿布方不方便（10）。回傳分數和一句原因。 */
+/** 嬰幼兒是「陪同」還是「一起玩」：未滿 2 歲、還不到這裡的適齡範圍，就是陪同（推車跟著，不算年齡分）。 */
+export function splitKids(kids: readonly KidInfo[], ageBest: readonly [number, number]): { players: KidInfo[]; companions: KidInfo[] } {
+  const [min, max] = ageBest;
+  const fits = (age: number) => age >= min && (max >= 12 || age <= max);
+  const companions = kids.filter((k) => k.age < 2 && !fits(Math.floor(k.age)));
+  const players = kids.filter((k) => !companions.includes(k));
+  // 全部都是小嬰兒時，還是用他們來算年齡。
+  return players.length > 0 ? { players, companions } : { players: [...kids], companions: [] };
+}
+
+/**
+ * 孩子適配：主要遊玩的孩子年齡合不合（25）＋有小小孩時推車與換尿布、哺乳方不方便（10）。
+ * 陪同的嬰兒不拉低哥哥姊姊的年齡分，只看推車和換尿布。回傳分數和一句原因。
+ */
 export function familyFit(spot: Spot, kids: readonly KidInfo[] = []): { score: number; reason: string | null } {
   if (kids.length === 0 || !spot.age_best) return { score: 17, reason: null };
   const [min, max] = spot.age_best;
+  const { players, companions } = splitKids(kids, spot.age_best);
   let fit = 0;
-  for (const k of kids) {
+  for (const k of players) {
     const age = Math.floor(k.age);
     if (age >= min && (max >= 12 || age <= max)) fit += 1;
     else if (age > max) fit += 0.5; // 太大只是比較無聊，還是能去
   }
-  const allFit = fit === kids.length;
-  let score = 25 * (fit / kids.length);
-  const hasBaby = kids.some((k) => k.age < 3);
-  const canChange = spot.facilities?.includes('diaper') || spot.facilities?.includes('nursing');
-  if (hasBaby) score += (spot.stroller_ok ? 5 : 0) + (canChange ? 5 : 0);
+  const allFit = fit === players.length;
+  let score = 25 * (fit / players.length);
+  const hasLittle = kids.some((k) => k.age < 3);
+  const a = spot.amenities;
+  const canChange =
+    spot.facilities?.includes('diaper') || spot.facilities?.includes('nursing') || a?.diaper === 'yes' || a?.nursing === 'yes';
+  if (hasLittle) score += (spot.stroller_ok ? 5 : 0) + (canChange ? 5 : 0);
   else score += 10;
 
   let reason: string | null = null;
   if (allFit) {
-    const names = kids.map((k) => k.name.trim()).filter(Boolean);
-    if (kids.length === 1) reason = names[0] ? `適合${names[0]}的年紀` : '適合孩子的年紀';
-    else reason = names.length === kids.length ? `${names.join('、')}都能玩` : '孩子們都能玩';
-    if (hasBaby && spot.stroller_ok && canChange) reason += '、有地方換尿布';
+    const names = players.map((k) => k.name.trim()).filter(Boolean);
+    if (players.length === 1) reason = names[0] ? `適合${names[0]}的年紀` : '適合孩子的年紀';
+    else reason = names.length === players.length ? `${names.join('、')}都能玩` : '孩子們都能玩';
+    if (companions.length > 0 && spot.stroller_ok) {
+      const babyNames = companions.map((k) => k.name.trim()).filter(Boolean);
+      reason += `，${babyNames.length === companions.length ? babyNames.join('、') : '小寶寶'}坐推車跟著`;
+    }
+    if (hasLittle && spot.stroller_ok && canChange) reason += '、有地方換尿布';
   }
   return { score, reason };
 }
 
-/** 到場便利：好停車、有賣吃的、有遮蔭或室內、推車好推、大眾運輸到得了、不用先預約。最多 20。 */
+/** 到場便利：好停車、有賣吃的、有遮蔭或室內、推車好推、大眾運輸到得了、確定不用先預約或買票。最多 20。 */
 export function convenienceScore(spot: Spot): number {
   const f = spot.facilities ?? [];
   let score = 0;
@@ -184,7 +212,9 @@ export function convenienceScore(spot: Spot): number {
   if (f.includes('shade') || spot.env === 'in') score += 3;
   if (spot.stroller_ok) score += 3;
   if (spot.transit) score += 2;
-  if (!spot.open_note?.includes('預約')) score += 2;
+  // 預約和購票只看結構化資料；沒資料或不知道，不當成不用預約。
+  const b = spot.booking;
+  if (b && b.reservation === 'no' && b.advance_ticket === 'no' && b.timed_entry !== 'yes') score += 2;
   return Math.min(WEIGHTS.convenience, score);
 }
 
@@ -196,6 +226,8 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   if (freshness(spot, 'spot', ctx.today) === 'expired') return null;
   // 順路停一下的小站（例如主題超商）留在清單裡，但不當成這週的目的地或雨備。
   if (spot.stopover) return null;
+  // 外人能不能進去、位置、主要設施、營業狀態有疑問的，先不推（資料保留，等查證）。
+  if (!isRecommendable(spot)) return null;
 
   const myRating = ctx.ratings?.[spot.id];
   if (myRating && myRating.stars <= 2) return null;
@@ -214,7 +246,7 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   const mins = ctx.minsOf(spot);
   if (mins === null) return null;
   if (ctx.overnight) {
-    if (mins <= 60 || !ctx.hasStay?.(spot)) return null;
+    if (!ctx.hasStay?.(spot)) return null;
   } else if (mins > (ctx.maxDrive ?? DEFAULT_MAX_DRIVE)) {
     return null;
   }
@@ -240,6 +272,12 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   if (fit.reason) reasons.push(fit.reason);
 
   score += convenienceScore(spot);
+
+  if (ctx.hot) {
+    const heat = heatAdjust(spot);
+    score += heat.score;
+    if (heat.reason) reasons.push(heat.reason);
+  }
 
   if (!isBeen) {
     score += WEIGHTS.neverBeen;
@@ -295,6 +333,16 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   }
 
   return { spot, mins, score, reasons };
+}
+
+/** 天氣熱的時候：確定有冷氣 +6、室內 +3、戶外但有遮蔭 0、戶外沒有遮蔭 −8。 */
+export function heatAdjust(spot: Spot): { score: number; reason: string | null } {
+  const a = spot.amenities;
+  if (a?.aircon === 'yes') return { score: 6, reason: '有冷氣，不怕熱' };
+  if (spot.env === 'in') return { score: 3, reason: '室內，不用曬太陽' };
+  const shaded = a?.shade === 'yes' || spot.facilities?.includes('shade');
+  if (spot.env === 'out' && !shaded) return { score: -8, reason: null };
+  return { score: 0, reason: shaded ? '有遮蔭可以休息' : null };
 }
 
 // ---------- 組合 ----------
@@ -421,8 +469,24 @@ export function recommendRound(
   return result;
 }
 
-/** 幫選好的主行程挑一個雨天備案：分數最高的完全室內景點（不看「可能下雨」開關）。找不到回傳 null。 */
+/** 住一晚時，雨天備案要在主景點附近（直線 30 公里內）。 */
+export const OVERNIGHT_BACKUP_KM = 30;
+
+/**
+ * 幫選好的主行程挑一個雨天備案：完全室內的景點（不看「可能下雨」開關）。
+ * 當天來回：從家裡出發、分數最高的。住一晚：離主景點最近的（人已經在那裡，不用再開回家附近）。找不到回傳 null。
+ */
 export function pickBackup(spots: readonly Spot[], ctx: RecommendContext, seed: string, mainId: string): ScoredSpot | null {
+  const main = spots.find((s) => s.id === mainId);
+  if (ctx.overnight && main && main.lat !== null && main.lng !== null) {
+    const here = { lat: main.lat, lng: main.lng };
+    const near = rankCandidates(spots, { ...ctx, rainy: false, overnight: false, maxDrive: Number.POSITIVE_INFINITY }, seed, new Set([mainId]))
+      .filter((s) => s.spot.env === 'in' && s.spot.lat !== null && s.spot.lng !== null)
+      .map((s) => ({ s, km: distanceKm(here, { lat: s.spot.lat!, lng: s.spot.lng! }) }))
+      .filter((x) => x.km <= OVERNIGHT_BACKUP_KM)
+      .sort((a, b) => a.km - b.km || b.s.score - a.s.score);
+    return near[0]?.s ?? null;
+  }
   const ranked = rankCandidates(spots, { ...ctx, rainy: false, overnight: false }, seed, new Set([mainId]));
   return ranked.find((s) => s.spot.env === 'in') ?? null;
 }

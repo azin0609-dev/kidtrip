@@ -191,7 +191,7 @@
 - 「可能下雨」：只留室內（下大雨也能玩）和半室內（有遮棚、小雨可玩），室內優先。
 - 「帶推車」：只留推車好推的（設定裡有 3 歲以下的孩子時預設打開）。
 - 「長輩一起去」：只留長輩好走的。
-- 「這週要住一晚」：只留車程 1 小時以上、而且附近有整理好住宿的地方。
+- 「這週要住一晚」：只留附近有整理好住宿的地方；當天來回就到得了的（45 分內）分數少一點，不再強制排除。雨天備案改找主景點 30 公里內的室內景點。（2026-11-18 依產品健檢修改）
 
 **分數**
 - 車程 35：20 分鐘內滿分，之後逐步遞減（45 分鐘 20 分、2 小時 5 分）。
@@ -295,6 +295,10 @@
 | best_months | number[]? | 選填。特別適合去的月份，推薦時加減分。2026-11-17 新增 |
 | stopover | boolean? | 選填。順路停一下的小站（例如主題超商），清單看得到，但不會被推薦成這週目的地或雨備。2026-11-18 新增 |
 | image | object? | 選填。主圖 `{ url, credit, license, source_url? }`，只放自己拍的、官方允許或有授權的照片，而且必須是這個地方本身；畫面會標示出處。景點、住宿、餐廳都可以用。2026-11-18 新增 |
+| risk_flags | string[]? | 選填。高風險的未確認項目：access_unknown（外人能不能進去）、location_unknown（位置、停車）、facility_unknown（主要設施還在不在）、status_conflict（營業狀態來源矛盾）。有任何一項就暫停自動推薦，卡片上寫出來。2026-11-18 新增 |
+| booking | object? | 選填。`{ reservation, advance_ticket, timed_entry: yes／no／unknown, url?, source }`。推薦只看這裡，不再從文字猜「預約」；沒資料當成不知道。2026-11-18 新增 |
+| amenities | object? | 選填。尿布台、哺乳室、廁所、冷氣、遮蔭、推車通道、樓梯（yes／no／unknown）、停車入口、假日人潮、維修說明，加上 source 和 checked_at。清單見 docs/VERIFY_TOP30.md。2026-11-18 新增 |
+| last_verified | string | 最後整理日期（不是查證日期；實際查證看 verified）。名稱沿用舊的。 |
 | lat / lng | number \| null | 由 geocode 腳本補上（OSM） |
 | google_place_id | string \| null | 只存 ID |
 | needs_verify | string[] | 待人工確認的欄位名稱 |

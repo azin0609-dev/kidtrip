@@ -18,7 +18,9 @@ import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, s
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
 import { useForecast } from './hooks/useWeekendWeather.ts';
-import { isSpotVisible, todayInTaipei } from './lib/date.ts';
+import { isSpotVisible } from './lib/date.ts';
+import { useToday } from './hooks/useToday.ts';
+import { isHot } from './lib/trip-risks.ts';
 import {
   DEFAULT_FOOD_FILTERS,
   DEFAULT_HOTEL_FILTERS,
@@ -38,14 +40,15 @@ import { pickSpot } from './lib/pick.ts';
 import { setStars, toggleRatingTag } from './lib/ratings.ts';
 import { napPlan } from './lib/plan.ts';
 import { DEFAULT_MAX_DRIVE, type RecommendContext, pickBackup, recommendRound, weekSeed } from './lib/recommend.ts';
-import { type Slot, defaultSlot, slotLabelWithDate, slotWeather } from './lib/weather.ts';
+import { type Slot, availableSlots, normalizeSlot, defaultSlot, slotLabelWithDate, slotWeather } from './lib/weather.ts';
 import { PLAN_PARAM, type WeekPlan, buildPlanUrl, decodePlan, isCurrentPlan, makePlan, swapToBackup } from './lib/weekplan.ts';
 import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
 import { DEFAULT_NAP, formatReports, listMemories, setMemo, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
 
 export default function App() {
-  const today = useMemo(() => todayInTaipei(), []);
+  // App 開著不關也會跨日更新。
+  const today = useToday();
   const [tab, goTab] = useHashTab();
   const [stored, update] = useStoredState();
   const [spotFilters, setSpotFilters] = useState(DEFAULT_SPOT_FILTERS);
@@ -56,7 +59,14 @@ export default function App() {
   // null = 還沒手動改過，跟著天氣預報；按過開關就以使用者的選擇為準。
   const [rainyOverride, setRainyOverride] = useState<boolean | null>(null);
   const [overnight, setOvernight] = useState(false);
-  const [slot, setSlot] = useState<Slot>(() => defaultSlot(today));
+  const [chosenSlot, setChosenSlot] = useState<Slot>(() => defaultSlot(today));
+  // 選過的時段已經過了（例如週六選、週日才打開）就換成預設時段。
+  const slot = normalizeSlot(today, chosenSlot);
+  // 換日期時重新依預報判斷要不要下雨，不沿用先前手動關掉的設定。
+  const setSlot = (s: Slot) => {
+    setChosenSlot(s);
+    setRainyOverride(null);
+  };
   const [maxDrive, setMaxDriveState] = useState<number>(() => stored.prefs?.maxDrive ?? DEFAULT_MAX_DRIVE);
   // null = 還沒手動改過：有 3 歲以下的孩子就預設帶推車。
   const [strollerOverride, setStrollerState] = useState<boolean | null>(() => stored.prefs?.stroller ?? null);
@@ -130,6 +140,7 @@ export default function App() {
   const originForecast = useForecast(origin);
   const weather = originForecast ? slotWeather(originForecast, today, slot) : null;
   const rainy = rainyOverride ?? weather?.rainy ?? false;
+  const hot = isHot(weather);
   const kidsInfo = useMemo(
     () =>
       (stored.kids ?? []).flatMap((k) => {
@@ -195,6 +206,7 @@ export default function App() {
       been: stored.been,
       beenAt: stored.beenAt ?? {},
       rainy,
+      hot,
       overnight,
       maxDrive,
       needStroller,
@@ -203,7 +215,7 @@ export default function App() {
       elders,
       ratings: stored.ratings,
     }),
-    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, overnight, maxDrive, needStroller, kidsInfo, hotelsBySpot, elders, stored.ratings],
+    [today, minsOf, stored.fav, stored.been, stored.beenAt, rainy, hot, overnight, maxDrive, needStroller, kidsInfo, hotelsBySpot, elders, stored.ratings],
   );
   const round = useMemo(
     () => recommendRound(spots, recommendCtx, (n) => weekSeed(today, origin, n), shuffle),
@@ -432,6 +444,8 @@ export default function App() {
               today={today}
               round={round}
               slot={slot}
+              slots={availableSlots(today)}
+              originLabel={originShort}
               onSlot={setSlot}
               weather={weather}
               maxDrive={maxDrive}
@@ -627,7 +641,10 @@ export default function App() {
         origins={origins}
         origin={origin}
         defaultOrigin={fallbackOrigin}
-        onOriginChange={(o) => update((s) => ({ ...s, origin: o }))}
+        onOriginChange={(o) => {
+          update((s) => ({ ...s, origin: o }));
+          setRainyOverride(null);
+        }}
         kids={stored.kids ?? []}
         onKidsChange={(kids) => update((s) => ({ ...s, kids }))}
         nap={stored.nap}

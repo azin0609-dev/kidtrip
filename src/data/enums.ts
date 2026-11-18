@@ -31,6 +31,14 @@ export const HOTEL_KINDS = ['hotel', 'bnb'] as const;
 export const BADGE_KINDS = ['new', 'end'] as const;
 /** 查證來源：官方、新聞媒體、旅遊部落格、Google 地圖（只記「哪天看過、看了什麼」，不存 Google 的內容）。 */
 export const VERIFY_SOURCES = ['official', 'media', 'blog', 'google_maps'] as const;
+/**
+ * 高風險的未確認項目：有任何一項，景點就暫停自動推薦（資料保留，等查證）。
+ * access_unknown 外人能不能進去不確定；location_unknown 實際位置或停車不確定；
+ * facility_unknown 主要設施還在不在不確定；status_conflict 營業狀態的來源互相矛盾。
+ */
+export const RISK_FLAGS = ['access_unknown', 'location_unknown', 'facility_unknown', 'status_conflict'] as const;
+/** 有、沒有、還不知道。 */
+export const TRI_STATES = ['yes', 'no', 'unknown'] as const;
 
 export type Region = (typeof REGIONS)[number];
 export type SpotType = (typeof SPOT_TYPES)[number];
@@ -43,3 +51,5 @@ export type FoodTag = (typeof FOOD_TAGS)[number];
 export type FoodPriceTier = (typeof FOOD_PRICE_TIERS)[number];
 export type HotelKind = (typeof HOTEL_KINDS)[number];
 export type VerifySource = (typeof VERIFY_SOURCES)[number];
+export type RiskFlag = (typeof RISK_FLAGS)[number];
+export type TriState = (typeof TRI_STATES)[number];

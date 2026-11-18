@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { PlaceImage, SpotType } from '../data/schema.ts';
 import { TYPE_LABELS } from '../lib/labels.ts';
 import { imageSrc } from '../lib/links.ts';
@@ -48,10 +49,19 @@ export function SpotArt({
   /** 縮圖：出處和示意標籤用更小的字。 */
   small?: boolean;
 }) {
-  if (image) {
+  // 照片載入失敗（檔案不見、離線又沒快取）時，改用示意圖。
+  const [failed, setFailed] = useState(false);
+  if (image && !failed) {
     return (
       <figure className={`relative overflow-hidden bg-stone-200 dark:bg-card-dark-2 ${className}`}>
-        <img src={imageSrc(image.url, import.meta.env.BASE_URL)} alt={name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+        <img
+          src={imageSrc(image.url, import.meta.env.BASE_URL)}
+          alt={name}
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed(true)}
+          className="h-full w-full object-cover"
+        />
         <Credit image={image} small={small} />
       </figure>
     );
@@ -85,10 +95,18 @@ export function SpotArt({
 
 /** 住宿、餐廳的照片：只有資料裡有合法照片才顯示，沒有就什麼都不放。比例統一 16:9。 */
 export function PlacePhoto({ name, image }: { name: string; image?: PlaceImage }) {
-  if (!image) return null;
+  const [failed, setFailed] = useState(false);
+  if (!image || failed) return null;
   return (
     <figure className="relative -mx-4 -mt-4 aspect-video overflow-hidden bg-stone-200 dark:bg-card-dark-2">
-      <img src={imageSrc(image.url, import.meta.env.BASE_URL)} alt={name} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+      <img
+        src={imageSrc(image.url, import.meta.env.BASE_URL)}
+        alt={name}
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailed(true)}
+        className="h-full w-full object-cover"
+      />
       <Credit image={image} />
     </figure>
   );

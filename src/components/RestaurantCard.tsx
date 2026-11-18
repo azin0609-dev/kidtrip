@@ -3,6 +3,7 @@ import { freshnessNote } from '../lib/freshness.ts';
 import { FOOD_PRICE_LABELS, FOOD_TAG_LABELS, VERIFIED_SOURCE_LABELS } from '../lib/labels.ts';
 import { directionsUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
+import { canClaimOpen } from '../lib/verification.ts';
 import { PlacePhoto } from './SpotArt.tsx';
 import { Tag, buttonBase, cardBase, primaryButton } from './ui.tsx';
 
@@ -50,7 +51,11 @@ export function RestaurantCard({ restaurant: r, today, mins, originLabel, nearSp
       )}
 
       <p className="text-xs text-stone-600 dark:text-stone-400">
-        {r.verified ? `${r.verified.date} 查過還在營業（${r.verified.note ?? VERIFIED_SOURCE_LABELS[r.verified.source]}），` : ''}
+        {r.risk_flags?.includes('status_conflict')
+          ? '營業狀態的資料互相矛盾（有來源說還在營業、有來源說暫停），待再次確認，'
+          : canClaimOpen(r) && r.verified
+            ? `${r.verified.date} 查過還在營業（${r.verified.note ?? VERIFIED_SOURCE_LABELS[r.verified.source]}），`
+            : `資料整理於 ${r.last_verified}，還沒實際查證，`}
         {freshnessNote(r, 'food', today) ?? '親子餐廳常改時間或歇業，出發前在 Google 地圖或電話確認一下。'}
       </p>
 

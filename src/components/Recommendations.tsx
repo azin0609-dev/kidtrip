@@ -2,9 +2,12 @@ import { type ReactNode, useState } from 'react';
 import type { Spot } from '../data/schema.ts';
 import { DRIVE_LABELS, conditionSummary } from '../lib/conditions.ts';
 import { formatDrive } from '../lib/format.ts';
-import { ENV_LABELS, FACILITY_LABELS, TYPE_LABELS } from '../lib/labels.ts';
+import { ENV_LABELS, FACILITY_LABELS } from '../lib/labels.ts';
 import { MAX_DRIVE_OPTIONS, ROLE_LABELS, type RoundResult, type ScoredSpot } from '../lib/recommend.ts';
-import { SLOTS, type Slot, type SlotWeather, formatSlotWeather, slotLabelWithDate } from '../lib/weather.ts';
+import { explainPick } from '../lib/explain.ts';
+import { bookingNotice, destinationWeatherNote } from '../lib/trip-risks.ts';
+import { type Slot, type SlotWeather, formatSlotWeather, slotLabelWithDate, slotWeather } from '../lib/weather.ts';
+import { useForecast } from '../hooks/useWeekendWeather.ts';
 import { Bolt, SleepySun } from './Brand.tsx';
 import { SpotArt } from './SpotArt.tsx';
 import { Chip, buttonBase, cardBase, primaryButton, secondaryButton } from './ui.tsx';
@@ -18,7 +21,11 @@ export interface RecommendationsProps {
   today: string;
   round: RoundResult;
   slot: Slot;
+  /** 可以選的時段（週日不會有週六）。 */
+  slots: readonly Slot[];
   onSlot: (s: Slot) => void;
+  /** 出發地的短名稱，例如「林口區」。 */
+  originLabel: string;
   /** 選定時段、出發地的天氣；抓不到是 null。 */
   weather: SlotWeather | null;
   maxDrive: number;
@@ -52,24 +59,41 @@ function factsOf(spot: Spot): string[] {
   ].filter((x): x is string => Boolean(x));
 }
 
-/** 推薦理由：能玩什麼＋分數裡會影響決定的原因（前兩個是車程和室內外，卡片上已經有）。 */
-function whyOf(pick: ScoredSpot): { canDo: string; why: string } {
-  return {
-    canDo: pick.spot.kid_label ?? pick.spot.types.map((t) => TYPE_LABELS[t]).join('、'),
-    why: pick.reasons.slice(2).join('・'),
-  };
+/** 卡片要知道的時段：用來看目的地那時候的天氣。 */
+interface When {
+  today: string;
+  slot: Slot;
 }
 
-function Reminder({ text, small }: { text: string; small?: boolean }) {
+/** 目的地那個時段的天氣提醒（遠的地方也要看目的地，不只看出發地）。 */
+function useDestinationNote(spot: Spot, mins: number, when: When): string | null {
+  const point = spot.lat !== null && spot.lng !== null ? { lat: spot.lat, lng: spot.lng } : null;
+  const forecast = useForecast(point);
+  const w = forecast ? slotWeather(forecast, when.today, when.slot) : null;
+  return destinationWeatherNote(spot, w, mins > 45);
+}
+
+/** 出發前要先知道的事：預約購票（結構化）、開放規定、目的地天氣。重要的直接顯示，不藏進「看詳細」。 */
+function checks(spot: Spot, weatherNote: string | null): string[] {
+  const booking = bookingNotice(spot);
+  return [booking && `${booking}。`, spot.open_note ?? spot.crowd_tip, weatherNote].filter((x): x is string => Boolean(x));
+}
+
+function Reminder({ items, small }: { items: string[]; small?: boolean }) {
+  if (items.length === 0) return null;
   return (
-    <p
+    <div
       className={`rounded-xl bg-amber-50 text-amber-950 ring-1 ring-amber-200 dark:bg-[#2b2719] dark:text-amber-100 dark:ring-amber-900/60 ${
         small ? 'px-2.5 py-1.5 text-xs' : 'px-3 py-2 text-sm'
       }`}
     >
-      <span className="font-bold">出發前先知道：</span>
-      {text}
-    </p>
+      <p className="font-bold">出發前先確認</p>
+      <ul className="mt-0.5 list-disc pl-4">
+        {items.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -96,12 +120,12 @@ function ChooseButtons({ chosen, open, onChoose, onToggle, big }: { chosen: bool
 }
 
 /** 本週首選：大圖＋完整資訊，是這一區最顯眼的卡。 */
-function HeroCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chosen: boolean; onChoose: () => void; children: ReactNode }) {
+function HeroCard({ pick, chosen, onChoose, when, originLabel, children }: { pick: ScoredSpot; chosen: boolean; onChoose: () => void; when: When; originLabel: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { spot } = pick;
   const d = formatDrive(pick.mins);
-  const { canDo, why } = whyOf(pick);
-  const reminder = spot.open_note ?? spot.crowd_tip;
+  const weatherNote = useDestinationNote(spot, pick.mins, when);
+  const reminders = checks(spot, weatherNote);
   return (
     <article className={`${cardBase} shadow-md ${chosen ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : ''}`}>
       <div className="relative">
@@ -109,7 +133,7 @@ function HeroCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chos
           name={spot.name}
           type={spot.types[0] ?? 'park'}
           image={spot.image}
-          className="h-[200px] w-full md:h-[300px]"
+          className="h-[180px] w-full md:h-[300px]"
           iconClassName="h-24 w-24 md:h-28 md:w-28"
         />
         {pick.role && (
@@ -118,7 +142,7 @@ function HeroCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chos
           </span>
         )}
       </div>
-      <div className="flex flex-col gap-3 p-4 md:p-5">
+      <div className="flex flex-col gap-2.5 p-4 md:gap-3 md:p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h3 className="text-xl leading-snug font-black break-words md:text-2xl">{spot.name}</h3>
@@ -143,11 +167,10 @@ function HeroCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chos
           ))}
         </ul>
         <p className="text-[15px] leading-relaxed text-stone-800 dark:text-stone-200">
-          <span className="font-bold">為什麼推薦：</span>
-          {canDo}
-          {why && <span className="text-stone-600 dark:text-stone-400">・{why}</span>}
+          <span className="font-bold">為什麼適合：</span>
+          {explainPick(pick, originLabel)}
         </p>
-        {reminder && <Reminder text={reminder} />}
+        <Reminder items={reminders} />
         <ChooseButtons big chosen={chosen} open={open} onChoose={onChoose} onToggle={() => setOpen(!open)} />
         {open && <div>{children}</div>}
       </div>
@@ -156,11 +179,12 @@ function HeroCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chos
 }
 
 /** 第二、三個選擇：縮圖＋重點，一樣有清楚的操作按鈕。 */
-function CompactCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; chosen: boolean; onChoose: () => void; children: ReactNode }) {
+function CompactCard({ pick, chosen, onChoose, when, children }: { pick: ScoredSpot; chosen: boolean; onChoose: () => void; when: When; children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { spot } = pick;
   const d = formatDrive(pick.mins);
-  const reminder = spot.open_note ?? spot.crowd_tip;
+  const weatherNote = useDestinationNote(spot, pick.mins, when);
+  const reminders = checks(spot, weatherNote);
   const facts = factsOf(spot).slice(0, 2).join('・');
   return (
     <li className={`${cardBase} flex flex-col gap-2.5 p-3 ${chosen ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : ''}`}>
@@ -186,7 +210,7 @@ function CompactCard({ pick, chosen, onChoose, children }: { pick: ScoredSpot; c
           </p>
         </div>
       </div>
-      {reminder && <Reminder small text={reminder} />}
+      <Reminder small items={reminders} />
       <ChooseButtons chosen={chosen} open={open} onChoose={onChoose} onToggle={() => setOpen(!open)} />
       {open && <div>{children}</div>}
     </li>
@@ -199,6 +223,7 @@ export function Recommendations(props: RecommendationsProps) {
   const [hero, ...others] = picks;
   const summary = conditionSummary({ maxDrive, overnight, needStroller, rainy, elders });
   const weatherText = (weather && formatSlotWeather(weather)) || '還沒有預報，不代表不會下雨';
+  const when: When = { today, slot };
 
   return (
     <section aria-labelledby="recommend-title" className="mb-8">
@@ -207,7 +232,9 @@ export function Recommendations(props: RecommendationsProps) {
           <h2 id="recommend-title" className="text-2xl font-black text-stone-900 md:text-3xl dark:text-stone-50">
             本週放電提案
           </h2>
-          <p className="text-sm text-stone-600 dark:text-stone-400">幫你挑好 3 個適合全家的地方</p>
+          <p className="text-sm text-stone-600 dark:text-stone-400">
+            {picks.length > 0 ? `幫你挑好 ${picks.length} 個適合全家的地方` : '這些條件下還沒找到適合的地方'}
+          </p>
         </div>
         <button type="button" onClick={props.onShuffle} disabled={picks.length === 0} className={`${secondaryButton} shrink-0 disabled:opacity-50`}>
           <Bolt className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
@@ -224,7 +251,7 @@ export function Recommendations(props: RecommendationsProps) {
             onChange={(e) => props.onSlot(e.target.value as Slot)}
             className={`min-h-11 rounded-xl bg-stone-100 px-2.5 text-sm font-bold text-stone-900 dark:bg-card-dark-2 dark:text-stone-50 ${focus}`}
           >
-            {SLOTS.map((s) => (
+            {props.slots.map((s) => (
               <option key={s} value={s}>
                 {slotLabelWithDate(today, s)}
               </option>
@@ -274,7 +301,7 @@ export function Recommendations(props: RecommendationsProps) {
               這週要住一晚
             </Chip>
           </div>
-          {overnight && <p className="text-xs text-stone-600 dark:text-stone-400">住一晚時只推車程 1 小時以上、附近有整理好住宿的地方。</p>}
+          {overnight && <p className="text-xs text-stone-600 dark:text-stone-400">住一晚時只推附近有整理好住宿的地方；當天來回就到得了的，分數會少一點。</p>}
         </div>
       </details>
       {weather?.rainy && props.rainyIsAuto && rainy && (
@@ -304,7 +331,7 @@ export function Recommendations(props: RecommendationsProps) {
       ) : (
         <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-3" aria-live="polite">
           <div className="md:col-span-2">
-            <HeroCard pick={hero} chosen={chosenId === hero.spot.id} onChoose={() => props.onChoose(hero.spot)}>
+            <HeroCard pick={hero} chosen={chosenId === hero.spot.id} onChoose={() => props.onChoose(hero.spot)} when={when} originLabel={props.originLabel}>
               {props.renderFull(hero)}
             </HeroCard>
           </div>
@@ -314,7 +341,7 @@ export function Recommendations(props: RecommendationsProps) {
                 <h3 className="px-1 text-sm font-bold text-stone-600 dark:text-stone-400">也可以考慮</h3>
                 <ul className="flex flex-col gap-3">
                   {others.map((p) => (
-                    <CompactCard key={p.spot.id} pick={p} chosen={chosenId === p.spot.id} onChoose={() => props.onChoose(p.spot)}>
+                    <CompactCard key={p.spot.id} pick={p} chosen={chosenId === p.spot.id} onChoose={() => props.onChoose(p.spot)} when={when}>
                       {props.renderFull(p)}
                     </CompactCard>
                   ))}

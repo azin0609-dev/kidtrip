@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { Spot } from '../data/schema.ts';
 import { makeSpot } from '../test/fixtures.ts';
 import {
+  heatAdjust,
   type RecommendContext,
   convenienceScore,
   driveScore,
@@ -139,10 +140,11 @@ describe('先判斷能不能成行', () => {
 describe('這週要住一晚', () => {
   const far = makeSpot({ id: 'spot-009', mins_from_linkou: 150 });
   const near = makeSpot({ id: 'spot-001', mins_from_linkou: 30 });
-  it('只推一小時以上、而且附近有住宿的地方', () => {
+  it('只推附近有住宿的地方；車程近也可以，只是分數少一點', () => {
     const hasStay = (s: Spot) => s.id === 'spot-009';
     expect(scoreSpot(far, ctx({ overnight: true, hasStay }))?.reasons).toContain('附近有住宿');
-    expect(scoreSpot(near, ctx({ overnight: true, hasStay: () => true }))).toBeNull(); // 太近不用住
+    // 測試案例 4：住一晚而且單程不到 60 分鐘，不再強制排除
+    expect(scoreSpot(near, ctx({ overnight: true, hasStay: () => true }))).not.toBeNull();
     expect(scoreSpot(far, ctx({ overnight: true, hasStay: () => false }))).toBeNull(); // 沒有住宿
     expect(scoreSpot(far, ctx({ overnight: true }))).toBeNull();
   });
@@ -179,8 +181,9 @@ describe('分數', () => {
     const neither = familyFit(makeSpot({ age_best: [4, 12], stroller_ok: false }), kids);
     expect(both.score).toBe(35);
     expect(both.reason).toBe('果果、核桃都能玩、有地方換尿布');
-    expect(onlyOlder.score).toBeLessThan(both.score);
-    expect(onlyOlder.reason).toBeNull();
+    // 核桃 1 歲還不到 3 歲以上的設施：當成陪同（坐推車），不拉低果果的年齡分
+    expect(onlyOlder.score).toBe(both.score);
+    expect(onlyOlder.reason).toBe('適合果果的年紀，核桃坐推車跟著、有地方換尿布');
     expect(neither.score).toBe(0);
   });
   it('沒設定孩子或景點沒有年齡資料：給中間分數，不寫原因', () => {
@@ -191,11 +194,14 @@ describe('分數', () => {
     expect(familyFit(makeSpot({ age_best: [2, 6] }), [{ name: '果果', age: 3 }]).reason).toBe('適合果果的年紀');
     expect(familyFit(makeSpot({ age_best: [2, 6] }), [{ name: '', age: 3 }]).reason).toBe('適合孩子的年紀');
   });
-  it('到場便利：好停車、有賣吃的等加分，要先預約的少一點', () => {
-    const easy = makeSpot({ facilities: ['parking', 'food', 'shade'], stroller_ok: true, transit: '捷運站旁' });
+  it('到場便利：好停車、有賣吃的等加分；確定不用預約、買票才加分', () => {
+    const noBooking = { reservation: 'no', advance_ticket: 'no', timed_entry: 'no', source: '官網' } as const;
+    const easy = makeSpot({ facilities: ['parking', 'food', 'shade'], stroller_ok: true, transit: '捷運站旁', booking: noBooking });
     const hard = makeSpot({ facilities: [], stroller_ok: false, open_note: '要先預約' });
     expect(convenienceScore(easy)).toBe(20);
     expect(convenienceScore(hard)).toBe(0);
+    // 沒有預約資料（不知道）不會當成不用預約
+    expect(convenienceScore(makeSpot({ facilities: ['parking'], stroller_ok: false }))).toBe(6);
   });
   it('新開幕、快熄燈、收藏、季節、高分都會加分並寫在原因', () => {
     const base = (o: Partial<Spot> = {}, c: Partial<RecommendContext> = {}) => scoreSpot(makeSpot(o), ctx(c))!;
@@ -345,5 +351,56 @@ describe('typesAllSame', () => {
     expect(typesAllSame([s(['park']), s(['park', 'zoo']), s(['park'])])).toBe(true);
     expect(typesAllSame([s(['park']), s(['zoo']), s(['park'])])).toBe(false);
     expect(typesAllSame([s(['park'])])).toBe(false);
+  });
+});
+
+describe('GPT 產品健檢的測試案例', () => {
+  it('1. 家裡有 3 歲和未滿 1 歲：嬰兒不拉低適合哥哥姊姊的景點', () => {
+    const kids = [
+      { name: '果果', age: 3 },
+      { name: '核桃', age: 0.6 },
+    ];
+    const forOlder = makeSpot({ age_best: [3, 10], stroller_ok: true, facilities: ['diaper'] });
+    const fit = familyFit(forOlder, kids);
+    expect(fit.score).toBe(35);
+    expect(fit.reason).toContain('核桃坐推車跟著');
+    // 推車不能進、沒有換尿布的地方，陪同嬰兒那部分的分數就沒有
+    expect(familyFit(makeSpot({ age_best: [3, 10], stroller_ok: false }), kids).score).toBe(25);
+  });
+
+  it('3. 天氣熱：沒有遮蔭的戶外扣分，室內和有冷氣的加分', () => {
+    const outdoor = makeSpot({ id: 'spot-001', env: 'out', facilities: [] });
+    const indoor = makeSpot({ id: 'spot-002', env: 'in' });
+    const shaded = makeSpot({ id: 'spot-003', env: 'out', facilities: ['shade'] });
+    const cool = makeSpot({ id: 'spot-004', env: 'mix', amenities: { aircon: 'yes', source: '官網', checked_at: '2026-11-18' } });
+    expect(heatAdjust(outdoor).score).toBe(-8);
+    expect(heatAdjust(indoor).score).toBe(3);
+    expect(heatAdjust(shaded).score).toBe(0);
+    expect(heatAdjust(cool)).toEqual({ score: 6, reason: '有冷氣，不怕熱' });
+    expect(scoreSpot(outdoor, ctx({ hot: true }))!.score).toBeLessThan(scoreSpot(outdoor, ctx())!.score);
+    expect(scoreSpot(indoor, ctx({ hot: true }))!.reasons).toContain('室內，不用曬太陽');
+  });
+
+  it('5. 住一晚的雨天備案：找主景點附近的室內景點，不是家裡附近', () => {
+    const main = makeSpot({ id: 'spot-010', env: 'out', mins_from_linkou: 90, lat: 24.68, lng: 121.77 }); // 宜蘭
+    const nearHome = makeSpot({ id: 'spot-011', env: 'in', mins_from_linkou: 15, lat: 25.07, lng: 121.39 }); // 林口
+    const nearMain = makeSpot({ id: 'spot-012', env: 'in', mins_from_linkou: 95, lat: 24.7, lng: 121.75 });
+    const all = [main, nearHome, nearMain];
+    expect(pickBackup(all, ctx({ overnight: true, hasStay: () => true }), 's', main.id)?.spot.id).toBe('spot-012');
+    // 當天來回時照舊：從家裡出發、在車程上限內
+    expect(pickBackup(all, ctx({ overnight: false }), 's', main.id)?.spot.id).toBe('spot-011');
+  });
+
+  it('6. 公共進入權限、位置或營業狀態沒確認：暫停自動推薦', () => {
+    expect(scoreSpot(makeSpot({ risk_flags: ['access_unknown'] }), ctx())).toBeNull();
+    expect(scoreSpot(makeSpot({ risk_flags: ['status_conflict'] }), ctx())).toBeNull();
+    // 只是一般欄位待確認（needs_verify）不影響推薦
+    expect(scoreSpot(makeSpot({ needs_verify: ['mins_from_linkou', 'age_best'] }), ctx())).not.toBeNull();
+  });
+
+  it('7. 要先買票但說明裡沒有「預約」：依結構化資料判斷，不會當成不用預約', () => {
+    const ticket = makeSpot({ open_note: '假日先線上買票', booking: { reservation: 'no', advance_ticket: 'yes', timed_entry: 'unknown', source: '整理自景點說明（未查證）' } });
+    const free = makeSpot({ open_note: '假日先線上買票', booking: { reservation: 'no', advance_ticket: 'no', timed_entry: 'no', source: '官網' } });
+    expect(convenienceScore(ticket)).toBeLessThan(convenienceScore(free));
   });
 });

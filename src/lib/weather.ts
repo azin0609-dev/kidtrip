@@ -94,6 +94,16 @@ export function defaultSlot(today: string): Slot {
   return dayOfWeek(today) === 0 ? 'sun-am' : 'sat-am';
 }
 
+/** 可以選的時段：週日只剩週日（週六已經過了）；其他天四個都能選。 */
+export function availableSlots(today: string): Slot[] {
+  return dayOfWeek(today) === 0 ? ['sun-am', 'sun-pm'] : [...SLOTS];
+}
+
+/** 選過的時段如果已經過了（例如週六選的，週日再打開），換成預設時段。 */
+export function normalizeSlot(today: string, slot: Slot): Slot {
+  return availableSlots(today).includes(slot) ? slot : defaultSlot(today);
+}
+
 /** 「週六上午 11/21」 */
 export function slotLabelWithDate(today: string, slot: Slot): string {
   const [, m, d] = slotDate(today, slot).split('-').map(Number) as [number, number, number];

@@ -17,6 +17,8 @@ import {
   PRICE_TIERS,
   REGIONS,
   SPOT_TYPES,
+  RISK_FLAGS,
+  TRI_STATES,
   VERIFY_SOURCES,
 } from './enums.ts';
 
@@ -56,6 +58,46 @@ export const imageSchema = z.object({
   license: nonEmpty,
   /** 選填：原始出處網址。 */
   source_url: z.string().url().optional(),
+});
+
+const tri = z.enum(TRI_STATES);
+
+/**
+ * 選填：預約與購票（結構化，不再從文字猜）。沒填或填 unknown 都代表「還不知道」，不會當成不用預約。
+ */
+export const bookingSchema = z.object({
+  /** 要不要事先預約（人數、場次）。 */
+  reservation: tri,
+  /** 要不要事先線上買票。 */
+  advance_ticket: tri,
+  /** 有沒有指定入場時段。 */
+  timed_entry: tri,
+  url: z.string().url().optional(),
+  /** 這些資訊從哪裡來，例如「官網」「整理自景點說明（未查證）」。 */
+  source: nonEmpty,
+});
+
+/**
+ * 選填：帶小小孩最怕撲空的細節，每項都是「有、沒有、還不知道」，並記錄來源與確認日期。
+ * 先針對最常推薦的景點補（清單見 docs/VERIFY_TOP30.md）。
+ */
+export const amenitiesSchema = z.object({
+  diaper: tri.optional(),
+  nursing: tri.optional(),
+  toilet: tri.optional(),
+  aircon: tri.optional(),
+  shade: tri.optional(),
+  stroller_path: tri.optional(),
+  /** 有沒有非走不可的樓梯（yes 代表有樓梯限制）。 */
+  stairs: tri.optional(),
+  /** 停車場入口或精確位置的說明。 */
+  parking_entrance: nonEmpty.optional(),
+  /** 假日停車或人潮風險。 */
+  holiday_crowd: z.enum(['low', 'medium', 'high', 'unknown']).optional(),
+  /** 主要設施維修、特殊休館。 */
+  maintenance_note: nonEmpty.optional(),
+  source: nonEmpty,
+  checked_at: isoDate,
 });
 
 export const badgeSchema = z.object({
@@ -115,10 +157,15 @@ export const spotSchema = z.object({
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點，不是實際位置。 */
   image: imageSchema.optional(),
+  /** 選填：高風險的未確認項目（見 RISK_FLAGS），有的話暫停自動推薦，卡片上會寫出來。 */
+  risk_flags: z.array(z.enum(RISK_FLAGS)).optional(),
   /** 選填：順路停一下的小站（例如主題超商），清單裡看得到，但不會被推薦成這週目的地。 */
   stopover: z.boolean().optional(),
+  booking: bookingSchema.optional(),
+  amenities: amenitiesSchema.optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
+  /** 最後整理日期（資料最後一次被整理、修改的日期，不是實際查證日期；實際查證看 verified）。欄位名稱沿用舊的，避免舊資料失效。 */
   last_verified: isoDate,
 });
 
@@ -139,8 +186,11 @@ export const hotelSchema = z.object({
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點。 */
   image: imageSchema.optional(),
+  /** 選填：高風險的未確認項目（見 RISK_FLAGS），有的話暫停自動推薦，卡片上會寫出來。 */
+  risk_flags: z.array(z.enum(RISK_FLAGS)).optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
+  /** 最後整理日期（資料最後一次被整理、修改的日期，不是實際查證日期；實際查證看 verified）。欄位名稱沿用舊的，避免舊資料失效。 */
   last_verified: isoDate,
 });
 
@@ -171,8 +221,11 @@ export const restaurantSchema = z.object({
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點。 */
   image: imageSchema.optional(),
+  /** 選填：高風險的未確認項目（見 RISK_FLAGS），有的話暫停自動推薦，卡片上會寫出來。 */
+  risk_flags: z.array(z.enum(RISK_FLAGS)).optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
+  /** 最後整理日期（資料最後一次被整理、修改的日期，不是實際查證日期；實際查證看 verified）。欄位名稱沿用舊的，避免舊資料失效。 */
   last_verified: isoDate,
 });
 
@@ -210,6 +263,7 @@ export const tripSchema = z.object({
     )
     .min(1),
   needs_verify: z.array(z.string()),
+  /** 最後整理日期（資料最後一次被整理、修改的日期，不是實際查證日期；實際查證看 verified）。欄位名稱沿用舊的，避免舊資料失效。 */
   last_verified: isoDate,
 });
 
@@ -229,6 +283,7 @@ export const originsSchema = z.object({
 
 export type Badge = z.infer<typeof badgeSchema>;
 export type PlaceImage = z.infer<typeof imageSchema>;
+export type Booking = z.infer<typeof bookingSchema>;
 export type Spot = z.infer<typeof spotSchema>;
 export type Hotel = z.infer<typeof hotelSchema>;
 export type Restaurant = z.infer<typeof restaurantSchema>;
