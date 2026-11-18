@@ -35,7 +35,7 @@
     },
     "lat": 25.066751,
     "lng": 121.374879,
-    "google_place_id": null,
+    "google_place_id": "ChIJfUE_fB-nQjQR3uKnWP72zes",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -100,7 +100,7 @@
     },
     "lat": 24.995355,
     "lng": 121.586149,
-    "google_place_id": null,
+    "google_place_id": "ChIJj4EySmCqQjQRZte0Cf0G_qo",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -176,7 +176,7 @@
     },
     "lat": 25.097415,
     "lng": 121.514972,
-    "google_place_id": null,
+    "google_place_id": "ChIJG9qGWr-uQjQRR1iXVOTfVl8",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -253,7 +253,7 @@
     },
     "lat": 25.096127,
     "lng": 121.516704,
-    "google_place_id": null,
+    "google_place_id": "ChIJ42fAy7iuQjQRE2DgdH7p7fQ",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -328,7 +328,7 @@
     },
     "lat": 25.09599,
     "lng": 121.518524,
-    "google_place_id": null,
+    "google_place_id": "ChIJl8eBsL6uQjQRwwn6OA2ejxI",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -395,7 +395,7 @@
     "transit": "捷運大安森林公園站出站就是",
     "lat": 25.029693,
     "lng": 121.535824,
-    "google_place_id": null,
+    "google_place_id": "ChIJnzZlOoCpQjQRH-WG9egh-2E",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -466,7 +466,7 @@
     "transit": "捷運圓山站走路約 3 分",
     "lat": 25.064361,
     "lng": 121.533468,
-    "google_place_id": null,
+    "google_place_id": "ChIJkwLqlk-pQjQR6zRBiYk7s8Q",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -536,7 +536,7 @@
     "kid_label": "看恐龍骨頭",
     "lat": 25.043646,
     "lng": 121.514391,
-    "google_place_id": null,
+    "google_place_id": "ChIJa1U1VXOpQjQR6InZ2RmUU0s",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -600,7 +600,7 @@
     "transit": "捷運忠孝新生站走路約 5 分",
     "lat": 25.032361,
     "lng": 121.518267,
-    "google_place_id": null,
+    "google_place_id": "ChIJ4_wdOGWpQjQRGuBlEVzLwag",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -682,7 +682,7 @@
     },
     "lat": 25.074665,
     "lng": 121.456278,
-    "google_place_id": null,
+    "google_place_id": "ChIJr-WASuWoQjQRXM5TwXTjBtY",
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
