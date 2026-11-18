@@ -1,6 +1,6 @@
-# 這週去哪玩（kidtrip）
+# 放電研究所（kidtrip）
 
-幫有 0–6 歲小孩的家庭，每週五分鐘內決定週末去哪玩。規格見 [`docs/PRD.md`](docs/PRD.md)，開發規則見 [`AGENTS.md`](AGENTS.md)。
+孩子負責放電，我們負責找地方。幫 0–12 歲親子家庭，每週五分鐘內決定週末去哪玩。（品牌名稱暫定，原名「這週去哪玩」；repo、網址路徑和 localStorage key `kidtrip.v1` 都沒改。）規格見 [`docs/PRD.md`](docs/PRD.md)，開發規則見 [`AGENTS.md`](AGENTS.md)。
 
 ## 需求
 

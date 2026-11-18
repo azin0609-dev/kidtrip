@@ -10,6 +10,7 @@ import {
   countyOf,
   filterSpots,
   listCounties,
+  matchesAge,
   matchesDrive,
   sortByDrive,
   tokenize,
@@ -226,5 +227,25 @@ describe('餐廳篩選', () => {
     expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, tags: ['play', 'sand'] }))).toEqual(['food-001']);
     expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, query: '沙坑' }))).toEqual(['food-001']);
     expect(ids(filterRestaurants(list, { ...DEFAULT_FOOD_FILTERS, query: '日式' }))).toEqual(['food-002']);
+  });
+});
+
+describe('年齡捷徑', () => {
+  it('建議年齡和捷徑有重疊才算', () => {
+    expect(matchesAge([1, 8], '0-2')).toBe(true);
+    expect(matchesAge([1, 8], '6-8')).toBe(true);
+    expect(matchesAge([1, 8], '9-12')).toBe(false);
+    expect(matchesAge([3, 12], '9-12')).toBe(true);
+    expect(matchesAge([0, 2], '3-5')).toBe(false);
+  });
+  it('沒有建議年齡的不替它猜，不限年齡時才顯示', () => {
+    expect(matchesAge(undefined, '3-5')).toBe(false);
+    expect(matchesAge(undefined, 'all')).toBe(true);
+  });
+  it('套用在景點篩選', () => {
+    const list = [makeSpot({ id: 'spot-001', age_best: [0, 3] }), makeSpot({ id: 'spot-002', age_best: [6, 12] }), makeSpot({ id: 'spot-003' })];
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, age: '0-2' }, ctx))).toEqual(['spot-001']);
+    expect(ids(filterSpots(list, { ...DEFAULT_SPOT_FILTERS, age: '9-12' }, ctx))).toEqual(['spot-002']);
+    expect(ids(filterSpots(list, DEFAULT_SPOT_FILTERS, ctx))).toEqual(['spot-001', 'spot-002', 'spot-003']);
   });
 });

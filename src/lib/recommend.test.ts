@@ -210,7 +210,7 @@ describe('分數', () => {
 describe('三張推薦卡的角色', () => {
   const seed = seeds[0]!;
 
-  it('第一張是分數最高的「最適合這次」', () => {
+  it('第一張是分數最高的「本週首選」', () => {
     const r = recommend(spots, ctx(), seed);
     expect(r).toHaveLength(3);
     expect(r[0]?.role).toBe('best');

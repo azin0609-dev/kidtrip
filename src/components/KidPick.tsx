@@ -1,34 +1,37 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { formatDrive } from '../lib/format.ts';
+import { KIDPICK_INITIAL, type KidPickAction, kidPickStep } from '../lib/kidpick.ts';
 import { directionsUrl } from '../lib/links.ts';
 import type { ScoredSpot } from '../lib/recommend.ts';
-import { Dino } from './Dino.tsx';
-import { TypeIcon } from './TypeIcon.tsx';
+import { Flag } from './Brand.tsx';
+import { SpotArt } from './SpotArt.tsx';
 import { buttonBase } from './ui.tsx';
 
-const TILE_COLORS = [
-  'bg-rose-100 text-rose-950 dark:bg-rose-900 dark:text-rose-50',
-  'bg-sky-100 text-sky-950 dark:bg-sky-900 dark:text-sky-50',
-  'bg-amber-100 text-amber-950 dark:bg-amber-900 dark:text-amber-50',
-];
+const RINGS = ['ring-coral-300', 'ring-sky-300', 'ring-amber-300'];
 
-/** 給小孩選：把這週推薦的三個地方用大圖顯示，讓小孩自己點一個。 */
+/**
+ * 換我決定！：把這週推薦的三個地方做成大圖卡，讓小孩自己點一個。
+ * 小孩點完只是暫選；家長按「確認這個地方」才存成這週放電計畫，關掉不會動到原本的計畫。
+ */
 export function KidPick({
   open,
   picks,
+  currentPlanName,
   onClose,
   onChoose,
 }: {
   open: boolean;
   picks: ScoredSpot[];
+  /** 目前已經有的這週計畫（確認時會被取代）；沒有是 null。 */
+  currentPlanName: string | null;
   onClose: () => void;
-  /** 小孩選好了：記成「這週要去」。 */
+  /** 家長確認了：記成「這週放電計畫」。 */
   onChoose: (pick: ScoredSpot) => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
-  const [chosenId, setChosenId] = useState<string | null>(null);
-  const chosen = picks.find((p) => p.spot.id === chosenId) ?? null;
+  const [state, setState] = useState(KIDPICK_INITIAL);
+  const selected = picks.find((p) => p.spot.id === state.selectedId) ?? null;
 
   useEffect(() => {
     const d = ref.current;
@@ -37,56 +40,109 @@ export function KidPick({
     if (!open && d.open) d.close();
   }, [open]);
 
+  const dispatch = (action: KidPickAction) => {
+    const step = kidPickStep(state, action);
+    setState(step.state);
+    if (step.commit) {
+      const pick = picks.find((p) => p.spot.id === step.commit);
+      if (pick) onChoose(pick);
+    }
+  };
+
   const close = () => {
-    setChosenId(null);
+    dispatch({ type: 'close' });
     onClose();
   };
+
+  const replacing = currentPlanName && selected && currentPlanName !== selected.spot.name ? currentPlanName : null;
 
   return (
     <dialog
       ref={ref}
       aria-labelledby={titleId}
       onClose={close}
-      className="m-0 h-dvh max-h-none w-screen max-w-none bg-[#f6f9ec] p-0 text-stone-900 dark:bg-[#0f1a14] dark:text-stone-100"
+      className="m-0 h-dvh max-h-none w-screen max-w-none bg-paper p-0 text-stone-900 dark:bg-ink dark:text-stone-50"
     >
       <div className="mx-auto flex min-h-full max-w-lg flex-col gap-4 p-5 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.25rem,env(safe-area-inset-bottom))]">
         <header className="flex items-center justify-between gap-3">
-          <h2 id={titleId} className="flex items-center gap-2 text-2xl font-extrabold text-emerald-900 dark:text-emerald-100">
-            <Dino className="h-14 w-14" />
-            {chosen ? '決定了！' : '想去哪裡？'}
-          </h2>
+          <div className="flex min-w-0 items-center gap-2">
+            <Flag className="h-12 w-12 shrink-0" />
+            <div className="min-w-0">
+              <h2 id={titleId} className="text-2xl font-black text-emerald-900 dark:text-emerald-50">
+                {state.confirmed ? '決定了！' : selected ? '就是這裡嗎？' : '換我決定！'}
+              </h2>
+              {!selected && <p className="text-base text-stone-700 dark:text-stone-300">想去哪裡放電？點一張</p>}
+            </div>
+          </div>
           <button
             type="button"
             onClick={close}
             aria-label="關閉"
-            className={`${buttonBase} min-w-11 border border-stone-300 text-lg dark:border-stone-700`}
+            className={`${buttonBase} min-w-11 border border-stone-300 bg-white text-lg dark:border-stone-700 dark:bg-card-dark`}
           >
             ×
           </button>
         </header>
 
-        {chosen ? (
+        {selected ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
-            <TypeIcon type={chosen.spot.types[0] ?? 'park'} className="h-40 w-40" />
-            <p className="text-3xl leading-snug font-extrabold">我們去{chosen.spot.name}！</p>
-            <p className="text-base text-stone-700 dark:text-stone-300">已經記成「這週要去」，關掉也還在。</p>
-            <div className="grid w-full grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={() => setChosenId(null)}
-                className={`${buttonBase} min-h-14 border border-stone-300 text-base dark:border-stone-700`}
-              >
-                再選一次
-              </button>
-              <a
-                href={directionsUrl(chosen.spot)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${buttonBase} min-h-14 bg-emerald-700 text-base text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950`}
-              >
-                導航
-              </a>
-            </div>
+            <SpotArt
+              name={selected.spot.name}
+              type={selected.spot.types[0] ?? 'park'}
+              image={selected.spot.image}
+              className="h-52 w-full rounded-[2rem]"
+              iconClassName="h-32 w-32"
+            />
+            <p className="text-3xl leading-snug font-black">我們去{selected.spot.name}！</p>
+
+            {state.confirmed ? (
+              <>
+                <p role="status" className="text-base text-stone-700 dark:text-stone-300">
+                  存好了，已經記成「這週放電計畫」，關掉也還在。
+                </p>
+                <div className="grid w-full grid-cols-2 gap-3">
+                  <button type="button" onClick={close} className={`${buttonBase} min-h-14 border border-stone-300 bg-white text-base dark:border-stone-700 dark:bg-card-dark`}>
+                    完成
+                  </button>
+                  <a
+                    href={directionsUrl(selected.spot)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${buttonBase} min-h-14 bg-emerald-700 text-base text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950`}
+                  >
+                    看路線
+                  </a>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="rounded-2xl bg-amber-50 px-4 py-3 text-base text-amber-950 ring-1 ring-amber-200 dark:bg-[#2f2614] dark:text-amber-100 dark:ring-amber-900">
+                  請爸爸媽媽確認，按了才會存下來。
+                  {replacing && (
+                    <>
+                      <br />
+                      會取代原本的「{replacing}」。
+                    </>
+                  )}
+                </p>
+                <div className="grid w-full grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => dispatch({ type: 'reselect' })}
+                    className={`${buttonBase} min-h-14 border border-stone-300 bg-white text-base dark:border-stone-700 dark:bg-card-dark`}
+                  >
+                    再選一次
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => dispatch({ type: 'confirm' })}
+                    className={`${buttonBase} min-h-14 bg-emerald-700 text-base text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950`}
+                  >
+                    確認這個地方
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         ) : picks.length === 0 ? (
           <p className="flex-1 text-center text-lg">這週沒有推薦的地方，請爸爸媽媽調整一下條件。</p>
@@ -98,17 +154,22 @@ export function KidPick({
                 <li key={p.spot.id} className="flex flex-1">
                   <button
                     type="button"
-                    onClick={() => {
-                      setChosenId(p.spot.id);
-                      onChoose(p);
-                    }}
-                    className={`flex min-h-36 w-full flex-1 items-center gap-4 rounded-[2rem] p-5 text-left shadow-md transition-transform focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:scale-95 ${TILE_COLORS[i % TILE_COLORS.length]}`}
+                    onClick={() => dispatch({ type: 'select', id: p.spot.id })}
+                    className={`flex min-h-44 w-full flex-1 flex-col overflow-hidden rounded-[2rem] bg-white text-left shadow-md ring-4 transition-transform focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:scale-[0.98] dark:bg-card-dark ${RINGS[i % RINGS.length]}`}
                   >
-                    <TypeIcon type={p.spot.types[0] ?? 'park'} className="h-24 w-24 shrink-0" />
-                    <span className="min-w-0">
-                      {p.spot.kid_label && <span className="block text-lg font-bold opacity-90">{p.spot.kid_label}</span>}
-                      <span className="block text-2xl leading-snug font-extrabold break-words">{p.spot.name}</span>
-                      <span className="mt-1 block text-base opacity-80">
+                    <SpotArt
+                      name={p.spot.name}
+                      type={p.spot.types[0] ?? 'park'}
+                      image={p.spot.image}
+                      className="min-h-24 w-full flex-1"
+                      iconClassName="h-20 w-20"
+                    />
+                    <span className="flex items-end justify-between gap-3 px-5 py-3">
+                      <span className="min-w-0">
+                        {p.spot.kid_label && <span className="block text-xl font-black text-emerald-800 dark:text-emerald-300">{p.spot.kid_label}</span>}
+                        <span className="block text-lg leading-snug font-bold break-words">{p.spot.name}</span>
+                      </span>
+                      <span className="shrink-0 text-base text-stone-600 dark:text-stone-400">
                         坐車約 {d.value} {d.unit}
                       </span>
                     </span>

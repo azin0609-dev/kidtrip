@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { type ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { ImportDialog, ReportDialog } from './components/Dialogs.tsx';
-import { Dino, DinoEgg } from './components/Dino.tsx';
+import { BrandMark, Bolt, SleepySun, TabIcon } from './components/Brand.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { FoodFiltersPanel, HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
@@ -114,7 +114,7 @@ export default function App() {
     const url = buildShareUrl(window.location.href, stored);
     if (typeof navigator.share === 'function') {
       try {
-        await navigator.share({ title: '這週去哪玩', text: '我的收藏清單', url });
+        await navigator.share({ title: '放電研究所', text: '我的收藏清單', url });
         return '已經打開分享選單。';
       } catch {
         // 使用者取消或不支援，改用複製
@@ -211,7 +211,7 @@ export default function App() {
   );
   const picks = round.picks;
 
-  // ── 這週要去 ──
+  // ── 這週放電計畫 ──
   const plan = isCurrentPlan(stored.plan, today) ? stored.plan : null;
   const planSpot = plan ? spots.find((s) => s.id === plan.spotId) : undefined;
   const planBackup = plan?.backupId ? (spots.find((s) => s.id === plan.backupId) ?? null) : null;
@@ -235,7 +235,7 @@ export default function App() {
     const text = `${slotLabelWithDate(today, plan.slot)}去${planSpot.name}${planBackup ? `，下雨改去${planBackup.name}` : ''}`;
     if (typeof navigator.share === 'function') {
       try {
-        await navigator.share({ title: '這週去哪玩', text, url });
+        await navigator.share({ title: '放電研究所：這週放電計畫', text, url });
         return '已經打開分享選單。';
       } catch {
         // 使用者取消或不支援，改用複製
@@ -312,25 +312,30 @@ export default function App() {
   const grid = 'grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3';
 
   return (
-    <div className="min-h-dvh bg-[#f6f9ec] text-stone-900 dark:bg-[#0f1a14] dark:text-stone-100">
-      <header className="sticky top-0 z-10 border-b pt-[env(safe-area-inset-top)] border-stone-200 bg-[#f6f9ec]/95 backdrop-blur dark:border-emerald-950 dark:bg-[#0f1a14]/95">
-        <div className="mx-auto max-w-6xl px-4 pt-4">
+    <div className="relative min-h-dvh text-stone-900 dark:text-stone-50">
+      <div className="app-backdrop" aria-hidden="true" />
+      <header className="sticky top-0 z-10 border-b border-emerald-100/70 bg-paper/80 pt-[env(safe-area-inset-top)] backdrop-blur-md dark:border-emerald-950 dark:bg-ink/80">
+        <div className="mx-auto max-w-6xl px-4 py-3 md:pb-0">
           <div className="flex items-center justify-between gap-3">
-            <h1 className="flex min-w-0 items-center gap-1.5 text-xl font-extrabold tracking-wide text-emerald-900 dark:text-emerald-100">
-              <Dino className="h-10 w-10 shrink-0" />
-              <span className="truncate">這週去哪玩</span>
+            <h1 className="flex min-w-0 items-center gap-2">
+              <BrandMark className="h-10 w-10 shrink-0" />
+              <span className="min-w-0">
+                <span className="block truncate text-xl leading-tight font-black tracking-wide text-emerald-900 dark:text-emerald-50">放電研究所</span>
+                <span className="block truncate text-[11px] leading-tight text-stone-600 dark:text-stone-400">孩子負責放電，我們負責找地方。</span>
+              </span>
             </h1>
             <button
               type="button"
               onClick={() => setSettingsOpen(true)}
               aria-label={`設定，目前從${origin.label}出發`}
-              className={`${buttonBase} min-w-0 border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`}
+              className={`${buttonBase} min-w-0 shrink-0 border border-emerald-200 bg-white/90 text-emerald-900 hover:bg-emerald-50 dark:border-emerald-800 dark:bg-card-dark dark:text-emerald-100 dark:hover:bg-card-dark-2`}
             >
-              <span className="truncate">從{originShort}出發</span>
+              <span className="truncate">{originShort}出發</span>
               <span aria-hidden="true">›</span>
             </button>
           </div>
-          <nav aria-label="分頁" className="mt-2 flex">
+          {/* 桌面：分頁放在頂端。 */}
+          <nav aria-label="分頁" className="mt-2 hidden md:flex">
             {TABS.map((t) => (
               <a
                 key={t.id}
@@ -340,21 +345,56 @@ export default function App() {
                   e.preventDefault();
                   goTab(t.id);
                 }}
-                className={`flex min-h-11 flex-1 items-center justify-center border-b-2 text-sm font-medium focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-emerald-600 sm:flex-none sm:px-5 ${
+                className={`flex min-h-11 items-center gap-1.5 border-b-2 px-5 text-sm font-bold focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-emerald-600 ${
                   tab === t.id
                     ? 'border-emerald-700 text-emerald-800 dark:border-emerald-400 dark:text-emerald-300'
                     : 'border-transparent text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100'
                 }`}
               >
+                <TabIcon tab={t.id} className="h-5 w-5" />
                 {t.label}
-                {t.id === 'favs' && stored.fav.length > 0 && <span className="ml-1 text-xs">({stored.fav.length})</span>}
+                {t.id === 'favs' && stored.fav.length > 0 && <span className="text-xs font-normal">({stored.fav.length})</span>}
               </a>
             ))}
           </nav>
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 pt-4">
+      {/* 手機：分頁固定在底部，大拇指好按。 */}
+      <nav
+        aria-label="分頁"
+        className="fixed inset-x-0 bottom-0 z-10 flex border-t border-emerald-100 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden dark:border-emerald-950 dark:bg-ink/95"
+      >
+        {TABS.map((t) => (
+          <a
+            key={t.id}
+            href={`#${t.id}`}
+            aria-current={tab === t.id ? 'page' : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              goTab(t.id);
+              window.scrollTo({ top: 0 });
+            }}
+            className={`relative flex h-16 flex-1 flex-col items-center justify-center gap-0.5 text-xs font-bold focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-emerald-600 ${
+              tab === t.id ? 'text-emerald-800 dark:text-emerald-300' : 'text-stone-600 dark:text-stone-400'
+            }`}
+          >
+            <span
+              className={`flex h-8 w-14 items-center justify-center rounded-full ${tab === t.id ? 'bg-emerald-100 dark:bg-emerald-950' : ''}`}
+            >
+              <TabIcon tab={t.id} className="h-5 w-5" />
+            </span>
+            {t.label}
+            {t.id === 'favs' && stored.fav.length > 0 && (
+              <span className="absolute top-1.5 right-[calc(50%-1.6rem)] min-w-5 rounded-full bg-coral-400 px-1 text-center text-[10px] leading-5 text-stone-950">
+                {stored.fav.length}
+              </span>
+            )}
+          </a>
+        ))}
+      </nav>
+
+      <main className="relative mx-auto max-w-6xl px-4 pt-4">
         {tab === 'spots' && (
           <>
             {incomingPlan && incomingSpot && (
@@ -427,7 +467,7 @@ export default function App() {
               renderFull={(p) => renderSpot(p.spot)}
             />
             <details
-              className="group rounded-3xl bg-white p-4 ring-1 ring-emerald-100 dark:bg-[#16241c] dark:ring-emerald-950"
+              className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950"
               open={spotFiltersActive || undefined}
             >
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-lg text-lg font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 [&::-webkit-details-marker]:hidden">
@@ -448,7 +488,7 @@ export default function App() {
                 onClick={doPick}
                 className={`${buttonBase} bg-amber-400 text-stone-950 hover:bg-amber-300`}
               >
-                <DinoEgg className="h-5 w-5" />
+                <Bolt className="h-5 w-5" />
                 幫我抽一個
               </button>
             </div>
@@ -462,8 +502,8 @@ export default function App() {
                   pickedSpot && (
                     <>
                       <p className="mb-2 flex items-center gap-1 text-sm font-bold">
-                        <Dino className="h-8 w-8" />
-                        小恐龍選好了，這週就去這裡吧
+                        <Bolt className="h-5 w-5 text-amber-400" />
+                        抽好了，這週就去這裡放電吧
                       </p>
                       {renderSpot(pickedSpot, true)}
                     </>
@@ -480,11 +520,14 @@ export default function App() {
 
         {tab === 'hotels' && (
           <>
-            <p className="mb-4 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950/60 dark:text-amber-100">
+            <TabIntro title="住一晚" text="親子飯店和民宿，玩累了就住下來。" />
+            <p className="mb-3 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2f2614] dark:text-amber-100 dark:ring-amber-900">
               住宿資料還沒用 Google 地圖逐間確認，設施和房價是粗估。看到喜歡的，訂房前先看官方網站或訂房網站；發現不對請按卡片上的「資料有誤？」。
             </p>
-            <HotelFiltersPanel value={hotelFilters} onChange={setHotelFilters} counties={hotelCounties} />
-            <p className="mt-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
+            <FilterBox active={JSON.stringify(hotelFilters) !== JSON.stringify(DEFAULT_HOTEL_FILTERS)}>
+              <HotelFiltersPanel value={hotelFilters} onChange={setHotelFilters} counties={hotelCounties} />
+            </FilterBox>
+            <p className="mt-4 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
               共 {hotelResults.length} 間，依車程由近到遠
             </p>
             <div className={`mt-4 ${grid}`}>{hotelResults.map(renderHotel)}</div>
@@ -494,8 +537,11 @@ export default function App() {
 
         {tab === 'food' && (
           <>
-            <FoodFiltersPanel value={foodFilters} onChange={setFoodFilters} counties={foodCounties} />
-            <p className="mt-5 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
+            <TabIntro title="吃好料" text="有遊戲區、不怕小孩吵的親子餐廳。" />
+            <FilterBox active={JSON.stringify(foodFilters) !== JSON.stringify(DEFAULT_FOOD_FILTERS)}>
+              <FoodFiltersPanel value={foodFilters} onChange={setFoodFilters} counties={foodCounties} />
+            </FilterBox>
+            <p className="mt-4 text-sm text-stone-600 dark:text-stone-400" aria-live="polite">
               共 {foodResults.length} 間，依車程由近到遠
             </p>
             <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
@@ -508,11 +554,8 @@ export default function App() {
 
         {tab === 'trips' && (
           <>
-            <h2 className="text-lg font-extrabold text-emerald-900 dark:text-emerald-100">帶小孩去東北亞玩</h2>
-            <p className="mt-1 text-sm text-stone-700 dark:text-stone-300">
-              日本、韓國、香港、上海的親子行程骨架：每天只排兩三個點，留時間午睡。
-            </p>
-            <p className="mt-2 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950/60 dark:text-amber-100">
+            <TabIntro title="飛出國" text="日本、韓國、香港、上海的親子行程骨架：每天只排兩三個點，留時間午睡。" />
+            <p className="rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2f2614] dark:text-amber-100 dark:ring-amber-900">
               這些是「參考骨架」，景點的營業時間、票價、預約方式還沒逐項確認。真的要去時，請把那一套行程的每個點再查一次官方資訊。
             </p>
             <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="篩選行程">
@@ -540,7 +583,7 @@ export default function App() {
               <Memories items={listMemories(stored.memos ?? {}, stored.beenAt ?? {}, nameOf)} />
               <YearReviewCard review={yearReview(spots, stored.beenAt ?? {}, stored.ratings ?? {}, Number(today.slice(0, 4)), minsOf)} />
             </div>
-            <h2 className="mb-3 text-lg font-bold">我的收藏</h2>
+            <h2 className="mb-3 text-lg font-black text-emerald-900 dark:text-emerald-50">我的收藏</h2>
             {favSpots.length === 0 && favHotels.length === 0 && favFood.length === 0 && favTrips.length === 0 && (
               <EmptyState text="還沒有收藏。看到喜歡的景點、住宿或餐廳，按「收藏」就會出現在這裡。" />
             )}
@@ -616,7 +659,13 @@ export default function App() {
         }}
         onDecline={() => setIncoming(null)}
       />
-      <KidPick open={kidPickOpen} picks={picks} onClose={() => setKidPickOpen(false)} onChoose={(p) => choosePlan(p.spot)} />
+      <KidPick
+        open={kidPickOpen}
+        picks={picks}
+        currentPlanName={planSpot?.name ?? null}
+        onClose={() => setKidPickOpen(false)}
+        onChoose={(p) => choosePlan(p.spot)}
+      />
       <UpdatePrompt />
     </div>
   );
@@ -627,10 +676,39 @@ function tripHasDisney(trip: { itinerary: { stops: { name: string }[] }[] }): bo
   return trip.itinerary.some((d) => d.stops.some((s) => s.name.includes('迪士尼')));
 }
 
+/** 分頁開頭的標題和一句說明。 */
+function TabIntro({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="mb-3 rounded-3xl bg-white/90 px-4 py-3 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950">
+      <h2 className="text-2xl font-black text-emerald-900 dark:text-emerald-50">{title}</h2>
+      <p className="text-sm text-stone-600 dark:text-stone-400">{text}</p>
+    </div>
+  );
+}
+
+/** 搜尋與篩選收成一塊，可以展開；有在用篩選時保持展開。 */
+function FilterBox({ active, children }: { active: boolean; children: ReactNode }) {
+  return (
+    <details
+      className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-emerald-100 backdrop-blur dark:bg-card-dark/90 dark:ring-emerald-950"
+      open={active || undefined}
+    >
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-lg font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 [&::-webkit-details-marker]:hidden">
+        <span>搜尋與篩選{active && <span className="ml-1 text-sm font-normal text-emerald-800 dark:text-emerald-300">（使用中）</span>}</span>
+        <span className="text-sm font-normal text-stone-600 dark:text-stone-400">
+          車程、縣市、特色
+          <span aria-hidden="true" className="ml-1 inline-block transition-transform group-open:rotate-90">›</span>
+        </span>
+      </summary>
+      <div className="mt-3">{children}</div>
+    </details>
+  );
+}
+
 function EmptyState({ text }: { text: string }) {
   return (
-    <div className="mt-6 flex flex-col items-center gap-2 rounded-3xl bg-emerald-50 p-6 text-center dark:bg-emerald-950/40">
-      <Dino mood="sleepy" className="h-24 w-24" />
+    <div className="mt-6 flex flex-col items-center gap-2 rounded-3xl bg-white/90 p-6 text-center ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+      <SleepySun className="h-16 w-24" />
       <p className="text-sm text-stone-700 dark:text-stone-300">{text}</p>
     </div>
   );

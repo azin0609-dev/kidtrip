@@ -17,7 +17,7 @@ export function UpdatePrompt() {
   return (
     <div
       role="status"
-      className="fixed inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+      className="fixed inset-x-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-20 flex justify-center px-4 pb-3 md:bottom-0 md:pb-[max(1rem,env(safe-area-inset-bottom))]"
     >
       <div className="flex w-full max-w-md items-center gap-2 rounded-2xl bg-stone-900 p-2 pl-4 text-white shadow-lg dark:bg-stone-100 dark:text-stone-900">
         <button

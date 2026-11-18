@@ -1,12 +1,14 @@
-import { Footprints } from './Dino.tsx';
+import { RouteLine } from './Brand.tsx';
 
 export function Footer({ verifiedOn, originLabel }: { verifiedOn: string | null; originLabel: string }) {
   return (
-    <footer className="mt-10 pt-2 pb-24 text-xs leading-relaxed text-stone-600 dark:border-stone-800 dark:text-stone-400">
-      <Footprints className="mb-3 h-6 w-44 text-emerald-300 dark:text-emerald-800" />
+    <footer className="mt-10 mb-28 rounded-3xl bg-white/85 p-4 text-xs leading-relaxed text-stone-600 ring-1 ring-emerald-100 backdrop-blur md:mb-24 dark:bg-card-dark/85 dark:text-stone-400 dark:ring-emerald-950">
+      <RouteLine className="mb-3 h-7 w-48 text-emerald-600 dark:text-emerald-400" />
+      <p className="mb-2 font-bold text-stone-700 dark:text-stone-300">放電研究所：孩子負責放電，我們負責找地方。</p>
       {verifiedOn && <p>資料整理日期：{verifiedOn}</p>}
       <p>開放時間與票價以官方公告為準。</p>
-      <p>車程是從「{originLabel}」出發的粗估，實際依路況而定。</p>
+      <p>車程是從「{originLabel}」出發的粗估，不是即時路況，以導航為準。</p>
+      <p>收藏、去過紀錄和行程只存在這支手機；分享連結是把資料帶過去，不會自動同步。</p>
       <p>
         座標資料：
         <a

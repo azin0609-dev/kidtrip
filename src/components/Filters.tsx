@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { FACILITIES, FOOD_TAGS, HOTEL_KINDS, HOTEL_TAGS, SPOT_TYPES } from '../data/enums.ts';
-import { DRIVE_OPTIONS, type FoodFilters, type HotelFilters, type SpotFilters, toggleInList } from '../lib/filter.ts';
+import { AGE_BANDS, DRIVE_OPTIONS, type FoodFilters, type HotelFilters, type SpotFilters, toggleInList } from '../lib/filter.ts';
 import { FACILITY_LABELS, FOOD_TAG_LABELS, HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, REGION_OPTIONS, TYPE_LABELS } from '../lib/labels.ts';
 import { Chip, ChipGroup, SearchBox } from './ui.tsx';
 
@@ -94,9 +94,19 @@ export function SpotFiltersPanel({
       <SearchBox
         value={value.query}
         onChange={(query) => onChange({ ...value, query })}
-        placeholder="搜尋名稱、城市、類型，例如：恐龍 台中"
+        placeholder="搜尋名稱、城市、類型，例如：牧場 台中"
       />
       <DriveChips value={value} onChange={onChange} />
+      <ChipGroup label="適合年齡（依資料的建議年齡）">
+        <Chip pressed={value.age === 'all'} onClick={() => onChange({ ...value, age: 'all' })}>
+          全部
+        </Chip>
+        {AGE_BANDS.map((b) => (
+          <Chip key={b.value} pressed={value.age === b.value} onClick={() => onChange({ ...value, age: b.value })}>
+            {b.label}
+          </Chip>
+        ))}
+      </ChipGroup>
       <CountyChips value={value} onChange={onChange} counties={counties} />
       <ChipGroup label="條件">
         {TOGGLES.map((t) => (

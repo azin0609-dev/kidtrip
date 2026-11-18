@@ -1,13 +1,13 @@
 import { useEffect, useId, useRef } from 'react';
 import { REPORT_KINDS } from '../lib/storage.ts';
-import { Dino } from './Dino.tsx';
+import { Flag } from './Brand.tsx';
 import { buttonBase } from './ui.tsx';
 
 const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:focus-visible:outline-emerald-400';
 const primary = `${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`;
 const ghost = `${buttonBase} border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`;
 const sheet =
-  'm-0 mt-auto w-full max-w-none rounded-t-3xl bg-[#f6f9ec] p-0 text-stone-900 backdrop:bg-black/50 sm:m-auto sm:max-w-md sm:rounded-3xl dark:bg-[#0f1a14] dark:text-stone-100';
+  'm-0 mt-auto w-full max-w-none rounded-t-3xl bg-paper p-0 text-stone-900 backdrop:bg-black/50 sm:m-auto sm:max-w-md sm:rounded-3xl dark:bg-ink dark:text-stone-100';
 
 function useDialog(open: boolean) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -118,7 +118,7 @@ export function ImportDialog({
   return (
     <dialog ref={ref} aria-labelledby={titleId} onClose={onDecline} className={sheet}>
       <div className="flex flex-col items-center gap-3 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] text-center">
-        <Dino className="h-20 w-20" />
+        <Flag className="h-16 w-16" />
         <h2 id={titleId} className="text-lg font-bold">
           收到一份收藏與紀錄
         </h2>

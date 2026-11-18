@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { makeHotel, makeSpot } from '../test/fixtures.ts';
 import { formatDrive, latestVerified, shortOriginLabel } from './format.ts';
-import { directionsUrl, googleMapsUrl, hotelPriceUrl, stripParens } from './links.ts';
+import { directionsUrl, googleMapsUrl, hotelPriceUrl, imageSrc, stripParens } from './links.ts';
+import { TABS } from './tabs.ts';
 import { tabFromHash } from './tabs.ts';
 
 describe('links', () => {
@@ -61,5 +62,25 @@ describe('tabFromHash', () => {
     ['#nope', 'spots'],
   ])('%s → %s', (hash, tab) => {
     expect(tabFromHash(hash)).toBe(tab);
+  });
+});
+
+describe('imageSrc', () => {
+  it('完整網址原樣使用', () => {
+    expect(imageSrc('https://example.org/a.jpg', '/kidtrip/')).toBe('https://example.org/a.jpg');
+  });
+  it('相對路徑加上部署子路徑，不假設在網域根目錄', () => {
+    expect(imageSrc('photos/spot-001.jpg', '/kidtrip/')).toBe('/kidtrip/photos/spot-001.jpg');
+    expect(imageSrc('/photos/spot-001.jpg', '/kidtrip')).toBe('/kidtrip/photos/spot-001.jpg');
+    expect(imageSrc('photos/a.jpg', '/')).toBe('/photos/a.jpg');
+  });
+});
+
+describe('分頁改名', () => {
+  it('只改顯示名稱，id 和 hash 不變', () => {
+    expect(TABS.map((t) => t.id)).toEqual(['spots', 'hotels', 'food', 'trips', 'favs']);
+    expect(TABS.map((t) => t.label)).toEqual(['去放電', '住一晚', '吃好料', '飛出國', '我的']);
+    expect(tabFromHash('#hotels')).toBe('hotels');
+    expect(tabFromHash('#/food')).toBe('food');
   });
 });

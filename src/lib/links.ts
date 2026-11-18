@@ -32,3 +32,9 @@ export function hotelPriceUrl(hotel: Pick<Hotel, 'name' | 'city'>): string {
   const params = new URLSearchParams({ q: `${hotel.name} ${stripParens(hotel.city)}` });
   return `https://www.google.com/travel/search?${params.toString()}`;
 }
+
+/** 景點照片的網址：完整網址原樣使用；相對路徑放在 public/ 底下，要加上部署的子路徑（例如 /kidtrip/）。 */
+export function imageSrc(url: string, base: string): string {
+  if (/^https?:\/\//.test(url)) return url;
+  return `${base.endsWith('/') ? base : `${base}/`}${url.replace(/^\/+/, '')}`;
+}

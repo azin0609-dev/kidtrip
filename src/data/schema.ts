@@ -43,6 +43,21 @@ const minsFromLinkou = z
   .int({ message: '必須是正整數' })
   .positive({ message: '必須是正整數' });
 
+/**
+ * 選填：主圖。只能放自己拍的、官方明確允許、或有授權（例如 CC 授權）的照片，
+ * 而且一定要是這個地方本身，不可以拿別處的照片代替。沒有就不要填，畫面會用類型插圖。
+ * url 可以是完整網址，或 repo 裡 public/ 底下的相對路徑（例如 photos/spot-001.jpg）。
+ */
+export const imageSchema = z.object({
+  url: nonEmpty,
+  /** 拍攝者或來源，例如「我們家」「新北市政府」。 */
+  credit: nonEmpty,
+  /** 授權，例如「自己拍的」「CC BY-SA 4.0」「官方授權使用」。 */
+  license: nonEmpty,
+  /** 選填：原始出處網址。 */
+  source_url: z.string().url().optional(),
+});
+
 export const badgeSchema = z.object({
   kind: z.enum(BADGE_KINDS),
   label: nonEmpty,
@@ -99,6 +114,7 @@ export const spotSchema = z.object({
   lng: coordinate,
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點，不是實際位置。 */
+  image: imageSchema.optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,
@@ -120,6 +136,7 @@ export const hotelSchema = z.object({
   lng: coordinate,
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點。 */
+  image: imageSchema.optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,
@@ -151,6 +168,7 @@ export const restaurantSchema = z.object({
   lng: coordinate,
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點。 */
+  image: imageSchema.optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,
@@ -208,6 +226,7 @@ export const originsSchema = z.object({
 });
 
 export type Badge = z.infer<typeof badgeSchema>;
+export type PlaceImage = z.infer<typeof imageSchema>;
 export type Spot = z.infer<typeof spotSchema>;
 export type Hotel = z.infer<typeof hotelSchema>;
 export type Restaurant = z.infer<typeof restaurantSchema>;

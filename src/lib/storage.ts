@@ -116,7 +116,7 @@ export interface StoredState {
   reports?: StoredReport[];
   /** 推薦區記住的條件：單程最多幾分鐘、帶不帶推車。 */
   prefs?: { maxDrive?: number; stroller?: boolean };
-  /** 「這週要去」的行程；過了那一週就不再顯示。 */
+  /** 「這週放電計畫」的行程；過了那一週就不再顯示。 */
   plan?: WeekPlan;
   /** 去過之後寫的一句回憶：id → 文字（最多 200 字）。只存本機，分享連結不會帶。 */
   memos?: Record<string, string>;

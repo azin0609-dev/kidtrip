@@ -1,4 +1,4 @@
-/** 「這週要去」：週四選好的行程，留到週末還找得到，也可以傳給另一半。純函式。 */
+/** 「這週放電計畫」：週四選好的行程，留到週末還找得到，也可以傳給另一半。純函式。 */
 import { isoWeek } from './recommend.ts';
 import { type Slot, isSlot } from './weather.ts';
 

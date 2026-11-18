@@ -116,9 +116,9 @@ describe('集章護照', () => {
     expect(passportProgress(spots, ['spot-003'], isOpen)[0]).toMatchObject({ total: 3 });
   });
   it('稱號', () => {
-    expect(passportTitle(0)).toBe('恐龍蛋');
-    expect(passportTitle(1)).toBe('剛破殼的小恐龍');
-    expect(passportTitle(10)).toBe('小恐龍冒險王');
+    expect(passportTitle(0)).toBe('準備出發');
+    expect(passportTitle(1)).toBe('放電新手');
+    expect(passportTitle(10)).toBe('放電隊長');
     expect(stampsToNextTitle(0)).toBe(1);
     expect(stampsToNextTitle(4)).toBe(6);
     expect(stampsToNextTitle(60)).toBeNull();

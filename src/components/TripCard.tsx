@@ -6,7 +6,7 @@ const focus = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visi
 
 export function TripCard({ trip, isFav, onToggleFav }: { trip: Trip; isFav: boolean; onToggleFav: () => void }) {
   return (
-    <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-[#16241c] dark:ring-emerald-950">
+    <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-lg leading-snug font-bold break-words">{trip.title}</h3>

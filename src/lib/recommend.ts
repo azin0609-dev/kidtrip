@@ -57,9 +57,9 @@ export interface RecommendContext {
 export type PickRole = 'best' | 'nearest' | 'backup' | 'other';
 
 export const ROLE_LABELS: Record<PickRole, string> = {
-  best: '最適合這次',
-  nearest: '車程最短',
-  backup: '雨天備案',
+  best: '本週首選',
+  nearest: '最近最好玩',
+  backup: '下雨不掃興',
   other: '再一個選擇',
 };
 

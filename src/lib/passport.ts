@@ -1,4 +1,4 @@
-/** 恐龍集章護照與年度回顧。純函式。 */
+/** 放電護照（集章）與年度回顧。純函式。 */
 import type { Region, Spot, SpotType } from '../data/schema.ts';
 import type { Ratings } from './ratings.ts';
 
@@ -32,12 +32,12 @@ export function passportProgress(
 
 /** 集章稱號：依總共去過幾個地方。 */
 export function passportTitle(count: number): string {
-  if (count >= 50) return '恐龍大探險家';
-  if (count >= 25) return '恐龍探險家';
-  if (count >= 10) return '小恐龍冒險王';
-  if (count >= 3) return '小恐龍出發了';
-  if (count >= 1) return '剛破殼的小恐龍';
-  return '恐龍蛋';
+  if (count >= 50) return '放電研究員';
+  if (count >= 25) return '放電探險家';
+  if (count >= 10) return '放電隊長';
+  if (count >= 3) return '放電小隊';
+  if (count >= 1) return '放電新手';
+  return '準備出發';
 }
 
 /** 離下一個稱號還差幾個章；已經是最高級回傳 null。 */

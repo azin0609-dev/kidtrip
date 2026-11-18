@@ -1,1 +1,117 @@
 @import 'tailwindcss';
+
+/*
+ * 放電研究所的色彩：直接覆蓋 Tailwind 的 emerald、stone、amber，
+ * 既有元件不用一個一個改 class，就會換成新的品牌色。
+ * - emerald：森林綠主色。700 = 品牌主色 #176B57；300、400 給深色模式當文字和按鈕（比較亮）。
+ * - stone：帶一點綠的中性色。900 = 主要文字 #173C32、600 = 次要文字 #536B61。
+ * - amber：暖黃點綴，400 = #F3C66D。
+ * - coral、sky：少量點綴。
+ */
+@theme {
+  --font-sans: 'Noto Sans TC', 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', system-ui, sans-serif;
+
+  --color-emerald-50: #eff8f3;
+  --color-emerald-100: #d9f0e4;
+  --color-emerald-200: #b8e3cd;
+  --color-emerald-300: #b8edd2;
+  --color-emerald-400: #9de3be;
+  --color-emerald-500: #2e8b6e;
+  --color-emerald-600: #1f7a61;
+  --color-emerald-700: #176b57;
+  --color-emerald-800: #12574a;
+  --color-emerald-900: #173c32;
+  --color-emerald-950: #10291f;
+
+  --color-stone-50: #f5faf4;
+  --color-stone-100: #eaf1ec;
+  --color-stone-200: #dbe5df;
+  --color-stone-300: #c3d1c9;
+  --color-stone-400: #9db0a6;
+  --color-stone-500: #6e847a;
+  --color-stone-600: #536b61;
+  --color-stone-700: #3e5a50;
+  --color-stone-800: #26453a;
+  --color-stone-900: #173c32;
+  --color-stone-950: #0b1510;
+
+  --color-amber-300: #f7d690;
+  --color-amber-400: #f3c66d;
+
+  --color-coral-100: #fde6dd;
+  --color-coral-300: #f4b9a4;
+  --color-coral-400: #ef9e83;
+  --color-coral-900: #6b2a17;
+
+  --color-paper: #f7f9f3;
+  --color-ink: #0f1a14;
+  --color-card-dark: #182a21;
+  --color-card-dark-2: #1b3428;
+}
+
+/* 背板：固定在最底層的裝飾，不接收點擊，螢幕閱讀器也不會讀到。 */
+.app-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--color-paper);
+  background-image: url('./assets/branding/bg-light.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* 手機有底部分頁列：背板底邊對齊分頁列上緣，山丘和小車不會被擋住。 */
+@media (max-width: 767.98px) {
+  .app-backdrop {
+    bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+}
+
+/*
+ * 寬螢幕不把 9:16 圖拉伸：圖片高度貼齊、靠右，左緣用漸層淡出，
+ * 其餘用同色底延伸，看不出接縫。
+ */
+@media (min-width: 768px) {
+  .app-backdrop {
+    background-image: none;
+  }
+  .app-backdrop::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(100%, calc(100dvh * 0.5625));
+    background-image: url('./assets/branding/bg-light.svg');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: right bottom;
+    mask-image: linear-gradient(to right, transparent, #000 35%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .app-backdrop {
+    background-color: var(--color-ink);
+    background-image: url('./assets/branding/bg-dark.svg');
+  }
+}
+@media (prefers-color-scheme: dark) and (min-width: 768px) {
+  .app-backdrop {
+    background-image: none;
+  }
+  .app-backdrop::after {
+    background-image: url('./assets/branding/bg-dark.svg');
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-ink);
+  }
+}

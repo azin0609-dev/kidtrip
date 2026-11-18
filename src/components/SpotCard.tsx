@@ -8,6 +8,7 @@ import { VERIFIED_SOURCE_LABELS } from '../lib/labels.ts';
 import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
 import { type Nap, napPlan, packingList } from '../lib/plan.ts';
 import { RATING_TAGS, RATING_TAG_LABELS, type Rating, type RatingTag } from '../lib/ratings.ts';
+import { PlacePhoto } from './SpotArt.tsx';
 import { Tag, buttonBase } from './ui.tsx';
 
 export interface SpotCardProps {
@@ -79,10 +80,11 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
   const packing = packingList(spot, Number(today.slice(5, 7)));
   return (
     <article
-      className={`flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 dark:bg-[#16241c] ${
+      className={`flex min-w-0 flex-col gap-3 overflow-hidden rounded-3xl bg-white p-4 shadow-sm ring-1 dark:bg-card-dark ${
         highlight ? 'ring-2 ring-emerald-600 dark:ring-emerald-400' : 'ring-emerald-100 dark:ring-emerald-950'
       }`}
     >
+      <PlacePhoto name={spot.name} image={spot.image} />
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-lg leading-snug font-bold break-words">{spot.name}</h3>
@@ -301,7 +303,7 @@ export function SpotCard({ spot, today, mins, originLabel, nearHotels, nearFood 
         onClick={onReport}
         className="-mt-1 inline-flex min-h-11 items-center self-start rounded-lg text-xs text-stone-600 underline underline-offset-2 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-stone-400 dark:hover:text-stone-100"
       >
-        資料有誤？告訴小恐龍
+        資料有誤？告訴研究所
       </button>
     </article>
   );

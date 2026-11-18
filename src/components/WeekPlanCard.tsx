@@ -3,7 +3,7 @@ import type { Spot } from '../data/schema.ts';
 import { formatDrive } from '../lib/format.ts';
 import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
 import { type SlotWeather, formatSlotWeather } from '../lib/weather.ts';
-import { Dino } from './Dino.tsx';
+import { Flag } from './Brand.tsx';
 import { buttonBase } from './ui.tsx';
 
 const ghost = `${buttonBase} border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`;
@@ -25,7 +25,7 @@ export interface WeekPlanCardProps {
   onShare: () => Promise<string>;
 }
 
-/** 首頁置頂的「這週要去」：選好之後，週末打開還在。 */
+/** 首頁置頂的「這週放電計畫」：選好之後，週末打開還在（只存在這支手機）。 */
 export function WeekPlanCard({ spot, backup, when, mins, weather, napText, onSwapToBackup, onClear, onShare }: WeekPlanCardProps) {
   const [msg, setMsg] = useState('');
   const d = mins === null ? null : formatDrive(mins);
@@ -34,13 +34,13 @@ export function WeekPlanCard({ spot, backup, when, mins, weather, napText, onSwa
   return (
     <section
       aria-labelledby="weekplan-title"
-      className="mb-6 rounded-3xl bg-emerald-700 p-4 text-white shadow-md dark:bg-emerald-900"
+      className="mb-6 rounded-3xl bg-emerald-700 p-4 text-white shadow-md dark:bg-card-dark-2 dark:ring-1 dark:ring-emerald-800"
     >
       <div className="flex items-center gap-2">
-        <Dino className="h-12 w-12 shrink-0" />
+        <Flag className="h-12 w-12 shrink-0" />
         <div className="min-w-0">
           <h2 id="weekplan-title" className="text-sm font-bold text-emerald-100">
-            這週要去・{when}
+            這週放電計畫・{when}
           </h2>
           <p className="text-xl leading-snug font-extrabold break-words">{spot.name}</p>
         </div>
@@ -49,12 +49,12 @@ export function WeekPlanCard({ spot, backup, when, mins, weather, napText, onSwa
       <ul className="mt-3 flex flex-col gap-1 text-sm text-emerald-50">
         <li>
           {spot.city}
-          {d && `・車程約 ${d.value} ${d.unit}`}
+          {d && `・車程約 ${d.value} ${d.unit}（粗估，以導航為準）`}
         </li>
         {weather && <li>目的地那時候：{formatSlotWeather(weather) || '還沒有預報'}</li>}
         {napText && <li>{napText}</li>}
         {spot.open_note && <li className="font-bold text-amber-200">先知道：{spot.open_note}</li>}
-        {backup && <li>雨天備案：{backup.name}</li>}
+        {backup && <li>下雨不掃興：{backup.name}</li>}
       </ul>
 
       {rainRisk && (

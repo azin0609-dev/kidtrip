@@ -3,6 +3,7 @@ import { freshnessNote } from '../lib/freshness.ts';
 import { HOTEL_KIND_LABELS, HOTEL_TAG_LABELS, PRICE_LABELS } from '../lib/labels.ts';
 import { directionsUrl, hotelPriceUrl } from '../lib/links.ts';
 import { DriveBadge } from './SpotCard.tsx';
+import { PlacePhoto } from './SpotArt.tsx';
 import { Tag, buttonBase } from './ui.tsx';
 
 export interface HotelCardProps {
@@ -18,7 +19,8 @@ export interface HotelCardProps {
 
 export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, onToggleFav, onReport }: HotelCardProps) {
   return (
-    <article className="flex min-w-0 flex-col gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-stone-200 dark:bg-[#16241c] dark:ring-stone-800">
+    <article className="flex min-w-0 flex-col gap-3 overflow-hidden rounded-3xl bg-white p-4 shadow-sm ring-1 ring-emerald-100 dark:bg-card-dark dark:ring-emerald-950">
+      <PlacePhoto name={hotel.name} image={hotel.image} />
       <header className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="text-lg leading-snug font-bold break-words">{hotel.name}</h3>
@@ -90,7 +92,7 @@ export function HotelCard({ hotel, today, mins, originLabel, nearSpots, isFav, o
         onClick={onReport}
         className="-mt-1 inline-flex min-h-11 items-center self-start rounded-lg text-xs text-stone-600 underline underline-offset-2 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 dark:text-stone-400 dark:hover:text-stone-100"
       >
-        資料有誤？告訴小恐龍
+        資料有誤？告訴研究所
       </button>
     </article>
   );

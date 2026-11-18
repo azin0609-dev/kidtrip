@@ -13,8 +13,27 @@ export const DRIVE_OPTIONS: { value: DriveFilter; label: string }[] = [
   { value: 'overnight', label: '要住一晚' },
 ];
 
+/** 年齡捷徑：0–2、3–5、6–8、9–12 歲。 */
+export type AgeBand = '0-2' | '3-5' | '6-8' | '9-12';
+export const AGE_BANDS: { value: AgeBand; label: string; range: readonly [number, number] }[] = [
+  { value: '0-2', label: '0–2 歲', range: [0, 2] },
+  { value: '3-5', label: '3–5 歲', range: [3, 5] },
+  { value: '6-8', label: '6–8 歲', range: [6, 8] },
+  { value: '9-12', label: '9–12 歲', range: [9, 12] },
+];
+
+/** 景點的建議年齡（age_best）和年齡捷徑有重疊才算適合；沒有建議年齡的不顯示，不替它猜。 */
+export function matchesAge(ageBest: readonly [number, number] | undefined, band: AgeBand | 'all'): boolean {
+  if (band === 'all') return true;
+  if (!ageBest) return false;
+  const range = AGE_BANDS.find((b) => b.value === band)?.range;
+  return !!range && ageBest[0] <= range[1] && ageBest[1] >= range[0];
+}
+
 export interface SpotFilters {
   drive: DriveFilter;
+  /** 年齡捷徑，'all' 是不限。 */
+  age: AgeBand | 'all';
   region: Region | 'all';
   /** 縣市（例如「宜蘭縣」），'all' 是不限。 */
   county: string;
@@ -49,6 +68,7 @@ export const DEFAULT_FOOD_FILTERS: FoodFilters = { drive: 'all', county: 'all', 
 
 export const DEFAULT_SPOT_FILTERS: SpotFilters = {
   drive: 'all',
+  age: 'all',
   region: 'all',
   county: 'all',
   rainOk: false,
@@ -168,6 +188,7 @@ export function filterSpots(
     (s) =>
       isSpotVisible(s, ctx.today) &&
       matchesDriveOrUnknown(minsOf(s), filters.drive) &&
+      matchesAge(s.age_best, filters.age) &&
       (filters.region === 'all' || s.region === filters.region) &&
       (filters.county === 'all' || countyOf(s.city) === filters.county) &&
       (!filters.rainOk || s.env === 'in' || s.env === 'semi') &&

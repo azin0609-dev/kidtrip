@@ -1,9 +1,7 @@
 import type { SpotType } from '../data/schema.ts';
-import { Dino } from './Dino.tsx';
 
-/** 景點類型的小圖示（自己畫的 SVG，給小孩看的大圖模式和集章用）。純裝飾。 */
+/** 景點類型的小圖示（自己畫的 SVG，給「換我決定！」、推薦卡和集章用）。純裝飾。 */
 export function TypeIcon({ type, className = '' }: { type: SpotType; className?: string }) {
-  if (type === 'dino') return <Dino className={className} />;
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true" focusable="false">
       {ICONS[type]}
@@ -13,7 +11,18 @@ export function TypeIcon({ type, className = '' }: { type: SpotType; className?:
 
 const INK = '#1f3b2a';
 
-const ICONS: Record<Exclude<SpotType, 'dino'>, React.ReactNode> = {
+const ICONS: Record<SpotType, React.ReactNode> = {
+  // 恐龍主題的景點（恐龍展、化石館）用長頸龍剪影，只代表景點類型，不是品牌圖。
+  dino: (
+    <>
+      <path
+        d="M6 34 C6 27 12 23 20 23 C24 23 27 21 29 17 C31 12 33 7 37 6 C40 5.5 42 7 41 9 C40 10.5 38 10 37 11 C35 14 34 19 33 23 C38 25 41 29 44 33 C40 32 37 31 34 32 L34 41 L29 41 L29 34 L19 34 L19 41 L14 41 L14 34 C10 35 7 36 6 34z"
+        fill="#2e8b6e"
+      />
+      <circle cx="38.5" cy="8.5" r="1.1" fill="#fff" />
+      <path d="M20 26 h9" stroke="#9de3be" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
   park: (
     <>
       <rect x="21" y="28" width="6" height="14" rx="2" fill="#a16207" />
