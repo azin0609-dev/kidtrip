@@ -24,11 +24,14 @@
     "crowd_tip": "假日傍晚人多，早上比較空",
     "kid_label": "捷運車廂溜滑梯",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "地址"
+        "開放時間",
+        "公共廁所",
+        "無障礙入口"
       ],
-      "source": "blog"
+      "source": "blog",
+      "note": "Google 地圖：林口樂活公園（捷運主題公園）"
     },
     "lat": 25.066751,
     "lng": 121.374879,
@@ -39,7 +42,26 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園、24 小時開放"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "24 小時開放、免費"
   },
   {
     "id": "spot-002",
@@ -585,11 +607,13 @@
     "kid_label": "沙坑和玩具",
     "official_url": "https://www.435.culture.ntpc.gov.tw/",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "玩具博物館票價"
+        "開放時間",
+        "無障礙入口"
       ],
-      "source": "official"
+      "source": "blog",
+      "note": "Google 地圖：平日 09:00–17:00，週末到 18:00"
     },
     "image": {
       "url": "photos/spot-011.jpg",
@@ -607,7 +631,25 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：園區免費"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    }
   },
   {
     "id": "spot-012",
@@ -653,7 +695,37 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費停車場和路邊停車格（Google 地圖）"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "尿布台",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖：平日 09:30–17:00，週末到 18:00"
+    }
   },
   {
     "id": "spot-013",
@@ -788,7 +860,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 60,
     "tip": "兒童廳適合學齡前，展區很大，挑一兩區逛就好。",
-    "open_note": "週一休館",
+    "open_note": "09:00–17:00，週一休館",
     "age_best": [
       3,
       12
@@ -814,13 +886,42 @@
     "google_place_id": null,
     "needs_verify": [
       "mins_from_linkou",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費室內停車場（Google 地圖）"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "尿布台",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-016",
@@ -1766,7 +1867,7 @@
       "label": "11/24 開幕"
     },
     "opens_on": "2026-11-24",
-    "open_note": "試營運到 12/6，只收線上購票",
+    "open_note": "試營運 11/24～12/6 只收線上購票、沒有現場票；12/6 之後的票價和時間還沒公布",
     "age_best": [
       4,
       12
@@ -1785,8 +1886,8 @@
     "booking": {
       "reservation": "unknown",
       "advance_ticket": "yes",
-      "timed_entry": "unknown",
-      "source": "整理自景點說明（未查證）"
+      "timed_entry": "yes",
+      "source": "2026-11 報導：試營運只收線上購票、平日 08:30／09:30、假日 09:30／10:30 兩梯次入場（單一來源）"
     },
     "lat": 25.059334,
     "lng": 121.617955,
@@ -1794,13 +1895,36 @@
     "needs_verify": [
       "mins_from_linkou",
       "stroller_ok",
-      "open_note",
       "age_best",
       "stay_hours",
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "yes",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖、新聞",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "收費室內停車場（Google 地圖，南港 LaLaport）"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "購票方式",
+        "尿布台",
+        "哺乳室",
+        "洗手間"
+      ],
+      "source": "media",
+      "note": "Google 地圖與 2026-11 報導"
+    }
   },
   {
     "id": "spot-037",
@@ -1878,7 +2002,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "high",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18",
+      "parking_entrance": "有免費停車場和收費室內停車場（Google 地圖）"
+    },
+    "open_note": "每天 10:00–18:00；Google 地圖上名稱是「尚順育樂天地」，常常要排隊",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "營業時間",
+        "洗手間",
+        "無障礙入口",
+        "常要等候"
+      ],
+      "source": "blog",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "spot-039",
@@ -3870,7 +4025,35 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園、24 小時開放"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "24 小時開放、免費",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "開放時間",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖：林口區三民路 75 號；沒列廁所"
+    }
   },
   {
     "id": "spot-090",
@@ -3912,7 +4095,34 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "地址",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖：林口區四維路 56 號；沒列廁所"
+    }
   },
   {
     "id": "spot-091",
@@ -3948,7 +4158,36 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園、24 小時開放"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "24 小時開放、免費",
+    "verified": {
+      "date": "2026-11-18",
+      "fields": [
+        "開放時間",
+        "公共廁所",
+        "無障礙入口"
+      ],
+      "source": "blog",
+      "note": "Google 地圖：林口區公園路 192 號"
+    }
   },
   {
     "id": "spot-092",
@@ -4220,12 +4459,14 @@
     ],
     "kid_label": "滾輪溜滑梯",
     "verified": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "fields": [
-        "地址",
-        "全天開放"
+        "開放時間",
+        "公共廁所",
+        "無障礙入口"
       ],
-      "source": "blog"
+      "source": "blog",
+      "note": "Google 地圖：桃園區慈文路 688 號"
     },
     "lat": 25.001709,
     "lng": 121.291442,
@@ -4237,7 +4478,26 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-18",
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "Google 地圖：免費公園、24 小時開放"
+    },
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-18"
+    },
+    "open_note": "24 小時開放、免費"
   },
   {
     "id": "spot-098",
