@@ -115,6 +115,8 @@ export const spotSchema = z.object({
   google_place_id: z.string().nullable(),
   /** 選填：true 代表座標只是所在鄉鎮（或縣市）的中心點，不是實際位置。 */
   image: imageSchema.optional(),
+  /** 選填：順路停一下的小站（例如主題超商），清單裡看得到，但不會被推薦成這週目的地。 */
+  stopover: z.boolean().optional(),
   coord_area: z.boolean().optional(),
   needs_verify: z.array(z.string()),
   last_verified: isoDate,

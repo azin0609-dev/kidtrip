@@ -1847,7 +1847,8 @@
     "region": "中",
     "types": [
       "theme",
-      "park"
+      "park",
+      "dino"
     ],
     "env": "out",
     "cost_tier": "$$",
@@ -3926,5 +3927,447 @@
       "facilities"
     ],
     "last_verified": "2026-11-16"
+  },
+  {
+    "id": "spot-100",
+    "name": "恐龍大復活 關渡探險樂園",
+    "city": "台北市北投區",
+    "region": "北",
+    "types": [
+      "dino",
+      "theme"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 30,
+    "tip": "關渡碼頭的限期戶外展，近 70 隻會動的擬真恐龍，可以騎恐龍、餵恐龍。",
+    "opens_on": "2026-01-17",
+    "closes_on": "2027-02-21",
+    "open_note": "限期展到 2027/2/21；音效很逼真，3 歲以下先看看會不會怕",
+    "age_best": [
+      3,
+      12
+    ],
+    "kid_label": "看會動的大恐龍",
+    "stay_hours": 2,
+    "lat": 25.132419,
+    "lng": 121.501379,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18",
+    "coord_area": true
+  },
+  {
+    "id": "spot-101",
+    "name": "北投福星公園",
+    "city": "台北市北投區",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "侏儸紀和恐龍島主題的特色公園，有火山造型的溜滑梯。",
+    "age_best": [
+      2,
+      10
+    ],
+    "kid_label": "恐龍島溜滑梯",
+    "stay_hours": 1.5,
+    "lat": 25.108996,
+    "lng": 121.512309,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-102",
+    "name": "鶯歌鳳鳴逗逗龍公園",
+    "city": "新北市鶯歌區",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "恐龍化石溜滑梯、三角龍地景、沙坑和攀爬網；可以順路去鶯歌陶瓷博物館。",
+    "age_best": [
+      2,
+      10
+    ],
+    "kid_label": "恐龍化石溜滑梯",
+    "stay_hours": 1.5,
+    "lat": 24.970524,
+    "lng": 121.331867,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-103",
+    "name": "板橋浮洲兒童遊戲場",
+    "city": "新北市板橋區",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 25,
+    "tip": "恐龍地景和恐龍腳印，有沙坑、溜滑梯和鞦韆，還看得到高鐵經過。",
+    "age_best": [
+      1,
+      8
+    ],
+    "kid_label": "找恐龍腳印、看高鐵",
+    "stay_hours": 1.5,
+    "lat": 25.00967,
+    "lng": 121.459099,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18",
+    "coord_area": true
+  },
+  {
+    "id": "spot-104",
+    "name": "中和員山公園恐龍園區",
+    "city": "新北市中和區",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 35,
+    "tip": "公園裡有一區恐龍園區，附近住的話可以順路去。",
+    "open_note": "找到的資料比較舊，恐龍設施還在不在，出發前先確認",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1,
+    "lat": 24.999397,
+    "lng": 121.49898,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18",
+    "coord_area": true
+  },
+  {
+    "id": "spot-105",
+    "name": "碇安公園",
+    "city": "基隆市",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 45,
+    "tip": "小公園裡藏著粉色和藍色的恐龍，人比較少。",
+    "open_note": "在基隆哪一區、怎麼停車還沒確認，出發前先用地圖查",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1,
+    "lat": 25.100195,
+    "lng": 121.755264,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-106",
+    "name": "溫州公園",
+    "city": "桃園市桃園區",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "有會轉彎的恐龍滑石子溜滑梯。",
+    "age_best": [
+      3,
+      10
+    ],
+    "kid_label": "恐龍滑石子溜滑梯",
+    "stay_hours": 1,
+    "lat": 25.007346,
+    "lng": 121.298297,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-107",
+    "name": "新富公園",
+    "city": "桃園市平鎮區",
+    "region": "北",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 30,
+    "tip": "恐龍主題的社區公園。",
+    "open_note": "有哪些恐龍設施還沒確認",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1,
+    "lat": 24.938661,
+    "lng": 121.217292,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-108",
+    "name": "7-ELEVEN 祥綸門市",
+    "city": "桃園市大園區",
+    "region": "北",
+    "types": [
+      "dino"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 20,
+    "tip": "恐龍主題的超商，免費看，順路拍照、買點心。",
+    "open_note": "是超商不是景點，適合順路停一下",
+    "age_best": [
+      1,
+      12
+    ],
+    "kid_label": "恐龍超商",
+    "stay_hours": 0.5,
+    "stopover": true,
+    "lat": 25.063889,
+    "lng": 121.195277,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18",
+    "coord_area": true
+  },
+  {
+    "id": "spot-109",
+    "name": "左鎮化石園區",
+    "city": "台南市左鎮區",
+    "region": "南",
+    "types": [
+      "museum",
+      "dino"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 220,
+    "tip": "台灣第一座化石主題博物館，可以看化石和古生物。",
+    "open_note": "每週二休館（以官方公告為準）；化石清修室只在週末下午開",
+    "age_best": [
+      3,
+      12
+    ],
+    "kid_label": "看化石",
+    "stay_hours": 2,
+    "lat": 23.062982,
+    "lng": 120.389616,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-110",
+    "name": "仁德恐龍公園",
+    "city": "台南市仁德區",
+    "region": "南",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 215,
+    "tip": "草地上有三角龍、暴龍、恐龍頭骨和一窩恐龍蛋，免門票。",
+    "age_best": [
+      1,
+      10
+    ],
+    "kid_label": "找恐龍蛋",
+    "stay_hours": 1,
+    "lat": 22.908418,
+    "lng": 120.262439,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18"
+  },
+  {
+    "id": "spot-111",
+    "name": "神秘恐龍公園（長谷鳳凰城）",
+    "city": "台南市",
+    "region": "南",
+    "types": [
+      "park",
+      "dino"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 215,
+    "tip": "藏在住宅社區裡的恐龍公園，侏儸紀氣氛很足。",
+    "open_note": "在住宅社區裡，能不能進去、在哪一區都還沒確認，請保持安靜",
+    "age_best": [
+      1,
+      10
+    ],
+    "stay_hours": 1,
+    "lat": 22.991235,
+    "lng": 120.184982,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "env",
+      "cost_tier",
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-18",
+    "coord_area": true
   }
 ]

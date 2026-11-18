@@ -78,6 +78,11 @@ describe('isoWeek / seed', () => {
 });
 
 describe('先判斷能不能成行', () => {
+  it('順路小站（主題超商之類）不推薦成目的地或雨備', () => {
+    expect(scoreSpot(makeSpot({ stopover: true, env: 'in' }), ctx())).toBeNull();
+    expect(scoreSpot(makeSpot({ stopover: true, env: 'in' }), ctx({ rainy: true }))).toBeNull();
+    expect(scoreSpot(makeSpot({ env: 'in' }), ctx())).not.toBeNull();
+  });
   it('已熄燈、還沒開幕不推', () => {
     expect(scoreSpot(makeSpot({ closes_on: '2026-11-19' }), ctx())).toBeNull();
     expect(scoreSpot(makeSpot({ opens_on: '2026-11-24' }), ctx())).toBeNull();

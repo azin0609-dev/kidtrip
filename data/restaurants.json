@@ -2274,5 +2274,30 @@
       "source": "google_maps"
     },
     "last_verified": "2026-11-18"
+  },
+  {
+    "id": "food-083",
+    "name": "SRC 北埔印象咖啡",
+    "city": "新竹縣北埔鄉",
+    "region": "北",
+    "cuisine": "咖啡",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 65,
+    "tip": "門口有一隻大型機器恐龍，小朋友會想拍照。",
+    "near_spot_ids": [],
+    "lat": 24.702003,
+    "lng": 121.056685,
+    "google_place_id": null,
+    "needs_verify": [
+      "name",
+      "city",
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-18",
+    "coord_area": true
   }
 ]

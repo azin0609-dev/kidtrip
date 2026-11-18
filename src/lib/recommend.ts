@@ -194,6 +194,8 @@ export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null 
   if (status.closed || status.notYetOpen) return null;
   // 太久沒確認的資料不推薦（可能已經改變）。
   if (freshness(spot, 'spot', ctx.today) === 'expired') return null;
+  // 順路停一下的小站（例如主題超商）留在清單裡，但不當成這週的目的地或雨備。
+  if (spot.stopover) return null;
 
   const myRating = ctx.ratings?.[spot.id];
   if (myRating && myRating.stars <= 2) return null;

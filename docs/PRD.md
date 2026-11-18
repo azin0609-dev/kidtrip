@@ -293,6 +293,8 @@
 | transit | string? | 選填。大眾運輸怎麼到。2026-11-17 新增 |
 | crowd_tip | string? | 選填。人潮、時段建議。2026-11-17 新增 |
 | best_months | number[]? | 選填。特別適合去的月份，推薦時加減分。2026-11-17 新增 |
+| stopover | boolean? | 選填。順路停一下的小站（例如主題超商），清單看得到，但不會被推薦成這週目的地或雨備。2026-11-18 新增 |
+| image | object? | 選填。主圖 `{ url, credit, license, source_url? }`，只放自己拍的、官方允許或有授權的照片，而且必須是這個地方本身；畫面會標示出處。景點、住宿、餐廳都可以用。2026-11-18 新增 |
 | lat / lng | number \| null | 由 geocode 腳本補上（OSM） |
 | google_place_id | string \| null | 只存 ID |
 | needs_verify | string[] | 待人工確認的欄位名稱 |
