@@ -3552,7 +3552,37 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：雲林縣崙背鄉"
+    }
   },
   {
     "id": "spot-052",
@@ -3594,7 +3624,38 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "尿布台",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義縣太保市"
+    }
   },
   {
     "id": "spot-053",
@@ -3628,7 +3689,36 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市東區；用的是整個嘉義公園的 place_id，KANO 遊戲場在園內"
+    }
   },
   {
     "id": "spot-054",
@@ -3661,7 +3751,37 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市東區；Google 上的名稱是「阿里山森林鐵路車庫園區」"
+    }
   },
   {
     "id": "spot-055",
@@ -3703,7 +3823,38 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口",
+        "建議預先購票"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市仁德區"
+    }
   },
   {
     "id": "spot-056",
@@ -3739,7 +3890,38 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口",
+        "建議預先購票"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市仁德區"
+    }
   },
   {
     "id": "spot-057",
@@ -3782,7 +3964,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口",
+        "建議預先購票"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市學甲區"
+    }
   },
   {
     "id": "spot-058",
@@ -3819,7 +4032,37 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市大內區"
+    }
   },
   {
     "id": "spot-059",
@@ -3861,7 +4104,36 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市中西區"
+    }
   },
   {
     "id": "spot-060",
@@ -3897,7 +4169,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "尿布台",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市新市區"
+    }
   },
   {
     "id": "spot-061",
