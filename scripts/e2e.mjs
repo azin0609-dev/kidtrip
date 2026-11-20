@@ -1,11 +1,13 @@
 // 端對端測試：用真的瀏覽器跑一遍主要流程。
 //
-// 用法（先建置，再跑）：
+// 第一次在新電腦上跑：
+//   npm ci                           （會裝 playwright 套件，devDependencies）
+//   npx playwright install chromium  （下載測試用的 Chromium，只要一次）
+// 之後每次：
 //   npm run build
 //   npm run e2e
 //
-// 需要 Playwright 和 Chromium（不放進 package.json，避免每個人 npm ci 都要下載瀏覽器）。
-// 本機沒有的話：npx playwright install chromium，或設定 PLAYWRIGHT_MODULE 指到已安裝的 playwright。
+// 已經有裝好的 playwright（例如別的專案）也可以用 PLAYWRIGHT_MODULE 指過去。
 // 時間固定在 2026-11-18（週三）晚上，天氣 API 一律擋掉，結果才穩定。
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';

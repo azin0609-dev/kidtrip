@@ -389,4 +389,4 @@ id（`food-001`）、name、city、region、cuisine（料理類型）、price_ti
   - 回場後下午玩不到 30 分，就不排回場，吃完直接回家。不寫餐廳距離、營業時間或座位。
 - 雙景點導航：Google Maps URLs（`/maps/dir/?api=1`），第一站是 `waypoints`、第二站是 `destination`，用名稱＋縣市和 place_id，不用座標，不帶出發地（用手機目前位置）。單站導航保留當備案。
 - 全日遊分享：網址同時帶舊的 `?plan=`（格式不變，舊版 App 照樣看得到第一站）和新的 `?day=`（版本 1，只有週次、時段、景點 id 和行程條件）。對方打開先預覽兩站和條件，時間表用對方手機的設定重排。`day` 跟 `plan` 對不上或看不懂就只用 `plan`。
-- 端對端測試：`npm run build && npm run e2e`（scripts/e2e.mjs，需要本機有 Playwright 和 Chromium，沒有放進 CI）。
+- 端對端測試：第一次先 `npm ci`、`npx playwright install chromium`，之後 `npm run build && npm run e2e`（scripts/e2e.mjs；playwright 已列在 devDependencies，沒有放進 CI）。
