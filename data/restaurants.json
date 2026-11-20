@@ -1056,7 +1056,7 @@
     "near_spot_ids": [],
     "lat": 22.992152,
     "lng": 120.205958,
-    "google_place_id": null,
+    "google_place_id": "ChIJyw6AZ4B2bjQRrqv0P1HGoVg",
     "needs_verify": [
       "cuisine",
       "mins_from_linkou",
@@ -1065,14 +1065,16 @@
     ],
     "coord_area": true,
     "verified": {
-      "date": "2026-11-18",
+      "date": "2026-11-20",
       "fields": [
-        "營業中",
-        "所在鄉鎮市區"
+        "營業狀態",
+        "名稱",
+        "所在區"
       ],
-      "source": "google_maps"
+      "source": "google_maps",
+      "note": "Google 地圖：台南市中西區"
     },
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-20"
   },
   {
     "id": "food-047",
