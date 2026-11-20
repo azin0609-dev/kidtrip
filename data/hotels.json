@@ -23,13 +23,23 @@
     ],
     "lat": 25.018583,
     "lng": 121.943818,
-    "google_place_id": null,
+    "google_place_id": "ChIJW_MRylVcXTQR8LTlfPoOIvg",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新北市貢寮區"
+    }
   },
   {
     "id": "hotel-002",
@@ -55,13 +65,23 @@
     ],
     "lat": 25.182307,
     "lng": 121.415333,
-    "google_place_id": null,
+    "google_place_id": "ChIJw3oG_y2lQjQRL1E_sBXBQCA",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新北市淡水區"
+    }
   },
   {
     "id": "hotel-003",
@@ -85,13 +105,23 @@
     ],
     "lat": 25.044675,
     "lng": 121.522555,
-    "google_place_id": null,
+    "google_place_id": "ChIJJVBTsHGpQjQRSW5Eeq6-HI4",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台北市中正區；Google 上的名稱是「Sheraton Grand Taipei Hotel」"
+    }
   },
   {
     "id": "hotel-004",
@@ -159,13 +189,23 @@
     ],
     "lat": 24.775627,
     "lng": 120.967914,
-    "google_place_id": null,
+    "google_place_id": "ChIJBVJtYAxKaDQRoglDDWrlH5M",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新竹市東區"
+    }
   },
   {
     "id": "hotel-006",
@@ -189,13 +229,23 @@
     ],
     "lat": 24.820225,
     "lng": 121.181606,
-    "google_place_id": null,
+    "google_place_id": "ChIJ1adtFaU-aDQRNPp2DqeIK-4",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新竹縣關西鎮"
+    }
   },
   {
     "id": "hotel-007",
@@ -520,13 +570,23 @@
     ],
     "lat": 24.687829,
     "lng": 120.904188,
-    "google_place_id": null,
+    "google_place_id": "ChIJ34G_NMhMaDQRNyqjSIi6OsM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：苗栗縣頭份市"
+    }
   },
   {
     "id": "hotel-015",
@@ -551,13 +611,23 @@
     ],
     "lat": 24.323743,
     "lng": 120.696564,
-    "google_place_id": null,
+    "google_place_id": "ChIJQ4ciLRoQaTQRXwA4bMznq60",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市后里區"
+    }
   },
   {
     "id": "hotel-016",
@@ -582,13 +652,23 @@
     ],
     "lat": 24.26026,
     "lng": 120.533747,
-    "google_place_id": null,
+    "google_place_id": "ChIJE5C0ALYUaTQReF89iK2bu2Y",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市梧棲區"
+    }
   },
   {
     "id": "hotel-017",
@@ -613,13 +693,23 @@
     ],
     "lat": 24.159059,
     "lng": 120.657203,
-    "google_place_id": null,
+    "google_place_id": "ChIJweacIYU9aTQR7Qcu2m7BOmM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市西屯區"
+    }
   },
   {
     "id": "hotel-018",
@@ -645,13 +735,23 @@
     ],
     "lat": 23.871162,
     "lng": 120.923419,
-    "google_place_id": null,
+    "google_place_id": "ChIJX1-vy2vWaDQRduURwkKKl7I",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：南投縣魚池鄉"
+    }
   },
   {
     "id": "hotel-019",
@@ -675,14 +775,24 @@
     ],
     "lat": 23.615295,
     "lng": 120.576926,
-    "google_place_id": null,
+    "google_place_id": "ChIJSzmTs4dvbjQRs83PuvkPA5A",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "name"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：雲林縣古坑鄉"
+    }
   },
   {
     "id": "hotel-020",
@@ -706,13 +816,23 @@
     ],
     "lat": 23.496535,
     "lng": 120.453351,
-    "google_place_id": null,
+    "google_place_id": "ChIJOZmnCMaVbjQR7T3PmU3MNnc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市東區"
+    }
   },
   {
     "id": "hotel-021",
@@ -737,13 +857,23 @@
     ],
     "lat": 22.986936,
     "lng": 120.19805,
-    "google_place_id": null,
+    "google_place_id": "ChIJ9Wl83nt2bjQRfurJUdhbLWU",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市中西區"
+    }
   },
   {
     "id": "hotel-022",
@@ -768,13 +898,23 @@
     ],
     "lat": 22.987561,
     "lng": 120.199457,
-    "google_place_id": null,
+    "google_place_id": "ChIJDzX2d3x2bjQRha-HOsf7LIA",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市中西區"
+    }
   },
   {
     "id": "hotel-023",
@@ -799,13 +939,23 @@
     ],
     "lat": 22.729119,
     "lng": 120.401987,
-    "google_place_id": null,
+    "google_place_id": "ChIJYWAZWxsRbjQRF3UFQLstK-Y",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市大樹區"
+    }
   },
   {
     "id": "hotel-024",
@@ -830,13 +980,23 @@
     ],
     "lat": 21.943042,
     "lng": 120.805086,
-    "google_place_id": null,
+    "google_place_id": "ChIJSasblSeycTQRgax-wb8Dbis",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣恆春鎮"
+    }
   },
   {
     "id": "hotel-025",
@@ -861,18 +1021,28 @@
     ],
     "lat": 21.941421,
     "lng": 120.807164,
-    "google_place_id": null,
+    "google_place_id": "ChIJ0akPsbizcTQR2_PceU5S0j0",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣恆春鎮"
+    }
   },
   {
     "id": "hotel-026",
     "name": "H 會館",
-    "city": "屏東縣車城鄉",
+    "city": "屏東縣獅子鄉",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$$",
@@ -891,13 +1061,23 @@
     ],
     "lat": 22.167332,
     "lng": 120.697315,
-    "google_place_id": null,
+    "google_place_id": "ChIJixWdudLHcTQRpm5tFHX-QHQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣獅子鄉；原本資料寫屏東縣車城鄉，依 Google 地圖改為屏東縣獅子鄉"
+    }
   },
   {
     "id": "hotel-027",
@@ -922,13 +1102,23 @@
     ],
     "lat": 23.900974,
     "lng": 121.601425,
-    "google_place_id": null,
+    "google_place_id": "ChIJyanabO2gaDQRcDuVnDFcqdU",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣壽豐鄉"
+    }
   },
   {
     "id": "hotel-028",
@@ -953,46 +1143,24 @@
     ],
     "lat": 23.98709,
     "lng": 121.622513,
-    "google_place_id": null,
+    "google_place_id": "ChIJjygVNAInZjQRyTHzV0JlNlk",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "name"
     ],
-    "last_verified": "2026-11-16"
-  },
-  {
-    "id": "hotel-029",
-    "name": "瑞穗春天國際觀光酒店",
-    "city": "花蓮縣瑞穗鄉",
-    "region": "東",
-    "kind": "hotel",
-    "price_tier": "$$$$",
-    "tags": [
-      "spa",
-      "pool",
-      "slide"
-    ],
-    "features": [
-      "溫泉水樂園",
-      "滑水道"
-    ],
-    "mins_from_linkou": 240,
-    "tip": "金色水樂園是溫泉水，冬天玩水也不冷。",
-    "near_spot_ids": [
-      "spot-073",
-      "spot-071"
-    ],
-    "lat": 23.492843,
-    "lng": 121.355812,
-    "google_place_id": null,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣新城鄉；Google 上分成沁海館、山闊館兩館，place_id 用沁海館"
+    }
   },
   {
     "id": "hotel-030",
@@ -1018,14 +1186,24 @@
     ],
     "lat": 22.793727,
     "lng": 121.077838,
-    "google_place_id": null,
+    "google_place_id": "ChIJg1AG2pnJbzQRej65LGn8eZE",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣卑南鄉"
+    }
   },
   {
     "id": "hotel-031",
@@ -1051,13 +1229,23 @@
     ],
     "lat": 25.080604,
     "lng": 121.55379,
-    "google_place_id": null,
+    "google_place_id": "ChIJyYKzDA6sQjQR5zhB9ZuJ-JM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台北市中山區"
+    }
   },
   {
     "id": "hotel-032",
@@ -1083,13 +1271,22 @@
     ],
     "lat": 25.080476,
     "lng": 121.559283,
-    "google_place_id": null,
+    "google_place_id": "ChIJKanLVw2sQjQRit_tnMKZm6Q",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "hotel-033",
@@ -1115,13 +1312,23 @@
     ],
     "lat": 25.134639,
     "lng": 121.507317,
-    "google_place_id": null,
+    "google_place_id": "ChIJqzV-SFuuQjQRldnIcwcCv8w",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台北市北投區"
+    }
   },
   {
     "id": "hotel-034",
@@ -1144,13 +1351,23 @@
     ],
     "lat": 25.033306,
     "lng": 121.499631,
-    "google_place_id": null,
+    "google_place_id": "ChIJU32eU66pQjQRqImQdHgPb3Y",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台北市萬華區"
+    }
   },
   {
     "id": "hotel-035",
@@ -1175,13 +1392,23 @@
     ],
     "lat": 25.054171,
     "lng": 121.524097,
-    "google_place_id": null,
+    "google_place_id": "ChIJ5ymH9mipQjQRqo6WdCNtP24",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台北市中山區"
+    }
   },
   {
     "id": "hotel-036",
@@ -1207,13 +1434,23 @@
     ],
     "lat": 25.204071,
     "lng": 121.69005,
-    "google_place_id": null,
+    "google_place_id": "ChIJbzt2_vNNXTQRscrMg0po3Y0",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新北市萬里區；Google 上的名稱是「薆悅酒店野柳渡假館」，可能已改名"
+    }
   },
   {
     "id": "hotel-037",
@@ -1321,8 +1558,7 @@
     "mins_from_linkou": 45,
     "tip": "園區綠地很大，可以騎腳踏車，步調很慢很放鬆。",
     "near_spot_ids": [
-      "spot-020",
-      "spot-022"
+      "spot-020"
     ],
     "lat": 24.839476,
     "lng": 121.184013,
@@ -1456,13 +1692,23 @@
     ],
     "lat": 24.76797,
     "lng": 121.281423,
-    "google_place_id": null,
+    "google_place_id": "ChIJD0D5wdY-aDQR3_2pQiaYmCU",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新竹縣關西鎮"
+    }
   },
   {
     "id": "hotel-043",
@@ -1682,7 +1928,7 @@
   {
     "id": "hotel-048",
     "name": "馥藝金鬱金香酒店",
-    "city": "苗栗縣苗栗市",
+    "city": "苗栗縣竹南鎮",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -1702,19 +1948,29 @@
     ],
     "lat": 24.561483,
     "lng": 120.819233,
-    "google_place_id": null,
+    "google_place_id": "ChIJK0jUQNSzaTQRyefDEXnbIvo",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：苗栗縣竹南鎮；原本資料寫苗栗縣苗栗市，依 Google 地圖改為苗栗縣竹南鎮"
+    }
   },
   {
     "id": "hotel-049",
     "name": "台中鳳凰酒店",
-    "city": "台中市西區",
+    "city": "台中市中區",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -1733,19 +1989,28 @@
     ],
     "lat": 24.258349,
     "lng": 120.538565,
-    "google_place_id": null,
+    "google_place_id": "ChIJSXTWATM9aTQRR8lVUPPpfhc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市中區；原本資料寫台中市西區，依 Google 地圖改為台中市中區"
+    }
   },
   {
     "id": "hotel-050",
     "name": "想窩11餐旅館",
-    "city": "台中市",
+    "city": "台中市沙鹿區",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -1766,14 +2031,23 @@
     ],
     "lat": 24.137342,
     "lng": 120.662537,
-    "google_place_id": null,
+    "google_place_id": "ChIJpUpM6KgVaTQRIweMzL9d3IE",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市沙鹿區；原本資料寫台中市，依 Google 地圖改為台中市沙鹿區"
+    }
   },
   {
     "id": "hotel-051",
@@ -1797,18 +2071,28 @@
     ],
     "lat": 24.179411,
     "lng": 120.623922,
-    "google_place_id": null,
+    "google_place_id": "ChIJ0b0x8sI9aTQR2Qtx4GCuwfk",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市西屯區"
+    }
   },
   {
     "id": "hotel-052",
     "name": "風自然親子時尚旅宿",
-    "city": "台中市",
+    "city": "台中市后里區",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -1826,15 +2110,24 @@
     ],
     "lat": 24.163162,
     "lng": 120.647828,
-    "google_place_id": null,
+    "google_place_id": "ChIJkSO7PYkbaTQRJGHZf1vnNUY",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市后里區；原本資料寫台中市，依 Google 地圖改為台中市后里區"
+    }
   },
   {
     "id": "hotel-053",
@@ -1859,13 +2152,22 @@
     ],
     "lat": 24.111677,
     "lng": 120.615841,
-    "google_place_id": null,
+    "google_place_id": "ChIJt-2n9Jg_aTQRTWjQotFTykQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "hotel-054",
@@ -1890,13 +2192,23 @@
     ],
     "lat": 23.847236,
     "lng": 120.931515,
-    "google_place_id": null,
+    "google_place_id": "ChIJIY81VMPVaDQRWj4rWGeXUq8",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：南投縣魚池鄉"
+    }
   },
   {
     "id": "hotel-055",
@@ -1922,13 +2234,23 @@
     ],
     "lat": 23.959816,
     "lng": 120.975499,
-    "google_place_id": null,
+    "google_place_id": "ChIJOz9XLSfZaDQRoAboLrApRwI",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：南投縣埔里鎮"
+    }
   },
   {
     "id": "hotel-056",
@@ -1954,13 +2276,23 @@
     ],
     "lat": 23.716819,
     "lng": 120.53413,
-    "google_place_id": null,
+    "google_place_id": "ChIJNYeWzi7IbjQR00t_2PwtGKk",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：雲林縣斗六市"
+    }
   },
   {
     "id": "hotel-057",
@@ -1986,14 +2318,24 @@
     ],
     "lat": 23.486793,
     "lng": 120.4257,
-    "google_place_id": null,
+    "google_place_id": "ChIJWbt8RQCXbjQRV4LaQEOw3SI",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "city"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市西區"
+    }
   },
   {
     "id": "hotel-058",
@@ -2018,18 +2360,28 @@
     ],
     "lat": 23.468597,
     "lng": 120.295022,
-    "google_place_id": null,
+    "google_place_id": "ChIJG7nwCNObbjQRge3e2ihz-4I",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義縣太保市"
+    }
   },
   {
     "id": "hotel-059",
     "name": "新悅花園酒店",
-    "city": "嘉義市",
+    "city": "嘉義市東區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2049,19 +2401,28 @@
     ],
     "lat": 23.504862,
     "lng": 120.449599,
-    "google_place_id": null,
+    "google_place_id": "ChIJl1mdXsKVbjQR-RuR3L7Abog",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市東區；Google 上的名稱是「新悦花園酒店」；原本資料寫嘉義市，依 Google 地圖改為嘉義市東區"
+    }
   },
   {
     "id": "hotel-060",
     "name": "嘉楠風華酒店",
-    "city": "嘉義市",
+    "city": "嘉義市西區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2080,20 +2441,29 @@
     ],
     "lat": 23.481109,
     "lng": 120.453541,
-    "google_place_id": null,
+    "google_place_id": "ChIJp0q9UYSWbjQRespr9-aybG0",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市西區；原本資料寫嘉義市，依 Google 地圖改為嘉義市西區"
+    }
   },
   {
     "id": "hotel-061",
     "name": "夏都城旅 安平館",
-    "city": "台南市安平區",
+    "city": "台南市南區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2113,13 +2483,23 @@
     ],
     "lat": 22.967109,
     "lng": 120.185417,
-    "google_place_id": null,
+    "google_place_id": "ChIJfzhhesF1bjQRtiITZvGoM_Y",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市南區；原本資料寫台南市安平區，依 Google 地圖改為台南市南區"
+    }
   },
   {
     "id": "hotel-062",
@@ -2144,18 +2524,27 @@
     ],
     "lat": 22.999274,
     "lng": 120.149438,
-    "google_place_id": null,
+    "google_place_id": "ChIJ3dZ2Sq7YbTQRwhEN5CQ5Ga0",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "hotel-063",
     "name": "晶盈親旅大酒店",
-    "city": "台南市",
+    "city": "台南市永康區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2176,43 +2565,23 @@
     ],
     "lat": 23.03909,
     "lng": 120.243798,
-    "google_place_id": null,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags",
-      "city"
-    ],
-    "last_verified": "2026-11-16"
-  },
-  {
-    "id": "hotel-064",
-    "name": "安平雅樂軒酒店",
-    "city": "台南市安平區",
-    "region": "南",
-    "kind": "hotel",
-    "price_tier": "$$$",
-    "tags": [
-      "play"
-    ],
-    "features": [
-      "兒童俱樂部",
-      "近安平老街"
-    ],
-    "mins_from_linkou": 220,
-    "tip": "遊戲區小而美，走路就到安平老街。",
-    "near_spot_ids": [
-      "spot-059"
-    ],
-    "lat": 22.990238,
-    "lng": 120.160083,
-    "google_place_id": null,
+    "google_place_id": "ChIJ655mFwB3bjQR3n1KyvXnyDM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市永康區；原本資料寫台南市，依 Google 地圖改為台南市永康區"
+    }
   },
   {
     "id": "hotel-065",
@@ -2237,13 +2606,23 @@
     ],
     "lat": 22.609351,
     "lng": 120.302193,
-    "google_place_id": null,
+    "google_place_id": "ChIJqeUWth4DbjQRAjg1II-H5x0",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市前鎮區"
+    }
   },
   {
     "id": "hotel-066",
@@ -2269,18 +2648,28 @@
     ],
     "lat": 22.655457,
     "lng": 120.306432,
-    "google_place_id": null,
+    "google_place_id": "ChIJf6Ng8asFbjQR4uISt3hBgSE",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市鼓山區；Google 上的名稱是「Kaohsiung Marriott Hotel」"
+    }
   },
   {
     "id": "hotel-067",
     "name": "捷絲旅 高雄站前館",
-    "city": "高雄市三民區",
+    "city": "高雄市新興區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$",
@@ -2298,13 +2687,23 @@
     ],
     "lat": 22.635124,
     "lng": 120.302482,
-    "google_place_id": null,
+    "google_place_id": "ChIJt-rnZYsEbjQRDTOgpwcXzTg",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市新興區；原本資料寫高雄市三民區，依 Google 地圖改為高雄市新興區"
+    }
   },
   {
     "id": "hotel-068",
@@ -2330,19 +2729,29 @@
     ],
     "lat": 22.621831,
     "lng": 120.29098,
-    "google_place_id": null,
+    "google_place_id": "ChIJe-68qsQFbjQRX5xcEzYI5Bo",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "city"
     ],
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市前金區"
+    }
   },
   {
     "id": "hotel-069",
     "name": "宮賞藝術大飯店",
-    "city": "高雄市三民區",
+    "city": "高雄市新興區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$",
@@ -2361,15 +2770,24 @@
     ],
     "lat": 22.647695,
     "lng": 120.299622,
-    "google_place_id": null,
+    "google_place_id": "ChIJfzhFX4wEbjQRjjJ7v9dv2bw",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市新興區；原本資料寫高雄市三民區，依 Google 地圖改為高雄市新興區"
+    }
   },
   {
     "id": "hotel-070",
@@ -2394,14 +2812,24 @@
     ],
     "lat": 22.620335,
     "lng": 120.312038,
-    "google_place_id": null,
+    "google_place_id": "ChIJlyEzYZ4DbjQRjRgNStNjgbs",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市前鎮區"
+    }
   },
   {
     "id": "hotel-071",
@@ -2425,13 +2853,23 @@
     ],
     "lat": 22.089695,
     "lng": 120.71683,
-    "google_place_id": null,
+    "google_place_id": "ChIJPcYkpky3cTQRE3xebf-jI2I",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣車城鄉"
+    }
   },
   {
     "id": "hotel-072",
@@ -2458,13 +2896,23 @@
     ],
     "lat": 21.997466,
     "lng": 120.705078,
-    "google_place_id": null,
+    "google_place_id": "ChIJu2rKvQy6cTQRb2wp8D-stZc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣恆春鎮"
+    }
   },
   {
     "id": "hotel-073",
@@ -2488,14 +2936,24 @@
     ],
     "lat": 21.945788,
     "lng": 120.789396,
-    "google_place_id": null,
+    "google_place_id": "ChIJtYPNjJCxcTQRcVf2YyPUJIQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣恆春鎮"
+    }
   },
   {
     "id": "hotel-074",
@@ -2522,13 +2980,23 @@
     ],
     "lat": 23.866264,
     "lng": 121.527975,
-    "google_place_id": null,
+    "google_place_id": "ChIJbad1ykmlaDQRmVQKX6qCbNc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣壽豐鄉"
+    }
   },
   {
     "id": "hotel-075",
@@ -2555,14 +3023,24 @@
     ],
     "lat": 23.496817,
     "lng": 121.375992,
-    "google_place_id": null,
+    "google_place_id": "ChIJh3nIgv1FbzQRE78FUyX-EYI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣瑞穗鄉"
+    }
   },
   {
     "id": "hotel-076",
@@ -2587,45 +3065,24 @@
     ],
     "lat": 23.982074,
     "lng": 121.60681,
-    "google_place_id": null,
+    "google_place_id": "ChIJn-ffNoEgZjQRfvK_PvhfnRE",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
-  },
-  {
-    "id": "hotel-077",
-    "name": "花蓮翰品酒店",
-    "city": "花蓮縣花蓮市",
-    "region": "東",
-    "kind": "hotel",
-    "price_tier": "$$$",
-    "tags": [
-      "play",
-      "pool"
-    ],
-    "features": [
-      "繪本主題飯店",
-      "兒童遊戲室",
-      "泳池"
-    ],
-    "mins_from_linkou": 190,
-    "tip": "整間以繪本為主題，遊戲室算大，就在市區。",
-    "near_spot_ids": [
-      "spot-072"
-    ],
-    "lat": 23.991974,
-    "lng": 121.626909,
-    "google_place_id": null,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣花蓮市"
+    }
   },
   {
     "id": "hotel-078",
@@ -2652,13 +3109,23 @@
     ],
     "lat": 22.793092,
     "lng": 121.130207,
-    "google_place_id": null,
+    "google_place_id": "ChIJJ-sJD9K7bzQRKVCTzHCD09E",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣台東市"
+    }
   },
   {
     "id": "hotel-079",
@@ -2684,13 +3151,23 @@
     ],
     "lat": 22.769988,
     "lng": 121.122234,
-    "google_place_id": null,
+    "google_place_id": "ChIJBYCTSZy5bzQRix7cQ6EPMZ8",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣台東市"
+    }
   },
   {
     "id": "hotel-080",
@@ -2714,7 +3191,7 @@
     ],
     "lat": 22.793727,
     "lng": 121.077838,
-    "google_place_id": null,
+    "google_place_id": "ChIJ453ZbbrJbzQRmMTE7JybleI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -2723,7 +3200,17 @@
       "name",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣卑南鄉；Google 上的名稱是「富野溫泉休閒會館(知本)」"
+    }
   },
   {
     "id": "hotel-081",
@@ -3340,53 +3827,6 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣羅東鎮"
-    }
-  },
-  {
-    "id": "hotel-095",
-    "name": "希格瑪花園城堡",
-    "city": "宜蘭縣冬山鄉",
-    "region": "北",
-    "kind": "bnb",
-    "price_tier": "$$$",
-    "tags": [
-      "slide",
-      "pool",
-      "park",
-      "play"
-    ],
-    "features": [
-      "粉紅城堡",
-      "公主房賽車房等溜滑梯主題房",
-      "戲水池沙坑電動車"
-    ],
-    "mins_from_linkou": 90,
-    "tip": "粉紅色城堡造型，有公主房和賽車房，戶外有戲水池和沙坑。",
-    "near_spot_ids": [
-      "spot-035",
-      "spot-032",
-      "spot-076"
-    ],
-    "lat": 24.634514,
-    "lng": 121.79228,
-    "google_place_id": null,
-    "coord_area": true,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-18",
-    "risk_flags": [
-      "location_unknown"
-    ],
-    "verified": {
-      "date": "2026-11-18",
-      "fields": [
-        "Google 地圖搜尋"
-      ],
-      "source": "google_maps",
-      "note": "Google 地圖找不到這間；舊遊記寫在員山鄉，跟資料的冬山鄉不同，營業狀態和位置都沒確認"
     }
   },
   {
