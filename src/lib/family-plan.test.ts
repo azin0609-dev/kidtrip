@@ -4,6 +4,8 @@ import { makeSpot } from '../test/fixtures.ts';
 import {
   type FamilyPlanOptions,
   addonMatches,
+  checkSavedPlan,
+  minPlay,
   buildTimeline,
   facilityNotes,
   familyCandidates,
@@ -164,9 +166,12 @@ describe('排時間：上午車上睡、下午', () => {
     const r = timelineFor(indoor, () => null, ctx(), opts(), nap);
     expect(r.status).toBe('unknown-drive');
   });
-  it('今天的出門時間已經過了，會提醒', () => {
+  it('今天的出門時間已經過了：不算有效行程', () => {
     const r = buildTimeline({ spot: indoor, mins: 35, slot: 'sat-am', napMode: 'home', nap, today: '2026-11-21', nowMins: 10 * 60 });
-    expect(r.status === 'ok' && r.notes.join()).toContain('已經過了');
+    expect(r.status).toBe('past');
+    expect(r.status === 'past' && r.reason).toContain('已經過了');
+    // 還沒到出門時間就照常
+    expect(buildTimeline({ spot: indoor, mins: 35, slot: 'sat-am', napMode: 'home', nap, today: '2026-11-21', nowMins: 8 * 60 }).status).toBe('ok');
   });
 });
 
@@ -245,12 +250,12 @@ describe('儲存與相容', () => {
 describe('依資料的營業時間排', () => {
   it('讀出週末開關門時間；讀不到就是不知道', async () => {
     const { weekendHours } = await import('./family-plan.ts');
-    expect(weekendHours('10:00–18:00，週六到 20:00；分時段入場', 'sat')).toEqual({ open: 600, close: 1200 });
-    expect(weekendHours('10:00–18:00，週六到 20:00；分時段入場', 'sun')).toEqual({ open: 600, close: 1080 });
-    expect(weekendHours('平日 11:30–18:00，週末 10:00–18:30；先線上買票', 'sun')).toEqual({ open: 600, close: 1110 });
-    expect(weekendHours('平日 09:00–17:00，週末到 18:00；週一公休', 'sat')).toEqual({ open: 540, close: 1080 });
-    expect(weekendHours('週一休館', 'sat')).toEqual({ open: null, close: null });
-    expect(weekendHours(undefined, 'sat')).toEqual({ open: null, close: null });
+    expect(weekendHours('10:00–18:00，週六到 20:00；分時段入場', 'sat')).toEqual({ open: 600, close: 1200, closed: false });
+    expect(weekendHours('10:00–18:00，週六到 20:00；分時段入場', 'sun')).toEqual({ open: 600, close: 1080, closed: false });
+    expect(weekendHours('平日 11:30–18:00，週末 10:00–18:30；先線上買票', 'sun')).toEqual({ open: 600, close: 1110, closed: false });
+    expect(weekendHours('平日 09:00–17:00，週末到 18:00；週一公休', 'sat')).toEqual({ open: 540, close: 1080, closed: false });
+    expect(weekendHours('週一休館', 'sat')).toEqual({ open: null, close: null, closed: false });
+    expect(weekendHours(undefined, 'sat')).toEqual({ open: null, close: null, closed: false });
   });
   it('10 點才開門：不會排在開門前就開始玩', () => {
     const xpark = makeSpot({ env: 'in', open_note: '10:00–18:00，週六到 20:00', stay_hours: 3 });
@@ -259,7 +264,9 @@ describe('依資料的營業時間排', () => {
     if (r.status !== 'ok') return;
     const play = r.steps.find((s) => s.kind === 'play')!;
     expect(play.start).toBeGreaterThanOrEqual(10 * 60);
-    expect(r.notes.join()).toContain('依資料的營業時間');
+    // 沒有查證過營業時間：只用來避開開門前，並寫明不代表一定有開
+    expect(r.notes.join()).toContain('還沒查證');
+    expect(r.notes.join()).toContain('不代表當天一定有開');
   });
   it('下午：玩到資料寫的關門時間為止', () => {
     const early = makeSpot({ env: 'in', open_note: '09:30–17:00', stay_hours: 3 });
@@ -269,5 +276,129 @@ describe('依資料的營業時間排', () => {
   it('關門太早、下午玩不到：時間不足', () => {
     const closesEarly = makeSpot({ env: 'in', open_note: '09:00–16:00' });
     expect(buildTimeline({ spot: closesEarly, mins: 30, slot: 'sat-pm', napMode: 'home', nap, today }).status).toBe('no-time');
+  });
+});
+
+describe('審查修正：第一名排不出時間就往下找', () => {
+  // 第一名分數最高但車程太遠、回家睡排不出 75 分鐘；第二名近一點排得出來
+  const farBest = makeSpot({ id: 'spot-201', name: '很遠但最熱門', env: 'in', mins_from_linkou: 44, age_best: [1, 8], facilities: ['parking', 'food', 'diaper', 'nursing'], transit: '捷運', stay_hours: 3 });
+  const nearOk = makeSpot({ id: 'spot-202', name: '近的室內館', env: 'in', mins_from_linkou: 15, age_best: [1, 8] });
+  const earlyNap = { start: '11:50', end: '13:50' };
+  // 遠的有收藏、設施多；近的去過（8 週以上），讓遠的確定是分數最高的。
+  const rankCtx = () => ctx({ fav: ['spot-201'], been: ['spot-202'], beenAt: { 'spot-202': '2026-07-01' } });
+  it('自動跳過排不出時間的，顯示第一個真的排得出來的', () => {
+    const r = planHalfDay([farBest, nearOk], rankCtx(), opts(), earlyNap, 's');
+    expect(r.candidates.map((c) => c.spot.id)[0]).toBe('spot-201'); // 分數最高的是遠的那個
+    expect(r.skipped.map((x) => x.pick.spot.id)).toEqual(['spot-201']);
+    expect(r.result?.status).toBe('ok');
+    expect(r.result?.status === 'ok' && r.result.spot.id).toBe('spot-202');
+    expect(r.plans).toHaveLength(1);
+  });
+  it('全部都排不出來才是沒有結果；符合條件的地方和原因都留著', () => {
+    const r = planHalfDay([farBest], rankCtx(), opts(), earlyNap, 's');
+    expect(r.result).toBeNull();
+    expect(r.candidates).toHaveLength(1);
+    expect(r.skipped[0]?.result.status).toBe('no-time');
+  });
+  it('今天的出門時間全都過了：說時段來不及，不說沒有地方', () => {
+    const r = planHalfDay([nearOk], ctx({ today: '2026-11-21' }), opts(), nap, 's', 0, 12 * 60);
+    expect(r.result?.status).toBe('past');
+  });
+  it('換一個地方只在排得出來的裡面輪', () => {
+    const near2 = makeSpot({ id: 'spot-203', env: 'in', mins_from_linkou: 10, age_best: [1, 8] });
+    const r0 = planHalfDay([farBest, nearOk, near2], ctx(), opts(), earlyNap, 's', 0);
+    const r1 = planHalfDay([farBest, nearOk, near2], ctx(), opts(), earlyNap, 's', 1);
+    const r2 = planHalfDay([farBest, nearOk, near2], ctx(), opts(), earlyNap, 's', 2);
+    const id = (x: typeof r0) => (x.result?.status === 'ok' ? x.result.spot.id : null);
+    expect(new Set([id(r0), id(r1)])).toEqual(new Set(['spot-202', 'spot-203']));
+    expect(id(r2)).toBe(id(r0)); // 輪回第一個，不會出現排不出來的 spot-201
+  });
+});
+
+describe('審查修正：已保存的計畫重新檢查硬性條件', () => {
+  const plan = makePlan(today, 'spot-001', 'sat-am');
+  const addon = makeAddon(plan.week, 'spot-001', opts());
+  it('條件都沒變：照常重排時間', () => {
+    expect(checkSavedPlan(indoor, addon, ctx(), nap).status).toBe('ok');
+  });
+  it('換了出發地、車程超過當初的上限：要重新安排', () => {
+    const r = checkSavedPlan(indoor, addon, ctx({ minsOf: () => 70 }), nap);
+    expect(r.status).toBe('invalid');
+    expect(r.status === 'invalid' && r.reason).toContain('超過當初設定的 45 分鐘');
+  });
+  it('孩子年齡改了、不在建議年齡內：要重新安排', () => {
+    const r = checkSavedPlan(indoor, addon, ctx({ kids: [{ name: '果果', age: 10 }] }), nap);
+    expect(r.status === 'invalid' && r.reason).toContain('孩子的年齡');
+  });
+  it('現在要帶推車、這裡推車不好推：要重新安排', () => {
+    const noStrollerSpot = makeSpot({ ...indoor, stroller_ok: false });
+    const relaxed = makeAddon(plan.week, 'spot-001', opts({ stroller: false }));
+    expect(checkSavedPlan(noStrollerSpot, relaxed, ctx({ needStroller: true }), nap).status).toBe('invalid');
+    expect(checkSavedPlan(noStrollerSpot, relaxed, ctx({ needStroller: false }), nap).status).toBe('ok');
+  });
+  it('資料後來被標成有疑問、或自家評低分：要重新安排', () => {
+    expect(checkSavedPlan(makeSpot({ ...indoor, risk_flags: ['status_conflict'] }), addon, ctx(), nap).status).toBe('invalid');
+    expect(checkSavedPlan(indoor, addon, ctx({ ratings: { 'spot-001': { stars: 1, tags: [] } } }), nap).status).toBe('invalid');
+  });
+  it('完全室內的計畫，景點資料改成半室內：要重新安排', () => {
+    expect(checkSavedPlan(makeSpot({ ...indoor, env: 'semi' }), addon, ctx(), nap).status).toBe('invalid');
+  });
+});
+
+describe('審查修正：營業時間', () => {
+  it('週末公休、休園重整：那天不排', async () => {
+    const { weekendHours } = await import('./family-plan.ts');
+    expect(weekendHours('09:00–17:00，週末公休', 'sat').closed).toBe(true);
+    expect(weekendHours('09:00–17:00，週日休館', 'sun').closed).toBe(true);
+    expect(weekendHours('09:00–17:00，週日休館', 'sat').closed).toBe(false);
+    expect(weekendHours('2026-02-23 起休園重整', 'sat').closed).toBe(true);
+    expect(weekendHours('09:00–17:00，週一休園', 'sat').closed).toBe(false);
+    const r = buildTimeline({ spot: makeSpot({ env: 'in', open_note: '09:00–17:00，週日休館' }), mins: 20, slot: 'sun-am', napMode: 'home', nap, today });
+    expect(r.status).toBe('closed');
+  });
+  it('讀不懂或不合理的時間：當成不知道，不用它排，也寫明沒考慮營業時間', async () => {
+    const { weekendHours } = await import('./family-plan.ts');
+    expect(weekendHours('18:00–09:00', 'sat')).toEqual({ open: null, close: null, closed: false });
+    const r = buildTimeline({ spot: makeSpot({ env: 'in', open_note: '依官網公告' }), mins: 20, slot: 'sat-am', napMode: 'home', nap, today });
+    expect(r.status === 'ok' && r.notes.join()).toContain('不知道幾點開、幾點關');
+  });
+  it('上午：資料寫的關門時間比較早，就玩到關門、早點回家，不會玩到關門後', () => {
+    const r = buildTimeline({ spot: makeSpot({ env: 'in', open_note: '09:00–11:30' }), mins: 20, slot: 'sat-am', napMode: 'home', nap, today });
+    expect(r.status).toBe('ok');
+    if (r.status !== 'ok') return;
+    expect(r.steps.find((s) => s.kind === 'play')!.end).toBeLessThanOrEqual(11 * 60 + 30);
+    expect(validateSteps(r.steps)).toBe(true);
+    expect(r.steps.at(-1)?.start).toBe(13 * 60); // 午睡時間不變
+  });
+  it('上午車上睡：關門比午睡早，不硬排', () => {
+    expect(buildTimeline({ spot: makeSpot({ env: 'in', open_note: '09:00–11:00' }), mins: 20, slot: 'sat-am', napMode: 'car', nap, today }).status).toBe('no-time');
+  });
+  it('下午：資料寫的開門時間比睡醒晚，就晚一點出門，不會在開門前到', () => {
+    const r = buildTimeline({ spot: makeSpot({ env: 'in', open_note: '平日 10:00–18:00，週末 16:00–20:00' }), mins: 20, slot: 'sat-pm', napMode: 'home', nap, today });
+    expect(r.status).toBe('ok');
+    if (r.status !== 'ok') return;
+    expect(r.steps.find((s) => s.kind === 'play')!.start).toBeGreaterThanOrEqual(16 * 60);
+  });
+  it('查證過的營業時間和沒查證的，寫法不一樣', () => {
+    const verifiedSpot = makeSpot({ env: 'in', open_note: '10:00–18:00', verified: { date: '2026-11-18', fields: ['營業時間'], source: 'google_maps' } });
+    const r = buildTimeline({ spot: verifiedSpot, mins: 20, slot: 'sat-am', napMode: 'home', nap, today });
+    expect(r.status === 'ok' && r.notes.join()).toContain('依查證過的營業時間');
+  });
+});
+
+describe('審查修正：最低遊玩時間 75 分鐘', () => {
+  it('一般景點至少 75 分鐘；有明確比較短的建議停留才例外', () => {
+    expect(minPlay(makeSpot())).toBe(75);
+    expect(minPlay(makeSpot({ stay_hours: 3 }))).toBe(75);
+    expect(minPlay(makeSpot({ stay_hours: 1 }))).toBe(60);
+    expect(minPlay(makeSpot({ stay_hours: 0.5 }))).toBe(30);
+  });
+  it('只能玩 60–74 分鐘的一般景點：時間不足', () => {
+    // 午睡 12:20：回家睡要 11:25 前到家 → 單程 20 分要 11:05 離開；最早 9:00 到、9:10 開始玩 → 115 分；
+    // 改成午睡 11:30：10:15 離開，9:10 開始玩 → 65 分（< 75）
+    const r = buildTimeline({ spot: makeSpot({ env: 'in' }), mins: 20, slot: 'sat-am', napMode: 'home', nap: { start: '11:30', end: '13:30' }, today });
+    expect(r.status).toBe('no-time');
+    const short = buildTimeline({ spot: makeSpot({ env: 'in', stay_hours: 1 }), mins: 20, slot: 'sat-am', napMode: 'home', nap: { start: '11:30', end: '13:30' }, today });
+    expect(short.status).toBe('ok');
   });
 });

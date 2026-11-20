@@ -8,7 +8,7 @@ import type { RecommendContext } from '../lib/recommend.ts';
 import { type Slot, slotLabelWithDate } from '../lib/weather.ts';
 import { SleepySun } from './Brand.tsx';
 import { FamilyPlanTimeline } from './FamilyPlanTimeline.tsx';
-import { Chip, buttonBase, cardBase, secondaryButton } from './ui.tsx';
+import { Chip, cardBase, secondaryButton } from './ui.tsx';
 
 type OkResult = Extract<FamilyPlanResult, { status: 'ok' }>;
 
@@ -74,15 +74,20 @@ export function FamilyPlanBuilder({
     setSavedKey(null);
   };
 
-  const { candidates, result } = useMemo(() => planHalfDay(spots, ctx, options, nap, seed, index, nowMins), [spots, ctx, options, nap, seed, index, nowMins]);
-  const pick = candidates[index];
+  const { candidates, plans, skipped, result } = useMemo(
+    () => planHalfDay(spots, ctx, options, nap, seed, index, nowMins),
+    [spots, ctx, options, nap, seed, index, nowMins],
+  );
+  // 只在排得出合理時間的地方裡輪；第一名排不出來時已經自動往下找。
+  const pick = plans.length > 0 ? plans[index % plans.length]!.pick : undefined;
+  const shown = plans.length > 0 ? (index % plans.length) + 1 : 0;
   const whenLabel = slotLabelWithDate(ctx.today, options.slot);
   const day = options.slot.startsWith('sat') ? 'sat' : 'sun';
   const part = options.slot.endsWith('am') ? 'am' : 'pm';
   const slotOf = (d: string, p: string) => `${d}-${p}` as Slot;
   const resultKey = pick ? `${pick.spot.id}|${options.slot}|${options.napMode}` : null;
   const next = () => {
-    setIndex((i) => (candidates.length > 0 ? (i + 1) % candidates.length : 0));
+    setIndex((i) => (plans.length > 0 ? (i + 1) % plans.length : 0));
     setSavedKey(null);
   };
 
@@ -168,10 +173,22 @@ export function FamilyPlanBuilder({
         {result === null ? (
           <div className={`${cardBase} flex flex-col items-center gap-2 p-6 text-center`} role="status">
             <SleepySun className="h-16 w-24" />
-            <p className="font-bold">這些條件下沒有適合的地方</p>
-            <p className="text-sm text-stone-700 dark:text-stone-300">
-              我們不會自動放寬條件。可以試試把「單程最多」調遠一點、改成「室內外都可以」，或確認孩子的年齡設定。
-            </p>
+            {candidates.length === 0 ? (
+              <>
+                <p className="font-bold">這些條件下沒有適合的地方</p>
+                <p className="text-sm text-stone-700 dark:text-stone-300">
+                  我們不會自動放寬條件。可以試試把「單程最多」調遠一點、改成「室內外都可以」，或確認孩子的年齡設定。
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="font-bold">符合條件的 {candidates.length} 個地方，都排不出合理的時間</p>
+                <p className="text-sm text-stone-700 dark:text-stone-300">
+                  例如{skipped[0]?.pick.spot.name}：{skipped[0]?.result.reason}
+                </p>
+                <p className="text-sm text-stone-700 dark:text-stone-300">可以試試改成車上睡、改下午，或把「單程最多」調短一點選近的地方。</p>
+              </>
+            )}
           </div>
         ) : result.status === 'ok' ? (
           <>
@@ -185,8 +202,8 @@ export function FamilyPlanBuilder({
                 setSavedKey(resultKey);
               }}
               onShare={() => onShare(result, whenLabel, options.slot)}
-              onReplan={candidates.length > 1 ? next : undefined}
-              replanLabel={`換一個地方（${index + 1}/${candidates.length}）`}
+              onReplan={plans.length > 1 ? next : undefined}
+              replanLabel={`換一個地方（${shown}/${plans.length}）`}
             />
             {savedKey === resultKey && (
               <p role="status" className="text-center text-sm text-stone-700 dark:text-stone-300">
@@ -198,11 +215,7 @@ export function FamilyPlanBuilder({
           <div className={`${cardBase} flex flex-col gap-2 p-4`} role="status">
             {'spot' in result && <p className="font-bold">{result.spot.name}</p>}
             <p className="text-sm text-stone-800 dark:text-stone-200">{result.status === 'no-time' ? `時間不足，建議更改條件。${result.reason}` : result.reason}</p>
-            {candidates.length > 1 && (
-              <button type="button" onClick={next} className={`${buttonBase} self-start border border-stone-300 dark:border-stone-700`}>
-                換一個地方（{index + 1}/{candidates.length}）
-              </button>
-            )}
+
           </div>
         )}
       </div>

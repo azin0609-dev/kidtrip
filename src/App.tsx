@@ -21,7 +21,7 @@ import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
 import { useForecast } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, nowMinsInTaipei } from './lib/date.ts';
-import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, makeAddon, shareText, timelineFor } from './lib/family-plan.ts';
+import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, checkSavedPlan, makeAddon, shareText } from './lib/family-plan.ts';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
 import { isRecommendable } from './lib/verification.ts';
@@ -255,7 +255,7 @@ export default function App() {
   const familyAddon = stored.familyPlan;
   // 時間表不存，每次用目前的出發地、午睡、孩子年齡重算；換了景點或改去雨備就不適用。
   const familyTimeline =
-    plan && planSpot && addonMatches(familyAddon, plan) ? timelineFor(planSpot, minsOf, { today, kids: kidsInfo }, familyAddon, nap, nowMins) : null;
+    plan && planSpot && addonMatches(familyAddon, plan) ? checkSavedPlan(planSpot, familyAddon, recommendCtx, nap, nowMins) : null;
   const familyStale = !!plan && !!familyAddon && familyAddon.week === plan.week && !addonMatches(familyAddon, plan);
   const kidsLabel =
     kidsInfo.length > 0 ? kidsInfo.map((k, i) => `${k.name.trim() || `孩子${i + 1}`} ${Math.floor(k.age)} 歲`).join('、') : null;
@@ -497,7 +497,7 @@ export default function App() {
             )}
             {plan && planSpot && familyTimeline && familyTimeline.status !== 'ok' && (
               <p role="status" className="mb-6 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2b2719] dark:text-amber-100 dark:ring-amber-900/60">
-                半日遊的時間表依目前設定排不出來：{familyTimeline.reason}
+                這份半日遊需要重新安排：{familyTimeline.reason}
                 <button type="button" onClick={() => setFamilyOpen(true)} className="ml-1 inline-flex min-h-11 items-center font-bold underline underline-offset-2">
                   重新安排
                 </button>

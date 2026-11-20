@@ -18,7 +18,8 @@ import { formatDrive } from './format.ts';
 import { ARRIVE_BUFFER, EARLIEST_ARRIVE, EARLIEST_LEAVE, type Nap, formatClock, toMins } from './plan.ts';
 import { type KidInfo, type RecommendContext, type ScoredSpot, rankCandidates, splitKids } from './recommend.ts';
 import { bookingNotice } from './trip-risks.ts';
-import { type Verification, verificationOf } from './verification.ts';
+import { spotDateStatus } from './date.ts';
+import { RISK_LABELS, type Verification, isRecommendable, verificationOf } from './verification.ts';
 import { type Slot, SLOT_LABELS, isSlot, slotDate } from './weather.ts';
 import type { WeekPlan } from './weekplan.ts';
 
@@ -81,6 +82,10 @@ export type FamilyPlanResult =
     }
   | { status: 'no-time'; spot: Spot; mins: number; reason: string }
   | { status: 'unknown-drive'; spot: Spot; reason: string }
+  /** 資料寫那天休息。 */
+  | { status: 'closed'; spot: Spot; reason: string }
+  /** 已保存的計畫，不再符合當初的硬性條件（出發地、孩子年齡、推車改了之類）。 */
+  | { status: 'invalid'; spot: Spot; reason: string }
   | { status: 'past'; reason: string };
 
 // ---------- 時間常數（分鐘） ----------
@@ -98,8 +103,8 @@ export const LATEST_HOME = 18 * 60 + 30;
 /** 遊玩目標：90–120 分鐘；景點建議停留比較短就照建議。 */
 export const TARGET_PLAY_MIN = 90;
 export const TARGET_PLAY_MAX = 120;
-/** 至少要能玩多久才值得去（建議停留比較短的地方，以建議停留為準）。 */
-export const MIN_PLAY = 60;
+/** 至少要能玩多久才值得去：75 分鐘（建議停留明確比較短的地方，以建議停留為準）。 */
+export const MIN_PLAY = 75;
 
 /** 目標遊玩時間：景點建議停留在 90–120 之間就照建議；超過 120 取 120；沒資料用 90；比 90 短就照建議。 */
 export function targetPlay(spot: Pick<Spot, 'stay_hours'>): number {
@@ -108,7 +113,7 @@ export function targetPlay(spot: Pick<Spot, 'stay_hours'>): number {
   return Math.min(TARGET_PLAY_MAX, want);
 }
 
-/** 至少要玩多久：60 分鐘，或景點建議停留（取短的）。 */
+/** 至少要玩多久：75 分鐘；景點有明確比較短的建議停留時間才例外。 */
 export function minPlay(spot: Pick<Spot, 'stay_hours'>): number {
   return Math.min(MIN_PLAY, spot.stay_hours ? Math.round(spot.stay_hours * 60) : MIN_PLAY);
 }
@@ -122,8 +127,18 @@ const hm = (h: string, m: string) => Number(h) * 60 + Number(m);
  * 「平日 11:30–18:00，週末 10:00–18:30」「10:00–18:00，週六到 20:00」。
  * 只用來避免排在開門前到、關門後還在玩；讀不到就回傳 null（不知道），不猜。實際以官方公告為準。
  */
-export function weekendHours(note: string | undefined, day: 'sat' | 'sun'): { open: number | null; close: number | null } {
-  if (!note) return { open: null, close: null };
+export interface WeekendHours {
+  open: number | null;
+  close: number | null;
+  /** 資料寫這天休息（週末公休、休園重整之類）。 */
+  closed: boolean;
+}
+
+export function weekendHours(note: string | undefined, day: 'sat' | 'sun'): WeekendHours {
+  if (!note) return { open: null, close: null, closed: false };
+  const off = '(?:都)?(?:公休|休館|休園|休息|不開放)';
+  const closedDay = day === 'sat' ? new RegExp(`(?:週末|假日|六日|週六)${off}`) : new RegExp(`(?:週末|假日|六日|週六日|週日)${off}`);
+  if (closedDay.test(note) || /休園重整|暫停營業|暫時關閉|永久歇業|結束營業/.test(note)) return { open: null, close: null, closed: true };
   let open: number | null = null;
   let close: number | null = null;
   const base = /(\d{1,2}):(\d{2})–(\d{1,2}):(\d{2})/.exec(note);
@@ -140,7 +155,9 @@ export function weekendHours(note: string | undefined, day: 'sat' | 'sun'): { op
   if (lateWeekend) close = hm(lateWeekend[1]!, lateWeekend[2]!);
   const lateSat = /週六到\s*(\d{1,2}):(\d{2})/.exec(note);
   if (day === 'sat' && lateSat) close = hm(lateSat[1]!, lateSat[2]!);
-  return { open, close };
+  // 讀出來的時間不合理（關門比開門早）就當成不知道，不用它排。
+  if (open !== null && close !== null && close <= open) return { open: null, close: null, closed: false };
+  return { open, close, closed: false };
 }
 
 // ---------- 挑景點 ----------
@@ -228,8 +245,12 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
   const going = mins + ARRIVE_BUFFER;
   const notes: string[] = [];
   const hours = weekendHours(spot.open_note, slot.startsWith('sat') ? 'sat' : 'sun');
+  if (hours.closed) {
+    return { status: 'closed', spot, reason: `資料寫${SLOT_LABELS[slot].slice(0, 2)}沒有開（${spot.open_note}），換一個地方或改天。` };
+  }
   // 資料有寫幾點開門：最早在開門時開始玩（停車、走到入口算在開門前）。
   const openGate = hours.open !== null ? hours.open - going : 0;
+  const close = hours.close ?? Number.POSITIVE_INFINITY;
   let steps: FamilyPlanStep[];
   let leaveHome: number;
   let homeAt: number;
@@ -237,10 +258,10 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
 
   if (slot.endsWith('-am')) {
     if (napMode === 'home') {
-      // 從午睡往回推：安頓 → 午餐 → 回程 → 遊玩。
-      const lunchStart = napStart - SETTLE_MINS - LUNCH_MINS;
-      homeAt = lunchStart;
-      const leaveSpot = homeAt - mins;
+      // 從午睡往回推：安頓 → 午餐 → 回程 → 遊玩。資料寫的關門時間比較早，就玩到關門、早點回家。
+      const leaveSpot = Math.min(napStart - SETTLE_MINS - LUNCH_MINS - mins, close);
+      homeAt = leaveSpot + mins;
+      const lunchStart = homeAt;
       leaveHome = Math.max(EARLIEST_LEAVE, EARLIEST_ARRIVE - mins, openGate, leaveSpot - target - going);
       const playStart = leaveHome + going;
       playMins = leaveSpot - playStart;
@@ -267,6 +288,9 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
       const leaveSpot = napStart;
       homeAt = napStart + mins;
       const lunchStart = leaveSpot - CAR_LUNCH_MINS;
+      if (close < lunchStart) {
+        return { status: 'no-time', spot, mins, reason: `資料寫 ${clock(close)} 關門，比午睡早，車上睡排不起來。可以改成回家睡。` };
+      }
       leaveHome = Math.max(EARLIEST_LEAVE, EARLIEST_ARRIVE - mins, openGate, lunchStart - target - going);
       const playStart = leaveHome + going;
       playMins = lunchStart - playStart;
@@ -284,11 +308,11 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
       ];
     }
   } else {
-    // 下午：午睡在家睡完再出門。
-    leaveHome = napEnd + WAKE_BUFFER;
+    // 下午：午睡在家睡完再出門；資料寫的開門時間比較晚，就晚一點出門。
+    leaveHome = Math.max(napEnd + WAKE_BUFFER, openGate);
     const playStart = leaveHome + going;
     // 資料有寫幾點關門：玩到關門為止；也要在 18:30 前到家。
-    const latestLeaveSpot = Math.min(LATEST_HOME - mins, hours.close ?? Number.POSITIVE_INFINITY);
+    const latestLeaveSpot = Math.min(LATEST_HOME - mins, close);
     const leaveSpot = Math.min(playStart + target, latestLeaveSpot);
     playMins = leaveSpot - playStart;
     homeAt = leaveSpot + mins;
@@ -304,20 +328,31 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
       { kind: 'drive', start: leaveSpot, end: homeAt, label: `開車回家（約 ${driveLabel(mins)}）` },
       { kind: 'home', start: homeAt, label: '到家' },
     ];
-    if (hours.close === null) notes.push('下午場：傍晚可能已經接近關門時間，出發前確認營業到幾點。');
+    if (hours.close === null) notes.push('下午場：傍晚可能已經接近關門時間。');
   }
 
   if (!validateSteps(steps)) {
     return { status: 'no-time', spot, mins, reason: '這個條件排不出合理的時間，建議更改條件。' };
   }
   const arrive = leaveHome + mins;
+  // 今天的出門時間已經過了：不當成可行的行程。
+  if (nowMins !== undefined && date === today && nowMins > leaveHome) {
+    return { status: 'past', reason: `今天建議 ${clock(leaveHome)} 出門，已經過了。可以改下午或其他天。` };
+  }
+  const v = verificationOf(spot);
+  const hoursVerified = v.status !== 'conflict' && v.verifiedFields.some((f) => /營業時間|開放時間/.test(f));
   if (hours.open !== null || hours.close !== null) {
-    notes.push(`依資料的營業時間${hours.open !== null ? ` ${clock(hours.open)} 開` : ''}${hours.close !== null ? `、${clock(hours.close)} 關` : ''}排的，以官方公告為準。`);
-  } else if (slot.endsWith('-am') && arrive < 9 * 60 + 30) {
-    notes.push(`${clock(arrive)} 就到了，先確認幾點開門。`);
+    const span = `${hours.open !== null ? `${clock(hours.open)} 開` : ''}${hours.open !== null && hours.close !== null ? '、' : ''}${hours.close !== null ? `${clock(hours.close)} 關` : ''}`;
+    notes.push(
+      hoursVerified
+        ? `依查證過的營業時間（${span}）排的，出發前還是看一下官方公告。`
+        : `營業時間是還沒查證的資料（${span}），只用來避開開門前和關門後，不代表當天一定有開，出發前一定要確認。`,
+    );
+  } else {
+    notes.push('不知道幾點開、幾點關，這份時間表沒有考慮營業時間，出發前一定要確認。');
+    if (slot.endsWith('-am') && arrive < 9 * 60 + 30) notes.push(`${clock(arrive)} 就到了，先確認幾點開門。`);
   }
   if (playMins < target - 15) notes.push('時間比較趕，挑重點玩。');
-  if (nowMins !== undefined && date === today && nowMins > leaveHome) notes.push('今天的建議出門時間已經過了，可以改下午或明天。');
 
   return {
     status: 'ok',
@@ -331,7 +366,7 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
     checks: departureChecks(spot),
     facilities: facilityNotes(spot),
     ageNote: null,
-    verification: verificationOf(spot),
+    verification: v,
   };
 }
 
@@ -381,7 +416,23 @@ export function ageNote(spot: Spot, kids: readonly KidInfo[]): string | null {
   return parts.join('；');
 }
 
-/** 一次算完：挑出符合條件的景點，排第 index 個的時間軸。 */
+type OkPlan = Extract<FamilyPlanResult, { status: 'ok' }>;
+
+export interface HalfDayPlans {
+  /** 符合硬性條件的景點（依推薦分數排序） */
+  candidates: ScoredSpot[];
+  /** 真的排得出合理時間的（依推薦分數排序） */
+  plans: { pick: ScoredSpot; result: OkPlan }[];
+  /** 符合條件但排不出時間的，和原因 */
+  skipped: { pick: ScoredSpot; result: Exclude<FamilyPlanResult, { status: 'ok' }> }[];
+  /** 要顯示的：第 index 個排得出來的；全部排不出來時是 null，時段已經過了是 past */
+  result: FamilyPlanResult | null;
+}
+
+/**
+ * 一次算完：挑出符合條件的景點，依推薦分數往下檢查，只留下真的排得出合理時間的。
+ * 第一名排不出來就自動看下一個；全部都排不出來才回傳 null。index 是在「排得出來的」裡面輪。
+ */
 export function planHalfDay(
   spots: readonly Spot[],
   ctx: RecommendContext,
@@ -390,14 +441,44 @@ export function planHalfDay(
   seed: string,
   index = 0,
   nowMins?: number,
-): { candidates: ScoredSpot[]; result: FamilyPlanResult | null } {
+): HalfDayPlans {
   if (slotDate(ctx.today, options.slot) < ctx.today) {
-    return { candidates: [], result: { status: 'past', reason: `${SLOT_LABELS[options.slot]}已經過了，請改選還沒到的時段。` } };
+    return { candidates: [], plans: [], skipped: [], result: { status: 'past', reason: `${SLOT_LABELS[options.slot]}已經過了，請改選還沒到的時段。` } };
   }
   const candidates = familyCandidates(spots, ctx, options, seed);
-  const pick = candidates[index];
-  if (!pick) return { candidates, result: null };
-  return { candidates, result: timelineFor(pick.spot, ctx.minsOf, ctx, options, nap, nowMins) };
+  const plans: HalfDayPlans['plans'] = [];
+  const skipped: HalfDayPlans['skipped'] = [];
+  for (const pick of candidates) {
+    const result = timelineFor(pick.spot, ctx.minsOf, ctx, options, nap, nowMins);
+    if (result.status === 'ok') plans.push({ pick, result });
+    else skipped.push({ pick, result });
+  }
+  const chosen = plans.length > 0 ? plans[((index % plans.length) + plans.length) % plans.length] : undefined;
+  // 今天的出門時間都過了：直接說時段來不及，不要說「沒有適合的地方」。
+  const allLate = plans.length === 0 && skipped.length > 0 && skipped.every((s) => s.result.status === 'past');
+  return { candidates, plans, skipped, result: chosen?.result ?? (allLate ? skipped[0]!.result : null) };
+}
+
+/**
+ * 已保存的半日遊還能不能用：用目前的出發地、孩子年齡、推車設定，重新檢查當初的硬性條件。
+ * 不符合就回傳 invalid（要重新安排），符合才重排時間軸。
+ */
+export function checkSavedPlan(spot: Spot, addon: FamilyPlanAddon, ctx: RecommendContext, nap: Nap, nowMins?: number): FamilyPlanResult {
+  const problems: string[] = [];
+  if (!isRecommendable(spot)) problems.push(`資料有疑問（${(spot.risk_flags ?? []).map((r) => RISK_LABELS[r]).join('、')}）`);
+  const date = spotDateStatus(spot, slotDate(ctx.today, addon.slot));
+  if (date.closed) problems.push('那天已經熄燈');
+  if (date.notYetOpen) problems.push('那天還沒開幕');
+  const rating = ctx.ratings?.[spot.id];
+  if (rating && rating.stars <= 2) problems.push(`你們給過 ${rating.stars} 顆星`);
+  if (addon.envMode === 'indoor' && spot.env !== 'in') problems.push('不是完全室內');
+  if ((addon.stroller || ctx.needStroller) && !spot.stroller_ok) problems.push('現在設定要帶推車，這裡推車不好推');
+  const mins = ctx.minsOf(spot);
+  if (mins === null) problems.push('從目前的出發地算不出車程');
+  else if (mins > addon.maxDrive) problems.push(`從目前的出發地單程約 ${formatDrive(mins).value} ${formatDrive(mins).unit}，超過當初設定的 ${addon.maxDrive} 分鐘`);
+  if (agesFit(spot, ctx.kids ?? []) === false) problems.push('孩子的年齡設定改了，不在這裡的建議年齡內');
+  if (problems.length > 0) return { status: 'invalid', spot, reason: `${problems.join('；')}。` };
+  return timelineFor(spot, ctx.minsOf, ctx, addon, nap, nowMins);
 }
 
 /** 指定景點排時間（例如已經選好的這週計畫）。 */
