@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FullDayOk } from '../lib/full-day.ts';
 import { formatDrive } from '../lib/format.ts';
-import { directionsUrl } from '../lib/links.ts';
+import { directionsUrl, routeUrl } from '../lib/links.ts';
 import { formatClock } from '../lib/plan.ts';
 import { VERIFICATION_LABELS } from '../lib/verification.ts';
 import { TimelineSteps } from './FamilyPlanTimeline.tsx';
@@ -60,6 +60,17 @@ export function DayTimeline({
             {formatClock(plan.leaveHome)} 出門，約 <span className="font-bold">{formatClock(plan.homeAt)}</span> 到家
           </p>
         </div>
+
+        {plan.draft && (
+          <div role="note" className="rounded-xl bg-amber-50 px-3 py-2 text-sm text-amber-950 ring-1 ring-amber-300 dark:bg-[#2b2719] dark:text-amber-100 dark:ring-amber-800">
+            <p className="font-bold">待確認草案：下面幾件事確認後，時間才算數</p>
+            <ul className="mt-0.5 list-disc pl-4">
+              {plan.draftReasons.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {plan.endsEarly && (
           <div role="note" className="rounded-xl bg-sky-50 px-3 py-2 text-sm text-sky-950 ring-1 ring-sky-200 dark:bg-[#17252e] dark:text-sky-100 dark:ring-sky-900/60">
@@ -131,6 +142,16 @@ export function DayTimeline({
         <p className="text-xs text-stone-600 dark:text-stone-400">時間是依你的出發地、午睡和條件算的；車程都是粗估，以導航為準。</p>
 
         <div className="grid grid-cols-2 gap-2">
+          {two && (
+            <div className="col-span-2 flex flex-col gap-1">
+              <a href={routeUrl(plan.spots.map((s) => s.spot))} target="_blank" rel="noopener noreferrer" className={`${primaryButton} w-full`}>
+                兩站依序導航（Google 地圖）
+              </a>
+              <p className="text-xs text-stone-600 dark:text-stone-400">
+                從手機目前位置出發，先到{names[0]}，再到{names[1]}。打不開或順序不對，可以用下面的單站導航。
+              </p>
+            </div>
+          )}
           {plan.spots.map((s) => (
             <a key={s.spot.id} href={directionsUrl(s.spot)} target="_blank" rel="noopener noreferrer" className={secondaryButton}>
               {two ? `導航到${s.spot.name.length > 6 ? `${s.spot.name.slice(0, 6)}…` : s.spot.name}` : 'Google 地圖導航'}

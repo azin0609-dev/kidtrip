@@ -32,7 +32,7 @@ export function FullDayPanel({
   defaults: FullDayOptions;
   nowMins: number;
   onSave: (plan: FullDayOk, opts: FullDayOptions) => void;
-  onShare: (plan: FullDayOk, whenLabel: string, slot: Slot) => Promise<string>;
+  onShare: (plan: FullDayOk, whenLabel: string, opts: FullDayOptions) => Promise<string>;
 }) {
   const [opts, setOpts] = useState<FullDayOptions>(defaults);
   const [index, setIndex] = useState(0);
@@ -147,7 +147,7 @@ export function FullDayPanel({
               onSave(plan, opts);
               setSavedKey(key);
             }}
-            onShare={() => onShare(plan, whenLabel, `${opts.day}-am`)}
+            onShare={() => onShare(plan, whenLabel, opts)}
             onReplan={
               r.plans.length > 1
                 ? () => {

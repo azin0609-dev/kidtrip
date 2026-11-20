@@ -58,7 +58,7 @@ export function FamilyPlanBuilder({
   restaurants: readonly Restaurant[];
   fullDefaults: FullDayOptions;
   onSaveFull: (plan: FullDayOk, opts: FullDayOptions) => void;
-  onShareFull: (plan: FullDayOk, whenLabel: string, slot: Slot) => Promise<string>;
+  onShareFull: (plan: FullDayOk, whenLabel: string, opts: FullDayOptions) => Promise<string>;
 }) {
   const [length, setLength] = useState<'half' | 'full'>('half');
   const ref = useRef<HTMLDialogElement>(null);

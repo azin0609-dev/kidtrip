@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import type { Spot } from '../data/schema.ts';
 import { formatDrive } from '../lib/format.ts';
-import { directionsUrl, officialInfoUrl } from '../lib/links.ts';
+import { directionsUrl, officialInfoUrl, routeUrl } from '../lib/links.ts';
 import { type SlotWeather, formatSlotWeather } from '../lib/weather.ts';
 import { Flag } from './Brand.tsx';
 import { buttonBase } from './ui.tsx';
 
 const ghost = `${buttonBase} border border-stone-300 text-stone-800 hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800`;
+const linkFocus = 'rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white';
 const primary = `${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 dark:bg-emerald-400 dark:text-stone-950 dark:hover:bg-emerald-300`;
 
 export interface WeekPlanCardProps {
@@ -88,8 +89,13 @@ export function WeekPlanCard({ spot, backup: rawBackup, when, nextStop = null, m
       )}
 
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <a href={directionsUrl(spot)} target="_blank" rel="noopener noreferrer" className={`${buttonBase} bg-white text-emerald-900 hover:bg-emerald-50`}>
-          {nextStop ? '看第一站路線' : '看路線'}
+        <a
+          href={nextStop ? routeUrl([spot, nextStop]) : directionsUrl(spot)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${buttonBase} bg-white text-emerald-900 hover:bg-emerald-50`}
+        >
+          {nextStop ? '兩站路線' : '看路線'}
         </a>
         <button type="button" onClick={() => void onShare().then(setMsg)} className={`${buttonBase} bg-amber-400 text-stone-950 hover:bg-amber-300`}>
           傳給另一半
@@ -106,6 +112,17 @@ export function WeekPlanCard({ spot, backup: rawBackup, when, nextStop = null, m
           取消這週行程
         </button>
       </div>
+      {nextStop && (
+        <p className="mt-1 flex flex-wrap items-center gap-x-3 text-sm text-emerald-50">
+          <span>只導航一站：</span>
+          <a href={directionsUrl(spot)} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-11 items-center underline underline-offset-2 ${linkFocus}`}>
+            第一站
+          </a>
+          <a href={directionsUrl(nextStop)} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-11 items-center underline underline-offset-2 ${linkFocus}`}>
+            第二站
+          </a>
+        </p>
+      )}
       {msg && (
         <p role="status" className="mt-2 text-sm text-emerald-50">
           {msg}

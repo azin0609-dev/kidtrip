@@ -1,8 +1,7 @@
 import type { Restaurant, Spot } from '../data/schema.ts';
-import { type DayPlanAddon, type FullDayOk, checkSavedDay, dayLabel } from '../lib/full-day.ts';
+import { type DayPlanAddon, type FullDayOk, type FullDayOptions, checkSavedDay, dayLabel, dayOptionsOf } from '../lib/full-day.ts';
 import type { Nap } from '../lib/plan.ts';
 import type { RecommendContext } from '../lib/recommend.ts';
-import type { Slot } from '../lib/weather.ts';
 import { DayTimeline } from './DayTimeline.tsx';
 
 /**
@@ -25,7 +24,7 @@ export function SavedDayPlan({
   nap: Nap;
   restaurants: readonly Restaurant[];
   nowMins: number;
-  onShare: (plan: FullDayOk, whenLabel: string, slot: Slot) => Promise<string>;
+  onShare: (plan: FullDayOk, whenLabel: string, opts: FullDayOptions) => Promise<string>;
   onReplan: () => void;
 }) {
   const result = checkSavedDay(addon, spots, ctx, nap, restaurants, nowMins);
@@ -33,7 +32,7 @@ export function SavedDayPlan({
   if (result.status === 'ok') {
     return (
       <div className="mb-6">
-        <DayTimeline plan={result} whenLabel={when} onShare={() => onShare(result, when, addon.slot)} onReplan={onReplan} />
+        <DayTimeline plan={result} whenLabel={when} onShare={() => onShare(result, when, dayOptionsOf(addon))} onReplan={onReplan} />
       </div>
     );
   }

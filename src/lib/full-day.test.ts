@@ -10,7 +10,9 @@ import {
   dayPlanHeading,
   dayShareText,
   defaultNapMode,
+  LUNCH_MOVE,
   lunchInfo,
+  lunchWhere,
   makeDayAddon,
   napWarning,
   parseDayPlan,
@@ -31,9 +33,10 @@ const kids = [
   { name: '核桃', age: 1 },
 ];
 
-// 林口附近：A、B 各自離家都約 20 分，但兩地之間約 30 多分鐘
-const A = makeSpot({ id: 'spot-301', name: '甲館', env: 'in', age_best: [1, 8], stroller_ok: true, lat: 25.07, lng: 121.39, mins_from_linkou: 20, stay_hours: 2 });
-const B = makeSpot({ id: 'spot-302', name: '乙館', env: 'in', age_best: [1, 8], stroller_ok: true, lat: 24.96, lng: 121.22, mins_from_linkou: 20, stay_hours: 2 });
+// 林口附近：A、B 各自離家都約 20 分，但兩地之間約 30 多分鐘。
+// 兩館資料都標示裡面有賣吃的（場內午餐）；場外、地點不明的情境另外測。
+const A = makeSpot({ id: 'spot-301', name: '甲館', env: 'in', age_best: [1, 8], stroller_ok: true, lat: 25.07, lng: 121.39, mins_from_linkou: 20, stay_hours: 2, facilities: ['food'] });
+const B = makeSpot({ id: 'spot-302', name: '乙館', env: 'in', age_best: [1, 8], stroller_ok: true, lat: 24.96, lng: 121.22, mins_from_linkou: 20, stay_hours: 2, facilities: ['food'] });
 const NEAR = makeSpot({ id: 'spot-303', name: '丙館', env: 'in', age_best: [1, 8], stroller_ok: true, lat: 25.06, lng: 121.37, mins_from_linkou: 15 });
 const AREA = makeSpot({ id: 'spot-304', name: '只知道鄉鎮', env: 'in', age_best: [1, 8], lat: 25.0, lng: 121.3, coord_area: true, mins_from_linkou: 20 });
 const SEMI = makeSpot({ id: 'spot-305', name: '半室內', env: 'semi', age_best: [1, 8], lat: 25.05, lng: 121.36, mins_from_linkou: 15 });
@@ -320,8 +323,9 @@ describe('品質修正：景點提早關門，不把午餐、休息排在關門�
     const r = planSingle(makeSpot({ ...early, open_note: '09:00–12:00' }), opts({ style: 'easy', napMode: 'car' }), ctx());
     if (r.status !== 'ok') throw new Error('should be ok');
     expect(validateSteps(r.steps)).toBe(true);
-    expect(r.steps.find((s) => s.kind === 'play')!.end).toBe(t(12));
-    expect(r.steps.find((s) => s.kind === 'transfer')!.start).toBe(t(12));
+    // 吃飯地點不知道：移動先抓 20 分，要在 13:00 午睡前吃完，所以 11:55 就離場（比關門早）。
+    expect(r.steps.find((s) => s.kind === 'play')!.end).toBe(t(11, 55));
+    expect(r.steps.find((s) => s.kind === 'transfer')!.start).toBe(t(11, 55));
     expect(r.steps.find((s) => s.kind === 'lunch')!.end).toBeLessThanOrEqual(t(13));
     expect(r.steps.find((s) => s.kind === 'nap')!.start).toBe(t(13));
     expect(insideAfterClose(r.steps, t(12))).toEqual([]);
@@ -418,5 +422,124 @@ describe('品質修正：首頁計畫卡片跟全日遊一致', () => {
     const r = planPair(A, B, opts(), ctx());
     if (r.status !== 'ok') throw new Error('should be ok');
     expect(dayPlanHeading(makeDayAddon('2026-W47', r, opts()), today, new Map([[A.id, A]]))).toBeNull();
+  });
+});
+
+// ---------- v1.2.2：午餐地點、移動時間與重新入場 ----------
+
+describe('v1.2.2：午餐在場內、場外或地點不明', () => {
+  const food = (o: Partial<Restaurant> = {}): Restaurant =>
+    ({ id: 'food-951', name: '附近餐廳', city: '新北市林口區', region: '北', cuisine: '簡餐', price_tier: '$$', tags: [], mins_from_linkou: 10, tip: 'x', near_spot_ids: ['spot-350', 'spot-351'], lat: null, lng: null, google_place_id: null, needs_verify: [], last_verified: '2026-11-18', ...o }) as Restaurant;
+  // 要門票、裡面沒賣吃的
+  const PAID = makeSpot({ ...A, id: 'spot-350', name: '丁館', facilities: [], cost_tier: '$', stay_hours: 4 });
+  // 免費、裡面沒賣吃的
+  const FREE = makeSpot({ ...A, id: 'spot-351', name: '戊公園', facilities: [], cost_tier: 'free', stay_hours: 4 });
+  const withFood = (over: Partial<RecommendContext> = {}) => ({ ...ctx(over), restaurants: [food()] });
+  const kinds = (steps: readonly { kind: string }[]) => steps.map((s) => s.kind);
+  /** 每一步都接在前一步後面，沒有重疊 */
+  const noOverlap = (steps: readonly { start: number; end?: number }[]) => steps.every((s, i) => i === 0 || s.start >= (steps[i - 1]!.end ?? steps[i - 1]!.start));
+
+  it('判斷午餐地點：有賣吃的＝場內；只有附近餐廳＝場外；都沒有＝不知道；自備看能不能帶便當', () => {
+    expect(lunchWhere(A, 'nearby', [])).toBe('inside');
+    expect(lunchWhere(PAID, 'nearby', [food()])).toBe('outside');
+    expect(lunchWhere(PAID, 'nearby', [])).toBe('unknown');
+    expect(lunchWhere(PAID, 'nearby', [food({ risk_flags: ['status_conflict'] })])).toBe('unknown');
+    expect(lunchWhere(makeSpot({ ...PAID, facilities: ['picnic'] }), 'packed', [])).toBe('inside');
+    expect(lunchWhere(A, 'packed', [])).toBe('unknown');
+    expect(lunchInfo(A, 'nearby', []).where).toBe('inside');
+  });
+
+  it('場外吃、要門票、下午還要回去：預留離場和回場時間，標示重新入場要先問，列為待確認草案', () => {
+    const r = planSingle(PAID, opts({ style: 'easy', napMode: 'none' }), { ...withFood(), kids: [{ name: '', age: 5 }] });
+    if (r.status !== 'ok') throw new Error(r.reason);
+    expect(validateSteps(r.steps) && noOverlap(r.steps)).toBe(true);
+    expect(kinds(r.steps)).toEqual(['leave', 'drive', 'park', 'play', 'transfer', 'lunch', 'rest', 'transfer', 'play', 'drive', 'home']);
+    const [out, back] = r.steps.filter((s) => s.kind === 'transfer');
+    const lunch = r.steps.find((s) => s.kind === 'lunch')!;
+    const afternoon = r.steps.filter((s) => s.kind === 'play')[1]!;
+    expect(out!.end! - out!.start).toBe(LUNCH_MOVE.outside);
+    expect(lunch.start).toBe(out!.end);
+    expect(back!.end! - back!.start).toBe(LUNCH_MOVE.outside);
+    expect(afternoon.start).toBe(back!.end); // 回到場內之後才開始玩
+    expect(back!.label).toContain('重新入場');
+    expect(out!.label).toContain('先預留');
+    expect(r.draft).toBe(true);
+    expect(r.draftReasons.join()).toContain('能不能再進來');
+    expect(r.notes.join()).toContain('距離沒有資料');
+  });
+
+  it('場外吃、免費的地方：一樣預留移動時間，但不用問重新入場', () => {
+    const r = planSingle(FREE, opts({ style: 'easy', napMode: 'none' }), { ...withFood(), kids: [{ name: '', age: 5 }] });
+    if (r.status !== 'ok') throw new Error(r.reason);
+    const back = r.steps.filter((s) => s.kind === 'transfer')[1]!;
+    expect(back.label).not.toContain('重新入場');
+    expect(r.draft).toBe(false);
+  });
+
+  it('地點不知道：移動抓 20 分，標成待確認草案', () => {
+    const r = planSingle(PAID, opts({ style: 'easy', napMode: 'car' }), ctx());
+    if (r.status !== 'ok') throw new Error(r.reason);
+    const out = r.steps.find((s) => s.kind === 'transfer')!;
+    expect(out.end! - out.start).toBe(LUNCH_MOVE.unknown);
+    expect(r.draft).toBe(true);
+    expect(r.draftReasons.join()).toContain('午餐地點還沒確認');
+    expect(r.lunch.text).toContain('要自己找');
+    expect(dayShareText(r, '週六 11/21')).toContain('待確認');
+  });
+
+  it('車上睡：出場吃完直接上車，不排回場；午睡前吃完', () => {
+    const r = planSingle(PAID, opts({ style: 'easy', napMode: 'car' }), withFood());
+    if (r.status !== 'ok') throw new Error(r.reason);
+    expect(noOverlap(r.steps)).toBe(true);
+    expect(r.steps.filter((s) => s.kind === 'transfer')).toHaveLength(1);
+    expect(r.steps.find((s) => s.kind === 'lunch')!.end).toBeLessThanOrEqual(t(13));
+    expect(r.steps.find((s) => s.kind === 'nap')!.start).toBe(t(13));
+    expect(r.draftReasons.join()).not.toContain('能不能再進來');
+  });
+
+  it('推車上睡：吃完要先回到場內，回場結束不晚於午睡開始', () => {
+    const r = planSingle(PAID, opts({ style: 'easy', napMode: 'stroller' }), withFood());
+    if (r.status !== 'ok') throw new Error(r.reason);
+    expect(validateSteps(r.steps) && noOverlap(r.steps)).toBe(true);
+    const back = r.steps.filter((s) => s.kind === 'transfer')[1]!;
+    const napStep = r.steps.find((s) => s.kind === 'nap')!;
+    expect(back.label).toContain('回到丁館');
+    expect(back.end!).toBeLessThanOrEqual(napStep.start);
+    expect(napStep.start).toBe(t(13));
+  });
+
+  it('下午玩不到多久：出場吃完不回去，直接回家（不排沒意義的回場）', () => {
+    const r = planSingle(FREE, opts({ style: 'easy', napMode: 'none', latestHome: t(13, 30) }), { ...withFood(), kids: [{ name: '', age: 5 }] });
+    if (r.status !== 'ok') throw new Error(r.reason);
+    expect(r.steps.some((s) => s.label.includes('回到'))).toBe(false);
+    expect(r.endsEarly).toBe(true);
+  });
+
+  it('雙景點：第一站出場吃，吃完直接開去第二站，不回第一站', () => {
+    const r = planPair(PAID, B, opts({ napMode: 'none' }), { ...withFood(), kids: [{ name: '', age: 5 }] });
+    if (r.status !== 'ok') throw new Error(r.reason);
+    expect(validateSteps(r.steps) && noOverlap(r.steps)).toBe(true);
+    expect(r.steps.some((s) => s.label.includes('回到丁館'))).toBe(false);
+    const toSecond = r.steps.find((s) => s.label.includes('開車到乙館'))!;
+    expect(toSecond.start).toBe(r.steps.find((s) => s.kind === 'lunch')!.end);
+    expect(r.notes.join()).toContain('吃飯的地方如果比較遠');
+  });
+
+  it('自備午餐、資料標示可帶便當：在場內吃，不用移動', () => {
+    const picnic = makeSpot({ ...PAID, facilities: ['picnic'] });
+    const r = planSingle(picnic, opts({ style: 'easy', napMode: 'car', lunch: 'packed' }), ctx());
+    if (r.status !== 'ok') throw new Error(r.reason);
+    expect(r.steps.some((s) => s.kind === 'transfer')).toBe(false);
+    expect(r.steps.find((s) => s.kind === 'lunch')!.label).toContain('可帶便當');
+    expect(r.draft).toBe(false);
+  });
+
+  it('不捏造餐廳距離、營業時間、座位：時間都寫「預留」，餐廳只當參考', () => {
+    const r = planSingle(PAID, opts({ style: 'easy', napMode: 'car' }), withFood());
+    if (r.status !== 'ok') throw new Error(r.reason);
+    const labels = r.steps.map((s) => s.label).join();
+    expect(labels).toContain('距離沒有資料');
+    expect(r.lunch.refs.every((x) => x.status !== ('confirmed' as string))).toBe(true);
+    expect(r.lunch.text).toContain('距離也沒有資料');
   });
 });

@@ -16,7 +16,8 @@
     "test:watch": "vitest",
     "validate:data": "node scripts/validate-data.ts",
     "geocode": "node scripts/geocode.ts",
-    "calibrate": "node scripts/calibrate.ts"
+    "calibrate": "node scripts/calibrate.ts",
+    "e2e": "node scripts/e2e.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

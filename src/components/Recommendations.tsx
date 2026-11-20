@@ -99,6 +99,36 @@ function Reminder({ items, small }: { items: string[]; small?: boolean }) {
   );
 }
 
+/**
+ * 「幫我規劃出遊」入口。不管推薦有幾個（0 也一樣）都看得到：規劃工具有自己的條件，推薦是空的時候也可能排得出來。
+ * bar：細長一條，放在推薦卡上面（手機）或空狀態裡；block：桌面版放在右欄。
+ */
+function PlannerEntry({ onClick, variant, className = '' }: { onClick: () => void; variant: 'bar' | 'block'; className?: string }) {
+  if (variant === 'block') {
+    return (
+      <button type="button" onClick={onClick} className={`${secondaryButton} min-h-14 w-full flex-col gap-0 rounded-2xl ${className}`}>
+        <span className="text-base font-black">幫我規劃出遊</span>
+        <span className="text-xs font-medium text-stone-600 dark:text-stone-400">半日或全日：幾點出門、玩多久、怎麼睡午覺</span>
+      </button>
+    );
+  }
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`${buttonBase} min-h-12 w-full justify-between gap-3 rounded-2xl bg-white px-4 text-left shadow-sm ring-1 ring-stone-200 hover:bg-stone-50 dark:bg-card-dark dark:ring-stone-800 dark:hover:bg-card-dark-2 ${className}`}
+    >
+      <span className="min-w-0 flex-1">
+        <span className="block text-[15px] font-black text-stone-900 dark:text-stone-50">幫我規劃出遊</span>
+        <span className="block text-xs font-medium text-stone-600 dark:text-stone-400">半日或全日，幫你排好時間和午睡</span>
+      </span>
+      <span aria-hidden="true" className="shrink-0 text-lg font-bold text-emerald-800 dark:text-emerald-300">
+        ›
+      </span>
+    </button>
+  );
+}
+
 function ChooseButtons({ chosen, open, onChoose, onToggle, big }: { chosen: boolean; open: boolean; onChoose: () => void; onToggle: () => void; big?: boolean }) {
   return (
     <div className={`grid gap-2 ${big ? 'grid-cols-[1.6fr_1fr]' : 'grid-cols-2'}`}>
@@ -323,12 +353,16 @@ export function Recommendations(props: RecommendationsProps) {
         </p>
       )}
 
+      {/* 手機：推薦卡上面就看得到規劃入口；沒有推薦時每種螢幕都顯示。 */}
+      <PlannerEntry onClick={props.onFamilyPlan} variant="bar" className={hero ? 'mt-2 md:hidden' : 'mt-3'} />
+
       {!hero ? (
         <div className={`${cardBase} mt-3 flex flex-col items-center gap-2 p-6 text-center`}>
           <SleepySun className="h-16 w-24" />
           <p className="text-sm text-stone-700 dark:text-stone-300">
             這些條件下沒有適合的地方。試試把「單程最多」調遠一點，或關掉幾個條件。太久沒確認的景點也不會推薦，如果一直是空的，代表資料該更新了。
           </p>
+          <p className="text-sm text-stone-700 dark:text-stone-300">也可以直接用上面的「幫我規劃出遊」，用自己的條件排排看。</p>
         </div>
       ) : (
         <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-3" aria-live="polite">
@@ -363,10 +397,10 @@ export function Recommendations(props: RecommendationsProps) {
               <span className="text-base font-black">換我決定！</span>
               <span className="text-xs font-medium">讓小孩從這 {picks.length} 個裡挑一個</span>
             </button>
-            <button type="button" onClick={props.onFamilyPlan} className={`${secondaryButton} min-h-14 w-full flex-col gap-0 rounded-2xl`}>
-              <span className="text-base font-black">幫我規劃出遊</span>
-              <span className="text-xs font-medium text-stone-600 dark:text-stone-400">半日或全日：幾點出門、玩多久、怎麼睡午覺</span>
-            </button>
+            {/* 桌面版放右欄；手機已經在推薦卡上面。 */}
+            <div className="hidden md:block">
+              <PlannerEntry onClick={props.onFamilyPlan} variant="block" />
+            </div>
           </div>
         </div>
       )}

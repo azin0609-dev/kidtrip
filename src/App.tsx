@@ -22,8 +22,9 @@ import { useStoredState } from './hooks/useStoredState.ts';
 import { useForecast } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, nowMinsInTaipei } from './lib/date.ts';
 import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, checkSavedPlan, makeAddon, shareText } from './lib/family-plan.ts';
-import { type FullDayOk, type FullDayOptions, dayAddonMatches, dayPlanHeading, dayShareText, makeDayAddon } from './lib/full-day.ts';
+import { type DayPlanAddon, type FullDayOk, type FullDayOptions, dayAddonMatches, dayPlanHeading, dayShareText, makeDayAddon } from './lib/full-day.ts';
 import { SavedDayPlan } from './components/SavedDayPlan.tsx';
+import { IncomingDayPlan } from './components/IncomingDayPlan.tsx';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
 import { isRecommendable } from './lib/verification.ts';
@@ -47,7 +48,8 @@ import { setStars, toggleRatingTag } from './lib/ratings.ts';
 import { napPlan } from './lib/plan.ts';
 import { DEFAULT_MAX_DRIVE, type RecommendContext, pickBackup, recommendRound, weekSeed } from './lib/recommend.ts';
 import { type Slot, availableSlots, normalizeSlot, defaultSlot, slotLabelWithDate, slotWeather } from './lib/weather.ts';
-import { PLAN_PARAM, type WeekPlan, buildPlanUrl, decodePlan, isCurrentPlan, makePlan, swapToBackup } from './lib/weekplan.ts';
+import { PLAN_PARAM, type WeekPlan, buildPlanUrl, isCurrentPlan, makePlan, swapToBackup } from './lib/weekplan.ts';
+import { DAY_PARAM, buildDayShareUrl, readShareParams } from './lib/day-share.ts';
 import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
 import { DEFAULT_NAP, formatReports, listMemories, setMemo, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
@@ -85,10 +87,9 @@ export default function App() {
     update((s) => ({ ...s, prefs: { ...s.prefs, stroller: v } }));
   };
   // 打開的是行程連結（?plan=...）：先問要不要存，並把參數從網址拿掉。
-  const [incomingPlan, setIncomingPlan] = useState<WeekPlan | null>(() => {
-    const code = new URL(window.location.href).searchParams.get(PLAN_PARAM);
-    return code ? decodePlan(code) : null;
-  });
+  // 全日遊連結另外帶 ?day=（版本化）；跟 plan 對不上就只用 plan。
+  const [incomingPlan, setIncomingPlan] = useState<WeekPlan | null>(() => readShareParams(window.location.search).plan);
+  const [incomingDay, setIncomingDay] = useState<DayPlanAddon | null>(() => readShareParams(window.location.search).day);
   const [elders, setElders] = useState(false);
   const [kidPickOpen, setKidPickOpen] = useState(false);
   const [familyOpen, setFamilyOpen] = useState(false);
@@ -104,9 +105,10 @@ export default function App() {
   });
   useEffect(() => {
     const url = new URL(window.location.href);
-    if (!url.searchParams.has(SHARE_PARAM) && !url.searchParams.has(PLAN_PARAM)) return;
+    if (!url.searchParams.has(SHARE_PARAM) && !url.searchParams.has(PLAN_PARAM) && !url.searchParams.has(DAY_PARAM)) return;
     url.searchParams.delete(SHARE_PARAM);
     url.searchParams.delete(PLAN_PARAM);
+    url.searchParams.delete(DAY_PARAM);
     window.history.replaceState(null, '', url.toString());
   }, []);
 
@@ -325,9 +327,10 @@ export default function App() {
     });
     setChosenSlot(`${opts.day}-am`);
   };
-  /** 分享：原本的行程連結（只有第一個景點）＋完整時間表文字；不帶孩子資料和出發地。 */
-  const shareFullDay = async (dayPlan: FullDayOk, whenLabel: string, forSlot: Slot) => {
-    const url = buildPlanUrl(window.location.href, makePlan(today, dayPlan.spots[0]!.spot.id, forSlot));
+  /** 分享：全日遊連結（舊的 plan＋版本化的 day，打開看得到兩站和條件）＋時間表文字；不帶孩子資料和出發地。 */
+  const shareFullDay = async (dayPlan: FullDayOk, whenLabel: string, opts: FullDayOptions) => {
+    const weekPlan = makePlan(today, dayPlan.spots[0]!.spot.id, `${opts.day}-am`);
+    const url = buildDayShareUrl(window.location.href, weekPlan, makeDayAddon(weekPlan.week, dayPlan, opts));
     const text = dayShareText(dayPlan, whenLabel);
     if (typeof navigator.share === 'function') {
       try {
@@ -341,9 +344,9 @@ export default function App() {
   };
   const sharePlan = async () => {
     if (!plan || !planSpot) return '';
-    const url = buildPlanUrl(window.location.href, plan);
+    const url = dayHeading && dayAddon ? buildDayShareUrl(window.location.href, plan, dayAddon) : buildPlanUrl(window.location.href, plan);
     const text = dayHeading
-      ? `${dayHeading.when}：${dayHeading.second ? `${planSpot.name} → ${dayHeading.second.name}` : planSpot.name}（打開連結只會看到第一站）`
+      ? `${dayHeading.when}：${dayHeading.second ? `${planSpot.name} → ${dayHeading.second.name}` : planSpot.name}`
       : `${slotLabelWithDate(today, plan.slot)}去${planSpot.name}${planBackup ? `，下雨改去${planBackup.name}` : ''}`;
     if (typeof navigator.share === 'function') {
       try {
@@ -510,7 +513,32 @@ export default function App() {
       <main className="relative mx-auto max-w-6xl px-4 pt-4">
         {tab === 'spots' && (
           <>
-            {incomingPlan && incomingSpot && (
+            {incomingPlan && incomingDay && (
+              <IncomingDayPlan
+                addon={incomingDay}
+                spots={spots}
+                ctx={recommendCtx}
+                nap={nap}
+                restaurants={restaurants}
+                nowMins={nowMins}
+                expired={!isCurrentPlan(incomingPlan, today)}
+                onAccept={() => {
+                  update((s) => {
+                    const rest = { ...s };
+                    delete rest.familyPlan;
+                    return { ...rest, plan: incomingPlan, dayPlan: incomingDay };
+                  });
+                  setChosenSlot(incomingPlan.slot);
+                  setIncomingPlan(null);
+                  setIncomingDay(null);
+                }}
+                onDecline={() => {
+                  setIncomingPlan(null);
+                  setIncomingDay(null);
+                }}
+              />
+            )}
+            {incomingPlan && !incomingDay && incomingSpot && (
               <IncomingPlan
                 spotName={incomingSpot.name}
                 backupName={incomingPlan.backupId ? (spots.find((s) => s.id === incomingPlan.backupId)?.name ?? null) : null}
