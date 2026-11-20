@@ -96,3 +96,8 @@ export function buildShareUrl(baseUrl: string, state: Pick<StoredState, 'fav' | 
   url.searchParams.set(SHARE_PARAM, encodeShare(state));
   return url.toString();
 }
+
+/** 分享選單被使用者取消（AbortError）。這時不該再自動複製或顯示錯誤。 */
+export function isShareCancel(e: unknown): boolean {
+  return typeof e === 'object' && e !== null && (e as { name?: unknown }).name === 'AbortError';
+}

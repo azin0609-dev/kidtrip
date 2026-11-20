@@ -8,12 +8,17 @@
 //   npm run e2e
 //
 // 已經有裝好的 playwright（例如別的專案）也可以用 PLAYWRIGHT_MODULE 指過去。
+// 用 WebKit（Safari 的引擎）跑、手機寬度模擬 iPhone 13：
+//   npx playwright install webkit   （Linux 另外要 npx playwright install-deps webkit）
+//   E2E_BROWSER=webkit npm run e2e
+// 這是模擬，不等於真的 iPhone Safari。
 // 時間固定在 2026-11-18（週三）晚上，天氣 API 一律擋掉，結果才穩定。
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { chromium } = require(process.env.PLAYWRIGHT_MODULE ?? 'playwright');
+const pw = require(process.env.PLAYWRIGHT_MODULE ?? 'playwright');
+const BROWSER = process.env.E2E_BROWSER === 'webkit' ? 'webkit' : 'chromium';
 
 const PORT = Number(process.env.E2E_PORT ?? 4175);
 const BASE = `http://localhost:${PORT}/`;
@@ -62,7 +67,9 @@ async function startServer() {
 
 /** 開新頁面：固定時間、擋天氣、可選擇預先放 localStorage、攔截分享。 */
 async function openPage(browser, { width = 390, height = 844, state = baseState, url = BASE } = {}) {
-  const ctx = await browser.newContext({ viewport: { width, height }, timezoneId: 'Asia/Taipei', locale: 'zh-TW', serviceWorkers: 'block' });
+  // WebKit 的手機寬度用 iPhone 13 的設定（UA、觸控、像素比），只換掉畫面大小。
+  const phone = BROWSER === 'webkit' && width <= 430 ? { ...pw.devices['iPhone 13'] } : {};
+  const ctx = await browser.newContext({ ...phone, viewport: { width, height }, timezoneId: 'Asia/Taipei', locale: 'zh-TW', serviceWorkers: 'block' });
   const page = await ctx.newPage();
   await page.clock.install({ time: NOW });
   await page.route(/open-meteo|nominatim/, (r) => r.abort());
@@ -114,7 +121,8 @@ async function openPlanner(page) {
 
 async function run() {
   const server = await startServer();
-  const browser = await chromium.launch();
+  const browser = await pw[BROWSER].launch();
+  console.log(`瀏覽器：${BROWSER}${BROWSER === 'webkit' ? '（手機寬度模擬 iPhone 13）' : ''}\n`);
   try {
     // 1. 沒有推薦結果仍能開啟規劃工具（手機和桌面都看）
     const nowhere = { ...baseState, origin: { label: '台東縣蘭嶼鄉', lat: 22.04, lng: 121.55 }, prefs: { maxDrive: 30, stroller: true } };
@@ -257,6 +265,23 @@ async function run() {
       const main = await p2.page.locator('main').innerText();
       check('上一版存的全日遊照樣顯示', main.includes('全日遊') && (main.includes('親子輕鬆玩') || main.includes('需要重新安排')));
       await p2.ctx.close();
+    }
+
+    // 分享選單按「取消」：不顯示錯誤，也不改用複製（iOS 取消後已經不能複製）
+    {
+      const { ctx, page } = await openPage(browser);
+      await page.evaluate(() => {
+        Object.defineProperty(navigator, 'share', { configurable: true, value: async () => { throw new DOMException('cancel', 'AbortError'); } });
+        Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new DOMException('denied', 'NotAllowedError'); } } });
+      });
+      const dlg = await openPlanner(page);
+      await dlg.getByRole('button', { name: '全日遊' }).click();
+      await page.waitForTimeout(150);
+      await dlg.getByRole('button', { name: '分享給另一半' }).first().click();
+      await page.waitForTimeout(200);
+      const msg = (await dlg.getByRole('status').allInnerTexts()).join(' ');
+      check('分享選單按「取消」不跳出錯誤訊息', !msg.includes('沒辦法自動複製'), msg.slice(0, 40) || '沒有訊息');
+      await ctx.close();
     }
 
     // 8. 手機窄螢幕不出現橫向捲動

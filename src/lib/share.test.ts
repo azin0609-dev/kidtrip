@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildShareUrl, countNew, decodeShare, encodeShare, mergeShare } from './share.ts';
+import { buildShareUrl, countNew, decodeShare, encodeShare, isShareCancel, mergeShare } from './share.ts';
 import { formatReports, parseState } from './storage.ts';
 
 const mine = { fav: ['spot-001'], been: ['spot-002'], beenAt: { 'spot-002': '2026-10-01' }, ratings: {} };
@@ -50,5 +50,15 @@ describe('回報資料有誤', () => {
     const state = parseState(JSON.stringify({ fav: [], been: [], reports: [{ id: 'spot-001', note: '週一沒開', date: '2026-11-17' }, { id: 3 }] }));
     expect(state.reports).toEqual([{ id: 'spot-001', note: '週一沒開', date: '2026-11-17' }]);
     expect(formatReports(state.reports!, () => '測試公園')).toBe('2026-11-17｜測試公園（spot-001）：週一沒開');
+  });
+});
+
+describe('分享選單取消', () => {
+  it('使用者按取消（AbortError）才算取消；其他錯誤要改用複製', () => {
+    expect(isShareCancel(new DOMException('cancel', 'AbortError'))).toBe(true);
+    expect(isShareCancel({ name: 'AbortError' })).toBe(true);
+    expect(isShareCancel(new DOMException('no', 'NotAllowedError'))).toBe(false);
+    expect(isShareCancel(new TypeError('x'))).toBe(false);
+    expect(isShareCancel(undefined)).toBe(false);
   });
 });

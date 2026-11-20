@@ -50,7 +50,7 @@ import { DEFAULT_MAX_DRIVE, type RecommendContext, pickBackup, recommendRound, w
 import { type Slot, availableSlots, normalizeSlot, defaultSlot, slotLabelWithDate, slotWeather } from './lib/weather.ts';
 import { PLAN_PARAM, type WeekPlan, buildPlanUrl, isCurrentPlan, makePlan, swapToBackup } from './lib/weekplan.ts';
 import { DAY_PARAM, buildDayShareUrl, readShareParams } from './lib/day-share.ts';
-import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, mergeShare } from './lib/share.ts';
+import { SHARE_PARAM, type SharePayload, buildShareUrl, countNew, decodeShare, isShareCancel, mergeShare } from './lib/share.ts';
 import { DEFAULT_NAP, formatReports, listMemories, setMemo, toggleBeen as toggleBeenState } from './lib/storage.ts';
 import { TABS } from './lib/tabs.ts';
 
@@ -135,8 +135,9 @@ export default function App() {
       try {
         await navigator.share({ title: '放電研究所', text: '我的收藏清單', url });
         return '已經打開分享選單。';
-      } catch {
-        // 使用者取消或不支援，改用複製
+      } catch (e) {
+        // 使用者按了取消：什麼都不做（這時候 iOS 也已經不讓複製了）。其他錯誤（不支援等）才改用複製。
+        if (isShareCancel(e)) return '';
       }
     }
     return copyText(url, '連結已複製，貼給另一半就可以了。');
@@ -290,8 +291,9 @@ export default function App() {
       try {
         await navigator.share({ title: '放電研究所：半日遊', text, url });
         return '已經打開分享選單。';
-      } catch {
-        // 使用者取消或不支援，改用複製
+      } catch (e) {
+        // 使用者按了取消：什麼都不做（這時候 iOS 也已經不讓複製了）。其他錯誤（不支援等）才改用複製。
+        if (isShareCancel(e)) return '';
       }
     }
     return copyText(`${text}\n${url}`, '時間表和連結已複製，貼到 LINE 給另一半就可以了。');
@@ -336,8 +338,9 @@ export default function App() {
       try {
         await navigator.share({ title: '放電研究所：全日遊', text, url });
         return '已經打開分享選單。';
-      } catch {
-        // 使用者取消或不支援，改用複製
+      } catch (e) {
+        // 使用者按了取消：什麼都不做（這時候 iOS 也已經不讓複製了）。其他錯誤（不支援等）才改用複製。
+        if (isShareCancel(e)) return '';
       }
     }
     return copyText(`${text}\n${url}`, '時間表和連結已複製，貼到 LINE 給另一半就可以了。');
@@ -352,8 +355,9 @@ export default function App() {
       try {
         await navigator.share({ title: '放電研究所：這週放電計畫', text, url });
         return '已經打開分享選單。';
-      } catch {
-        // 使用者取消或不支援，改用複製
+      } catch (e) {
+        // 使用者按了取消：什麼都不做（這時候 iOS 也已經不讓複製了）。其他錯誤（不支援等）才改用複製。
+        if (isShareCancel(e)) return '';
       }
     }
     return copyText(`${text}\n${url}`, '行程連結已複製，貼到 LINE 給另一半就可以了。');
