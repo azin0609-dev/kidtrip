@@ -2455,7 +2455,7 @@
   {
     "id": "hotel-060",
     "name": "嘉楠風華酒店",
-    "city": "嘉義市",
+    "city": "嘉義市西區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2474,15 +2474,24 @@
     ],
     "lat": 23.481109,
     "lng": 120.453541,
-    "google_place_id": null,
+    "google_place_id": "ChIJp0q9UYSWbjQRespr9-aybG0",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市西區；原本資料寫嘉義市，依 Google 地圖改為嘉義市西區"
+    }
   },
   {
     "id": "hotel-061",
@@ -2735,7 +2744,7 @@
   {
     "id": "hotel-067",
     "name": "捷絲旅 高雄站前館",
-    "city": "高雄市三民區",
+    "city": "高雄市新興區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$",
@@ -2753,13 +2762,23 @@
     ],
     "lat": 22.635124,
     "lng": 120.302482,
-    "google_place_id": null,
+    "google_place_id": "ChIJt-rnZYsEbjQRDTOgpwcXzTg",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市新興區；原本資料寫高雄市三民區，依 Google 地圖改為高雄市新興區"
+    }
   },
   {
     "id": "hotel-068",
@@ -2909,13 +2928,23 @@
     ],
     "lat": 22.089695,
     "lng": 120.71683,
-    "google_place_id": null,
+    "google_place_id": "ChIJPcYkpky3cTQRE3xebf-jI2I",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣車城鄉"
+    }
   },
   {
     "id": "hotel-072",
@@ -2942,13 +2971,23 @@
     ],
     "lat": 21.997466,
     "lng": 120.705078,
-    "google_place_id": null,
+    "google_place_id": "ChIJu2rKvQy6cTQRb2wp8D-stZc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣恆春鎮"
+    }
   },
   {
     "id": "hotel-073",
@@ -2972,14 +3011,24 @@
     ],
     "lat": 21.945788,
     "lng": 120.789396,
-    "google_place_id": null,
+    "google_place_id": "ChIJtYPNjJCxcTQRcVf2YyPUJIQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣恆春鎮"
+    }
   },
   {
     "id": "hotel-074",
@@ -3006,13 +3055,23 @@
     ],
     "lat": 23.866264,
     "lng": 121.527975,
-    "google_place_id": null,
+    "google_place_id": "ChIJbad1ykmlaDQRmVQKX6qCbNc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣壽豐鄉"
+    }
   },
   {
     "id": "hotel-075",
@@ -3039,14 +3098,24 @@
     ],
     "lat": 23.496817,
     "lng": 121.375992,
-    "google_place_id": null,
+    "google_place_id": "ChIJh3nIgv1FbzQRE78FUyX-EYI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣瑞穗鄉"
+    }
   },
   {
     "id": "hotel-076",
@@ -3071,14 +3140,24 @@
     ],
     "lat": 23.982074,
     "lng": 121.60681,
-    "google_place_id": null,
+    "google_place_id": "ChIJn-ffNoEgZjQRfvK_PvhfnRE",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣花蓮市"
+    }
   },
   {
     "id": "hotel-077",
@@ -3103,13 +3182,26 @@
     ],
     "lat": 23.991974,
     "lng": 121.626909,
-    "google_place_id": null,
+    "google_place_id": "ChIJkUoWPNWfaDQRHxnmxmooKkc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣花蓮市；Google 地圖顯示永久歇業；2024 年花蓮地震後停業準備改建"
+    },
+    "risk_flags": [
+      "status_conflict"
+    ]
   },
   {
     "id": "hotel-078",
@@ -3136,13 +3228,23 @@
     ],
     "lat": 22.793092,
     "lng": 121.130207,
-    "google_place_id": null,
+    "google_place_id": "ChIJJ-sJD9K7bzQRKVCTzHCD09E",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣台東市"
+    }
   },
   {
     "id": "hotel-079",
