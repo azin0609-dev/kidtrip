@@ -3270,13 +3270,23 @@
     ],
     "lat": 22.769988,
     "lng": 121.122234,
-    "google_place_id": null,
+    "google_place_id": "ChIJBYCTSZy5bzQRix7cQ6EPMZ8",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣台東市"
+    }
   },
   {
     "id": "hotel-080",
@@ -3300,7 +3310,7 @@
     ],
     "lat": 22.793727,
     "lng": 121.077838,
-    "google_place_id": null,
+    "google_place_id": "ChIJ453ZbbrJbzQRmMTE7JybleI",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
@@ -3309,7 +3319,17 @@
       "name",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台東縣卑南鄉"
+    }
   },
   {
     "id": "hotel-081",
