@@ -12,8 +12,10 @@ const primary = `${buttonBase} bg-emerald-700 text-white hover:bg-emerald-800 da
 export interface WeekPlanCardProps {
   spot: Spot;
   backup: Spot | null;
-  /** 「週六上午 11/21」 */
+  /** 「週六上午 11/21」；保存了全日遊是「週六 11/21・全日遊」 */
   when: string;
+  /** 全日遊的第二站（兩站行程才有）；WeekPlan 本身只記第一站。 */
+  nextStop?: Spot | null;
   mins: number | null;
   /** 目的地那個時段的天氣；抓不到是 null。 */
   weather: SlotWeather | null;
@@ -26,10 +28,13 @@ export interface WeekPlanCardProps {
 }
 
 /** 首頁置頂的「這週放電計畫」：選好之後，週末打開還在（只存在這支手機）。 */
-export function WeekPlanCard({ spot, backup, when, mins, weather, napText, onSwapToBackup, onClear, onShare }: WeekPlanCardProps) {
+export function WeekPlanCard({ spot, backup: rawBackup, when, nextStop = null, mins, weather, napText, onSwapToBackup, onClear, onShare }: WeekPlanCardProps) {
   const [msg, setMsg] = useState('');
+  // 雨備剛好就是全日遊的第二站：不重複列。
+  const backup = rawBackup && nextStop && rawBackup.id === nextStop.id ? null : rawBackup;
   const d = mins === null ? null : formatDrive(mins);
   const rainRisk = weather?.rainy && spot.env !== 'in';
+  const nextRain = weather?.rainy && nextStop !== null && nextStop.env !== 'in';
 
   return (
     <section
@@ -42,15 +47,29 @@ export function WeekPlanCard({ spot, backup, when, mins, weather, napText, onSwa
           <h2 id="weekplan-title" className="text-sm font-bold text-emerald-100">
             這週放電計畫・{when}
           </h2>
-          <p className="text-xl leading-snug font-extrabold break-words">{spot.name}</p>
+          {nextStop ? (
+            <p className="text-xl leading-snug font-extrabold break-words">
+              <span className="mr-1.5 inline-block rounded-full bg-amber-400 px-2 py-0.5 align-middle text-xs font-bold text-stone-950">兩站</span>
+              {spot.name} → {nextStop.name}
+            </p>
+          ) : (
+            <p className="text-xl leading-snug font-extrabold break-words">{spot.name}</p>
+          )}
         </div>
       </div>
 
       <ul className="mt-3 flex flex-col gap-1 text-sm text-emerald-50">
         <li>
+          {nextStop && '第一站：'}
           {spot.city}
           {d && `・車程約 ${d.value} ${d.unit}（粗估，以導航為準）`}
         </li>
+        {nextStop && (
+          <li>
+            第二站：{nextStop.name}（{nextStop.city}）
+          </li>
+        )}
+        {nextRain && <li className="font-bold text-amber-200">第二站{nextStop.env === 'semi' ? '有遮棚，雨大要注意' : '大部分在戶外'}，那時候可能下雨。</li>}
         {weather && <li>目的地那時候：{formatSlotWeather(weather) || '還沒有預報'}</li>}
         {napText && <li>{napText}</li>}
         {spot.open_note && <li className="font-bold text-amber-200">先知道：{spot.open_note}</li>}
@@ -70,7 +89,7 @@ export function WeekPlanCard({ spot, backup, when, mins, weather, napText, onSwa
 
       <div className="mt-3 grid grid-cols-2 gap-2">
         <a href={directionsUrl(spot)} target="_blank" rel="noopener noreferrer" className={`${buttonBase} bg-white text-emerald-900 hover:bg-emerald-50`}>
-          看路線
+          {nextStop ? '看第一站路線' : '看路線'}
         </a>
         <button type="button" onClick={() => void onShare().then(setMsg)} className={`${buttonBase} bg-amber-400 text-stone-950 hover:bg-amber-300`}>
           傳給另一半

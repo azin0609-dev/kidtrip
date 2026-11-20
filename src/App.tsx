@@ -22,7 +22,7 @@ import { useStoredState } from './hooks/useStoredState.ts';
 import { useForecast } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, nowMinsInTaipei } from './lib/date.ts';
 import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, checkSavedPlan, makeAddon, shareText } from './lib/family-plan.ts';
-import { type FullDayOk, type FullDayOptions, dayAddonMatches, dayShareText, makeDayAddon } from './lib/full-day.ts';
+import { type FullDayOk, type FullDayOptions, dayAddonMatches, dayPlanHeading, dayShareText, makeDayAddon } from './lib/full-day.ts';
 import { SavedDayPlan } from './components/SavedDayPlan.tsx';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
@@ -299,6 +299,8 @@ export default function App() {
   // 每次都用目前的出發地、孩子年齡、推車設定重新檢查並重排（出發地或設定改了就會跟著變）。
   const daySaved = !!plan && dayAddonMatches(dayAddon, plan);
   const dayStale = !!plan && !!dayAddon && dayAddon.week === plan.week && !dayAddonMatches(dayAddon, plan);
+  // 首頁卡片的標題、日期、地點跟保存的全日遊一致（WeekPlan 格式不變，第二站從 dayPlan 找）。
+  const dayHeading = daySaved && dayAddon ? dayPlanHeading(dayAddon, today, spotById) : null;
   const fullDefaults: FullDayOptions = {
     // 用比較而不是字串方法：React Compiler 會把方法呼叫當成可能改動，導致上面的 useMemo 無法保留。
     day: slot === 'sun-am' || slot === 'sun-pm' ? 'sun' : 'sat',
@@ -340,7 +342,9 @@ export default function App() {
   const sharePlan = async () => {
     if (!plan || !planSpot) return '';
     const url = buildPlanUrl(window.location.href, plan);
-    const text = `${slotLabelWithDate(today, plan.slot)}去${planSpot.name}${planBackup ? `，下雨改去${planBackup.name}` : ''}`;
+    const text = dayHeading
+      ? `${dayHeading.when}：${dayHeading.second ? `${planSpot.name} → ${dayHeading.second.name}` : planSpot.name}（打開連結只會看到第一站）`
+      : `${slotLabelWithDate(today, plan.slot)}去${planSpot.name}${planBackup ? `，下雨改去${planBackup.name}` : ''}`;
     if (typeof navigator.share === 'function') {
       try {
         await navigator.share({ title: '放電研究所：這週放電計畫', text, url });
@@ -523,7 +527,8 @@ export default function App() {
               <WeekPlanCard
                 spot={planSpot}
                 backup={planBackup}
-                when={slotLabelWithDate(today, plan.slot)}
+                when={dayHeading ? dayHeading.when : slotLabelWithDate(today, plan.slot)}
+                nextStop={dayHeading ? dayHeading.second : null}
                 mins={planMins}
                 weather={planWeather}
                 napText={

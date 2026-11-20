@@ -107,7 +107,7 @@ export function FullDayPanel({
         </div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="室內外與推車">
           <Chip pressed={opts.envMode === 'indoor'} onClick={() => set({ envMode: 'indoor' })}>
-            全程室內
+            景點都在室內
           </Chip>
           <Chip pressed={opts.envMode === 'any'} onClick={() => set({ envMode: 'any' })}>
             室內外都可以

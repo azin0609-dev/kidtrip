@@ -30,6 +30,8 @@ export interface KidInfo {
 
 export interface RecommendContext {
   today: string;
+  /** 實際出遊日期（YYYY-MM-DD）：用來判斷那天開幕了沒、熄燈了沒；沒給就用 today。 */
+  visitDate?: string;
   minsOf: MinsOf;
   fav: readonly string[];
   been: readonly string[];
@@ -220,7 +222,7 @@ export function convenienceScore(spot: Spot): number {
 
 /** 回傳 null 代表這次不推。 */
 export function scoreSpot(spot: Spot, ctx: RecommendContext): ScoredSpot | null {
-  const status = spotDateStatus(spot, ctx.today);
+  const status = spotDateStatus(spot, ctx.visitDate ?? ctx.today);
   if (status.closed || status.notYetOpen) return null;
   // 太久沒確認的資料不推薦（可能已經改變）。
   if (freshness(spot, 'spot', ctx.today) === 'expired') return null;

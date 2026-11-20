@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { FullDayOk } from '../lib/full-day.ts';
 import { formatDrive } from '../lib/format.ts';
 import { directionsUrl } from '../lib/links.ts';
+import { formatClock } from '../lib/plan.ts';
 import { VERIFICATION_LABELS } from '../lib/verification.ts';
 import { TimelineSteps } from './FamilyPlanTimeline.tsx';
 import { SpotArt } from './SpotArt.tsx';
@@ -34,6 +35,8 @@ export function DayTimeline({
   const [msg, setMsg] = useState('');
   const names = plan.spots.map((s) => s.spot.name);
   const two = plan.spots.length === 2;
+  // 提前結束的原因已經在上面的提醒框，備註裡不重複。
+  const notes = plan.notes.filter((n) => n !== plan.earlyReason);
 
   return (
     <article className={`${cardBase} flex flex-col`} aria-label={`${whenLabel}全日遊：${names.join('、')}`}>
@@ -53,7 +56,17 @@ export function DayTimeline({
             {plan.transfer !== null && `・兩地之間約 ${dl(plan.transfer)}`}・回程約 {dl(plan.backHome)}
             <span className="text-xs">（都是粗估）</span>
           </p>
+          <p className="text-sm text-stone-700 dark:text-stone-300">
+            {formatClock(plan.leaveHome)} 出門，約 <span className="font-bold">{formatClock(plan.homeAt)}</span> 到家
+          </p>
         </div>
+
+        {plan.endsEarly && (
+          <div role="note" className="rounded-xl bg-sky-50 px-3 py-2 text-sm text-sky-950 ring-1 ring-sky-200 dark:bg-[#17252e] dark:text-sky-100 dark:ring-sky-900/60">
+            <p className="font-bold">這是提前結束的安排，約 {formatClock(plan.homeAt)} 就到家</p>
+            {plan.earlyReason && <p className="mt-0.5">{plan.earlyReason}</p>}
+          </div>
+        )}
 
         {plan.spots.some((s) => s.ageNote) && (
           <ul className="text-sm text-stone-700 dark:text-stone-300">
@@ -63,9 +76,9 @@ export function DayTimeline({
 
         <TimelineSteps steps={plan.steps} />
 
-        {plan.notes.length > 0 && (
+        {notes.length > 0 && (
           <ul className="list-disc pl-5 text-sm text-stone-700 dark:text-stone-300">
-            {plan.notes.map((n) => (
+            {notes.map((n) => (
               <li key={n}>{n}</li>
             ))}
           </ul>

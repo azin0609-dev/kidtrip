@@ -185,6 +185,8 @@ export function familyCandidates(spots: readonly Spot[], ctx: RecommendContext, 
     overnight: false,
     maxDrive: options.maxDrive,
     needStroller: options.stroller,
+    // 用實際出遊那天判斷開幕、熄燈（例如週三排週六：週五熄燈的不推、週六才開幕的可以推）。
+    visitDate: slotDate(ctx.today, options.slot),
   };
   return rankCandidates(spots, planCtx, `${seed}|family`).filter((s) => {
     if (options.envMode === 'indoor' && s.spot.env !== 'in') return false;

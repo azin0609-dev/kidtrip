@@ -7,6 +7,7 @@ import {
   bestOrder,
   checkSavedDay,
   dayAddonMatches,
+  dayPlanHeading,
   dayShareText,
   defaultNapMode,
   lunchInfo,
@@ -247,5 +248,175 @@ describe('其他', () => {
     const a = planFullDay(list, rec(), opts(), nap, [], 's').plans.map((p) => p.spots.map((s) => s.spot.id).join('+'));
     const b = planFullDay(list, rec(), opts(), nap, [], 's').plans.map((p) => p.spots.map((s) => s.spot.id).join('+'));
     expect(a).toEqual(b);
+  });
+});
+
+// ---------- v1.2 最後一輪品質修正 ----------
+
+const t = (h: number, m = 0) => h * 60 + m;
+const bigKids = { ...ctx(), kids: [{ name: '', age: 5 }] };
+
+describe('品質修正：全日遊用實際出遊那天判斷開幕、熄燈', () => {
+  const opensSun = makeSpot({ ...A, id: 'spot-331', name: '週日開幕', opens_on: '2026-11-22' });
+  const closesSat = makeSpot({ ...A, id: 'spot-332', name: '週六最後一天', closes_on: '2026-11-21' });
+  const ids = (day: 'sat' | 'sun') =>
+    planFullDay([opensSun, closesSat], rec(), opts({ style: 'easy', day }), nap, [], 's').candidates.map((c) => c.spot.id).sort();
+  it('今天是週三：週六只排已開幕、還沒熄燈的；週日換成新開幕的', () => {
+    expect(ids('sat')).toEqual(['spot-332']);
+    expect(ids('sun')).toEqual(['spot-331']);
+  });
+  it('已保存的行程也用那天判斷', () => {
+    const r = planSingle(opensSun, opts({ style: 'easy', day: 'sun' }), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    const addon = makeDayAddon('2026-W47', r, opts({ style: 'easy', day: 'sun' }));
+    expect(checkSavedDay(addon, [opensSun], rec(), nap, []).status).toBe('ok');
+    const satAddon = { ...addon, slot: 'sat-am' as const };
+    const sat = checkSavedDay(satAddon, [opensSun], rec(), nap, []);
+    expect(sat.status === 'fail' && sat.reason).toContain('還沒開幕');
+  });
+});
+
+describe('品質修正：景點提早關門，不把午餐、休息排在關門後的景點裡', () => {
+  const early = makeSpot({ ...A, id: 'spot-340', name: '早關館', open_note: '09:00–11:30' });
+
+  /** 關門後還待在景點裡的步驟（玩、在景點吃、在景點休息、推車上睡） */
+  const insideAfterClose = (steps: readonly { kind: string; start: number; end?: number; label: string }[], close: number) =>
+    steps.filter((s) => (s.end ?? s.start) > close && s.kind !== 'transfer' && s.kind !== 'drive' && (s.label.includes('早關館') || s.kind === 'play' && !s.label.includes('乙館')));
+
+  it('11:30 關門、不睡午覺、自備午餐：玩到 11:30 離場，移動後找地方吃，不再回去', () => {
+    const r = planSingle(early, opts({ style: 'easy', napMode: 'none', lunch: 'packed' }), bigKids);
+    expect(r.status).toBe('ok');
+    if (r.status !== 'ok') return;
+    expect(validateSteps(r.steps)).toBe(true);
+    expect(r.steps.map((s) => s.kind)).toEqual(['leave', 'drive', 'park', 'play', 'transfer', 'lunch', 'rest', 'drive', 'home']);
+    const play = r.steps.find((s) => s.kind === 'play')!;
+    const move = r.steps.find((s) => s.kind === 'transfer')!;
+    const lunch = r.steps.find((s) => s.kind === 'lunch')!;
+    expect(play.start).toBe(t(9, 30));
+    expect(play.end).toBe(t(11, 30));
+    expect(move.start).toBe(t(11, 30));
+    expect(move.label).toContain('離場');
+    expect(move.end! - move.start).toBeGreaterThan(0);
+    expect(lunch.start).toBe(move.end);
+    expect(lunch.start).toBeGreaterThan(t(11, 30));
+    expect(lunch.label).toContain('自備');
+    expect(lunch.label).toContain('地點要自己確認');
+    expect(insideAfterClose(r.steps, t(11, 30))).toEqual([]);
+    expect(r.steps.filter((s) => s.kind === 'play')).toHaveLength(1); // 下午不回去
+    expect(r.endsEarly).toBe(true);
+    expect(r.earlyReason).toContain('11:30');
+  });
+  it('關門時間在飯後休息中間（12:30 關）也一樣先離場', () => {
+    const r = planSingle(makeSpot({ ...early, open_note: '09:00–12:20' }), opts({ style: 'easy', napMode: 'none' }), bigKids);
+    if (r.status !== 'ok') throw new Error('should be ok');
+    expect(r.steps.some((s) => s.kind === 'transfer')).toBe(true);
+    expect(insideAfterClose(r.steps, t(12, 20))).toEqual([]);
+  });
+  it('關門前玩不到最少時間：排不出來，不硬湊', () => {
+    const r = planSingle(makeSpot({ ...early, open_note: '09:00–10:15' }), opts({ style: 'easy', napMode: 'none' }), bigKids);
+    expect(r.status === 'fail' && r.reason).toContain('關門');
+  });
+  it('車上睡、12:00 關門：關門前離場吃飯，午睡前吃完再上車', () => {
+    const r = planSingle(makeSpot({ ...early, open_note: '09:00–12:00' }), opts({ style: 'easy', napMode: 'car' }), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    expect(validateSteps(r.steps)).toBe(true);
+    expect(r.steps.find((s) => s.kind === 'play')!.end).toBe(t(12));
+    expect(r.steps.find((s) => s.kind === 'transfer')!.start).toBe(t(12));
+    expect(r.steps.find((s) => s.kind === 'lunch')!.end).toBeLessThanOrEqual(t(13));
+    expect(r.steps.find((s) => s.kind === 'nap')!.start).toBe(t(13));
+    expect(insideAfterClose(r.steps, t(12))).toEqual([]);
+  });
+  it('推車上睡但景點午睡前就關門：排不出來', () => {
+    const r = planSingle(makeSpot({ ...early, open_note: '09:00–12:00' }), opts({ style: 'easy', napMode: 'stroller' }), ctx());
+    expect(r.status === 'fail' && r.reason).toContain('關門');
+  });
+  it('雙景點：第一站 11:30 關門，先離場去吃，吃完再開去第二站', () => {
+    const r = planPair(early, B, opts({ napMode: 'none', lunch: 'packed' }), bigKids);
+    expect(r.status).toBe('ok');
+    if (r.status !== 'ok') return;
+    expect(validateSteps(r.steps)).toBe(true);
+    const kinds = r.steps.map((s) => s.kind);
+    expect(kinds.slice(0, 7)).toEqual(['leave', 'drive', 'park', 'play', 'transfer', 'lunch', 'transfer']);
+    expect(r.steps[3]!.end).toBe(t(11, 30));
+    expect(r.steps[4]!.label).toContain('離場');
+    expect(insideAfterClose(r.steps, t(11, 30))).toEqual([]);
+    expect(r.notes.join()).toContain('吃飯的地方如果比較遠');
+  });
+  it('沒有提早關門時，原本的安排不變', () => {
+    const r = planSingle(A, opts({ style: 'easy', napMode: 'none' }), bigKids);
+    expect(r.status === 'ok' && r.steps.some((s) => s.kind === 'transfer')).toBe(false);
+    const p = planPair(A, B, opts({ napMode: 'none' }), bigKids);
+    expect(p.status === 'ok' && p.steps.filter((s) => s.kind === 'transfer')).toHaveLength(1);
+  });
+});
+
+describe('品質修正：雨天「景點都在室內」不保證午餐和午睡環境', () => {
+  it('選室內時明講只確認景點本身，午餐、午睡、停車到入口都還沒確認', () => {
+    const r = planPair(A, B, opts({ envMode: 'indoor' }), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    const note = r.notes.find((n) => n.includes('雨天'))!;
+    expect(note).toContain('只確認兩個景點本身是室內');
+    expect(note).toContain('午餐地點');
+    expect(note).toContain('午睡');
+    expect(note).toContain('還沒確認');
+    const single = planSingle(A, opts({ style: 'easy', envMode: 'indoor', napMode: 'stroller' }), ctx());
+    expect(single.status === 'ok' && single.notes.join()).toContain('只確認景點本身是室內');
+  });
+  it('室內外都可以時不加這段', () => {
+    const r = planPair(A, B, opts({ envMode: 'any' }), ctx());
+    expect(r.status === 'ok' && r.notes.some((n) => n.includes('雨天提醒'))).toBe(false);
+  });
+});
+
+describe('品質修正：車上睡的單景點全日遊是提前結束', () => {
+  it('午睡時直接回家：標成提前結束，寫出幾點到家，分享文字也講', () => {
+    const r = planSingle(A, opts({ style: 'easy', napMode: 'car' }), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    expect(r.endsEarly).toBe(true);
+    expect(r.homeAt).toBe(t(13, 20));
+    expect(r.earlyReason).toContain('午睡時就上車回家');
+    expect(r.earlyReason).toContain('13:20');
+    expect(r.steps.find((s) => s.kind === 'nap')!.label).toContain('提前結束');
+    expect(dayShareText(r, '週六 11/21')).toContain('提前結束：約 13:20 就到家');
+  });
+  it('睡醒還有下午行程、雙景點：不是提前結束', () => {
+    const big = makeSpot({ ...A, stay_hours: 4 });
+    const r = planSingle(big, opts({ style: 'easy', napMode: 'stroller' }), ctx());
+    expect(r.status === 'ok' && r.endsEarly).toBe(false);
+    const p = planPair(A, B, opts(), ctx());
+    expect(p.status === 'ok' && p.endsEarly).toBe(false);
+    expect(p.status === 'ok' && dayShareText(p, '週六 11/21')).not.toContain('提前結束');
+  });
+  it('推車上睡、睡醒就回家：也標成提前結束', () => {
+    const r = planSingle(A, opts({ style: 'easy', napMode: 'stroller' }), ctx());
+    expect(r.status === 'ok' && r.endsEarly).toBe(true);
+  });
+});
+
+describe('品質修正：首頁計畫卡片跟全日遊一致', () => {
+  const byId = new Map([A, B].map((s) => [s.id, s]));
+  it('雙景點：日期不分上午下午、標全日遊、帶出第二站；WeekPlan 格式不變', () => {
+    const r = planPair(A, B, opts(), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    const plan = makePlan(today, 'spot-301', 'sat-am');
+    const addon = makeDayAddon(plan.week, r, opts());
+    const h = dayPlanHeading(addon, today, byId)!;
+    expect(h.when).toBe('週六 11/21・全日遊');
+    expect(h.first.id).toBe('spot-301');
+    expect(h.second?.id).toBe('spot-302');
+    expect(Object.keys(plan).sort()).toEqual(['slot', 'spotId', 'week']);
+    expect(decodePlan(encodePlan(plan))).toEqual(plan);
+  });
+  it('單景點週日：只有一站', () => {
+    const r = planSingle(A, opts({ style: 'easy', day: 'sun' }), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    const h = dayPlanHeading(makeDayAddon('2026-W47', r, opts({ style: 'easy', day: 'sun' })), today, byId)!;
+    expect(h.when).toBe('週日 11/22・全日遊');
+    expect(h.second).toBeNull();
+  });
+  it('第二站已經不在資料裡：不顯示全日遊標題（回到原本的卡片）', () => {
+    const r = planPair(A, B, opts(), ctx());
+    if (r.status !== 'ok') throw new Error('should be ok');
+    expect(dayPlanHeading(makeDayAddon('2026-W47', r, opts()), today, new Map([[A.id, A]]))).toBeNull();
   });
 });

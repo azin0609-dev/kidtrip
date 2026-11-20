@@ -17,7 +17,7 @@ import {
   validateSteps,
 } from './family-plan.ts';
 import { formatClock } from './plan.ts';
-import type { RecommendContext } from './recommend.ts';
+import { type RecommendContext, scoreSpot } from './recommend.ts';
 import { STORAGE_KEY, parseState } from './storage.ts';
 import { decodePlan, encodePlan, makePlan, swapToBackup } from './weekplan.ts';
 
@@ -400,5 +400,28 @@ describe('審查修正：最低遊玩時間 75 分鐘', () => {
     expect(r.status).toBe('no-time');
     const short = buildTimeline({ spot: makeSpot({ env: 'in', stay_hours: 1 }), mins: 20, slot: 'sat-am', napMode: 'home', nap: { start: '11:30', end: '13:30' }, today });
     expect(short.status).toBe('ok');
+  });
+});
+
+describe('品質修正：用實際出遊日期判斷開幕、熄燈', () => {
+  // 今天週三 11/18，排週六 11/21、週日 11/22
+  const closesFri = makeSpot({ id: 'spot-401', env: 'in', mins_from_linkou: 20, age_best: [1, 8], closes_on: '2026-11-20' });
+  const opensSat = makeSpot({ id: 'spot-402', env: 'in', mins_from_linkou: 20, age_best: [1, 8], opens_on: '2026-11-21' });
+  const opensSun = makeSpot({ id: 'spot-403', env: 'in', mins_from_linkou: 20, age_best: [1, 8], opens_on: '2026-11-22' });
+  const closesSat = makeSpot({ id: 'spot-404', env: 'in', mins_from_linkou: 20, age_best: [1, 8], closes_on: '2026-11-21' });
+  const all = [closesFri, opensSat, opensSun, closesSat];
+  it('週五熄燈的不排週六；週六才開幕的可以排週六（雖然今天還沒開）', () => {
+    const r = familyCandidates(all, ctx(), opts({ slot: 'sat-am' }), 's').map((x) => x.spot.id).sort();
+    expect(r).toEqual(['spot-402', 'spot-404']);
+  });
+  it('週日：週日開幕的可以排、週六熄燈的不行', () => {
+    const r = familyCandidates(all, ctx(), opts({ slot: 'sun-am' }), 's').map((x) => x.spot.id).sort();
+    expect(r).toEqual(['spot-402', 'spot-403']);
+  });
+  it('首頁推薦（沒給出遊日期）維持用今天判斷；給了出遊日期就用那天', () => {
+    expect(scoreSpot(opensSat, ctx())).toBeNull();
+    expect(scoreSpot(opensSat, ctx({ visitDate: '2026-11-21' }))).not.toBeNull();
+    expect(scoreSpot(closesFri, ctx())).not.toBeNull();
+    expect(scoreSpot(closesFri, ctx({ visitDate: '2026-11-21' }))).toBeNull();
   });
 });

@@ -82,6 +82,66 @@ export function afternoonCap(spot: Pick<Spot, 'stay_hours'>, morningMins: number
   return Math.max(0, Math.min(MAX_AFTERNOON, total - morningMins));
 }
 
+/** 景點在午餐結束前就關門：關門前離場，移動到吃飯的地方（分鐘，粗估）。 */
+export const LEAVE_FOR_LUNCH = 10;
+
+interface LunchPart {
+  steps: FamilyPlanStep[];
+  playEnd: number;
+  lunchEnd: number;
+  /** 已經離開景點（關門了，下午不能再回去） */
+  left: boolean;
+}
+
+/**
+ * 上午玩＋午餐。景點會在午餐結束前關門時，不把午餐排在關門後的景點裡：
+ * 玩到關門（或原本的午餐時間），先離場、移動到吃飯的地方，再吃午餐，之後也不再回去。
+ * stayUntil：照原本安排，要待在景點到幾點（午餐、飯後休息或準備午睡都算）。
+ * mustEndBy：午餐最晚要在幾點吃完（要午睡時是午睡開始時間）。
+ */
+function lunchPart(
+  spot: Spot,
+  playStart: number,
+  lunchStart: number,
+  close: number,
+  lunch: LunchMode,
+  stayUntil: number,
+  mustEndBy?: number,
+): LunchPart {
+  const end = lunchStart + OUT_LUNCH_MINS;
+  if (close >= stayUntil) {
+    return {
+      steps: [
+        { kind: 'play', start: playStart, end: lunchStart, label: `在${spot.name}玩 ${lunchStart - playStart} 分鐘` },
+        { kind: 'lunch', start: lunchStart, end, label: lunch === 'packed' ? '吃自備的午餐（能不能帶外食、有沒有座位要先確認）' : `在${spot.name}附近吃午餐（地點要自己確認）` },
+      ],
+      playEnd: lunchStart,
+      lunchEnd: end,
+      left: false,
+    };
+  }
+  // 關門比午餐結束早：玩到關門就離場。要在午睡前吃完的話，往前挪。
+  const latestPlayEnd = mustEndBy !== undefined ? mustEndBy - OUT_LUNCH_MINS - LEAVE_FOR_LUNCH : lunchStart;
+  const playEnd = Math.min(close, lunchStart, latestPlayEnd);
+  const moveEnd = playEnd + LEAVE_FOR_LUNCH;
+  const lunchEnd = moveEnd + OUT_LUNCH_MINS;
+  return {
+    steps: [
+      { kind: 'play', start: playStart, end: playEnd, label: `在${spot.name}玩 ${playEnd - playStart} 分鐘（資料寫 ${clock(close)} 關門）` },
+      { kind: 'transfer', start: playEnd, end: moveEnd, label: `關門前離場，移動到吃飯的地方（約 ${LEAVE_FOR_LUNCH} 分，地點要自己確認）` },
+      {
+        kind: 'lunch',
+        start: moveEnd,
+        end: lunchEnd,
+        label: lunch === 'packed' ? '找地方吃自備的午餐（公園、車上等，地點要自己確認）' : '在附近吃午餐（地點、營業時間要自己確認）',
+      },
+    ],
+    playEnd,
+    lunchEnd,
+    left: true,
+  };
+}
+
 /** 最多拿前幾名的景點配對。 */
 const PAIR_POOL = 10;
 
@@ -123,6 +183,10 @@ export type FullDayOk = {
   homeAt: number;
   notes: string[];
   lunch: LunchInfo;
+  /** 提前結束（午睡時就回家、關門太早、下午時間不夠）：沒有排到傍晚 */
+  endsEarly: boolean;
+  /** 提前結束的原因（給畫面顯示） */
+  earlyReason: string | null;
 };
 
 export type FullDayFail = { status: 'fail'; reason: string };
@@ -210,7 +274,7 @@ function napTimes(nap: Nap): { start: number; end: number } | null {
 }
 
 function finish(
-  base: Omit<FullDayOk, 'status' | 'spots' | 'lunch'>,
+  base: Omit<FullDayOk, 'status' | 'spots' | 'lunch' | 'endsEarly' | 'earlyReason'> & { earlyReason?: string | null },
   spots: Spot[],
   lunchSpot: Spot,
   opts: FullDayOptions,
@@ -222,7 +286,16 @@ function finish(
   if (ctx.nowMins !== undefined && date === ctx.today && ctx.nowMins > base.leaveHome) {
     return { status: 'fail', reason: `今天建議 ${clock(base.leaveHome)} 出門，已經過了。` };
   }
-  return { ...base, status: 'ok', spots: spots.map((s) => spotInfo(s, ctx)), lunch: lunchInfo(lunchSpot, opts.lunch, ctx.restaurants) };
+  const notes = [...base.notes];
+  const earlyReason = base.earlyReason ?? null;
+  // 提前結束的原因也放進備註，分享文字和舊的顯示方式都看得到。
+  if (earlyReason !== null) notes.push(earlyReason);
+  if (opts.envMode === 'indoor') {
+    notes.push(
+      `雨天提醒：只確認${spots.length > 1 ? '兩個景點' : '景點'}本身是室內。午餐地點、午睡的地方${opts.napMode === 'stroller' ? '（推車上睡需要的安靜空間）' : ''}、停車場到入口有沒有遮雨，都還沒確認。`,
+    );
+  }
+  return { ...base, notes, endsEarly: earlyReason !== null, earlyReason, status: 'ok', spots: spots.map((s) => spotInfo(s, ctx)), lunch: lunchInfo(lunchSpot, opts.lunch, ctx.restaurants) };
 }
 
 /** 單一景點的全日行程（模式 A）。 */
@@ -246,53 +319,57 @@ export function planSingle(spot: Spot, opts: FullDayOptions, ctx: Ctx): FullDayO
     { kind: 'park', start: leaveHome + m, end: playStart, label: '停車、準備推車、走到入口' },
   ];
   let homeAt: number;
+  let earlyReason: string | null = null;
 
   if (opts.napMode === 'none') {
     const lunchStart = Math.max(EARLIEST_LUNCH, playStart + least);
-    if (lunchStart > close) return { status: 'fail', reason: `資料寫 ${clock(close)} 關門，午餐前玩不到 ${least} 分鐘。` };
-    const lunchEnd = lunchStart + OUT_LUNCH_MINS;
-    const restEnd = lunchEnd + AFTER_LUNCH_REST;
-    steps.push({ kind: 'play', start: playStart, end: lunchStart, label: `玩 ${lunchStart - playStart} 分鐘` });
-    steps.push({ kind: 'lunch', start: lunchStart, end: lunchEnd, label: opts.lunch === 'packed' ? '吃自備的午餐' : '在附近吃午餐（地點要自己確認）' });
-    steps.push({ kind: 'rest', start: lunchEnd, end: restEnd, label: '休息一下、上廁所、換尿布' });
-    const leaveSpot = Math.min(opts.latestHome - m, close, restEnd + afternoonCap(spot, lunchStart - playStart));
-    if (leaveSpot - restEnd >= MIN_AFTERNOON) {
-      steps.push({ kind: 'play', start: restEnd, end: leaveSpot, label: `下午再玩 ${leaveSpot - restEnd} 分鐘` });
+    const part = lunchPart(spot, playStart, lunchStart, close, opts.lunch, lunchStart + OUT_LUNCH_MINS + AFTER_LUNCH_REST);
+    if (part.playEnd - playStart < least) return { status: 'fail', reason: `資料寫${spot.name} ${clock(close)} 關門，玩不到 ${least} 分鐘。` };
+    steps.push(...part.steps);
+    const restEnd = part.lunchEnd + AFTER_LUNCH_REST;
+    steps.push({ kind: 'rest', start: part.lunchEnd, end: restEnd, label: part.left ? '在吃飯的地方休息一下、上廁所、換尿布' : '休息一下、上廁所、換尿布' });
+    const leaveSpot = part.left ? restEnd : Math.min(opts.latestHome - m, close, restEnd + afternoonCap(spot, part.playEnd - playStart));
+    if (!part.left && leaveSpot - restEnd >= MIN_AFTERNOON) {
+      steps.push({ kind: 'play', start: restEnd, end: leaveSpot, label: `下午再回${spot.name}玩 ${leaveSpot - restEnd} 分鐘` });
       homeAt = leaveSpot + m;
     } else {
       homeAt = restEnd + m;
-      notes.push('下午時間不夠再玩，吃完休息就回家。');
+      earlyReason = part.left ? `資料寫${spot.name} ${clock(close)} 就關門，下午不能再回去，吃完休息就回家。` : '下午時間不夠再玩，吃完休息就回家。';
     }
     steps.push({ kind: 'drive', start: homeAt - m, end: homeAt, label: `開車回家（約 ${dl(m)}，粗估）` });
   } else {
     const n = nap!;
-    const lunchStart = n.start - OUT_LUNCH_MINS;
-    if (lunchStart - playStart < least) return { status: 'fail', reason: `${clock(leaveHome)} 出門的話，午睡前只能玩 ${Math.max(0, lunchStart - playStart)} 分鐘，不到 ${least} 分鐘。可以早點出門。` };
-    if (close < lunchStart) return { status: 'fail', reason: `資料寫${spot.name} ${clock(close)} 關門，比午餐時間早。` };
-    steps.push({ kind: 'play', start: playStart, end: lunchStart, label: `玩 ${lunchStart - playStart} 分鐘` });
-    steps.push({ kind: 'lunch', start: lunchStart, end: n.start, label: opts.lunch === 'packed' ? '吃自備的午餐' : '在附近吃午餐（地點要自己確認）' });
     if (opts.napMode === 'stroller') {
       if (!spot.stroller_ok || !opts.stroller) return { status: 'fail', reason: `${spot.name}推車不好推（或沒帶推車），沒辦法在推車上睡。可以改車上睡。` };
-      if (close < n.end) return { status: 'fail', reason: `資料寫${spot.name} ${clock(close)} 關門，在推車上睡到 ${clock(n.end)} 會超過關門時間。` };
-      steps.push({ kind: 'nap', start: n.start, end: n.end, label: '在推車上午睡（找安靜的地方，大人輪流休息）' });
-      const leaveSpot = Math.min(opts.latestHome - m, close, n.end + afternoonCap(spot, lunchStart - playStart));
+      if (close < n.end) return { status: 'fail', reason: `資料寫${spot.name} ${clock(close)} 關門，在推車上睡到 ${clock(n.end)} 會超過關門時間。可以改車上睡。` };
+    }
+    const part = lunchPart(spot, playStart, n.start - OUT_LUNCH_MINS, close, opts.lunch, n.start, n.start);
+    if (part.playEnd - playStart < least) {
+      return { status: 'fail', reason: `${clock(leaveHome)} 出門的話，午睡前在${spot.name}只能玩 ${Math.max(0, part.playEnd - playStart)} 分鐘，不到 ${least} 分鐘。` };
+    }
+    steps.push(...part.steps);
+    if (part.lunchEnd < n.start) steps.push({ kind: 'rest', start: part.lunchEnd, end: n.start, label: part.left ? '在吃飯的地方休息、準備午睡' : '休息、準備午睡' });
+    if (opts.napMode === 'stroller') {
+      steps.push({ kind: 'nap', start: n.start, end: n.end, label: `在${spot.name}推車上午睡（找安靜的地方，大人輪流休息）` });
+      const leaveSpot = Math.min(opts.latestHome - m, close, n.end + afternoonCap(spot, part.playEnd - playStart));
       if (leaveSpot - n.end >= MIN_AFTERNOON) {
         steps.push({ kind: 'play', start: n.end, end: leaveSpot, label: `睡醒再玩 ${leaveSpot - n.end} 分鐘` });
         homeAt = leaveSpot + m;
       } else {
         homeAt = n.end + m;
-        notes.push('睡醒就回家，下午不排活動。');
+        earlyReason = '睡醒就回家，下午不排活動。';
       }
       steps.push({ kind: 'drive', start: homeAt - m, end: homeAt, label: `開車回家（約 ${dl(m)}，粗估）` });
     } else {
       homeAt = n.start + m;
-      steps.push({ kind: 'nap', start: n.start, end: homeAt, label: `上車回家，小孩在車上睡（約 ${dl(m)}，粗估）` });
+      steps.push({ kind: 'nap', start: n.start, end: homeAt, label: `提前結束：上車回家，小孩在車上睡（約 ${dl(m)}，粗估）` });
+      earlyReason = `車上睡的單景點行程：午睡時就上車回家，下午沒有安排活動，約 ${clock(homeAt)} 到家。`;
       if (m < MIN_CAR_NAP) notes.push(`回家只要 ${dl(m)}，車上睡不夠，到家要繼續睡。`);
     }
   }
   steps.push({ kind: 'home', start: homeAt, label: '到家' });
   notes.push(hoursNote(spot, hours));
-  return finish({ style: 'easy', steps, toFirst: m, backHome: m, transfer: null, leaveHome, homeAt, notes }, [spot], spot, opts, ctx);
+  return finish({ style: 'easy', steps, toFirst: m, backHome: m, transfer: null, leaveHome, homeAt, notes, earlyReason }, [spot], spot, opts, ctx);
 }
 
 /** 兩個景點的全日行程（模式 B），照 first → second 的順序。 */
@@ -325,27 +402,31 @@ export function planPair(first: Spot, second: Spot, opts: FullDayOptions, ctx: C
   ];
   let leave1: number;
   let play2Start: number;
-  const lunchLabel = opts.lunch === 'packed' ? '吃自備的午餐' : `在${first.name}附近吃午餐（地點要自己確認）`;
+  /** 第一站關門比午餐早，已經先離場去吃飯：下一段開車從吃飯的地方出發 */
+  let fromLunch: boolean;
 
   if (opts.napMode === 'none') {
     const lunchStart = Math.max(EARLIEST_LUNCH, play1Start + least1);
-    if (lunchStart > close1) return { status: 'fail', reason: `資料寫${first.name} ${clock(close1)} 關門，午餐前玩不夠。` };
-    steps.push({ kind: 'play', start: play1Start, end: lunchStart, label: `在${first.name}玩 ${lunchStart - play1Start} 分鐘` });
-    steps.push({ kind: 'lunch', start: lunchStart, end: lunchStart + OUT_LUNCH_MINS, label: lunchLabel });
-    leave1 = lunchStart + OUT_LUNCH_MINS;
-    steps.push({ kind: 'transfer', start: leave1, end: leave1 + t, label: `開車到${second.name}（約 ${dl(t)}，兩地座標粗估）` });
+    const part = lunchPart(first, play1Start, lunchStart, close1, opts.lunch, lunchStart + OUT_LUNCH_MINS);
+    if (part.playEnd - play1Start < least1) return { status: 'fail', reason: `資料寫${first.name} ${clock(close1)} 關門，午餐前玩不夠。` };
+    steps.push(...part.steps);
+    fromLunch = part.left;
+    leave1 = part.lunchEnd;
+    steps.push({ kind: 'transfer', start: leave1, end: leave1 + t, label: `${fromLunch ? '吃完' : ''}開車到${second.name}（約 ${dl(t)}，兩地座標粗估）` });
     play2Start = leave1 + t + ARRIVE_BUFFER;
     steps.push({ kind: 'park', start: leave1 + t, end: play2Start, label: '停車、準備推車' });
   } else {
     const n = nap!;
-    const lunchStart = n.start - OUT_LUNCH_MINS;
-    if (lunchStart - play1Start < least1) return { status: 'fail', reason: `午睡前在${first.name}只能玩 ${Math.max(0, lunchStart - play1Start)} 分鐘，不夠。` };
-    if (close1 < lunchStart) return { status: 'fail', reason: `資料寫${first.name} ${clock(close1)} 關門，比午餐時間早。` };
-    steps.push({ kind: 'play', start: play1Start, end: lunchStart, label: `在${first.name}玩 ${lunchStart - play1Start} 分鐘` });
-    steps.push({ kind: 'lunch', start: lunchStart, end: n.start, label: lunchLabel });
     if (opts.napMode === 'stroller') {
       if (!first.stroller_ok || !opts.stroller) return { status: 'fail', reason: `${first.name}推車不好推（或沒帶推車），沒辦法在推車上睡。` };
       if (close1 < n.end) return { status: 'fail', reason: `資料寫${first.name} ${clock(close1)} 關門，午睡會超過關門時間。` };
+    }
+    const part = lunchPart(first, play1Start, n.start - OUT_LUNCH_MINS, close1, opts.lunch, n.start, n.start);
+    if (part.playEnd - play1Start < least1) return { status: 'fail', reason: `午睡前在${first.name}只能玩 ${Math.max(0, part.playEnd - play1Start)} 分鐘，不夠。` };
+    steps.push(...part.steps);
+    fromLunch = part.left;
+    if (part.lunchEnd < n.start) steps.push({ kind: 'rest', start: part.lunchEnd, end: n.start, label: '在吃飯的地方休息、準備午睡' });
+    if (opts.napMode === 'stroller') {
       steps.push({ kind: 'nap', start: n.start, end: n.end, label: `在${first.name}推車上午睡` });
       leave1 = n.end;
       steps.push({ kind: 'transfer', start: leave1, end: leave1 + t, label: `睡醒開車到${second.name}（約 ${dl(t)}，兩地座標粗估）` });
@@ -367,6 +448,7 @@ export function planPair(first: Spot, second: Spot, opts: FullDayOptions, ctx: C
       }
     }
   }
+  if (fromLunch) notes.push(`到${second.name}的車程是從${first.name}算的，吃飯的地方如果比較遠，時間要再抓寬一點。`);
   if (h2.open !== null && play2Start < h2.open) return { status: 'fail', reason: `資料寫${second.name} ${clock(h2.open)} 才開，到的時候還沒開。` };
   const leave2 = Math.min(opts.latestHome - m2, close2, play2Start + Math.min(MAX_AFTERNOON, second.stay_hours ? Math.max(second.stay_hours * 60, minPlay(second)) : MAX_AFTERNOON));
   if (leave2 - play2Start < least2) return { status: 'fail', reason: `下午在${second.name}只能玩 ${Math.max(0, leave2 - play2Start)} 分鐘，不夠。` };
@@ -478,6 +560,25 @@ export function planFullDay(
 /** 「週六 11/21」：全日遊不分上下午。 */
 export function dayLabel(today: string, day: 'sat' | 'sun'): string {
   return slotLabelWithDate(today, `${day}-am`).replace('上午', '');
+}
+
+/**
+ * 首頁「這週放電計畫」卡片用的標題：保存了全日遊時，日期用那天（不分上午下午）並標「全日遊」，
+ * 兩站行程把第二站也帶出來。WeekPlan 本身不變（還是只有第一站），第二站從 dayPlan.secondId 找。
+ */
+export interface DayHeading {
+  when: string;
+  first: Spot;
+  second: Spot | null;
+}
+
+export function dayPlanHeading(addon: DayPlanAddon, today: string, spotById: ReadonlyMap<string, Spot>): DayHeading | null {
+  const first = spotById.get(addon.spotId);
+  if (!first) return null;
+  const second = addon.secondId ? spotById.get(addon.secondId) : undefined;
+  if (addon.secondId && !second) return null;
+  const day = addon.slot === 'sun-am' ? 'sun' : 'sat';
+  return { when: `${dayLabel(today, day)}・全日遊`, first, second: second ?? null };
 }
 
 // ---------- 儲存（版本化） ----------
@@ -603,5 +704,6 @@ export function checkSavedDay(
 export function dayShareText(plan: FullDayOk, whenLabel: string): string {
   const names = plan.spots.map((s) => s.spot.name).join(' → ');
   const lines = plan.steps.map((s) => `${clock(s.start)}${s.end !== undefined ? `–${clock(s.end)}` : ''} ${s.label}`);
-  return [`${whenLabel}全日遊：${names}`, ...lines, '（車程都是粗估；時間表只在這則訊息，打開連結只會看到第一個景點）'].join('\n');
+  const early = plan.endsEarly ? [`提前結束：約 ${clock(plan.homeAt)} 就到家，下午沒有排活動。`] : [];
+  return [`${whenLabel}全日遊：${names}`, ...lines, ...early, '（車程都是粗估；時間表只在這則訊息，打開連結只會看到第一個景點）'].join('\n');
 }
