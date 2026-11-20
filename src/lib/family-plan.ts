@@ -50,7 +50,7 @@ export interface FamilyPlanAddon extends Omit<FamilyPlanOptions, 'slot'> {
   spotId: string;
 }
 
-export type FamilyPlanStepKind = 'leave' | 'drive' | 'park' | 'play' | 'lunch' | 'rest' | 'nap' | 'home';
+export type FamilyPlanStepKind = 'leave' | 'drive' | 'park' | 'play' | 'lunch' | 'rest' | 'nap' | 'home' | 'transfer';
 
 export interface FamilyPlanStep {
   kind: FamilyPlanStepKind;
@@ -340,18 +340,8 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
     return { status: 'past', reason: `今天建議 ${clock(leaveHome)} 出門，已經過了。可以改下午或其他天。` };
   }
   const v = verificationOf(spot);
-  const hoursVerified = v.status !== 'conflict' && v.verifiedFields.some((f) => /營業時間|開放時間/.test(f));
-  if (hours.open !== null || hours.close !== null) {
-    const span = `${hours.open !== null ? `${clock(hours.open)} 開` : ''}${hours.open !== null && hours.close !== null ? '、' : ''}${hours.close !== null ? `${clock(hours.close)} 關` : ''}`;
-    notes.push(
-      hoursVerified
-        ? `依查證過的營業時間（${span}）排的，出發前還是看一下官方公告。`
-        : `營業時間是還沒查證的資料（${span}），只用來避開開門前和關門後，不代表當天一定有開，出發前一定要確認。`,
-    );
-  } else {
-    notes.push('不知道幾點開、幾點關，這份時間表沒有考慮營業時間，出發前一定要確認。');
-    if (slot.endsWith('-am') && arrive < 9 * 60 + 30) notes.push(`${clock(arrive)} 就到了，先確認幾點開門。`);
-  }
+  notes.push(hoursNote(spot, hours));
+  if (hours.open === null && hours.close === null && slot.endsWith('-am') && arrive < 9 * 60 + 30) notes.push(`${clock(arrive)} 就到了，先確認幾點開門。`);
   if (playMins < target - 15) notes.push('時間比較趕，挑重點玩。');
 
   return {
@@ -368,6 +358,19 @@ export function buildTimeline(input: TimelineInput): FamilyPlanResult {
     ageNote: null,
     verification: v,
   };
+}
+
+/** 營業時間怎麼來的：查證過、沒查證（只用來避開時間）、不知道。半日遊、全日遊共用。 */
+export function hoursNote(spot: Spot, hours: WeekendHours, prefix = ''): string {
+  const v = verificationOf(spot);
+  const hoursVerified = v.status !== 'conflict' && v.verifiedFields.some((f) => /營業時間|開放時間/.test(f));
+  if (hours.open !== null || hours.close !== null) {
+    const span = `${hours.open !== null ? `${clock(hours.open)} 開` : ''}${hours.open !== null && hours.close !== null ? '、' : ''}${hours.close !== null ? `${clock(hours.close)} 關` : ''}`;
+    return hoursVerified
+      ? `${prefix}依查證過的營業時間（${span}）排的，出發前還是看一下官方公告。`
+      : `${prefix}營業時間是還沒查證的資料（${span}），只用來避開開門前和關門後，不代表當天一定有開，出發前一定要確認。`;
+  }
+  return `${prefix}不知道幾點開、幾點關，這份時間表沒有考慮營業時間，出發前一定要確認。`;
 }
 
 /** 出發前要確認的事：資料沒查證或不知道的地方，直接寫出來，不假設。 */
@@ -464,6 +467,17 @@ export function planHalfDay(
  * 不符合就回傳 invalid（要重新安排），符合才重排時間軸。
  */
 export function checkSavedPlan(spot: Spot, addon: FamilyPlanAddon, ctx: RecommendContext, nap: Nap, nowMins?: number): FamilyPlanResult {
+  const problems = spotProblems(spot, addon, ctx);
+  if (problems.length > 0) return { status: 'invalid', spot, reason: `${problems.join('；')}。` };
+  return timelineFor(spot, ctx.minsOf, ctx, addon, nap, nowMins);
+}
+
+/** 一個景點還符不符合當初的硬性條件（半日遊、全日遊保存後的重新檢查共用）。回傳不符合的原因。 */
+export function spotProblems(
+  spot: Spot,
+  addon: Pick<FamilyPlanOptions, 'slot' | 'envMode' | 'stroller' | 'maxDrive'>,
+  ctx: RecommendContext,
+): string[] {
   const problems: string[] = [];
   if (!isRecommendable(spot)) problems.push(`資料有疑問（${(spot.risk_flags ?? []).map((r) => RISK_LABELS[r]).join('、')}）`);
   const date = spotDateStatus(spot, slotDate(ctx.today, addon.slot));
@@ -477,8 +491,7 @@ export function checkSavedPlan(spot: Spot, addon: FamilyPlanAddon, ctx: Recommen
   if (mins === null) problems.push('從目前的出發地算不出車程');
   else if (mins > addon.maxDrive) problems.push(`從目前的出發地單程約 ${formatDrive(mins).value} ${formatDrive(mins).unit}，超過當初設定的 ${addon.maxDrive} 分鐘`);
   if (agesFit(spot, ctx.kids ?? []) === false) problems.push('孩子的年齡設定改了，不在這裡的建議年齡內');
-  if (problems.length > 0) return { status: 'invalid', spot, reason: `${problems.join('；')}。` };
-  return timelineFor(spot, ctx.minsOf, ctx, addon, nap, nowMins);
+  return problems;
 }
 
 /** 指定景點排時間（例如已經選好的這週計畫）。 */

@@ -22,6 +22,8 @@ import { useStoredState } from './hooks/useStoredState.ts';
 import { useForecast } from './hooks/useWeekendWeather.ts';
 import { isSpotVisible, nowMinsInTaipei } from './lib/date.ts';
 import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, checkSavedPlan, makeAddon, shareText } from './lib/family-plan.ts';
+import { type FullDayOk, type FullDayOptions, dayAddonMatches, dayShareText, makeDayAddon } from './lib/full-day.ts';
+import { SavedDayPlan } from './components/SavedDayPlan.tsx';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
 import { isRecommendable } from './lib/verification.ts';
@@ -246,6 +248,7 @@ export default function App() {
       const next = { ...s };
       delete next.plan;
       delete next.familyPlan;
+      delete next.dayPlan;
       return next;
     });
 
@@ -269,7 +272,12 @@ export default function App() {
   const saveFamilyPlan = (result: Extract<FamilyPlanResult, { status: 'ok' }>, options: FamilyPlanOptions) => {
     const backup = pickBackup(spots, recommendCtx, weekSeed(today, origin, 0), result.spot.id);
     const next = makePlan(today, result.spot.id, options.slot, backup?.spot.id);
-    update((s) => ({ ...s, plan: next, familyPlan: makeAddon(next.week, result.spot.id, options) }));
+    update((s) => {
+      // 半日遊和全日遊同時只留一份，免得互相蓋掉時間表。
+      const rest = { ...s };
+      delete rest.dayPlan;
+      return { ...rest, plan: next, familyPlan: makeAddon(next.week, result.spot.id, options) };
+    });
     setChosenSlot(options.slot);
   };
   /** 分享：原本的行程連結（只有景點）＋完整時間表文字；不帶孩子資料和出發地。 */
@@ -279,6 +287,49 @@ export default function App() {
     if (typeof navigator.share === 'function') {
       try {
         await navigator.share({ title: '放電研究所：半日遊', text, url });
+        return '已經打開分享選單。';
+      } catch {
+        // 使用者取消或不支援，改用複製
+      }
+    }
+    return copyText(`${text}\n${url}`, '時間表和連結已複製，貼到 LINE 給另一半就可以了。');
+  };
+  // ── 全日遊 ──
+  const dayAddon = stored.dayPlan;
+  // 每次都用目前的出發地、孩子年齡、推車設定重新檢查並重排（出發地或設定改了就會跟著變）。
+  const daySaved = !!plan && dayAddonMatches(dayAddon, plan);
+  const dayStale = !!plan && !!dayAddon && dayAddon.week === plan.week && !dayAddonMatches(dayAddon, plan);
+  const fullDefaults: FullDayOptions = {
+    // 用比較而不是字串方法：React Compiler 會把方法呼叫當成可能改動，導致上面的 useMemo 無法保留。
+    day: slot === 'sun-am' || slot === 'sun-pm' ? 'sun' : 'sat',
+    departAt: 9 * 60,
+    latestHome: 18 * 60,
+    style: 'easy',
+    // 有 3 歲以下（或還沒設定孩子）就預設要午睡；同 defaultNapMode 的規則。
+    napMode: kidsInfo.length > 0 && kidsInfo.every((k) => k.age >= 3) ? 'none' : needStroller ? 'stroller' : 'car',
+    lunch: 'nearby',
+    envMode: familyDefaults.envMode,
+    maxDrive: familyDefaults.maxDrive,
+    stroller: familyDefaults.stroller,
+  };
+  const saveFullDay = (dayPlan: FullDayOk, opts: FullDayOptions) => {
+    const first = dayPlan.spots[0]!.spot;
+    const backup = pickBackup(spots, recommendCtx, weekSeed(today, origin, 0), first.id);
+    const next = makePlan(today, first.id, `${opts.day}-am`, backup?.spot.id);
+    update((s) => {
+      const rest = { ...s };
+      delete rest.familyPlan;
+      return { ...rest, plan: next, dayPlan: makeDayAddon(next.week, dayPlan, opts) };
+    });
+    setChosenSlot(`${opts.day}-am`);
+  };
+  /** 分享：原本的行程連結（只有第一個景點）＋完整時間表文字；不帶孩子資料和出發地。 */
+  const shareFullDay = async (dayPlan: FullDayOk, whenLabel: string, forSlot: Slot) => {
+    const url = buildPlanUrl(window.location.href, makePlan(today, dayPlan.spots[0]!.spot.id, forSlot));
+    const text = dayShareText(dayPlan, whenLabel);
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: '放電研究所：全日遊', text, url });
         return '已經打開分享選單。';
       } catch {
         // 使用者取消或不支援，改用複製
@@ -476,7 +527,7 @@ export default function App() {
                 mins={planMins}
                 weather={planWeather}
                 napText={
-                  !familyTimeline && planMins !== null && planSpot.stay_hours
+                  !familyTimeline && !daySaved && planMins !== null && planSpot.stay_hours
                     ? (napPlan(planMins, planSpot.stay_hours, stored.nap ?? DEFAULT_NAP)?.text ?? null)
                     : null
                 }
@@ -499,6 +550,26 @@ export default function App() {
               <p role="status" className="mb-6 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2b2719] dark:text-amber-100 dark:ring-amber-900/60">
                 這份半日遊需要重新安排：{familyTimeline.reason}
                 <button type="button" onClick={() => setFamilyOpen(true)} className="ml-1 inline-flex min-h-11 items-center font-bold underline underline-offset-2">
+                  重新安排
+                </button>
+              </p>
+            )}
+            {plan && planSpot && daySaved && dayAddon && (
+              <SavedDayPlan
+                addon={dayAddon}
+                spots={spots}
+                ctx={recommendCtx}
+                nap={nap}
+                restaurants={restaurants}
+                nowMins={nowMins}
+                onShare={shareFullDay}
+                onReplan={() => setFamilyOpen(true)}
+              />
+            )}
+            {dayStale && (
+              <p role="status" className="mb-6 rounded-2xl bg-stone-100 p-3 text-sm text-stone-800 dark:bg-card-dark dark:text-stone-200">
+                這週的地點換了，原本的全日遊時間表不適用。
+                <button type="button" onClick={() => setFamilyOpen(true)} className="ml-1 inline-flex min-h-11 items-center font-bold text-emerald-800 underline underline-offset-2 dark:text-emerald-300">
                   重新安排
                 </button>
               </p>
@@ -771,6 +842,10 @@ export default function App() {
           nowMins={nowMins}
           onSave={saveFamilyPlan}
           onShare={shareFamilyPlan}
+          restaurants={restaurants}
+          fullDefaults={fullDefaults}
+          onSaveFull={saveFullDay}
+          onShareFull={shareFullDay}
           onOpenSettings={() => {
             setFamilyOpen(false);
             setSettingsOpen(true);

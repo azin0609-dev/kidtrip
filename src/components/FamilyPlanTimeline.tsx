@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { FamilyPlanResult, FamilyPlanStepKind } from '../lib/family-plan.ts';
+import type { FamilyPlanResult, FamilyPlanStep, FamilyPlanStepKind } from '../lib/family-plan.ts';
 import { formatDrive } from '../lib/format.ts';
 import { directionsUrl } from '../lib/links.ts';
 import { formatClock } from '../lib/plan.ts';
@@ -8,6 +8,25 @@ import { SpotArt } from './SpotArt.tsx';
 import { buttonBase, cardBase, primaryButton, secondaryButton } from './ui.tsx';
 
 type OkResult = Extract<FamilyPlanResult, { status: 'ok' }>;
+
+/** 時間軸本體：半日遊、全日遊共用。 */
+export function TimelineSteps({ steps }: { steps: readonly FamilyPlanStep[] }) {
+  return (
+    <ol className="flex flex-col" aria-label="時間安排">
+      {steps.map((s, i) => (
+        <li key={`${s.kind}-${i}`} className="relative flex gap-3 pb-3 last:pb-0">
+          {i < steps.length - 1 && <span aria-hidden="true" className="absolute top-3 left-[3.6rem] h-full w-px bg-stone-200 dark:bg-stone-700" />}
+          <span className="w-12 shrink-0 text-right text-sm font-bold tabular-nums text-stone-900 dark:text-stone-100">{formatClock(s.start)}</span>
+          <span aria-hidden="true" className={`relative z-[1] mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${DOT[s.kind]}`} />
+          <span className="min-w-0 text-sm text-stone-800 dark:text-stone-200">
+            {s.label}
+            {s.end !== undefined && <span className="text-stone-500 dark:text-stone-400">（到 {formatClock(s.end)}）</span>}
+          </span>
+        </li>
+      ))}
+    </ol>
+  );
+}
 
 /** 時間軸每一步的小圓點顏色：玩、睡、吃用不同顏色，開車和準備用中性色。 */
 const DOT: Record<FamilyPlanStepKind, string> = {
@@ -19,6 +38,7 @@ const DOT: Record<FamilyPlanStepKind, string> = {
   rest: 'bg-stone-400 dark:bg-stone-500',
   nap: 'bg-sky-500 dark:bg-sky-400',
   home: 'bg-emerald-700 dark:bg-emerald-400',
+  transfer: 'bg-stone-400 dark:bg-stone-500',
 };
 
 /**
@@ -76,20 +96,7 @@ export function FamilyPlanTimeline({
         )}
         {result.ageNote && <p className="text-sm text-stone-700 dark:text-stone-300">{result.ageNote}</p>}
 
-        {/* 時間軸 */}
-        <ol className="flex flex-col" aria-label="時間安排">
-          {result.steps.map((s, i) => (
-            <li key={`${s.kind}-${i}`} className="relative flex gap-3 pb-3 last:pb-0">
-              {i < result.steps.length - 1 && <span aria-hidden="true" className="absolute top-3 left-[3.6rem] h-full w-px bg-stone-200 dark:bg-stone-700" />}
-              <span className="w-12 shrink-0 text-right text-sm font-bold tabular-nums text-stone-900 dark:text-stone-100">{formatClock(s.start)}</span>
-              <span aria-hidden="true" className={`relative z-[1] mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${DOT[s.kind]}`} />
-              <span className="min-w-0 text-sm text-stone-800 dark:text-stone-200">
-                {s.label}
-                {s.end !== undefined && <span className="text-stone-500 dark:text-stone-400">（到 {formatClock(s.end)}）</span>}
-              </span>
-            </li>
-          ))}
-        </ol>
+        <TimelineSteps steps={result.steps} />
 
         {result.notes.length > 0 && (
           <ul className="list-disc pl-5 text-sm text-stone-700 dark:text-stone-300">

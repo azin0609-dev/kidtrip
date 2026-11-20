@@ -1,20 +1,23 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import type { Spot } from '../data/schema.ts';
+import type { Restaurant, Spot } from '../data/schema.ts';
 import { DRIVE_LABELS } from '../lib/conditions.ts';
 import { explainPick } from '../lib/explain.ts';
 import { FAMILY_DRIVE_OPTIONS, type FamilyPlanOptions, type FamilyPlanResult, planHalfDay } from '../lib/family-plan.ts';
+import type { FullDayOk, FullDayOptions } from '../lib/full-day.ts';
 import type { Nap } from '../lib/plan.ts';
 import type { RecommendContext } from '../lib/recommend.ts';
 import { type Slot, slotLabelWithDate } from '../lib/weather.ts';
 import { SleepySun } from './Brand.tsx';
 import { FamilyPlanTimeline } from './FamilyPlanTimeline.tsx';
+import { FullDayPanel } from './FullDayPanel.tsx';
 import { Chip, cardBase, secondaryButton } from './ui.tsx';
 
 type OkResult = Extract<FamilyPlanResult, { status: 'ok' }>;
 
 /**
- * 幫我排半日遊：先選條件，再自動挑景點、排時間軸。
+ * 幫我規劃出遊：半日遊或全日遊。先選條件，再自動挑景點、排時間軸。
  * 條件預設沿用首頁和設定（出發地、孩子年齡、午睡），使用者可以改；不會為了有結果自動放寬條件。
+ * 半日遊的行為跟 v1.1 一樣；全日遊在 FullDayPanel。
  */
 export function FamilyPlanBuilder({
   open,
@@ -31,6 +34,10 @@ export function FamilyPlanBuilder({
   onSave,
   onShare,
   onOpenSettings,
+  restaurants,
+  fullDefaults,
+  onSaveFull,
+  onShareFull,
 }: {
   open: boolean;
   onClose: () => void;
@@ -48,7 +55,12 @@ export function FamilyPlanBuilder({
   onSave: (result: OkResult, options: FamilyPlanOptions) => void;
   onShare: (result: OkResult, whenLabel: string, slot: Slot) => Promise<string>;
   onOpenSettings: () => void;
+  restaurants: readonly Restaurant[];
+  fullDefaults: FullDayOptions;
+  onSaveFull: (plan: FullDayOk, opts: FullDayOptions) => void;
+  onShareFull: (plan: FullDayOk, whenLabel: string, slot: Slot) => Promise<string>;
 }) {
+  const [length, setLength] = useState<'half' | 'full'>('half');
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const [options, setOptions] = useState<FamilyPlanOptions>(defaults);
@@ -105,14 +117,54 @@ export function FamilyPlanBuilder({
         <header className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h2 id={titleId} className="text-2xl font-black">
-              幫我排半日遊
+              幫我規劃出遊
             </h2>
-            <p className="text-sm text-stone-600 dark:text-stone-400">幾點出門、玩多久、幾點回家睡午覺，一次排好。</p>
+            <p className="text-sm text-stone-600 dark:text-stone-400">幾點出門、玩多久、怎麼睡午覺，一次排好。</p>
           </div>
           <button type="button" onClick={() => ref.current?.close()} aria-label="關閉" className={`${secondaryButton} min-w-11 text-lg`}>
             ×
           </button>
         </header>
+
+        <div className="grid grid-cols-2 gap-1 rounded-full bg-stone-100 p-1 dark:bg-card-dark" role="group" aria-label="半日或全日">
+          {(['half', 'full'] as const).map((l) => (
+            <button
+              key={l}
+              type="button"
+              aria-pressed={length === l}
+              onClick={() => setLength(l)}
+              className={`min-h-11 rounded-full text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 ${
+                length === l ? 'bg-white text-emerald-900 shadow-sm dark:bg-card-dark-2 dark:text-emerald-100' : 'text-stone-600 dark:text-stone-400'
+              }`}
+            >
+              {l === 'half' ? '半日遊' : '全日遊'}
+            </button>
+          ))}
+        </div>
+
+        {length === 'full' ? (
+          <>
+            <p className="text-sm text-stone-700 dark:text-stone-300">
+              從<span className="font-bold">{originLabel}</span>出發・{kidsLabel ?? '還沒設定孩子年齡'}
+              <button type="button" onClick={onOpenSettings} className="ml-1 inline-flex min-h-11 items-center font-bold text-emerald-800 underline underline-offset-2 dark:text-emerald-300">
+                改設定
+              </button>
+            </p>
+            <FullDayPanel
+              spots={spots}
+              restaurants={restaurants}
+              ctx={ctx}
+              seed={seed}
+              nap={nap}
+              slots={slots}
+              defaults={fullDefaults}
+              nowMins={nowMins}
+              onSave={onSaveFull}
+              onShare={onShareFull}
+            />
+          </>
+        ) : (
+          <>
 
         {/* 條件 */}
         <section className={`${cardBase} flex flex-col gap-3 p-4`} aria-label="條件">
@@ -217,6 +269,8 @@ export function FamilyPlanBuilder({
             <p className="text-sm text-stone-800 dark:text-stone-200">{result.status === 'no-time' ? `時間不足，建議更改條件。${result.reason}` : result.reason}</p>
 
           </div>
+        )}
+          </>
         )}
       </div>
     </dialog>

@@ -1,6 +1,7 @@
 /** 本機儲存，key 為 kidtrip.v1（PRD 第 7 節）。讀寫都不丟例外。 */
 import { type Ratings, parseRatings } from './ratings.ts';
 import { type FamilyPlanAddon, parseFamilyPlan } from './family-plan.ts';
+import { type DayPlanAddon, parseDayPlan } from './full-day.ts';
 import { type WeekPlan, parsePlan } from './weekplan.ts';
 
 export const STORAGE_KEY = 'kidtrip.v1';
@@ -121,6 +122,8 @@ export interface StoredState {
   plan?: WeekPlan;
   /** 半日遊的附加條件（室內、車程、推車、午睡方式），用 week／slot／spotId 跟 plan 對應；時間表每次重算，不存。 */
   familyPlan?: FamilyPlanAddon;
+  /** 全日遊的條件（有版本號 v），跟 familyPlan 分開存；用 week／slot／spotId 跟 plan 對應，時間表每次重算。 */
+  dayPlan?: DayPlanAddon;
   /** 去過之後寫的一句回憶：id → 文字（最多 200 字）。只存本機，分享連結不會帶。 */
   memos?: Record<string, string>;
   /** 去過之後的自家評分：id → { stars, tags }。 */
@@ -174,6 +177,9 @@ export function parseState(raw: string | null): StoredState {
     const familyPlan = parseFamilyPlan(obj.familyPlan);
     if (familyPlan) state.familyPlan = familyPlan;
     else delete state.familyPlan;
+    const dayPlan = parseDayPlan(obj.dayPlan);
+    if (dayPlan) state.dayPlan = dayPlan;
+    else delete state.dayPlan;
     const memos = parseMemos(obj.memos);
     if (memos) state.memos = memos;
     else delete state.memos;

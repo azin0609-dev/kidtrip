@@ -42,7 +42,7 @@ export interface RecommendationsProps {
   onElders: (v: boolean) => void;
   onShuffle: () => void;
   onKidPick: () => void;
-  /** 打開「幫我排半日遊」。 */
+  /** 打開「幫我規劃出遊」（半日或全日）。 */
   onFamilyPlan: () => void;
   /** 目前「這週放電計畫」的景點 id（有的話，那張卡會標示已選）。 */
   chosenId: string | null;
@@ -364,8 +364,8 @@ export function Recommendations(props: RecommendationsProps) {
               <span className="text-xs font-medium">讓小孩從這 {picks.length} 個裡挑一個</span>
             </button>
             <button type="button" onClick={props.onFamilyPlan} className={`${secondaryButton} min-h-14 w-full flex-col gap-0 rounded-2xl`}>
-              <span className="text-base font-black">幫我排半日遊</span>
-              <span className="text-xs font-medium text-stone-600 dark:text-stone-400">幾點出門、玩多久、幾點回家睡午覺</span>
+              <span className="text-base font-black">幫我規劃出遊</span>
+              <span className="text-xs font-medium text-stone-600 dark:text-stone-400">半日或全日：幾點出門、玩多久、怎麼睡午覺</span>
             </button>
           </div>
         </div>
