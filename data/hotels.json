@@ -3962,7 +3962,7 @@
   {
     "id": "hotel-095",
     "name": "希格瑪花園城堡",
-    "city": "宜蘭縣冬山鄉",
+    "city": "宜蘭縣員山鄉",
     "region": "北",
     "kind": "bnb",
     "price_tier": "$$$",
@@ -3986,24 +3986,25 @@
     ],
     "lat": 24.634514,
     "lng": 121.79228,
-    "google_place_id": null,
+    "google_place_id": "ChIJZ8WeEdvjZzQR3YCsnUFixLY",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-18",
+    "last_verified": "2026-11-20",
     "risk_flags": [
-      "location_unknown"
+      "status_conflict"
     ],
     "verified": {
-      "date": "2026-11-18",
+      "date": "2026-11-20",
       "fields": [
-        "Google 地圖搜尋"
+        "所在區",
+        "營業狀態"
       ],
       "source": "google_maps",
-      "note": "Google 地圖找不到這間；舊遊記寫在員山鄉，跟資料的冬山鄉不同，營業狀態和位置都沒確認"
+      "note": "Google 地圖上叫「Sigma Castle」，在宜蘭縣員山鄉（原本資料寫宜蘭縣冬山鄉），沒有標歇業，但只剩訂房平台的房源資料；有部落格標題寫已歇業，營業狀態沒辦法確認，先暫停推薦"
     }
   },
   {

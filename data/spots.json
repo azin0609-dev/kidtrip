@@ -3182,7 +3182,19 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "risk_flags": [
+      "status_conflict"
+    ],
+    "open_note": "開發商說只開到 2025 年底，之後要拆掉蓋住宅；Google 地圖上已經找不到，應該已經關了",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態"
+      ],
+      "source": "media",
+      "note": "ETtoday 2025-08-05 報導開發商說展期到年底；2025-11 部落格標註結束封閉；Google 地圖查不到這個地點"
+    }
   },
   {
     "id": "spot-046",
