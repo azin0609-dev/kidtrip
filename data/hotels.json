@@ -23,13 +23,23 @@
     ],
     "lat": 25.018583,
     "lng": 121.943818,
-    "google_place_id": null,
+    "google_place_id": "ChIJW_MRylVcXTQR8LTlfPoOIvg",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新北市貢寮區"
+    }
   },
   {
     "id": "hotel-002",
@@ -55,13 +65,23 @@
     ],
     "lat": 25.182307,
     "lng": 121.415333,
-    "google_place_id": null,
+    "google_place_id": "ChIJw3oG_y2lQjQRL1E_sBXBQCA",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新北市淡水區"
+    }
   },
   {
     "id": "hotel-003",
@@ -85,13 +105,23 @@
     ],
     "lat": 25.044675,
     "lng": 121.522555,
-    "google_place_id": null,
+    "google_place_id": "ChIJJVBTsHGpQjQRSW5Eeq6-HI4",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台北市中正區；Google 上的名稱是「Sheraton Grand Taipei Hotel」"
+    }
   },
   {
     "id": "hotel-004",
@@ -159,13 +189,23 @@
     ],
     "lat": 24.775627,
     "lng": 120.967914,
-    "google_place_id": null,
+    "google_place_id": "ChIJBVJtYAxKaDQRoglDDWrlH5M",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新竹市東區"
+    }
   },
   {
     "id": "hotel-006",
@@ -189,13 +229,23 @@
     ],
     "lat": 24.820225,
     "lng": 121.181606,
-    "google_place_id": null,
+    "google_place_id": "ChIJ1adtFaU-aDQRNPp2DqeIK-4",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新竹縣關西鎮"
+    }
   },
   {
     "id": "hotel-007",
@@ -520,13 +570,23 @@
     ],
     "lat": 24.687829,
     "lng": 120.904188,
-    "google_place_id": null,
+    "google_place_id": "ChIJ34G_NMhMaDQRNyqjSIi6OsM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：苗栗縣頭份市"
+    }
   },
   {
     "id": "hotel-015",
@@ -551,13 +611,23 @@
     ],
     "lat": 24.323743,
     "lng": 120.696564,
-    "google_place_id": null,
+    "google_place_id": "ChIJQ4ciLRoQaTQRXwA4bMznq60",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市后里區"
+    }
   },
   {
     "id": "hotel-016",
@@ -582,13 +652,23 @@
     ],
     "lat": 24.26026,
     "lng": 120.533747,
-    "google_place_id": null,
+    "google_place_id": "ChIJE5C0ALYUaTQReF89iK2bu2Y",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市梧棲區"
+    }
   },
   {
     "id": "hotel-017",
@@ -613,13 +693,23 @@
     ],
     "lat": 24.159059,
     "lng": 120.657203,
-    "google_place_id": null,
+    "google_place_id": "ChIJweacIYU9aTQR7Qcu2m7BOmM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市西屯區"
+    }
   },
   {
     "id": "hotel-018",

@@ -2301,14 +2301,22 @@
     "lng": 121.056685,
     "google_place_id": "ChIJRX1dgLFJaDQRg8XtDLj-0x0",
     "needs_verify": [
-      "name",
-      "city",
       "cuisine",
       "price_tier",
       "tags",
       "mins_from_linkou"
     ],
-    "last_verified": "2026-11-18",
-    "coord_area": true
+    "last_verified": "2026-11-20",
+    "coord_area": true,
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：新竹縣北埔鄉"
+    }
   }
 ]
