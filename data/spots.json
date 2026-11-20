@@ -464,10 +464,9 @@
       "elder"
     ],
     "transit": "捷運圓山站走路約 3 分",
-    "lat": 25.064361,
-    "lng": 121.533468,
+    "lat": 25.068835,
+    "lng": 121.523935,
     "google_place_id": "ChIJkwLqlk-pQjQR6zRBiYk7s8Q",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
@@ -598,10 +597,9 @@
       "elder"
     ],
     "transit": "捷運忠孝新生站走路約 5 分",
-    "lat": 25.032361,
-    "lng": 121.518267,
+    "lat": 25.04655,
+    "lng": 121.527047,
     "google_place_id": "ChIJ4_wdOGWpQjQRGuBlEVzLwag",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "age_best",
