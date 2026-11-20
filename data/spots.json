@@ -7568,7 +7568,7 @@
     "stay_hours": 1.5,
     "lat": 24.14752,
     "lng": 120.712764,
-    "google_place_id": null,
+    "google_place_id": "ChIJ-1iCUmsjaTQRnO7ipSYBqVk",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7612,7 +7612,7 @@
     "stay_hours": 2,
     "lat": 24.177993,
     "lng": 120.739048,
-    "google_place_id": null,
+    "google_place_id": "ChIJZUb4xkYYaTQRRgyudAlvOcY",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7655,7 +7655,7 @@
     "stay_hours": 2,
     "lat": 24.042614,
     "lng": 120.699143,
-    "google_place_id": null,
+    "google_place_id": "ChIJQ8Xcu8Y6aTQRYubV_bNiLXM",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7695,7 +7695,7 @@
     "stay_hours": 2,
     "lat": 24.271193,
     "lng": 120.581588,
-    "google_place_id": null,
+    "google_place_id": "ChIJR-khfAAVaTQRBHra9cgrmmU",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7738,9 +7738,9 @@
       10
     ],
     "stay_hours": 2,
-    "lat": 24.30684,
-    "lng": 120.716146,
-    "google_place_id": null,
+    "lat": 24.310158,
+    "lng": 120.705241,
+    "google_place_id": "ChIJW6-ngQwQaTQRfxq9duQ-Mas",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7757,8 +7757,7 @@
       ],
       "source": "blog",
       "note": "2026 年部落格整理；票價以官網為準"
-    },
-    "coord_area": true
+    }
   },
   {
     "id": "spot-117",
@@ -7781,7 +7780,7 @@
     "stay_hours": 1.5,
     "lat": 24.14149,
     "lng": 120.663268,
-    "google_place_id": null,
+    "google_place_id": "ChIJyVHkNqY9aTQRDilsyqDVfbg",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7826,7 +7825,7 @@
     "stay_hours": 1.5,
     "lat": 23.963339,
     "lng": 120.561329,
-    "google_place_id": null,
+    "google_place_id": "ChIJrYi7cqI3aTQRdIG7FCE3yMI",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7866,7 +7865,7 @@
     "stay_hours": 1.5,
     "lat": 24.06846,
     "lng": 120.394778,
-    "google_place_id": null,
+    "google_place_id": "ChIJbSGqBZxFaTQRMgOxsNfqnGs",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7910,7 +7909,7 @@
     "stay_hours": 2.5,
     "lat": 23.917292,
     "lng": 120.657032,
-    "google_place_id": null,
+    "google_place_id": "ChIJ2-KxYnsxaTQRMblmPXUj4dQ",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -7950,9 +7949,9 @@
       12
     ],
     "stay_hours": 2,
-    "lat": 23.705053,
-    "lng": 120.537252,
-    "google_place_id": null,
+    "lat": 23.697476,
+    "lng": 120.529963,
+    "google_place_id": "ChIJdzV_rkPJbjQR1sajZNB_IT4",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8000,7 +7999,7 @@
     "stay_hours": 1.5,
     "lat": 23.725563,
     "lng": 120.443499,
-    "google_place_id": null,
+    "google_place_id": "ChIJw4tFXTa3bjQRrIUKWeij3C4",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8041,7 +8040,7 @@
     "stay_hours": 2,
     "lat": 24.388029,
     "lng": 120.781742,
-    "google_place_id": null,
+    "google_place_id": "ChIJf5hiYY4FaTQRwPcak944Lys",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8089,7 +8088,7 @@
     "stay_hours": 2,
     "lat": 24.462859,
     "lng": 120.770752,
-    "google_place_id": null,
+    "google_place_id": "ChIJVVVVVXIHaTQRuEGA7BWDNGU",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8133,7 +8132,7 @@
     "stay_hours": 2,
     "lat": 24.207686,
     "lng": 120.596912,
-    "google_place_id": null,
+    "google_place_id": "ChIJoydnAr8VaTQRsPnBWYHjA-c",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8179,7 +8178,7 @@
     "stay_hours": 2,
     "lat": 23.480122,
     "lng": 120.29853,
-    "google_place_id": null,
+    "google_place_id": "ChIJDdZ--TOZbjQRGCE69-PjDFE",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8223,7 +8222,7 @@
     "stay_hours": 2,
     "lat": 23.310628,
     "lng": 120.31669,
-    "google_place_id": null,
+    "google_place_id": "ChIJGWW7zNyFbjQRclyWA5PXWws",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8272,7 +8271,7 @@
     "stay_hours": 2.5,
     "lat": 23.058351,
     "lng": 120.235154,
-    "google_place_id": null,
+    "google_place_id": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8317,7 +8316,7 @@
     "stay_hours": 1.5,
     "lat": 22.657919,
     "lng": 120.283024,
-    "google_place_id": null,
+    "google_place_id": "ChIJUYjFmk4EbjQRz_9ns2DgRRk",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8358,7 +8357,7 @@
     "stay_hours": 1.5,
     "lat": 22.593911,
     "lng": 120.486709,
-    "google_place_id": null,
+    "google_place_id": "ChIJC7UimEoZbjQRFQndbc7YlrY",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8402,7 +8401,7 @@
     "stay_hours": 3,
     "lat": 23.13337,
     "lng": 120.427709,
-    "google_place_id": null,
+    "google_place_id": "ChIJFeLZsNBjbjQRFb6ZXzB4mO4",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8449,7 +8448,7 @@
     "stay_hours": 1.5,
     "lat": 22.995146,
     "lng": 120.162761,
-    "google_place_id": null,
+    "google_place_id": "ChIJfwuEJxx3bjQRiGyKyp1m-3o",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8488,9 +8487,9 @@
       12
     ],
     "stay_hours": 2.5,
-    "lat": 23.424975,
-    "lng": 120.522541,
-    "google_place_id": null,
+    "lat": 23.383246,
+    "lng": 120.523113,
+    "google_place_id": "ChIJL8Wi7tWSbjQRdw5yAzA5qFU",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
@@ -8509,8 +8508,7 @@
       ],
       "source": "media",
       "note": "Smile Taiwan、LINE TODAY 整理"
-    },
-    "coord_area": true
+    }
   },
   {
     "id": "spot-134",
@@ -8534,7 +8532,7 @@
     "stay_hours": 3,
     "lat": 22.708639,
     "lng": 120.659074,
-    "google_place_id": null,
+    "google_place_id": "ChIJWabUR9o7bjQRQW1uZFLg14k",
     "needs_verify": [
       "stroller_ok",
       "mins_from_linkou",
