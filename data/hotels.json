@@ -2003,7 +2003,7 @@
   {
     "id": "hotel-049",
     "name": "台中鳳凰酒店",
-    "city": "台中市西區",
+    "city": "台中市中區",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2022,19 +2022,28 @@
     ],
     "lat": 24.258349,
     "lng": 120.538565,
-    "google_place_id": null,
+    "google_place_id": "ChIJSXTWATM9aTQRR8lVUPPpfhc",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市中區；原本資料寫台中市西區，依 Google 地圖改為台中市中區"
+    }
   },
   {
     "id": "hotel-050",
     "name": "想窩11餐旅館",
-    "city": "台中市",
+    "city": "台中市沙鹿區",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2055,14 +2064,23 @@
     ],
     "lat": 24.137342,
     "lng": 120.662537,
-    "google_place_id": null,
+    "google_place_id": "ChIJpUpM6KgVaTQRIweMzL9d3IE",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市沙鹿區；原本資料寫台中市，依 Google 地圖改為台中市沙鹿區"
+    }
   },
   {
     "id": "hotel-051",
@@ -2086,13 +2104,23 @@
     ],
     "lat": 24.179411,
     "lng": 120.623922,
-    "google_place_id": null,
+    "google_place_id": "ChIJ0b0x8sI9aTQR2Qtx4GCuwfk",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市西屯區"
+    }
   },
   {
     "id": "hotel-052",
@@ -2148,13 +2176,22 @@
     ],
     "lat": 24.111677,
     "lng": 120.615841,
-    "google_place_id": null,
+    "google_place_id": "ChIJt-2n9Jg_aTQRTWjQotFTykQ",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "hotel-054",
@@ -2179,13 +2216,23 @@
     ],
     "lat": 23.847236,
     "lng": 120.931515,
-    "google_place_id": null,
+    "google_place_id": "ChIJIY81VMPVaDQRWj4rWGeXUq8",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：南投縣魚池鄉"
+    }
   },
   {
     "id": "hotel-055",
@@ -2211,13 +2258,23 @@
     ],
     "lat": 23.959816,
     "lng": 120.975499,
-    "google_place_id": null,
+    "google_place_id": "ChIJOz9XLSfZaDQRoAboLrApRwI",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：南投縣埔里鎮"
+    }
   },
   {
     "id": "hotel-056",
@@ -2243,13 +2300,23 @@
     ],
     "lat": 23.716819,
     "lng": 120.53413,
-    "google_place_id": null,
+    "google_place_id": "ChIJNYeWzi7IbjQR00t_2PwtGKk",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：雲林縣斗六市"
+    }
   },
   {
     "id": "hotel-057",
@@ -2275,14 +2342,24 @@
     ],
     "lat": 23.486793,
     "lng": 120.4257,
-    "google_place_id": null,
+    "google_place_id": "ChIJWbt8RQCXbjQRV4LaQEOw3SI",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "city"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市西區"
+    }
   },
   {
     "id": "hotel-058",
@@ -2307,18 +2384,28 @@
     ],
     "lat": 23.468597,
     "lng": 120.295022,
-    "google_place_id": null,
+    "google_place_id": "ChIJG7nwCNObbjQRge3e2ihz-4I",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義縣太保市"
+    }
   },
   {
     "id": "hotel-059",
     "name": "新悅花園酒店",
-    "city": "嘉義市",
+    "city": "嘉義市東區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2338,14 +2425,23 @@
     ],
     "lat": 23.504862,
     "lng": 120.449599,
-    "google_place_id": null,
+    "google_place_id": "ChIJl1mdXsKVbjQR-RuR3L7Abog",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：嘉義市東區；Google 上的名稱是「新悦花園酒店」；原本資料寫嘉義市，依 Google 地圖改為嘉義市東區"
+    }
   },
   {
     "id": "hotel-060",
