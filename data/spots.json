@@ -4246,7 +4246,37 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市鼓山區"
+    }
   },
   {
     "id": "spot-062",
@@ -4288,12 +4318,43 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "yes",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "尿布台",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市三民區"
+    }
   },
   {
     "id": "spot-063",
     "name": "哈瑪星台灣鐵道館",
-    "city": "高雄市鹽埕區",
+    "city": "高雄市鼓山區",
     "region": "南",
     "types": [
       "train",
@@ -4325,7 +4386,37 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "unknown",
+      "timed_entry": "unknown",
+      "source": "Google 地圖"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市鼓山區；原本資料寫高雄市鹽埕區，依 Google 地圖改為高雄市鼓山區"
+    }
   },
   {
     "id": "spot-064",
@@ -4362,7 +4453,36 @@
       "facilities",
       "transit"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市鳳山區"
+    }
   },
   {
     "id": "spot-065",
@@ -4400,7 +4520,36 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市鳳山區"
+    }
   },
   {
     "id": "spot-066",
@@ -4437,7 +4586,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口",
+        "建議預先購票"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市大樹區"
+    }
   },
   {
     "id": "spot-067",
@@ -4475,7 +4655,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口",
+        "建議預先購票"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣車城鄉"
+    }
   },
   {
     "id": "spot-068",
@@ -4517,7 +4728,36 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "unknown",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣屏東市"
+    }
   },
   {
     "id": "spot-069",
@@ -4555,7 +4795,37 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "no",
+      "advance_ticket": "no",
+      "timed_entry": "no",
+      "source": "免費入園"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：屏東縣內埔鄉"
+    }
   },
   {
     "id": "spot-070",
@@ -4591,7 +4861,38 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "amenities": {
+      "diaper": "unknown",
+      "nursing": "unknown",
+      "toilet": "yes",
+      "aircon": "unknown",
+      "shade": "unknown",
+      "stroller_path": "yes",
+      "stairs": "unknown",
+      "holiday_crowd": "unknown",
+      "source": "Google 地圖",
+      "checked_at": "2026-11-20"
+    },
+    "booking": {
+      "reservation": "unknown",
+      "advance_ticket": "yes",
+      "timed_entry": "unknown",
+      "source": "Google 地圖「建議預先購票」"
+    },
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區",
+        "洗手間",
+        "無障礙入口",
+        "建議預先購票"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：花蓮縣壽豐鄉"
+    }
   },
   {
     "id": "spot-071",
