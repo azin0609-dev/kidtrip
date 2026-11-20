@@ -1558,8 +1558,7 @@
     "mins_from_linkou": 45,
     "tip": "園區綠地很大，可以騎腳踏車，步調很慢很放鬆。",
     "near_spot_ids": [
-      "spot-020",
-      "spot-022"
+      "spot-020"
     ],
     "lat": 24.839476,
     "lng": 121.184013,
@@ -2585,48 +2584,6 @@
     }
   },
   {
-    "id": "hotel-064",
-    "name": "安平雅樂軒酒店",
-    "city": "台南市安平區",
-    "region": "南",
-    "kind": "hotel",
-    "price_tier": "$$$",
-    "tags": [
-      "play"
-    ],
-    "features": [
-      "兒童俱樂部",
-      "近安平老街"
-    ],
-    "mins_from_linkou": 220,
-    "tip": "遊戲區小而美，走路就到安平老街。",
-    "near_spot_ids": [
-      "spot-059"
-    ],
-    "lat": 22.990238,
-    "lng": 120.160083,
-    "google_place_id": "ChIJ2etCtZF3bjQR-fCiH7MCmek",
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-20",
-    "verified": {
-      "date": "2026-11-20",
-      "fields": [
-        "營業狀態",
-        "名稱",
-        "所在區"
-      ],
-      "source": "google_maps",
-      "note": "Google 地圖：台南市安平區；Google 上的名稱是「Aloft Tainan Anping」；Google 地圖顯示暫停營業，去之前先確認"
-    },
-    "risk_flags": [
-      "status_conflict"
-    ]
-  },
-  {
     "id": "hotel-065",
     "name": "高雄承億酒店",
     "city": "高雄市前鎮區",
@@ -3126,50 +3083,6 @@
       "source": "google_maps",
       "note": "Google 地圖：花蓮縣花蓮市"
     }
-  },
-  {
-    "id": "hotel-077",
-    "name": "花蓮翰品酒店",
-    "city": "花蓮縣花蓮市",
-    "region": "東",
-    "kind": "hotel",
-    "price_tier": "$$$",
-    "tags": [
-      "play",
-      "pool"
-    ],
-    "features": [
-      "繪本主題飯店",
-      "兒童遊戲室",
-      "泳池"
-    ],
-    "mins_from_linkou": 190,
-    "tip": "整間以繪本為主題，遊戲室算大，就在市區。",
-    "near_spot_ids": [
-      "spot-072"
-    ],
-    "lat": 23.991974,
-    "lng": 121.626909,
-    "google_place_id": "ChIJkUoWPNWfaDQRHxnmxmooKkc",
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-20",
-    "verified": {
-      "date": "2026-11-20",
-      "fields": [
-        "營業狀態",
-        "名稱",
-        "所在區"
-      ],
-      "source": "google_maps",
-      "note": "Google 地圖：花蓮縣花蓮市；Google 地圖顯示永久歇業；2024 年花蓮地震後停業準備改建"
-    },
-    "risk_flags": [
-      "status_conflict"
-    ]
   },
   {
     "id": "hotel-078",
@@ -3914,54 +3827,6 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣羅東鎮"
-    }
-  },
-  {
-    "id": "hotel-095",
-    "name": "希格瑪花園城堡",
-    "city": "宜蘭縣員山鄉",
-    "region": "北",
-    "kind": "bnb",
-    "price_tier": "$$$",
-    "tags": [
-      "slide",
-      "pool",
-      "park",
-      "play"
-    ],
-    "features": [
-      "粉紅城堡",
-      "公主房賽車房等溜滑梯主題房",
-      "戲水池沙坑電動車"
-    ],
-    "mins_from_linkou": 90,
-    "tip": "粉紅色城堡造型，有公主房和賽車房，戶外有戲水池和沙坑。",
-    "near_spot_ids": [
-      "spot-035",
-      "spot-032",
-      "spot-076"
-    ],
-    "lat": 24.634514,
-    "lng": 121.79228,
-    "google_place_id": "ChIJZ8WeEdvjZzQR3YCsnUFixLY",
-    "coord_area": true,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-20",
-    "risk_flags": [
-      "status_conflict"
-    ],
-    "verified": {
-      "date": "2026-11-20",
-      "fields": [
-        "所在區",
-        "營業狀態"
-      ],
-      "source": "google_maps",
-      "note": "Google 地圖上叫「Sigma Castle」，在宜蘭縣員山鄉（原本資料寫宜蘭縣冬山鄉），沒有標歇業，但只剩訂房平台的房源資料；有部落格標題寫已歇業，營業狀態沒辦法確認，先暫停推薦"
     }
   },
   {
