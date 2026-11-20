@@ -572,6 +572,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖"
+    },
+    "image": {
+      "url": "photos/spot-008.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%9C%9F%E9%8A%80%E8%88%8A%E9%A4%A8_Former_Building_of_Land_Bank_-_panoramio.jpg"
     }
   },
   {
@@ -636,6 +642,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：名稱是中央藝文公園共融遊戲場"
+    },
+    "image": {
+      "url": "photos/spot-009.jpg",
+      "credit": "臺北市政府工務局公園處／Wikimedia Commons",
+      "license": "Attribution",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Huashan_Prairie_Playground_02.jpg"
     }
   },
   {
@@ -1649,7 +1661,13 @@
       "stay_hours",
       "facilities"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-16",
+    "image": {
+      "url": "photos/spot-024.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Owl_Forest_School_%E5%A5%A7%E7%88%BE%E6%A3%AE%E6%9E%97%E5%AD%B8%E5%A0%82_-_panoramio.jpg"
+    }
   },
   {
     "id": "spot-025",
@@ -2088,6 +2106,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣宜蘭市"
+    },
+    "image": {
+      "url": "photos/spot-030.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%90%91%E5%B7%A6%E8%B5%B0%E7%9A%84%E5%A5%B3%E5%AD%A9_Girl_Who_Turns_Left_-_panoramio.jpg"
     }
   },
   {
@@ -2155,6 +2179,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣五結鄉；Google 上的名稱是「宜蘭傳藝園區」"
+    },
+    "image": {
+      "url": "photos/spot-031.jpg",
+      "credit": "Bernard Gagnon／Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Folk_Art_Boulevard.jpg"
     }
   },
   {
@@ -2222,6 +2252,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣羅東鎮"
+    },
+    "image": {
+      "url": "photos/spot-032.jpg",
+      "credit": "王彥翔／Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E7%BE%85%E6%9D%B1%E6%9E%97%E5%8D%80%E7%AE%A1%E7%90%86%E8%99%95%E8%B2%AF%E6%9C%A8%E6%B1%A0%E5%8D%80.JPG"
     }
   },
   {
@@ -2429,6 +2465,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣冬山鄉"
+    },
+    "image": {
+      "url": "photos/spot-035.jpg",
+      "credit": "Peter in s／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dongshan_River_Ecoark8.jpg"
     }
   },
   {
@@ -2576,6 +2618,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖"
+    },
+    "image": {
+      "url": "photos/spot-038.jpg",
+      "credit": "Foxy Who \\(^∀^)/／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%B0%9A%E9%A0%86%E8%82%B2%E6%A8%82%E4%B8%96%E7%95%8C_Shang_Shun_World.jpg"
     }
   },
   {
@@ -2649,6 +2697,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：苗栗縣通霄鎮"
+    },
+    "image": {
+      "url": "photos/spot-039.jpg",
+      "credit": "Taiwania Justo／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cow_Statues_in_Flying_Cow_Ranch.JPG"
     }
   },
   {
@@ -2864,6 +2918,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台中市后里區"
+    },
+    "image": {
+      "url": "photos/spot-042.jpg",
+      "credit": "Yuriy kosygin／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:View_of_Lihpao_Land.jpg"
     }
   },
   {
@@ -3074,6 +3134,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：彰化縣員林市"
+    },
+    "image": {
+      "url": "photos/spot-046.jpg",
+      "credit": "Kai3952／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Baiguo_Mountain_Explore_Paradise_entrance_and_ticket_booth,_as_taken_on_2_March_2021.jpg"
     }
   },
   {
@@ -3136,6 +3202,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：彰化縣彰化市"
+    },
+    "image": {
+      "url": "photos/spot-047.jpg",
+      "credit": "billy1125 from Hualien, Taiwan／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%BD%B0%E5%8C%96%E6%89%87%E5%BD%A2%E8%BB%8A%E5%BA%AB_(14792388468).jpg"
     }
   },
   {
@@ -3202,6 +3274,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：南投縣魚池鄉"
+    },
+    "image": {
+      "url": "photos/spot-048.jpg",
+      "credit": "阿道／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Culture_Square_of_Formosan_Aboriginal_Culture_Village_01_20260210.jpg"
     }
   },
   {
@@ -3270,6 +3348,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：南投縣仁愛鄉"
+    },
+    "image": {
+      "url": "photos/spot-049.jpg",
+      "credit": "江皓正／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E6%B8%85%E5%A2%83%E8%BE%B2%E5%A0%B4.jpg"
     }
   },
   {
@@ -3338,6 +3422,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：雲林縣古坑鄉"
+    },
+    "image": {
+      "url": "photos/spot-050.jpg",
+      "credit": "Roller Coaster Philosophy, Jeremy Thompson／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Janfusun_Fancyworld_ferris_wheel.jpg"
     }
   },
   {
@@ -3476,6 +3566,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：嘉義縣太保市"
+    },
+    "image": {
+      "url": "photos/spot-052.jpg",
+      "credit": "B2322858／Wikimedia Commons",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Southern_Branch_of_the_National_Palace_Museum_main_building_and_zhimei_bridge.jpg"
     }
   },
   {
@@ -3602,6 +3698,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：嘉義市東區；Google 上的名稱是「阿里山森林鐵路車庫園區」"
+    },
+    "image": {
+      "url": "photos/spot-054.jpg",
+      "credit": "ddio／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Turntable_at_Alishan_Forest_Railway_Garage_Park.jpg"
     }
   },
   {
@@ -3675,6 +3777,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台南市仁德區"
+    },
+    "image": {
+      "url": "photos/spot-055.jpg",
+      "credit": "E21201／Wikimedia Commons",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chimei_museum1.jpg"
     }
   },
   {
@@ -3742,6 +3850,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台南市仁德區"
+    },
+    "image": {
+      "url": "photos/spot-056.jpg",
+      "credit": "Mrmarkertw／Wikimedia Commons",
+      "license": "CC0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2023%E5%B9%B4%E7%9A%84%E5%8D%81%E9%BC%93%E4%BB%81%E7%B3%96%E6%96%87%E5%89%B5%E5%9C%92%E5%8D%80_07.jpg"
     }
   },
   {
@@ -3816,6 +3930,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台南市學甲區"
+    },
+    "image": {
+      "url": "photos/spot-057.jpg",
+      "credit": "Pbdragonwang／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E9%A0%91%E7%9A%AE%E4%B8%96%E7%95%8C%E5%8B%95%E7%89%A9%E5%9C%92.jpg"
     }
   },
   {
@@ -3883,6 +4003,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台南市大內區"
+    },
+    "image": {
+      "url": "photos/spot-058.jpg",
+      "credit": "SSR2000／Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:TAEA_Dome.JPG"
     }
   },
   {
@@ -3954,6 +4080,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台南市中西區"
+    },
+    "image": {
+      "url": "photos/spot-059.jpg",
+      "credit": "Pbdragonwang／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E8%87%BA%E5%8D%97%E6%B2%B3%E6%A8%82%E5%BB%A3%E5%A0%B4.jpg"
     }
   },
   {
@@ -4097,6 +4229,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：高雄市鼓山區"
+    },
+    "image": {
+      "url": "photos/spot-061.jpg",
+      "credit": "壽山動物園／Wikimedia Commons",
+      "license": "Attribution",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Shoushan_Zoo_Entrance_2023.jpg"
     }
   },
   {
@@ -4170,6 +4308,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：高雄市三民區"
+    },
+    "image": {
+      "url": "photos/spot-062.jpg",
+      "credit": "微型樂園 micro+playground／Wikimedia Commons",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kaohsiung_National_Science_and_Technology_Museum_01.jpg"
     }
   },
   {
@@ -4237,6 +4381,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：高雄市鼓山區；原本資料寫高雄市鹽埕區，依 Google 地圖改為高雄市鼓山區"
+    },
+    "image": {
+      "url": "photos/spot-063.jpg",
+      "credit": "毛貓大少爺／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hamasen_Museum_of_Taiwan_Railway_front_view_20190819.jpg"
     }
   },
   {
@@ -4438,6 +4588,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：高雄市大樹區"
+    },
+    "image": {
+      "url": "photos/spot-066.jpg",
+      "credit": "SSR2000／Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:E-Da_Theme_Park_Monorail.jpg"
     }
   },
   {
@@ -4507,6 +4663,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：屏東縣車城鄉"
+    },
+    "image": {
+      "url": "photos/spot-067.jpg",
+      "credit": "Chi-Hung Lin／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:ROC-NMMBA_Open_Ocean_Aquarium_20160515b.jpg"
     }
   },
   {
@@ -4578,6 +4740,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：屏東縣屏東市"
+    },
+    "image": {
+      "url": "photos/spot-068.jpg",
+      "credit": "雅婕／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%B1%8F%E6%9D%B1%E7%B8%A3%E6%B0%91%E5%85%AC%E5%9C%92_%E2%80%93%E9%9B%99%E9%87%91%E5%AD%97%E5%A1%94.jpg"
     }
   },
   {
@@ -4646,6 +4814,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：屏東縣內埔鄉"
+    },
+    "image": {
+      "url": "photos/spot-069.jpg",
+      "credit": "StevenK234／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Luidui_Hakka_Cultural_Park.jpg"
     }
   },
   {
@@ -4713,6 +4887,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：花蓮縣壽豐鄉"
+    },
+    "image": {
+      "url": "photos/spot-070.jpg",
+      "credit": "何等幸福平面攝影工作室／Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Farglory_Ocean_Park_dolphin_show_stage_20150411.jpg"
     }
   },
   {
@@ -4777,6 +4957,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：花蓮縣鳳林鎮；Google 上的名稱是「墾夢莊園(新光兆豐休閒農場)」"
+    },
+    "image": {
+      "url": "photos/spot-071.jpg",
+      "credit": "Leejerry0706／Wikimedia Commons",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E6%96%B0%E5%85%89%E5%85%86%E8%B1%90%E8%BE%B2%E5%A0%B4%E6%AD%A5%E9%81%93.jpg"
     }
   },
   {
@@ -4903,6 +5089,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：花蓮縣瑞穗鄉"
+    },
+    "image": {
+      "url": "photos/spot-073.jpg",
+      "credit": "kyo1249／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mizuhomakiba06.jpg"
     }
   },
   {
@@ -4974,6 +5166,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台東縣台東市"
+    },
+    "image": {
+      "url": "photos/spot-074.jpg",
+      "credit": "Kdm852／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Prehistory,_Taitung_02.jpg"
     }
   },
   {
@@ -5036,6 +5234,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：台東縣卑南鄉"
+    },
+    "image": {
+      "url": "photos/spot-075.jpg",
+      "credit": "ECTaiwan2010／Wikimedia Commons",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chu_Lu_Ranch_2009.04.11.JPG"
     }
   },
   {
@@ -5438,6 +5642,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣蘇澳鎮"
+    },
+    "image": {
+      "url": "photos/spot-081.jpg",
+      "credit": "lienyuan lee／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%AE%9C%E8%98%AD%E9%A4%85%E7%99%BC%E6%98%8E%E9%A4%A8_Ilan_Cake_Invention_Museum_-_panoramio.jpg"
     }
   },
   {
@@ -5508,6 +5718,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣蘇澳鎮"
+    },
+    "image": {
+      "url": "photos/spot-082.jpg",
+      "credit": "莊文生、鐘碧娟、高璇（宜蘭縣政府文化局）／Wikimedia Commons",
+      "license": "CC BY 3.0 tw",
+      "source_url": "https://commons.wikimedia.org/wiki/File:%E5%AE%89%E6%B0%B8%E5%BF%83%E9%A3%9F%E9%A4%A8.jpg"
     }
   },
   {
@@ -5782,6 +5998,12 @@
       ],
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣五結鄉"
+    },
+    "image": {
+      "url": "photos/spot-086.jpg",
+      "credit": "徐月春／Wikimedia Commons",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:268,_Taiwan,_%E5%AE%9C%E8%98%AD%E7%B8%A3%E4%BA%94%E7%B5%90%E9%84%89%E5%8D%94%E5%92%8C%E6%9D%91_-_panoramio_(39).jpg"
     }
   },
   {
@@ -6541,7 +6763,13 @@
       "source": "Google 地圖",
       "checked_at": "2026-11-18"
     },
-    "open_note": "24 小時開放、免費"
+    "open_note": "24 小時開放、免費",
+    "image": {
+      "url": "photos/spot-097.jpg",
+      "credit": "Foxy1219／Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Feng_He_Park_2020-07-10_02.jpg"
+    }
   },
   {
     "id": "spot-098",
