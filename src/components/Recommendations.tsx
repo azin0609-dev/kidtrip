@@ -261,7 +261,7 @@ export function Recommendations(props: RecommendationsProps) {
     <section aria-labelledby="recommend-title" className="mb-8">
       <div className="flex items-end justify-between gap-3">
         <div className="min-w-0">
-          <h2 id="recommend-title" className="text-2xl font-black text-stone-900 md:text-3xl dark:text-stone-50">
+          <h2 id="recommend-title" tabIndex={-1} className="scroll-mt-24 outline-none text-2xl font-black text-stone-900 md:text-3xl dark:text-stone-50">
             本週放電提案
           </h2>
           <p className="text-sm text-stone-600 dark:text-stone-400">

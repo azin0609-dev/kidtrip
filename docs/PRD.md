@@ -390,3 +390,11 @@ id（`food-001`）、name、city、region、cuisine（料理類型）、price_ti
 - 雙景點導航：Google Maps URLs（`/maps/dir/?api=1`），第一站是 `waypoints`、第二站是 `destination`，用名稱＋縣市和 place_id，不用座標，不帶出發地（用手機目前位置）。單站導航保留當備案。
 - 全日遊分享：網址同時帶舊的 `?plan=`（格式不變，舊版 App 照樣看得到第一站）和新的 `?day=`（版本 1，只有週次、時段、景點 id 和行程條件）。對方打開先預覽兩站和條件，時間表用對方手機的設定重排。`day` 跟 `plan` 對不上或看不懂就只用 `plan`。
 - 端對端測試：第一次先 `npm ci`、`npx playwright install chromium`，之後 `npm run build && npm run e2e`（scripts/e2e.mjs；用 WebKit 模擬 iPhone：`E2E_BROWSER=webkit npm run e2e`；playwright 已列在 devDependencies，沒有放進 CI）。
+
+## 品牌故事（2026-11-20，分支 feature/brand-story，尚未上線）
+
+- 文案集中在 `src/content/brand-story.ts`（主標語、輔助標語、首頁入口、故事內文、結尾按鈕）。改字只改這個檔。
+- 首頁：推薦卡片和「換我決定」下面放一張小卡（不是 Banner、不自動跳出），按「看看我們的故事」打開。頁尾另有一個文字連結。
+- 故事頁：網址 `#about`，全螢幕閱讀；上方和底部都有「返回」，手機返回鍵也能關，回到原本的捲動位置。底部「開始規劃這週末」回到「去放電」的推薦區。
+- 敘事者是「一個爸爸」，不放姓名、職業、孩子名字、住址、照片；結尾註明對話是情境描述，不是逐字紀錄。
+- 推薦演算法、localStorage 格式都沒有改。

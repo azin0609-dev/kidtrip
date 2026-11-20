@@ -1,4 +1,4 @@
-import { type ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import { type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ImportDialog, ReportDialog, WelcomeDialog } from './components/Dialogs.tsx';
 import { BrandMark, Bolt, Pin, SleepySun, TabIcon } from './components/Brand.tsx';
 import { FamilyPlanBuilder } from './components/FamilyPlanBuilder.tsx';
@@ -25,6 +25,8 @@ import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, checkSaved
 import { type DayPlanAddon, type FullDayOk, type FullDayOptions, dayAddonMatches, dayPlanHeading, dayShareText, makeDayAddon } from './lib/full-day.ts';
 import { SavedDayPlan } from './components/SavedDayPlan.tsx';
 import { IncomingDayPlan } from './components/IncomingDayPlan.tsx';
+import { AboutStory, StoryTeaser } from './components/BrandStory.tsx';
+import { useAboutRoute } from './hooks/useAboutRoute.ts';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
 import { isRecommendable } from './lib/verification.ts';
@@ -58,6 +60,23 @@ export default function App() {
   // App 開著不關也會跨日更新。
   const today = useToday();
   const [tab, goTab] = useHashTab();
+  // 品牌故事頁（#about）：全螢幕閱讀，返回時回到原本的位置。
+  const about = useAboutRoute();
+  const focusPlanAfterAbout = useRef(false);
+  const startPlanning = () => {
+    focusPlanAfterAbout.current = true;
+    about.leaveTo('spots');
+  };
+  useEffect(() => {
+    if (about.open || tab !== 'spots' || !focusPlanAfterAbout.current) return;
+    focusPlanAfterAbout.current = false;
+    // 回到首頁推薦／規劃區。
+    requestAnimationFrame(() => {
+      const heading = document.getElementById('recommend-title');
+      heading?.scrollIntoView({ block: 'start' });
+      heading?.focus({ preventScroll: true });
+    });
+  }, [about.open, tab]);
   const [stored, update] = useStoredState();
   const [spotFilters, setSpotFilters] = useState(DEFAULT_SPOT_FILTERS);
   const [hotelFilters, setHotelFilters] = useState(DEFAULT_HOTEL_FILTERS);
@@ -661,6 +680,7 @@ export default function App() {
               onChoose={choosePlan}
               renderFull={(p) => renderSpot(p.spot)}
             />
+            <StoryTeaser onOpen={about.show} />
             <details
               className="group rounded-3xl bg-white/90 p-4 shadow-sm ring-1 ring-stone-200 backdrop-blur dark:bg-card-dark/90 dark:ring-stone-800"
               open={spotFiltersActive || undefined}
@@ -813,7 +833,7 @@ export default function App() {
           </>
         )}
 
-        <Footer verifiedOn={verifiedOn} originLabel={origin.label} />
+        <Footer verifiedOn={verifiedOn} originLabel={origin.label} onAbout={about.show} />
       </main>
       <SettingsDialog
         open={settingsOpen}
@@ -864,6 +884,7 @@ export default function App() {
         onClose={() => setKidPickOpen(false)}
         onChoose={(p) => choosePlan(p.spot)}
       />
+      {about.open && <AboutStory onClose={about.hide} onStartPlanning={startPlanning} />}
       {familyOpen && (
         <FamilyPlanBuilder
           open

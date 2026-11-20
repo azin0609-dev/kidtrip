@@ -14,3 +14,10 @@ export function tabFromHash(hash: string): Tab {
   const id = hash.replace(/^#\/?/, '');
   return TABS.some((t) => t.id === id) ? (id as Tab) : 'spots';
 }
+
+/** 品牌故事頁的網址 hash（#about）。不是分頁：底下的分頁維持原樣，返回時回到原本的位置。 */
+export const ABOUT_HASH = 'about';
+
+export function isAboutHash(hash: string): boolean {
+  return hash.replace(/^#\/?/, '') === ABOUT_HASH;
+}

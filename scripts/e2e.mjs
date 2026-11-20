@@ -284,6 +284,69 @@ async function run() {
       await ctx.close();
     }
 
+    // 品牌故事：入口在推薦卡下面、打開、返回、開始規劃
+    {
+      const { ctx, page } = await openPage(browser);
+      const teaser = page.getByRole('region', { name: '週末臨時想出門，不用再花一小時找地方。' });
+      const heroBottom = await page.locator('article').first().evaluate((el) => el.getBoundingClientRect().bottom);
+      const teaserTop = await teaser.evaluate((el) => el.getBoundingClientRect().top);
+      const plannerOk = await page.getByRole('button', { name: /幫我規劃出遊/ }).first().isVisible();
+      check('故事入口在第一張推薦卡下面，規劃按鈕照常', teaserTop > heroBottom && plannerOk, `推薦卡底 ${Math.round(heroBottom)}px、入口 ${Math.round(teaserTop)}px`);
+      const noAutoPopup = (await page.getByRole('dialog').count()) === 0;
+      check('首頁沒有自動跳出故事', noAutoPopup);
+
+      await page.evaluate(() => window.scrollTo(0, 900));
+      const before = await page.evaluate(() => window.scrollY);
+      await teaser.getByRole('button', { name: '看看我們的故事' }).click();
+      const story = page.getByRole('dialog', { name: /放電研究所，\s*是怎麼誕生的？/ });
+      await story.waitFor();
+      const storyText = await story.innerText();
+      check('完整故事打開，網址是 #about', storyText.includes('為什麼帶小孩出去放電，最先沒電的總是爸爸媽媽？') && storyText.includes('十分鐘做決定，剩下的時間，留給孩子。') && (await page.evaluate(() => location.hash)) === '#about');
+      check('故事頁 390px 沒有橫向捲動', (await story.evaluate((d) => d.scrollWidth - d.clientWidth)) <= 0 && (await overflow(page)) === 0);
+      await story.getByRole('button', { name: '返回' }).first().click();
+      await page.waitForTimeout(300);
+      const after = await page.evaluate(() => window.scrollY);
+      check('返回後故事關閉，回到原本的捲動位置', (await page.getByRole('dialog').count()) === 0 && Math.abs(after - before) < 5 && !(await page.evaluate(() => location.hash)).includes('about'), `捲動 ${before} → ${after}`);
+
+      // 用瀏覽器返回鍵也能關
+      await teaser.getByRole('button', { name: '看看我們的故事' }).click();
+      await story.waitFor();
+      await page.goBack();
+      await page.waitForTimeout(300);
+      check('手機返回鍵（瀏覽器上一頁）也能關掉故事', (await page.getByRole('dialog').count()) === 0);
+
+      // 開始規劃這週末 → 回到推薦區，焦點在「本週放電提案」
+      await teaser.getByRole('button', { name: '看看我們的故事' }).click();
+      await story.waitFor();
+      await story.getByRole('button', { name: '開始規劃這週末' }).click();
+      await page.waitForTimeout(400);
+      const focused = await page.evaluate(() => document.activeElement?.id);
+      const headTop = await page.locator('#recommend-title').evaluate((el) => el.getBoundingClientRect().top);
+      check('「開始規劃這週末」回到推薦／規劃區', (await page.getByRole('dialog').count()) === 0 && focused === 'recommend-title' && headTop >= 0 && headTop < 400, `焦點 ${focused}、標題位置 ${Math.round(headTop)}px`);
+      const s = await stored(page);
+      check('看故事不改動使用者資料', s.fav?.[0] === 'spot-017' && s.memos?.['spot-017'] === '記得帶水壺' && s.ratings?.['spot-092']?.stars === 5);
+      await ctx.close();
+
+      // 直接打開 #about 連結、深色模式
+      const dark = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: 'dark', timezoneId: 'Asia/Taipei', serviceWorkers: 'block' });
+      const dp = await dark.newPage();
+      await dp.clock.install({ time: NOW });
+      await dp.route(/open-meteo|nominatim/, (r) => r.abort());
+      await dp.addInitScript((st) => localStorage.setItem('kidtrip.v1', JSON.stringify(st)), baseState);
+      await dp.goto(`${BASE}#about`);
+      await dp.waitForTimeout(500);
+      const dstory = dp.getByRole('dialog', { name: /放電研究所，\s*是怎麼誕生的？/ });
+      const colors = await dstory.evaluate((d) => {
+        const p = d.querySelector('article p');
+        return { bg: getComputedStyle(d).backgroundColor, fg: p ? getComputedStyle(p).color : '' };
+      });
+      check('直接打開 #about 連結：深色模式看得到故事', (await dstory.count()) > 0 && colors.bg !== 'rgb(251, 248, 241)' && colors.bg !== colors.fg, `背景 ${colors.bg}、文字 ${colors.fg}`);
+      await dstory.getByRole('button', { name: '返回' }).first().click();
+      await dp.waitForTimeout(300);
+      check('直接打開的故事頁，返回回到「去放電」', (await dp.getByRole('dialog').count()) === 0 && (await dp.evaluate(() => location.hash)) === '#spots');
+      await dark.close();
+    }
+
     // 8. 手機窄螢幕不出現橫向捲動
     for (const width of [320, 390]) {
       const { ctx, page } = await openPage(browser, { width, height: 760 });
