@@ -84,3 +84,11 @@ describe('分頁改名', () => {
     expect(tabFromHash('#/food')).toBe('food');
   });
 });
+
+describe('nowMinsInTaipei', () => {
+  it('換算成台北時間的分鐘數', async () => {
+    const { nowMinsInTaipei } = await import('./date.ts');
+    expect(nowMinsInTaipei(new Date('2026-11-21T01:30:00Z'))).toBe(9 * 60 + 30); // UTC 01:30 = 台北 09:30
+    expect(nowMinsInTaipei(new Date('2026-11-20T16:05:00Z'))).toBe(5); // 台北 00:05
+  });
+});

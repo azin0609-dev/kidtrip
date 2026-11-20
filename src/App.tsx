@@ -1,6 +1,8 @@
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { ImportDialog, ReportDialog, WelcomeDialog } from './components/Dialogs.tsx';
 import { BrandMark, Bolt, Pin, SleepySun, TabIcon } from './components/Brand.tsx';
+import { FamilyPlanBuilder } from './components/FamilyPlanBuilder.tsx';
+import { FamilyPlanTimeline } from './components/FamilyPlanTimeline.tsx';
 import { Footer } from './components/Footer.tsx';
 import { HotelCard } from './components/HotelCard.tsx';
 import { FoodFiltersPanel, HotelFiltersPanel, SpotFiltersPanel } from './components/Filters.tsx';
@@ -18,7 +20,8 @@ import { type Hotel, type Restaurant, type Spot, hotels, origins, restaurants, s
 import { useHashTab } from './hooks/useHashTab.ts';
 import { useStoredState } from './hooks/useStoredState.ts';
 import { useForecast } from './hooks/useWeekendWeather.ts';
-import { isSpotVisible } from './lib/date.ts';
+import { isSpotVisible, nowMinsInTaipei } from './lib/date.ts';
+import { type FamilyPlanOptions, type FamilyPlanResult, addonMatches, makeAddon, shareText, timelineFor } from './lib/family-plan.ts';
 import { useToday } from './hooks/useToday.ts';
 import { isHot } from './lib/trip-risks.ts';
 import { isRecommendable } from './lib/verification.ts';
@@ -86,6 +89,7 @@ export default function App() {
   });
   const [elders, setElders] = useState(false);
   const [kidPickOpen, setKidPickOpen] = useState(false);
+  const [familyOpen, setFamilyOpen] = useState(false);
   const [tripCountry, setTripCountry] = useState('all');
   const tripCountries = useMemo(() => [...new Set(trips.map((t) => t.country))], []);
   const [shuffle, setShuffle] = useState(0);
@@ -241,8 +245,47 @@ export default function App() {
     update((s) => {
       const next = { ...s };
       delete next.plan;
+      delete next.familyPlan;
       return next;
     });
+
+  // ── 幫我排半日遊 ──
+  const nap = stored.nap ?? DEFAULT_NAP;
+  const nowMins = nowMinsInTaipei();
+  const familyAddon = stored.familyPlan;
+  // 時間表不存，每次用目前的出發地、午睡、孩子年齡重算；換了景點或改去雨備就不適用。
+  const familyTimeline =
+    plan && planSpot && addonMatches(familyAddon, plan) ? timelineFor(planSpot, minsOf, { today, kids: kidsInfo }, familyAddon, nap, nowMins) : null;
+  const familyStale = !!plan && !!familyAddon && familyAddon.week === plan.week && !addonMatches(familyAddon, plan);
+  const kidsLabel =
+    kidsInfo.length > 0 ? kidsInfo.map((k, i) => `${k.name.trim() || `孩子${i + 1}`} ${Math.floor(k.age)} 歲`).join('、') : null;
+  const familyDefaults: FamilyPlanOptions = {
+    slot,
+    envMode: rainy ? 'indoor' : 'any',
+    maxDrive,
+    stroller: needStroller,
+    napMode: familyAddon?.napMode ?? 'home',
+  };
+  const saveFamilyPlan = (result: Extract<FamilyPlanResult, { status: 'ok' }>, options: FamilyPlanOptions) => {
+    const backup = pickBackup(spots, recommendCtx, weekSeed(today, origin, 0), result.spot.id);
+    const next = makePlan(today, result.spot.id, options.slot, backup?.spot.id);
+    update((s) => ({ ...s, plan: next, familyPlan: makeAddon(next.week, result.spot.id, options) }));
+    setChosenSlot(options.slot);
+  };
+  /** 分享：原本的行程連結（只有景點）＋完整時間表文字；不帶孩子資料和出發地。 */
+  const shareFamilyPlan = async (result: Extract<FamilyPlanResult, { status: 'ok' }>, whenLabel: string, forSlot: Slot) => {
+    const url = buildPlanUrl(window.location.href, makePlan(today, result.spot.id, forSlot));
+    const text = shareText(result, whenLabel);
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: '放電研究所：半日遊', text, url });
+        return '已經打開分享選單。';
+      } catch {
+        // 使用者取消或不支援，改用複製
+      }
+    }
+    return copyText(`${text}\n${url}`, '時間表和連結已複製，貼到 LINE 給另一半就可以了。');
+  };
   const sharePlan = async () => {
     if (!plan || !planSpot) return '';
     const url = buildPlanUrl(window.location.href, plan);
@@ -433,7 +476,7 @@ export default function App() {
                 mins={planMins}
                 weather={planWeather}
                 napText={
-                  planMins !== null && planSpot.stay_hours
+                  !familyTimeline && planMins !== null && planSpot.stay_hours
                     ? (napPlan(planMins, planSpot.stay_hours, stored.nap ?? DEFAULT_NAP)?.text ?? null)
                     : null
                 }
@@ -441,6 +484,32 @@ export default function App() {
                 onClear={clearPlan}
                 onShare={sharePlan}
               />
+            )}
+            {plan && planSpot && familyTimeline?.status === 'ok' && (
+              <div className="mb-6">
+                <FamilyPlanTimeline
+                  result={familyTimeline}
+                  whenLabel={slotLabelWithDate(today, plan.slot)}
+                  onShare={() => shareFamilyPlan(familyTimeline, slotLabelWithDate(today, plan.slot), plan.slot)}
+                  onReplan={() => setFamilyOpen(true)}
+                />
+              </div>
+            )}
+            {plan && planSpot && familyTimeline && familyTimeline.status !== 'ok' && (
+              <p role="status" className="mb-6 rounded-2xl bg-amber-50 p-3 text-sm text-amber-950 ring-1 ring-amber-200 dark:bg-[#2b2719] dark:text-amber-100 dark:ring-amber-900/60">
+                半日遊的時間表依目前設定排不出來：{familyTimeline.reason}
+                <button type="button" onClick={() => setFamilyOpen(true)} className="ml-1 inline-flex min-h-11 items-center font-bold underline underline-offset-2">
+                  重新安排
+                </button>
+              </p>
+            )}
+            {familyStale && (
+              <p role="status" className="mb-6 rounded-2xl bg-stone-100 p-3 text-sm text-stone-800 dark:bg-card-dark dark:text-stone-200">
+                這週的地點換了，原本的半日遊時間表不適用。
+                <button type="button" onClick={() => setFamilyOpen(true)} className="ml-1 inline-flex min-h-11 items-center font-bold text-emerald-800 underline underline-offset-2 dark:text-emerald-300">
+                  重新排時間
+                </button>
+              </p>
             )}
             <Recommendations
               today={today}
@@ -479,6 +548,7 @@ export default function App() {
               }}
               onShuffle={() => setShuffle((n) => n + 1)}
               onKidPick={() => setKidPickOpen(true)}
+              onFamilyPlan={() => setFamilyOpen(true)}
               chosenId={plan?.spotId ?? null}
               onChoose={choosePlan}
               renderFull={(p) => renderSpot(p.spot)}
@@ -686,6 +756,27 @@ export default function App() {
         onClose={() => setKidPickOpen(false)}
         onChoose={(p) => choosePlan(p.spot)}
       />
+      {familyOpen && (
+        <FamilyPlanBuilder
+          open
+          onClose={() => setFamilyOpen(false)}
+          spots={spots}
+          ctx={recommendCtx}
+          seed={weekSeed(today, origin, 0)}
+          nap={nap}
+          slots={availableSlots(today)}
+          defaults={familyDefaults}
+          originLabel={originShort}
+          kidsLabel={kidsLabel}
+          nowMins={nowMins}
+          onSave={saveFamilyPlan}
+          onShare={shareFamilyPlan}
+          onOpenSettings={() => {
+            setFamilyOpen(false);
+            setSettingsOpen(true);
+          }}
+        />
+      )}
       <WelcomeDialog
         // 分享連結、行程連結的確認畫面優先，處理完才問出發地。
         open={!stored.origin && !stored.welcomed && !incoming && !incomingPlan}

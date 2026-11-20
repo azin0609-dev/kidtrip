@@ -11,15 +11,15 @@ export interface Nap {
 /** 單程超過這個分鐘數就建議住一晚（PRD 2-3）。 */
 export const OVERNIGHT_MINS = 90;
 /** 最早幾點出門（分鐘）：07:30。 */
-const EARLIEST_LEAVE = 7 * 60 + 30;
+export const EARLIEST_LEAVE = 7 * 60 + 30;
 /** 最早幾點到（分鐘）：09:00，多數景點 9–10 點才開。 */
-const EARLIEST_ARRIVE = 9 * 60;
+export const EARLIEST_ARRIVE = 9 * 60;
 /** 至少要能玩多久才值得上午去（分鐘）；建議停留本來就比較短的地方，以建議停留時間為準。 */
 const MIN_STAY = 75;
 /** 停車、走到入口的緩衝（分鐘），加在去程。 */
 export const ARRIVE_BUFFER = 10;
 
-function toMins(hhmm: string): number | null {
+export function toMins(hhmm: string): number | null {
   const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm);
   if (!m) return null;
   const h = Number(m[1]);

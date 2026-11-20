@@ -15,6 +15,14 @@ export function todayInTaipei(now: Date = new Date()): string {
   return taipeiFormatter.format(now);
 }
 
+const taipeiClock = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Taipei', hour: '2-digit', minute: '2-digit', hour12: false });
+
+/** 台北現在幾點，從午夜起算的分鐘數（例如 09:30 → 570）。 */
+export function nowMinsInTaipei(now: Date = new Date()): number {
+  const [h, m] = taipeiClock.format(now).split(':').map(Number) as [number, number];
+  return (h % 24) * 60 + m;
+}
+
 function toUtcMs(isoDate: string): number {
   const [y, m, d] = isoDate.split('-').map(Number) as [number, number, number];
   return Date.UTC(y, m - 1, d);
