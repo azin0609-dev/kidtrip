@@ -7546,5 +7546,1012 @@
       "source": "blog",
       "note": "Google 地圖：在安南區；遊記寫 24 小時開放"
     }
+  },
+  {
+    "id": "spot-112",
+    "name": "馬卡龍公園",
+    "city": "台中市太平區",
+    "region": "中",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 120,
+    "tip": "11 公尺高的塔型溜滑梯是全台公園最高的之一，大孩子玩得到滿頭汗。",
+    "open_note": "塔型遊戲場 08:00–20:00（各來源差 15 分鐘）；遮蔭少，記得防曬；假日停車場容易滿",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 1.5,
+    "lat": 24.14752,
+    "lng": 120.712764,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "所在區",
+        "塔型遊戲場開放時間",
+        "免費"
+      ],
+      "source": "media",
+      "note": "食尚玩家、蕃薯藤旅遊整理（2025–2026）"
+    },
+    "facilities": [
+      "parking"
+    ]
+  },
+  {
+    "id": "spot-113",
+    "name": "紙箱王創意園區",
+    "city": "台中市北屯區（大坑）",
+    "region": "中",
+    "types": [
+      "theme"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": false,
+    "mins_from_linkou": 120,
+    "tip": "整個園區都是紙做的，可以搭紙箱小火車，100 公分以下免費。",
+    "open_note": "全票約 200 元（含抵用券），100 公分以下免費；營業時間各來源不一，出發前確認；園區有坡",
+    "age_best": [
+      3,
+      10
+    ],
+    "stay_hours": 2,
+    "lat": 24.177993,
+    "lng": 120.739048,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業中",
+        "門票"
+      ],
+      "source": "blog",
+      "note": "旅遊網站、部落格整理（未見 2026 官方公告）"
+    },
+    "facilities": [
+      "food"
+    ]
+  },
+  {
+    "id": "spot-114",
+    "name": "921地震教育園區",
+    "city": "台中市霧峰區",
+    "region": "中",
+    "types": [
+      "museum"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 125,
+    "tip": "保留地震時倒塌的校舍，適合上小學的孩子認識地震；小小孩可能會怕。",
+    "open_note": "週二至週日 09:00–17:00，週一休館（國定假日照常開放）；地震體驗劇場另外收費",
+    "age_best": [
+      6,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 24.042614,
+    "lng": 120.699143,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "開放時間",
+        "休館日"
+      ],
+      "source": "official",
+      "note": "館方資訊轉載與台灣觀光資訊網；票價只見於部落格"
+    }
+  },
+  {
+    "id": "spot-115",
+    "name": "鰲峰山運動公園谷溜遊戲場",
+    "city": "台中市清水區",
+    "region": "中",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": false,
+    "mins_from_linkou": 100,
+    "tip": "34 道溜滑梯沿著山坡蓋，可以一路溜下去，大人也想玩。",
+    "open_note": "2026 年 5 月啟用、免費；假日人很多、停車位少，可搭公車；遊戲場在山坡上",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 24.271193,
+    "lng": 120.581588,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "啟用",
+        "免費",
+        "人潮"
+      ],
+      "source": "media",
+      "note": "聯合新聞網 2026 年報導"
+    },
+    "facilities": [
+      "shade"
+    ]
+  },
+  {
+    "id": "spot-116",
+    "name": "約客&厚禮築夢手創館",
+    "city": "台中市后里區",
+    "region": "中",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 100,
+    "tip": "巨大禮物盒造型的觀光工廠，有遊戲室和 DIY，下雨天的好去處。",
+    "open_note": "週一、二公休；平日 10:00–17:00、假日 09:30–17:30；2026-02 起門票有調整，出發前確認",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 2,
+    "lat": 24.30684,
+    "lng": 120.716146,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業時間",
+        "公休日"
+      ],
+      "source": "blog",
+      "note": "2026 年部落格整理；票價以官網為準"
+    },
+    "coord_area": true
+  },
+  {
+    "id": "spot-117",
+    "name": "國立臺灣美術館兒童繪本區",
+    "city": "台中市西區",
+    "region": "中",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 110,
+    "tip": "免費的繪本區和兒童藝術空間，脫鞋進去，可以坐下來慢慢看書。",
+    "open_note": "週一休館；繪本區要脫鞋；兒童藝術基地部分活動要預約；開放時間以官網為準",
+    "age_best": [
+      1,
+      8
+    ],
+    "stay_hours": 1.5,
+    "lat": 24.14149,
+    "lng": 120.663268,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "facilities"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免費",
+        "週一休館"
+      ],
+      "source": "media",
+      "note": "新聞與親子遊記；開放時間是 2024 年的資料"
+    },
+    "facilities": [
+      "nursing",
+      "diaper"
+    ]
+  },
+  {
+    "id": "spot-118",
+    "name": "兔馬鹿公園",
+    "city": "彰化縣員林市",
+    "region": "中",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 135,
+    "tip": "9.6 公尺高的球型高塔溜滑梯很刺激，底下還有沙池。",
+    "open_note": "全天開放、免費；在員林大道六段消防隊旁",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 1.5,
+    "lat": 23.963339,
+    "lng": 120.561329,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "所在位置",
+        "主要設施"
+      ],
+      "source": "media",
+      "note": "蕃薯藤旅遊、今周刊報導"
+    }
+  },
+  {
+    "id": "spot-119",
+    "name": "台灣玻璃館",
+    "city": "彰化縣鹿港鎮",
+    "region": "中",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 125,
+    "tip": "免費入館，鏡子迷宮和玻璃媽祖廟讓孩子看得目不轉睛。",
+    "open_note": "免費入館；吹玻璃體驗要另外付費；營業時間 08:00–18:00 是遊記資料，出發前確認",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 1.5,
+    "lat": 24.06846,
+    "lng": 120.394778,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免費",
+        "主要展區"
+      ],
+      "source": "blog",
+      "note": "Dcard 遊記、天下雜誌合作文章"
+    },
+    "facilities": [
+      "parking"
+    ]
+  },
+  {
+    "id": "spot-120",
+    "name": "樹德半山夢工廠",
+    "city": "南投縣南投市",
+    "region": "中",
+    "types": [
+      "museum",
+      "indoorplay"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 140,
+    "tip": "有超大「生命樹」、攀岩和攀樹，愛爬上爬下的孩子會很開心。",
+    "open_note": "全票約 280 元，6 歲以下和南投縣民免費（媒體報導）；可能要線上預約；週一公休是部落格資料",
+    "age_best": [
+      4,
+      12
+    ],
+    "stay_hours": 2.5,
+    "lat": 23.917292,
+    "lng": 120.657032,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業中",
+        "門票"
+      ],
+      "source": "media",
+      "note": "食尚玩家 2025 年整理；營業時間未見官方資料"
+    }
+  },
+  {
+    "id": "spot-121",
+    "name": "膨鼠森林公園",
+    "city": "雲林縣斗六市",
+    "region": "中",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 155,
+    "tip": "松鼠主題的大公園，有橡果造型溜滑梯，夏天還有戲水區。",
+    "open_note": "24 小時開放、免費；戲水區開放時間以公告為準；部分活動只開放學校團體預約",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 23.705053,
+    "lng": 120.537252,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "開放",
+        "免費"
+      ],
+      "source": "media",
+      "note": "中央社、經濟日報 2026 年報導"
+    },
+    "best_months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "coord_area": true
+  },
+  {
+    "id": "spot-122",
+    "name": "興隆毛巾觀光工廠",
+    "city": "雲林縣虎尾鎮",
+    "region": "中",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 155,
+    "tip": "免門票，可以做造型毛巾，看巨大毛巾蛋糕塔。",
+    "open_note": "免門票；造型毛巾 DIY 要另外付費；營業時間出發前確認",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 1.5,
+    "lat": 23.725563,
+    "lng": 120.443499,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免門票",
+        "主要內容"
+      ],
+      "source": "blog",
+      "note": "蕃薯藤旅遊整理"
+    }
+  },
+  {
+    "id": "spot-123",
+    "name": "舊山線鐵道自行車",
+    "city": "苗栗縣三義鄉",
+    "region": "中",
+    "types": [
+      "train"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": false,
+    "mins_from_linkou": 85,
+    "tip": "踩著鐵道自行車穿過舊山線隧道和鐵橋，孩子坐著就能一起出發。",
+    "open_note": "建議先上官網訂票，每天場次有限；09:00–19:00；現場只能排候補",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 24.388029,
+    "lng": 120.781742,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "cost_tier"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "開放時間",
+        "訂票方式"
+      ],
+      "source": "blog",
+      "note": "2026 年部落格攻略；票價未確認"
+    },
+    "booking": {
+      "reservation": "yes",
+      "advance_ticket": "yes",
+      "timed_entry": "yes",
+      "source": "整理自 2026 年部落格攻略（未查證官網）"
+    }
+  },
+  {
+    "id": "spot-124",
+    "name": "臺灣客家文化館",
+    "city": "苗栗縣銅鑼鄉",
+    "region": "中",
+    "types": [
+      "museum",
+      "park"
+    ],
+    "env": "mix",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 80,
+    "tip": "免費入館，有兒童館；外面的大草坪很適合跑跑跳跳。",
+    "open_note": "週二休館；09:00–17:00；館內停車場小客車每次 50 元",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 24.462859,
+    "lng": 120.770752,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免費",
+        "開放時間",
+        "休館日"
+      ],
+      "source": "blog",
+      "note": "多篇遊記整理；兒童館展區可能已更新"
+    },
+    "facilities": [
+      "parking"
+    ]
+  },
+  {
+    "id": "spot-125",
+    "name": "臺中都會公園",
+    "city": "台中市西屯區",
+    "region": "中",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 105,
+    "tip": "在大肚台地上的大公園，草地很大，適合野餐、放風箏。",
+    "open_note": "免門票；台地上風大、遮蔭不多；開放時間出發前確認",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 24.207686,
+    "lng": 120.596912,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免門票",
+        "開園"
+      ],
+      "source": "blog",
+      "note": "旅遊網站寫免門票；開園資料來自國家公園署文件"
+    },
+    "facilities": [
+      "parking",
+      "picnic"
+    ]
+  },
+  {
+    "id": "spot-126",
+    "name": "蔗埕文化園區（蒜頭糖廠五分車）",
+    "city": "嘉義縣六腳鄉",
+    "region": "南",
+    "types": [
+      "train",
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 175,
+    "tip": "入園免費，可以搭台糖五分車看甘蔗田，喜歡火車的孩子會很興奮。",
+    "open_note": "入園免費，五分車另外買票；五分車每天 10:00、15:00 各一班（以台糖公告為準）；週一公休",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 2,
+    "lat": 23.480122,
+    "lng": 120.29853,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "入園免費",
+        "五分車班次",
+        "公休日"
+      ],
+      "source": "media",
+      "note": "食尚玩家、聯合新聞網報導；班次可能調整"
+    },
+    "facilities": [
+      "parking"
+    ]
+  },
+  {
+    "id": "spot-127",
+    "name": "南瀛親子館",
+    "city": "台南市新營區",
+    "region": "南",
+    "types": [
+      "indoorplay"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 195,
+    "tip": "免費的三層樓室內親子館，依年齡分區，0–6 歲剛好。",
+    "open_note": "預約制：每月 25 日公布下個月的預約；大人小孩都要穿襪子；館內禁止飲食",
+    "age_best": [
+      0,
+      6
+    ],
+    "stay_hours": 2,
+    "lat": 23.310628,
+    "lng": 120.31669,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免費",
+        "預約制",
+        "入館規定"
+      ],
+      "source": "blog",
+      "note": "親子部落格整理；開放時間未確認"
+    },
+    "booking": {
+      "reservation": "yes",
+      "advance_ticket": "no",
+      "timed_entry": "yes",
+      "source": "整理自親子部落格（未查證官網）"
+    }
+  },
+  {
+    "id": "spot-128",
+    "name": "國立臺灣歷史博物館",
+    "city": "台南市安南區",
+    "region": "南",
+    "types": [
+      "museum",
+      "park"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": true,
+    "mins_from_linkou": 215,
+    "tip": "館外有大片草地和湖，館內有適合孩子的互動展，未滿 6 歲免費。",
+    "open_note": "週一休館；09:00–17:00；未滿 6 歲免費",
+    "age_best": [
+      4,
+      12
+    ],
+    "stay_hours": 2.5,
+    "lat": 23.058351,
+    "lng": 120.235154,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "開放時間",
+        "休館日",
+        "票價"
+      ],
+      "source": "official",
+      "note": "文化部簡介；票價來自第三方整理"
+    },
+    "facilities": [
+      "parking",
+      "food"
+    ]
+  },
+  {
+    "id": "spot-129",
+    "name": "高雄市立美術館兒童美術館",
+    "city": "高雄市鼓山區",
+    "region": "南",
+    "types": [
+      "museum"
+    ],
+    "env": "in",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 240,
+    "tip": "免費的兒童美術館，外面還有沙坑和迷宮花園。",
+    "open_note": "免費；週一休館；開放時間以官網為準",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 1.5,
+    "lat": 22.657919,
+    "lng": 120.283024,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "免費",
+        "戶外設施"
+      ],
+      "source": "media",
+      "note": "2025 年報導；開放時間是舊資料"
+    }
+  },
+  {
+    "id": "spot-130",
+    "name": "萬丹公園",
+    "city": "屏東縣萬丹鄉",
+    "region": "南",
+    "types": [
+      "park"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 255,
+    "tip": "乳牛主題的雙塔溜滑梯、雙軌溜索和遮陽沙池，免費玩到飽。",
+    "open_note": "全天開放、免費；旁邊有免費停車場",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 1.5,
+    "lat": 22.593911,
+    "lng": 120.486709,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "主要設施",
+        "免費"
+      ],
+      "source": "media",
+      "note": "食尚玩家、TVBS 2025 年報導"
+    },
+    "facilities": [
+      "parking",
+      "shade"
+    ]
+  },
+  {
+    "id": "spot-131",
+    "name": "走馬瀨農場",
+    "city": "台南市大內區",
+    "region": "南",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "$$",
+    "stroller_ok": true,
+    "mins_from_linkou": 210,
+    "tip": "有 16 公尺高的彩虹木馬、大草原和可愛動物區，可以玩一整天。",
+    "open_note": "台南市農會經營；票價、營業時間出發前查官網",
+    "age_best": [
+      2,
+      12
+    ],
+    "stay_hours": 3,
+    "lat": 23.13337,
+    "lng": 120.427709,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "cost_tier",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業中",
+        "主要設施"
+      ],
+      "source": "blog",
+      "note": "Trip.com 2026 攻略、遊記"
+    },
+    "facilities": [
+      "food",
+      "parking"
+    ]
+  },
+  {
+    "id": "spot-132",
+    "name": "港濱歷史公園特色遊戲場",
+    "city": "台南市安平區",
+    "region": "南",
+    "types": [
+      "park",
+      "water"
+    ],
+    "env": "out",
+    "cost_tier": "free",
+    "stroller_ok": true,
+    "mins_from_linkou": 220,
+    "tip": "海洋主題的大型遊戲場，有鯨魚噴霧，旁邊就是林默娘公園可以看夕陽。",
+    "open_note": "免費；噴霧設施開放時間以公告為準；海邊風大、遮蔭少",
+    "age_best": [
+      2,
+      10
+    ],
+    "stay_hours": 1.5,
+    "lat": 22.995146,
+    "lng": 120.162761,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "主要設施",
+        "免費"
+      ],
+      "source": "blog",
+      "note": "旅遊報導（較舊）"
+    }
+  },
+  {
+    "id": "spot-133",
+    "name": "築夢森居",
+    "city": "嘉義縣中埔鄉",
+    "region": "南",
+    "types": [
+      "farm"
+    ],
+    "env": "out",
+    "cost_tier": "?",
+    "stroller_ok": false,
+    "mins_from_linkou": 190,
+    "tip": "森林裡的小農場，可以攀樹、看動物、餵迷你馬，夏天有漂漂河。",
+    "open_note": "週二、三公休（舊資料）；門票、營業時間出發前確認",
+    "age_best": [
+      3,
+      12
+    ],
+    "stay_hours": 2.5,
+    "lat": 23.424975,
+    "lng": 120.522541,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "cost_tier",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業中",
+        "主要內容"
+      ],
+      "source": "media",
+      "note": "Smile Taiwan、LINE TODAY 整理"
+    },
+    "coord_area": true
+  },
+  {
+    "id": "spot-134",
+    "name": "臺灣原住民族文化園區",
+    "city": "屏東縣瑪家鄉",
+    "region": "南",
+    "types": [
+      "museum",
+      "park"
+    ],
+    "env": "mix",
+    "cost_tier": "$",
+    "stroller_ok": false,
+    "mins_from_linkou": 265,
+    "tip": "可以看原住民族的傳統家屋和歌舞表演，園區很大，大孩子比較走得動。",
+    "open_note": "成人約 150 元（旅遊網站）；週一休園（以公告為準）；園區大、有坡",
+    "age_best": [
+      5,
+      12
+    ],
+    "stay_hours": 3,
+    "lat": 22.708639,
+    "lng": 120.659074,
+    "google_place_id": null,
+    "needs_verify": [
+      "stroller_ok",
+      "mins_from_linkou",
+      "age_best",
+      "stay_hours",
+      "tip",
+      "open_note"
+    ],
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "門票",
+        "休園日"
+      ],
+      "source": "blog",
+      "note": "旅遊網站、原民會活動計畫"
+    }
   }
 ]
