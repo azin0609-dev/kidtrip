@@ -1163,49 +1163,6 @@
     }
   },
   {
-    "id": "hotel-029",
-    "name": "瑞穗春天國際觀光酒店",
-    "city": "花蓮縣瑞穗鄉",
-    "region": "東",
-    "kind": "hotel",
-    "price_tier": "$$$$",
-    "tags": [
-      "spa",
-      "pool",
-      "slide"
-    ],
-    "features": [
-      "溫泉水樂園",
-      "滑水道"
-    ],
-    "mins_from_linkou": 240,
-    "tip": "金色水樂園是溫泉水，冬天玩水也不冷。",
-    "near_spot_ids": [
-      "spot-073",
-      "spot-071"
-    ],
-    "lat": 23.492843,
-    "lng": 121.355812,
-    "google_place_id": null,
-    "needs_verify": [
-      "mins_from_linkou",
-      "price_tier",
-      "tags"
-    ],
-    "last_verified": "2026-11-20",
-    "risk_flags": [
-      "status_conflict"
-    ],
-    "verified": {
-      "date": "2026-11-20",
-      "fields": [
-        "營業狀態"
-      ],
-      "source": "google_maps",
-      "note": "Google 地圖找不到「瑞穗春天」，搜尋會直接跳到瑞穗天合國際觀光酒店（hotel-075）；2026 年報導也都用瑞穗天合，可能已改名，跟 hotel-075 重複"
-    }
-  },
-  {
     "id": "hotel-030",
     "name": "知本老爺酒店",
     "city": "臺東縣卑南鄉",
