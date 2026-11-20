@@ -2125,7 +2125,7 @@
   {
     "id": "hotel-052",
     "name": "風自然親子時尚旅宿",
-    "city": "台中市",
+    "city": "台中市后里區",
     "region": "中",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2143,15 +2143,24 @@
     ],
     "lat": 24.163162,
     "lng": 120.647828,
-    "google_place_id": null,
+    "google_place_id": "ChIJkSO7PYkbaTQRJGHZf1vnNUY",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台中市后里區；原本資料寫台中市，依 Google 地圖改為台中市后里區"
+    }
   },
   {
     "id": "hotel-053",
@@ -2478,7 +2487,7 @@
   {
     "id": "hotel-061",
     "name": "夏都城旅 安平館",
-    "city": "台南市安平區",
+    "city": "台南市南區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2498,13 +2507,23 @@
     ],
     "lat": 22.967109,
     "lng": 120.185417,
-    "google_place_id": null,
+    "google_place_id": "ChIJfzhhesF1bjQRtiITZvGoM_Y",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市南區；原本資料寫台南市安平區，依 Google 地圖改為台南市南區"
+    }
   },
   {
     "id": "hotel-062",
@@ -2529,18 +2548,27 @@
     ],
     "lat": 22.999274,
     "lng": 120.149438,
-    "google_place_id": null,
+    "google_place_id": "ChIJ3dZ2Sq7YbTQRwhEN5CQ5Ga0",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖"
+    }
   },
   {
     "id": "hotel-063",
     "name": "晶盈親旅大酒店",
-    "city": "台南市",
+    "city": "台南市永康區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$$",
@@ -2561,14 +2589,23 @@
     ],
     "lat": 23.03909,
     "lng": 120.243798,
-    "google_place_id": null,
+    "google_place_id": "ChIJ655mFwB3bjQR3n1KyvXnyDM",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市永康區；原本資料寫台南市，依 Google 地圖改為台南市永康區"
+    }
   },
   {
     "id": "hotel-064",
@@ -2591,13 +2628,26 @@
     ],
     "lat": 22.990238,
     "lng": 120.160083,
-    "google_place_id": null,
+    "google_place_id": "ChIJ2etCtZF3bjQR-fCiH7MCmek",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：台南市安平區；Google 上的名稱是「Aloft Tainan Anping」；Google 地圖顯示暫停營業，去之前先確認"
+    },
+    "risk_flags": [
+      "status_conflict"
+    ]
   },
   {
     "id": "hotel-065",
@@ -2622,13 +2672,23 @@
     ],
     "lat": 22.609351,
     "lng": 120.302193,
-    "google_place_id": null,
+    "google_place_id": "ChIJqeUWth4DbjQRAjg1II-H5x0",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市前鎮區"
+    }
   },
   {
     "id": "hotel-066",
@@ -2654,13 +2714,23 @@
     ],
     "lat": 22.655457,
     "lng": 120.306432,
-    "google_place_id": null,
+    "google_place_id": "ChIJf6Ng8asFbjQR4uISt3hBgSE",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市鼓山區；Google 上的名稱是「Kaohsiung Marriott Hotel」"
+    }
   },
   {
     "id": "hotel-067",
@@ -2715,19 +2785,29 @@
     ],
     "lat": 22.621831,
     "lng": 120.29098,
-    "google_place_id": null,
+    "google_place_id": "ChIJe-68qsQFbjQRX5xcEzYI5Bo",
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags",
       "city"
     ],
-    "last_verified": "2026-11-18"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市前金區"
+    }
   },
   {
     "id": "hotel-069",
     "name": "宮賞藝術大飯店",
-    "city": "高雄市三民區",
+    "city": "高雄市新興區",
     "region": "南",
     "kind": "hotel",
     "price_tier": "$$",
@@ -2746,15 +2826,24 @@
     ],
     "lat": 22.647695,
     "lng": 120.299622,
-    "google_place_id": null,
+    "google_place_id": "ChIJfzhFX4wEbjQRjjJ7v9dv2bw",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
-      "tags",
-      "city"
+      "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市新興區；原本資料寫高雄市三民區，依 Google 地圖改為高雄市新興區"
+    }
   },
   {
     "id": "hotel-070",
@@ -2779,14 +2868,24 @@
     ],
     "lat": 22.620335,
     "lng": 120.312038,
-    "google_place_id": null,
+    "google_place_id": "ChIJlyEzYZ4DbjQRjRgNStNjgbs",
     "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
       "tags"
     ],
-    "last_verified": "2026-11-16"
+    "last_verified": "2026-11-20",
+    "verified": {
+      "date": "2026-11-20",
+      "fields": [
+        "營業狀態",
+        "名稱",
+        "所在區"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖：高雄市前鎮區"
+    }
   },
   {
     "id": "hotel-071",
