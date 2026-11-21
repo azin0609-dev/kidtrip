@@ -7576,16 +7576,15 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "所在區",
-        "塔型遊戲場開放時間",
-        "免費"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "media",
-      "note": "食尚玩家、蕃薯藤旅遊整理（2025–2026）"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網查不到遊戲塔開放時間，open_note 維持原樣"
     },
     "facilities": [
       "parking"
@@ -7604,7 +7603,7 @@
     "stroller_ok": false,
     "mins_from_linkou": 120,
     "tip": "整個園區都是紙做的，可以搭紙箱小火車，100 公分以下免費。",
-    "open_note": "全票約 200 元（含抵用券），100 公分以下免費；營業時間各來源不一，出發前確認；園區有坡",
+    "open_note": "週二公休；平日 10:00–19:00、假日 09:00–20:00；全票約 200 元（含抵用券），平日半價、18:00 後免費入園；100 公分以下免費；園區有坡",
     "age_best": [
       3,
       10
@@ -7620,15 +7619,18 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
         "營業中",
-        "門票"
+        "google_place_id",
+        "營業時間",
+        "公休日",
+        "優惠"
       ],
-      "source": "blog",
-      "note": "旅遊網站、部落格整理（未見 2026 官方公告）"
+      "source": "official",
+      "note": "官網門市頁（cartonking.com.tw）；全票金額與 100 公分以下免費官網未載，沿用原資料"
     },
     "facilities": [
       "food"
@@ -7647,7 +7649,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 125,
     "tip": "保留地震時倒塌的校舍，適合上小學的孩子認識地震；小小孩可能會怕。",
-    "open_note": "週二至週日 09:00–17:00，週一休館（國定假日照常開放）；地震體驗劇場另外收費",
+    "open_note": "週二至週日 09:00–17:00，週一、除夕休館；展示場全票 50 元、6–12 歲 25 元、未滿 6 歲免費；地震體驗平台另收 30 元",
     "age_best": [
       6,
       12
@@ -7663,15 +7665,18 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
+        "營業中",
+        "google_place_id",
         "開放時間",
-        "休館日"
+        "休館日",
+        "票價"
       ],
       "source": "official",
-      "note": "館方資訊轉載與台灣觀光資訊網；票價只見於部落格"
+      "note": "科博館官網 921 園區頁與票價頁（nmns.edu.tw/park_921）"
     }
   },
   {
@@ -7703,16 +7708,15 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "啟用",
-        "免費",
-        "人潮"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "media",
-      "note": "聯合新聞網 2026 年報導"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網查不到開放時間，open_note 維持原樣"
     },
     "facilities": [
       "shade"
@@ -7748,15 +7752,16 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "營業時間",
-        "公休日"
+        "營業中",
+        "google_place_id",
+        "座標"
       ],
-      "source": "blog",
-      "note": "2026 年部落格整理；票價以官網為準"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網憑證錯誤打不開，open_note 維持原樣；座標改用 OSM 門牌點"
     }
   },
   {
@@ -7772,7 +7777,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 110,
     "tip": "免費的繪本區和兒童藝術空間，脫鞋進去，可以坐下來慢慢看書。",
-    "open_note": "週一休館；繪本區要脫鞋；兒童藝術基地部分活動要預約；開放時間以官網為準",
+    "open_note": "週二至週五 09:00–17:00、週六日 09:00–18:00，週一休館；全館免費；繪本區要脫鞋；兒童藝術基地有線上入場預約，出發前看官網",
     "age_best": [
       1,
       8
@@ -7789,15 +7794,19 @@
       "tip",
       "facilities"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
+        "營業中",
+        "google_place_id",
+        "開放時間",
+        "休館日",
         "免費",
-        "週一休館"
+        "預約"
       ],
-      "source": "media",
-      "note": "新聞與親子遊記；開放時間是 2024 年的資料"
+      "source": "official",
+      "note": "國美館官網時間／票價頁；繪本區專屬時間官網未載"
     },
     "facilities": [
       "nursing",
@@ -7833,15 +7842,15 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "所在位置",
-        "主要設施"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "media",
-      "note": "蕃薯藤旅遊、今周刊報導"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網查不到，open_note 維持原樣"
     }
   },
   {
@@ -7873,15 +7882,15 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "免費",
-        "主要展區"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "blog",
-      "note": "Dcard 遊記、天下雜誌合作文章"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；找不到官網，open_note 維持原樣"
     },
     "facilities": [
       "parking"
@@ -7901,7 +7910,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 140,
     "tip": "有超大「生命樹」、攀岩和攀樹，愛爬上爬下的孩子會很開心。",
-    "open_note": "全票約 280 元，6 歲以下和南投縣民免費（媒體報導）；可能要線上預約；週一公休是部落格資料",
+    "open_note": "全票 280 元（含抵用金）、7–12 歲半票 140 元；6 歲以下免費、南投縣民週二免費；週一至週四 10:00–18:00，週五至週日和國定假日 10:00–19:00；可線上購票",
     "age_best": [
       4,
       12
@@ -7915,18 +7924,20 @@
       "mins_from_linkou",
       "age_best",
       "stay_hours",
-      "tip",
-      "open_note"
+      "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
         "營業中",
-        "門票"
+        "google_place_id",
+        "營業時間",
+        "門票",
+        "免票規定"
       ],
-      "source": "media",
-      "note": "食尚玩家 2025 年整理；營業時間未見官方資料"
+      "source": "official",
+      "note": "官網售票資訊頁與價目表（babbuza.com）；官網沒寫固定公休日"
     }
   },
   {
@@ -7959,15 +7970,16 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "開放",
-        "免費"
+        "營業中",
+        "google_place_id",
+        "座標"
       ],
-      "source": "media",
-      "note": "中央社、經濟日報 2026 年報導"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網查不到戲水區時間，open_note 維持原樣；座標改用 OSM 公園位置（非入口）"
     },
     "best_months": [
       5,
@@ -8008,15 +8020,15 @@
       "tip",
       "open_note"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "免門票",
-        "主要內容"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "blog",
-      "note": "蕃薯藤旅遊整理"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；找不到官網，open_note 維持原樣"
     }
   },
   {
@@ -8032,7 +8044,7 @@
     "stroller_ok": false,
     "mins_from_linkou": 85,
     "tip": "踩著鐵道自行車穿過舊山線隧道和鐵橋，孩子坐著就能一起出發。",
-    "open_note": "建議先上官網訂票，每天場次有限；09:00–19:00；現場只能排候補",
+    "open_note": "只能網路訂票，乘車日前 90 天 10:00 開賣；每天約 09:10–17:30 發車；A、C 路線 285 元、B 路線 230 元；3–6 歲且滿 95 公分買幼童票，未滿 3 歲或不到 95 公分不能搭",
     "age_best": [
       3,
       12
@@ -8049,21 +8061,25 @@
       "tip",
       "cost_tier"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "開放時間",
-        "訂票方式"
+        "營業中",
+        "google_place_id",
+        "班次",
+        "票價",
+        "訂票方式",
+        "乘車年齡"
       ],
-      "source": "blog",
-      "note": "2026 年部落格攻略；票價未確認"
+      "source": "official",
+      "note": "官網乘車資訊與購票須知（oml-railbike.com）"
     },
     "booking": {
       "reservation": "yes",
       "advance_ticket": "yes",
       "timed_entry": "yes",
-      "source": "整理自 2026 年部落格攻略（未查證官網）"
+      "source": "官網購票須知（2026-11-21 查證）"
     }
   },
   {
@@ -8080,7 +8096,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 80,
     "tip": "免費入館，有兒童館；外面的大草坪很適合跑跑跳跳。",
-    "open_note": "週二休館；09:00–17:00；館內停車場小客車每次 50 元",
+    "open_note": "週二休館（遇國定假日或連假照常開館）；09:00–17:00；免費入館；館內停車場小客車每次 50 元",
     "age_best": [
       3,
       12
@@ -8096,16 +8112,19 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "免費",
+        "營業中",
+        "google_place_id",
         "開放時間",
-        "休館日"
+        "休館日",
+        "免費",
+        "停車費"
       ],
-      "source": "blog",
-      "note": "多篇遊記整理；兒童館展區可能已更新"
+      "source": "official",
+      "note": "客家委員會客家文化發展中心官網（thcdc.hakka.gov.tw）"
     },
     "facilities": [
       "parking"
@@ -8141,15 +8160,15 @@
       "tip",
       "open_note"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "免門票",
-        "開園"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "blog",
-      "note": "旅遊網站寫免門票；開園資料來自國家公園署文件"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；國家自然公園管理處網站打不開，open_note 維持原樣"
     },
     "facilities": [
       "parking",
@@ -8170,7 +8189,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 175,
     "tip": "入園免費，可以搭台糖五分車看甘蔗田，喜歡火車的孩子會很興奮。",
-    "open_note": "入園免費，五分車另外買票；五分車每天 10:00、15:00 各一班（以台糖公告為準）；週一公休",
+    "open_note": "園區全年開放、入園免費；五分車另外買票，每天 10:00、15:00 各一班（以台糖公告為準）",
     "age_best": [
       2,
       12
@@ -8186,16 +8205,16 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "入園免費",
-        "五分車班次",
-        "公休日"
+        "營業中",
+        "google_place_id",
+        "開放"
       ],
-      "source": "media",
-      "note": "食尚玩家、聯合新聞網報導；班次可能調整"
+      "source": "official",
+      "note": "台糖官網景點頁寫「全年開放」，原本的週一公休已拿掉；入園費用、五分車班次與票價官網未載"
     },
     "facilities": [
       "parking"
@@ -8214,7 +8233,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 195,
     "tip": "免費的三層樓室內親子館，依年齡分區，0–6 歲剛好。",
-    "open_note": "預約制：每月 25 日公布下個月的預約；大人小孩都要穿襪子；館內禁止飲食",
+    "open_note": "免費；週二 13:00–17:00、週三至週日 09:00–12:00 和 13:00–17:00，週一、週二上午、國定假日休館；每月 25 日公布下個月的預約；社會局寫服務對象是臺南市未滿 7 歲兒童，外縣市出發前先問；大人小孩都要穿襪子；館內禁止飲食",
     "age_best": [
       0,
       6
@@ -8228,19 +8247,21 @@
       "mins_from_linkou",
       "age_best",
       "stay_hours",
-      "tip",
-      "open_note"
+      "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
+        "營業中",
+        "google_place_id",
+        "開放時間",
+        "休館日",
         "免費",
-        "預約制",
-        "入館規定"
+        "服務對象"
       ],
-      "source": "blog",
-      "note": "親子部落格整理；開放時間未確認"
+      "source": "official",
+      "note": "臺南市社會局親子悠遊館頁（sab.tainan.gov.tw）；預約規則官網未載，沿用原資料"
     },
     "booking": {
       "reservation": "yes",
@@ -8263,7 +8284,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 215,
     "tip": "館外有大片草地和湖，館內有適合孩子的互動展，未滿 6 歲免費。",
-    "open_note": "週一休館；09:00–17:00；未滿 6 歲免費",
+    "open_note": "週一休館（遇國定假日照常開館）；09:00–17:00（16:30 最後入館）；全票 100 元，未滿 6 歲免費",
     "age_best": [
       4,
       12
@@ -8279,16 +8300,18 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
+        "營業中",
+        "google_place_id",
         "開放時間",
         "休館日",
         "票價"
       ],
       "source": "official",
-      "note": "文化部簡介；票價來自第三方整理"
+      "note": "臺史博官網參觀資訊（nmth.gov.tw）"
     },
     "facilities": [
       "parking",
@@ -8308,7 +8331,7 @@
     "stroller_ok": true,
     "mins_from_linkou": 240,
     "tip": "免費的兒童美術館，外面還有沙坑和迷宮花園。",
-    "open_note": "免費；週一休館；開放時間以官網為準",
+    "open_note": "免費；週二至週五 09:00–12:00、13:30–16:30（中午休館清潔），週六日 09:30–17:30；週一休館",
     "age_best": [
       2,
       12
@@ -8322,18 +8345,19 @@
       "mins_from_linkou",
       "age_best",
       "stay_hours",
-      "tip",
-      "open_note"
+      "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "免費",
-        "戶外設施"
+        "營業中",
+        "google_place_id",
+        "開放時間",
+        "休館日"
       ],
-      "source": "media",
-      "note": "2025 年報導；開放時間是舊資料"
+      "source": "official",
+      "note": "高美館官網兒童美術館開放時間頁（kmfa.gov.tw）；兒美館票價官網未載，沿用原資料"
     }
   },
   {
@@ -8365,15 +8389,15 @@
       "stay_hours",
       "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "主要設施",
-        "免費"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "media",
-      "note": "食尚玩家、TVBS 2025 年報導"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網查不到，open_note 維持原樣"
     },
     "facilities": [
       "parking",
@@ -8411,15 +8435,15 @@
       "cost_tier",
       "open_note"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
         "營業中",
-        "主要設施"
+        "google_place_id"
       ],
-      "source": "blog",
-      "note": "Trip.com 2026 攻略、遊記"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；找不到官網，open_note 維持原樣"
     },
     "facilities": [
       "food",
@@ -8457,15 +8481,15 @@
       "tip",
       "open_note"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "主要設施",
-        "免費"
+        "營業中",
+        "google_place_id"
       ],
-      "source": "blog",
-      "note": "旅遊報導（較舊）"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；官網查不到噴霧設施時間，open_note 維持原樣"
     }
   },
   {
@@ -8499,15 +8523,16 @@
       "cost_tier",
       "open_note"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
         "營業中",
-        "主要內容"
+        "google_place_id",
+        "座標"
       ],
-      "source": "media",
-      "note": "Smile Taiwan、LINE TODAY 整理"
+      "source": "google_maps",
+      "note": "Google 地圖顯示營業中；只有臉書粉專，open_note 維持原樣；座標改用 OSM 門牌點"
     }
   },
   {
@@ -8524,7 +8549,7 @@
     "stroller_ok": false,
     "mins_from_linkou": 265,
     "tip": "可以看原住民族的傳統家屋和歌舞表演，園區很大，大孩子比較走得動。",
-    "open_note": "成人約 150 元（旅遊網站）；週一休園（以公告為準）；園區大、有坡",
+    "open_note": "全票 150 元，未滿 6 歲免費；週二至週日 08:30–17:00，週一休園（遇國定假日照常開放）；園區大、有坡",
     "age_best": [
       5,
       12
@@ -8538,18 +8563,20 @@
       "mins_from_linkou",
       "age_best",
       "stay_hours",
-      "tip",
-      "open_note"
+      "tip"
     ],
-    "last_verified": "2026-11-20",
+    "last_verified": "2026-11-21",
     "verified": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "fields": [
-        "門票",
-        "休園日"
+        "營業中",
+        "google_place_id",
+        "開放時間",
+        "休園日",
+        "票價"
       ],
-      "source": "blog",
-      "note": "旅遊網站、原民會活動計畫"
+      "source": "official",
+      "note": "原民園區官網首頁營業時間與票價（tacp.gov.tw）"
     }
   }
 ]
