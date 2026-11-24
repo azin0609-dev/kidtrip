@@ -2318,5 +2318,850 @@
       "source": "google_maps",
       "note": "Google 地圖：新竹縣北埔鄉"
     }
+  },
+  {
+    "id": "food-084",
+    "name": "欣向町森活園區",
+    "city": "台中市后里區",
+    "region": "中",
+    "cuisine": "輕食、定食",
+    "price_tier": "$$",
+    "tags": [
+      "play",
+      "slide",
+      "animal"
+    ],
+    "mins_from_linkou": 100,
+    "tip": "室內樂園有球池、滑梯和電動車，還有水豚、狐獴的動物區。",
+    "open_note": "動物區「綠洲聯萌」每人 150 元、2 歲以下免費",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "兒童設施",
+        "動物區票價",
+        "料理類型"
+      ],
+      "source": "official",
+      "note": "官網服務頁與園區資訊頁（xintown.com.tw）；Google 地圖確認營業中。餐點價位官網未載"
+    },
+    "near_spot_ids": [
+      "spot-042",
+      "spot-116"
+    ],
+    "lat": 24.314618,
+    "lng": 120.694878,
+    "google_place_id": "ChIJu_MVJAARaTQRtmo0Lg-PVhg",
+    "coord_area": true,
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-085",
+    "name": "踏親",
+    "city": "台中市大甲區",
+    "region": "中",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 100,
+    "tip": "離麗寶樂園開車約 15 分鐘，有兒童椅，可以先訂位。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "可訂位"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，價位與設施待查"
+    },
+    "near_spot_ids": [
+      "spot-042"
+    ],
+    "lat": 24.359178,
+    "lng": 120.650035,
+    "google_place_id": "ChIJWUWodlcPaTQRKVIpO1TGpiQ",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-086",
+    "name": "綠葉方舟",
+    "city": "苗栗縣三義鄉",
+    "region": "中",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 85,
+    "tip": "在三義，離舊山線鐵道自行車很近，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；官網網址已失效，價位與設施待查"
+    },
+    "near_spot_ids": [
+      "spot-123"
+    ],
+    "lat": 24.390846,
+    "lng": 120.778403,
+    "google_place_id": "ChIJSy2zwiIEaTQRpKF_Uv1rzHQ",
+    "coord_area": true,
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-087",
+    "name": "棗莊古藝庭園膳坊",
+    "city": "苗栗縣公館鄉",
+    "region": "中",
+    "cuisine": "客家菜",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 80,
+    "tip": "老字號客家庭園餐廳，有兒童椅，適合全家吃合菜。",
+    "open_note": "合菜分大小份，小份約 360–420 元",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "料理類型",
+        "菜單價格"
+      ],
+      "source": "official",
+      "note": "官網菜單（tzao-juang.com.tw）；兒童椅與營業中看 Google 地圖"
+    },
+    "near_spot_ids": [
+      "spot-124"
+    ],
+    "lat": 24.484356,
+    "lng": 120.820666,
+    "google_place_id": "ChIJJY-xchKqaTQRLZoZL6sQRZc",
+    "needs_verify": [
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-088",
+    "name": "連記甘味花園餐廳",
+    "city": "苗栗縣銅鑼鄉",
+    "region": "中",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 80,
+    "tip": "離臺灣客家文化館開車約 5 分鐘，有兒童椅，可以訂位。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "可訂位"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，價位與設施待查"
+    },
+    "near_spot_ids": [
+      "spot-124"
+    ],
+    "lat": 24.477857,
+    "lng": 120.775644,
+    "google_place_id": "ChIJW8bKu2YHaTQR53zvsyfRwGc",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-089",
+    "name": "Hello Kitty 蘋果村親子餐廳",
+    "city": "苗栗縣頭份市",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 65,
+    "tip": "離尚順育樂世界很近，有兒童椅和兒童餐，可以訂位。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，遊戲區與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-038"
+    ],
+    "lat": 24.693493,
+    "lng": 120.914517,
+    "google_place_id": "ChIJOy1HLPtNaDQR7OZDJCnIzao",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-090",
+    "name": "峰之饌複合式餐廳",
+    "city": "台中市霧峰區",
+    "region": "中",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 120,
+    "tip": "在霧峰，離 921 地震教育園區開車約 5 分鐘，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，價位與設施待查"
+    },
+    "near_spot_ids": [
+      "spot-114",
+      "spot-041",
+      "spot-044"
+    ],
+    "lat": 24.067958,
+    "lng": 120.698579,
+    "google_place_id": "ChIJL7D_Jlo7aTQRz5eIuTER8zY",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-091",
+    "name": "極光森林 Aurora Forest",
+    "city": "彰化縣員林市",
+    "region": "中",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 135,
+    "tip": "在員林，玩完附近景點順路吃，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，價位與設施待查"
+    },
+    "near_spot_ids": [
+      "spot-046",
+      "spot-118"
+    ],
+    "lat": 23.934087,
+    "lng": 120.619101,
+    "google_place_id": "ChIJ7Yd3JLM2aTQRT-nbi3ORAx0",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-092",
+    "name": "星月天空景觀餐廳",
+    "city": "南投縣南投市",
+    "region": "中",
+    "cuisine": "景觀餐廳",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 140,
+    "tip": "山上的景觀餐廳，離半山夢工廠不遠，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，價位與設施待查"
+    },
+    "near_spot_ids": [
+      "spot-120"
+    ],
+    "lat": 23.910916,
+    "lng": 120.62991,
+    "google_place_id": "ChIJZTL9Z-QzaTQRWX-nUMMvkGM",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-093",
+    "name": "探索.迷宮親子童樂餐廳",
+    "city": "彰化縣和美鎮",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 125,
+    "tip": "離彰化扇形車庫開車不到 15 分鐘，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；OSM 名稱為「探索迷宮歐式莊園餐廳」；找不到官網，遊戲區與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-047"
+    ],
+    "lat": 24.097069,
+    "lng": 120.539934,
+    "google_place_id": "ChIJA8X7u7o4aTQRrwcJwpmDit4",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-094",
+    "name": "熊萌肚肚親子寵物餐廳",
+    "city": "彰化縣鹿港鎮",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 125,
+    "tip": "在鹿港，離台灣玻璃館很近，有兒童椅、兒童餐和尿布台。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐",
+        "尿布台"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，遊戲區與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-119"
+    ],
+    "lat": 24.061763,
+    "lng": 120.43679,
+    "google_place_id": "ChIJzyTn4oxHaTQRf2w3I9vh9gQ",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-095",
+    "name": "魯魯札札咖啡親子館",
+    "city": "南投縣魚池鄉",
+    "region": "中",
+    "cuisine": "咖啡、輕食",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 180,
+    "tip": "日月潭附近，離九族文化村不遠，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，遊戲區與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-048"
+    ],
+    "lat": 23.848408,
+    "lng": 120.931818,
+    "google_place_id": "ChIJkQokj5DVaDQRXUD9CYrKsjw",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-096",
+    "name": "A樂粉樂園親子餐廳",
+    "city": "雲林縣斗六市",
+    "region": "中",
+    "cuisine": "親子餐廳",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 155,
+    "tip": "離膨鼠森林公園很近，下雨天可以來這裡。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "適合兒童"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，遊戲區與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-121"
+    ],
+    "lat": 23.696649,
+    "lng": 120.538098,
+    "google_place_id": "ChIJS-RXZmrJbjQRpn6WryWfmkk",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-097",
+    "name": "鵝媽媽鵝童樂園",
+    "city": "雲林縣斗六市",
+    "region": "中",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 155,
+    "tip": "在斗六勞工育樂中心裡，離膨鼠森林公園不遠，去劍湖山也順路。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "適合兒童"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；OSM 標在勞工育樂中心內；找不到官網，設施與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-121",
+      "spot-050"
+    ],
+    "lat": 23.680711,
+    "lng": 120.552148,
+    "google_place_id": "ChIJOReTpnfVbzQRfwp3LFIXHNM",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-098",
+    "name": "史堤克牛排 親子園區虎尾店",
+    "city": "雲林縣虎尾鎮",
+    "region": "中",
+    "cuisine": "牛排",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 155,
+    "tip": "離興隆毛巾觀光工廠很近，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，親子園區內容與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-122",
+      "spot-051"
+    ],
+    "lat": 23.726582,
+    "lng": 120.434197,
+    "google_place_id": "ChIJPx5LrjCxbjQRXWetIt0UZcI",
+    "needs_verify": [
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-099",
+    "name": "北歐工坊複合式餐廳",
+    "city": "嘉義縣六腳鄉",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 175,
+    "tip": "在蒜頭糖廠附近，去故宮南院也順路，有兒童椅。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；OSM 同位置標的是「蔗埕微風」、在太保市，名稱與鄉鎮有出入"
+    },
+    "near_spot_ids": [
+      "spot-126",
+      "spot-052"
+    ],
+    "lat": 23.479804,
+    "lng": 120.300217,
+    "google_place_id": "ChIJFS4oIfSbbjQRk-JlbyPp1ZA",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-100",
+    "name": "童心好食館",
+    "city": "嘉義縣太保市",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 175,
+    "tip": "離故宮南院開車幾分鐘就到。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "適合兒童"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，設施與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-052"
+    ],
+    "lat": 23.46839,
+    "lng": 120.293697,
+    "google_place_id": "ChIJ2fTLBaybbjQRlmdzjMlZGmg",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-101",
+    "name": "葉子庭園餐廳",
+    "city": "嘉義市東區",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 180,
+    "tip": "離嘉義公園很近的庭園餐廳，有兒童椅，可以訂位。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，戶外空間與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-053",
+      "spot-054"
+    ],
+    "lat": 23.476806,
+    "lng": 120.477468,
+    "google_place_id": "ChIJVyOK8euVbjQRo7UKct7s_U8",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-102",
+    "name": "A咖熊幸福鐵道景觀餐廳",
+    "city": "台南市新營區",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 195,
+    "tip": "在新營，離南瀛親子館不遠，有兒童椅和尿布台。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "尿布台"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，設施與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-127",
+      "spot-057"
+    ],
+    "lat": 23.29908,
+    "lng": 120.294162,
+    "google_place_id": "ChIJyb9hzueHbjQR-otk0chnJvs",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-103",
+    "name": "怡東農園餐廳",
+    "city": "台南市大內區",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 210,
+    "tip": "離南瀛天文館很近，去走馬瀨農場也順路，有兒童椅。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，設施與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-058",
+      "spot-131"
+    ],
+    "lat": 23.121481,
+    "lng": 120.378525,
+    "google_place_id": "ChIJ6RyfUXtjbjQR5xevVUtjumE",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-104",
+    "name": "瑞比太太自然休閒餐坊",
+    "city": "屏東縣屏東市",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 255,
+    "tip": "離屏東縣民公園不遠，有兒童椅和兒童餐。",
+    "open_note": "營業資訊和預約看臉書公告",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；店家註明營業資訊以臉書為準；設施與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-068"
+    ],
+    "lat": 22.698078,
+    "lng": 120.50155,
+    "google_place_id": "ChIJGYbfn7YXbjQRNhx_VVQAXYk",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-105",
+    "name": "刺寶寶義式刺蝟主題餐廳",
+    "city": "屏東縣屏東市",
+    "region": "南",
+    "cuisine": "義式",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 255,
+    "tip": "刺蝟主題餐廳，離屏東縣民公園不遠，有兒童椅和兒童餐。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅",
+        "兒童餐"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，看刺蝟的規定與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-068"
+    ],
+    "lat": 22.690905,
+    "lng": 120.492304,
+    "google_place_id": "ChIJ-ZCWwhEXbjQR60U316Abj1g",
+    "needs_verify": [
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-106",
+    "name": "蕭家大院兔子寵物餐廳",
+    "city": "屏東縣內埔鄉",
+    "region": "南",
+    "cuisine": "簡餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 260,
+    "tip": "兔子主題餐廳，離六堆客家文化園區不遠，有兒童椅。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，互動規定與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-069"
+    ],
+    "lat": 22.618603,
+    "lng": 120.547058,
+    "google_place_id": "ChIJJX90iY0ibjQRGHzIo7JxHcA",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "food-107",
+    "name": "居高風味餐廳",
+    "city": "屏東縣三地門鄉",
+    "region": "南",
+    "cuisine": "原住民風味餐",
+    "price_tier": "$$",
+    "tags": [],
+    "mins_from_linkou": 265,
+    "tip": "離臺灣原住民族文化園區很近，有兒童椅。",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童椅"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，設施與價位待查"
+    },
+    "near_spot_ids": [
+      "spot-134"
+    ],
+    "lat": 22.720933,
+    "lng": 120.664856,
+    "google_place_id": "ChIJjbBcaks4bjQRZgF-YqE1RfA",
+    "needs_verify": [
+      "cuisine",
+      "price_tier",
+      "tags",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
   }
 ]
