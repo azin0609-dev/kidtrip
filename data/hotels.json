@@ -3963,5 +3963,304 @@
       "source": "google_maps",
       "note": "Google 地圖：宜蘭縣五結鄉"
     }
+  },
+  {
+    "id": "hotel-099",
+    "name": "棒棒積木飯店",
+    "city": "嘉義縣太保市",
+    "region": "南",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "play"
+    ],
+    "features": [
+      "積木主題房",
+      "發光積木遊戲室"
+    ],
+    "mins_from_linkou": 175,
+    "tip": "積木主題房和大型積木遊戲室，離故宮南院很近。",
+    "near_spot_ids": [
+      "spot-052",
+      "spot-126"
+    ],
+    "lat": 23.468455,
+    "lng": 120.293085,
+    "google_place_id": "ChIJeaNAyNCbbjQReMKxuWoDzGw",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "主題房",
+        "遊戲室"
+      ],
+      "source": "media",
+      "note": "食尚玩家等報導（積木館、親子館與發光積木遊戲室）；Google 地圖確認營業中；找不到官網"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou",
+      "tags",
+      "features"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "hotel-100",
+    "name": "亞太鹿港渡假村",
+    "city": "彰化縣鹿港鎮",
+    "region": "中",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "兒童遊戲室",
+      "游泳池"
+    ],
+    "mins_from_linkou": 125,
+    "tip": "離台灣玻璃館很近，有兒童遊戲室和游泳池。",
+    "near_spot_ids": [
+      "spot-119"
+    ],
+    "lat": 24.062718,
+    "lng": 120.436015,
+    "google_place_id": "ChIJd09fCgpGaTQREf5dG3wdMFU",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "遊戲室",
+        "泳池"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；找不到官網，設施待官網或訂房頁確認"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou",
+      "tags",
+      "features"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "hotel-101",
+    "name": "清新溫泉飯店",
+    "city": "台中市烏日區",
+    "region": "中",
+    "kind": "hotel",
+    "price_tier": "$$$$",
+    "tags": [
+      "play",
+      "pool",
+      "spa"
+    ],
+    "features": [
+      "兒童俱樂部",
+      "童樂園",
+      "花園游泳池",
+      "溫泉"
+    ],
+    "mins_from_linkou": 110,
+    "tip": "有兒童俱樂部、童樂園和花園游泳池，還能泡溫泉。",
+    "near_spot_ids": [
+      "spot-117",
+      "spot-040",
+      "spot-125"
+    ],
+    "lat": 24.136624,
+    "lng": 120.588311,
+    "google_place_id": "ChIJUY-iH_c-aTQRst7lmFyAA9I",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "兒童設施",
+        "泳池",
+        "房價"
+      ],
+      "source": "official",
+      "note": "官網設施與房型頁（freshfields.com.tw）；房價 1 萬元起，另有 3,200 元起的優惠方案"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "hotel-102",
+    "name": "鹿港童年往事莊園民宿",
+    "city": "彰化縣福興鄉",
+    "region": "中",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "play"
+    ],
+    "features": [
+      "兒童遊樂場"
+    ],
+    "mins_from_linkou": 125,
+    "tip": "懷舊主題民宿，有兒童遊樂場，離鹿港老街和台灣玻璃館都近。",
+    "near_spot_ids": [
+      "spot-119"
+    ],
+    "lat": 24.054071,
+    "lng": 120.426864,
+    "google_place_id": "ChIJ5WC7g_hFaTQRaD_pmOwhoaw",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "兒童遊樂場"
+      ],
+      "source": "google_maps",
+      "note": "Google 地圖簡介；OSM 門牌在福興鄉（店名寫鹿港）；找不到官網"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou",
+      "tags",
+      "features"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "hotel-103",
+    "name": "柳營尖山埤渡假村",
+    "city": "台南市柳營區",
+    "region": "南",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "pool",
+      "park"
+    ],
+    "features": [
+      "露天游泳池（約 4–10 月）",
+      "兒童戲水區",
+      "遊湖船",
+      "造型電動遊園車"
+    ],
+    "mins_from_linkou": 195,
+    "tip": "湖邊的大園區，夏天有露天泳池和兒童戲水區，可以搭船遊湖。",
+    "near_spot_ids": [
+      "spot-127"
+    ],
+    "lat": 23.261684,
+    "lng": 120.392099,
+    "google_place_id": "ChIJq6qqqhqJbjQRt01afVb8SYU",
+    "coord_area": true,
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "泳池",
+        "戲水區",
+        "園區設施"
+      ],
+      "source": "official",
+      "note": "台糖尖山埤官網園區設施頁；房價只有圖片版，未確認"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "hotel-104",
+    "name": "台南親子 Fun假旅店",
+    "city": "台南市北區",
+    "region": "南",
+    "kind": "bnb",
+    "price_tier": "$$",
+    "tags": [
+      "slide",
+      "play"
+    ],
+    "features": [
+      "親子主題房",
+      "房內溜滑梯",
+      "室內兒童賽車場"
+    ],
+    "mins_from_linkou": 220,
+    "tip": "整間都是親子主題房，有的房間有溜滑梯，還有室內兒童賽車場。",
+    "near_spot_ids": [
+      "spot-059",
+      "spot-111",
+      "spot-132"
+    ],
+    "lat": 23.001689,
+    "lng": 120.205433,
+    "google_place_id": "ChIJVxRUQvV2bjQRYDAmXREFWGo",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "主題房",
+        "溜滑梯"
+      ],
+      "source": "media",
+      "note": "食尚玩家報導（旋轉溜滑梯房、室內兒童賽車場，報導較舊）；Google 地圖確認營業中；找不到官網"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou",
+      "tags",
+      "features"
+    ],
+    "last_verified": "2026-11-24"
+  },
+  {
+    "id": "hotel-105",
+    "name": "凱撒趣淘漫旅-台南",
+    "city": "台南市楠西區",
+    "region": "南",
+    "kind": "hotel",
+    "price_tier": "$$$",
+    "tags": [
+      "play",
+      "pool"
+    ],
+    "features": [
+      "攀岩",
+      "滑索",
+      "高空繩索場",
+      "室外泳池"
+    ],
+    "mins_from_linkou": 210,
+    "tip": "主打冒險設施，有攀岩、滑索和高空繩索場；離走馬瀨農場開車約 20 分鐘。",
+    "near_spot_ids": [
+      "spot-131"
+    ],
+    "lat": 23.224698,
+    "lng": 120.500926,
+    "google_place_id": "ChIJsftZERmLbjQRihlLENLIIg8",
+    "verified": {
+      "date": "2026-11-24",
+      "fields": [
+        "營業中",
+        "所在區",
+        "冒險設施"
+      ],
+      "source": "media",
+      "note": "新聞報導（2026 年）；Google 地圖確認營業中與室外泳池；官網未查到"
+    },
+    "needs_verify": [
+      "price_tier",
+      "mins_from_linkou",
+      "tags",
+      "features"
+    ],
+    "last_verified": "2026-11-24"
   }
 ]
