@@ -58,10 +58,9 @@
       "spot-005",
       "spot-003"
     ],
-    "lat": 25.09184,
-    "lng": 121.524207,
+    "lat": 25.109077,
+    "lng": 121.523277,
     "google_place_id": "ChIJsS8FHNyvQjQRwtaRVpPMyAI",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -97,10 +96,9 @@
     "near_spot_ids": [
       "spot-036"
     ],
-    "lat": 25.069664,
-    "lng": 121.588998,
+    "lat": 25.06201,
+    "lng": 121.576033,
     "google_place_id": "ChIJoZlomYarQjQRQ6dO-drU7eg",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -174,10 +172,9 @@
       "spot-017",
       "spot-019"
     ],
-    "lat": 24.965353,
-    "lng": 121.224926,
+    "lat": 24.989814,
+    "lng": 121.221746,
     "google_place_id": "ChIJnz4C-FchaDQR-jivc0eMVhM",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -212,10 +209,9 @@
     "near_spot_ids": [
       "spot-028"
     ],
-    "lat": 24.839682,
-    "lng": 121.004078,
+    "lat": 24.809357,
+    "lng": 121.030375,
     "google_place_id": "ChIJuwlanFU2aDQR8QWCRKc563I",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -252,10 +248,9 @@
       "spot-029",
       "spot-085"
     ],
-    "lat": 24.823646,
-    "lng": 121.771348,
+    "lat": 24.811983,
+    "lng": 121.800461,
     "google_place_id": "ChIJASzqDnD6ZzQRLyWiw4khYo0",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -294,10 +289,9 @@
       "spot-035",
       "spot-086"
     ],
-    "lat": 24.68464,
-    "lng": 121.798297,
+    "lat": 24.704849,
+    "lng": 121.828793,
     "google_place_id": "ChIJ13AOinPvZzQRUzs2Ia0JQ78",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -334,10 +328,9 @@
       "spot-029",
       "spot-085"
     ],
-    "lat": 24.823646,
-    "lng": 121.771348,
+    "lat": 24.821246,
+    "lng": 121.753212,
     "google_place_id": "ChIJs3Zy57L7ZzQR-9HJ8VVFsRI",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -372,10 +365,9 @@
     "near_spot_ids": [
       "spot-020"
     ],
-    "lat": 24.863851,
-    "lng": 121.216392,
+    "lat": 24.861917,
+    "lng": 121.217497,
     "google_place_id": "ChIJ3ScsTAA9aDQRha4RRxr99Go",
-    "coord_area": true,
     "needs_verify": [
       "mins_from_linkou",
       "price_tier",
@@ -447,8 +439,8 @@
       "spot-004",
       "spot-003"
     ],
-    "lat": 25.069664,
-    "lng": 121.588998,
+    "lat": 25.08668,
+    "lng": 121.563825,
     "google_place_id": "ChIJVQR_uWusQjQRYNp5Wdmei40",
     "needs_verify": [
       "cuisine",
@@ -457,7 +449,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -487,8 +478,8 @@
       "spot-095",
       "spot-011"
     ],
-    "lat": 24.972201,
-    "lng": 121.443348,
+    "lat": 24.988019,
+    "lng": 121.465296,
     "google_place_id": "ChIJAQBKehUdaDQRphXCRHAnNB0",
     "needs_verify": [
       "cuisine",
@@ -496,7 +487,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -558,8 +548,8 @@
       "spot-095",
       "spot-104"
     ],
-    "lat": 25.00967,
-    "lng": 121.459099,
+    "lat": 25.010854,
+    "lng": 121.456129,
     "google_place_id": "ChIJN4mrxwKoQjQRZBN_J-9N7BA",
     "needs_verify": [
       "cuisine",
@@ -567,7 +557,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -594,8 +583,8 @@
     "near_spot_ids": [
       "spot-013"
     ],
-    "lat": 24.959945,
-    "lng": 121.353771,
+    "lat": 24.950052,
+    "lng": 121.351749,
     "google_place_id": "ChIJIexhOqseaDQRhLbC4GUEDGw",
     "needs_verify": [
       "cuisine",
@@ -603,7 +592,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -630,8 +618,8 @@
     "near_spot_ids": [
       "spot-103"
     ],
-    "lat": 24.972201,
-    "lng": 121.443348,
+    "lat": 24.960345,
+    "lng": 121.443075,
     "google_place_id": "ChIJQzpD_5sdaDQRqqGdVUFsK3k",
     "needs_verify": [
       "cuisine",
@@ -639,7 +627,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -665,8 +652,8 @@
     "near_spot_ids": [
       "spot-012"
     ],
-    "lat": 25.145692,
-    "lng": 121.403511,
+    "lat": 25.124447,
+    "lng": 121.406877,
     "google_place_id": "ChIJ_w_owEmkQjQReb_iC-2hyqI",
     "needs_verify": [
       "cuisine",
@@ -675,7 +662,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -707,8 +693,8 @@
     "risk_flags": [
       "location_unknown"
     ],
-    "lat": 24.999397,
-    "lng": 121.49898,
+    "lat": 24.995393,
+    "lng": 121.509455,
     "google_place_id": "ChIJfwIFiEADaDQRRLmH5ZQaBAY",
     "needs_verify": [
       "cuisine",
@@ -717,7 +703,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -747,8 +732,8 @@
       "spot-088",
       "spot-091"
     ],
-    "lat": 24.992517,
-    "lng": 121.337767,
+    "lat": 25.03109,
+    "lng": 121.384774,
     "google_place_id": "ChIJM9fH-wunQjQRLxhE7suRMec",
     "needs_verify": [
       "cuisine",
@@ -785,8 +770,8 @@
       "spot-098",
       "spot-024"
     ],
-    "lat": 24.993923,
-    "lng": 121.30168,
+    "lat": 24.999327,
+    "lng": 121.302326,
     "google_place_id": "ChIJOxPX7SEfaDQRjWlSHfugeEk",
     "needs_verify": [
       "cuisine",
@@ -795,7 +780,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -824,8 +808,8 @@
       "spot-098",
       "spot-024"
     ],
-    "lat": 24.993923,
-    "lng": 121.30168,
+    "lat": 25.016931,
+    "lng": 121.297396,
     "google_place_id": "ChIJFRuU-6sfaDQRbuyS-mDdlYE",
     "needs_verify": [
       "cuisine",
@@ -834,7 +818,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -863,8 +846,8 @@
       "spot-098",
       "spot-024"
     ],
-    "lat": 24.993923,
-    "lng": 121.30168,
+    "lat": 24.996174,
+    "lng": 121.294885,
     "google_place_id": "ChIJSSyG2EkfaDQRZuPGpk9RbQ4",
     "needs_verify": [
       "cuisine",
@@ -872,7 +855,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -940,8 +922,8 @@
       "spot-040",
       "spot-117"
     ],
-    "lat": 24.182264,
-    "lng": 120.686288,
+    "lat": 24.188785,
+    "lng": 120.660129,
     "google_place_id": "ChIJKQY7BzYWaTQRE5eUj-spQ64",
     "needs_verify": [
       "cuisine",
@@ -949,7 +931,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1012,8 +993,8 @@
     "near_spot_ids": [
       "spot-116"
     ],
-    "lat": 24.24219,
-    "lng": 120.71846,
+    "lat": 24.257157,
+    "lng": 120.718324,
     "google_place_id": "ChIJYeCcDwwaaTQRlvyo5IJbGfw",
     "needs_verify": [
       "cuisine",
@@ -1022,7 +1003,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1051,8 +1031,8 @@
       "spot-117",
       "spot-112"
     ],
-    "lat": 24.182264,
-    "lng": 120.686288,
+    "lat": 24.173825,
+    "lng": 120.675652,
     "google_place_id": "ChIJPSr_NtAXaTQRYO6n1t2H-Ss",
     "needs_verify": [
       "cuisine",
@@ -1061,7 +1041,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1089,8 +1068,8 @@
     "near_spot_ids": [
       "spot-116"
     ],
-    "lat": 24.24219,
-    "lng": 120.71846,
+    "lat": 24.273598,
+    "lng": 120.748988,
     "google_place_id": "ChIJue05SUsbaTQRa-xLlbCZFcw",
     "needs_verify": [
       "cuisine",
@@ -1098,7 +1077,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1128,8 +1106,8 @@
       "spot-132",
       "spot-056"
     ],
-    "lat": 22.992152,
-    "lng": 120.205958,
+    "lat": 22.982331,
+    "lng": 120.203723,
     "google_place_id": "ChIJyw6AZ4B2bjQRrqv0P1HGoVg",
     "needs_verify": [
       "cuisine",
@@ -1137,7 +1115,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-20",
       "fields": [
@@ -1167,8 +1144,8 @@
       "spot-111",
       "spot-132"
     ],
-    "lat": 22.992152,
-    "lng": 120.205958,
+    "lat": 22.990681,
+    "lng": 120.206194,
     "google_place_id": "ChIJD8GNQ8J3bjQRj738KDT_ZeA",
     "needs_verify": [
       "cuisine",
@@ -1177,7 +1154,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1204,8 +1180,8 @@
     "near_spot_ids": [
       "spot-060"
     ],
-    "lat": 23.132261,
-    "lng": 120.296895,
+    "lat": 23.146889,
+    "lng": 120.272218,
     "google_place_id": "ChIJp635dV19bjQRWnHmvnNh6vA",
     "needs_verify": [
       "cuisine",
@@ -1214,7 +1190,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1242,8 +1217,8 @@
       "spot-062",
       "spot-065"
     ],
-    "lat": 22.647695,
-    "lng": 120.299622,
+    "lat": 22.639752,
+    "lng": 120.348305,
     "google_place_id": "ChIJxfS7T5YEbjQRcm0D16VpR_g",
     "needs_verify": [
       "cuisine",
@@ -1251,7 +1226,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1280,8 +1254,8 @@
       "spot-061",
       "spot-065"
     ],
-    "lat": 22.647695,
-    "lng": 120.299622,
+    "lat": 22.661237,
+    "lng": 120.314174,
     "google_place_id": "ChIJY_lABBwFbjQRq1SXI6KVxJI",
     "needs_verify": [
       "cuisine",
@@ -1289,7 +1263,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1317,8 +1290,8 @@
       "spot-065",
       "spot-062"
     ],
-    "lat": 22.627094,
-    "lng": 120.362772,
+    "lat": 22.624372,
+    "lng": 120.362829,
     "google_place_id": "ChIJu-GVfj8bbjQRhVvhi6kmsI0",
     "needs_verify": [
       "cuisine",
@@ -1326,7 +1299,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1353,8 +1325,8 @@
     "near_spot_ids": [
       "spot-066"
     ],
-    "lat": 22.729966,
-    "lng": 120.346635,
+    "lat": 22.73101,
+    "lng": 120.356561,
     "google_place_id": "ChIJh5yd5fURbjQRMR3TC3yOFz8",
     "needs_verify": [
       "cuisine",
@@ -1362,7 +1334,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1388,8 +1359,8 @@
     "mins_from_linkou": 245,
     "tip": "在橋頭糖廠旁，室外玩沙、室內玩玩具。",
     "near_spot_ids": [],
-    "lat": 22.757501,
-    "lng": 120.305741,
+    "lat": 22.741732,
+    "lng": 120.325091,
     "google_place_id": "ChIJzXjNxzQObjQRkqxZNG6N7gs",
     "needs_verify": [
       "cuisine",
@@ -1397,7 +1368,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1425,8 +1395,8 @@
       "spot-065",
       "spot-064"
     ],
-    "lat": 22.565389,
-    "lng": 120.337979,
+    "lat": 22.579803,
+    "lng": 120.345085,
     "google_place_id": "ChIJgxkqwcwcbjQRbF5mihW9XUE",
     "needs_verify": [
       "cuisine",
@@ -1434,7 +1404,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1462,8 +1431,8 @@
     "near_spot_ids": [
       "spot-072"
     ],
-    "lat": 23.973033,
-    "lng": 121.563416,
+    "lat": 23.948338,
+    "lng": 121.567071,
     "google_place_id": "ChIJf1HuZPqhaDQRKg1XPuLmGoc",
     "needs_verify": [
       "cuisine",
@@ -1471,7 +1440,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1498,8 +1466,8 @@
     "near_spot_ids": [
       "spot-074"
     ],
-    "lat": 22.756045,
-    "lng": 121.145654,
+    "lat": 22.72318,
+    "lng": 121.125824,
     "google_place_id": "ChIJc0gKxK65bzQRJzyW09UnOpQ",
     "needs_verify": [
       "cuisine",
@@ -1507,7 +1475,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1536,8 +1503,8 @@
       "spot-006",
       "spot-007"
     ],
-    "lat": 25.064361,
-    "lng": 121.533468,
+    "lat": 25.04942,
+    "lng": 121.533876,
     "google_place_id": "ChIJoaP21WOpQjQRujwXUxC4FME",
     "needs_verify": [
       "cuisine",
@@ -1545,7 +1512,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1612,8 +1578,8 @@
       "spot-103",
       "spot-104"
     ],
-    "lat": 25.00967,
-    "lng": 121.459099,
+    "lat": 25.026544,
+    "lng": 121.469,
     "google_place_id": "ChIJn12KPy2pQjQR5uanZZi8kPg",
     "needs_verify": [
       "cuisine",
@@ -1621,7 +1587,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1648,8 +1613,8 @@
       "spot-103",
       "spot-104"
     ],
-    "lat": 25.00967,
-    "lng": 121.459099,
+    "lat": 25.027194,
+    "lng": 121.468331,
     "google_place_id": "ChIJq74SKEypQjQRbWLldYeUsag",
     "needs_verify": [
       "cuisine",
@@ -1657,7 +1622,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1686,8 +1650,8 @@
       "spot-097",
       "spot-024"
     ],
-    "lat": 24.993923,
-    "lng": 121.30168,
+    "lat": 25.006031,
+    "lng": 121.306888,
     "google_place_id": "ChIJN9k0aqsfaDQRMVfPq-nRn74",
     "needs_verify": [
       "cuisine",
@@ -1695,7 +1659,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1721,8 +1684,8 @@
     "near_spot_ids": [
       "spot-107"
     ],
-    "lat": 24.965353,
-    "lng": 121.224926,
+    "lat": 24.959239,
+    "lng": 121.170144,
     "google_place_id": "ChIJM5pJLcclaDQRyhvyL1oSX9g",
     "needs_verify": [
       "cuisine",
@@ -1730,7 +1693,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1756,8 +1718,8 @@
     "near_spot_ids": [
       "spot-027"
     ],
-    "lat": 24.736244,
-    "lng": 121.091095,
+    "lat": 24.775004,
+    "lng": 121.054811,
     "google_place_id": "ChIJXb6lC6Q3aDQR5OorZ5GeWsI",
     "needs_verify": [
       "cuisine",
@@ -1766,7 +1728,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1792,8 +1753,8 @@
     "near_spot_ids": [
       "spot-025"
     ],
-    "lat": 24.839682,
-    "lng": 121.004078,
+    "lat": 24.825035,
+    "lng": 121.029416,
     "google_place_id": "ChIJ74C-lKY3aDQRXfixiBUalmg",
     "needs_verify": [
       "cuisine",
@@ -1802,7 +1763,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1831,8 +1791,8 @@
       "spot-077",
       "spot-076"
     ],
-    "lat": 24.677033,
-    "lng": 121.766919,
+    "lat": 24.680548,
+    "lng": 121.757931,
     "google_place_id": "ChIJP-MIzMjnZzQRhP5MdSdl7Fo",
     "needs_verify": [
       "cuisine",
@@ -1841,7 +1801,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1870,8 +1829,8 @@
     "risk_flags": [
       "location_unknown"
     ],
-    "lat": 24.677051,
-    "lng": 121.607875,
+    "lat": 24.661049,
+    "lng": 121.587153,
     "google_place_id": "ChIJQ__XykgLaDQRotjCFQuEjc8",
     "needs_verify": [
       "cuisine",
@@ -1879,7 +1838,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1909,8 +1867,8 @@
       "spot-117",
       "spot-043"
     ],
-    "lat": 24.165303,
-    "lng": 120.633655,
+    "lat": 24.16418,
+    "lng": 120.654809,
     "google_place_id": "ChIJNX3z50I9aTQRZPx7F3xnDU0",
     "needs_verify": [
       "cuisine",
@@ -1918,7 +1876,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1945,8 +1902,8 @@
       "spot-113",
       "spot-112"
     ],
-    "lat": 24.182264,
-    "lng": 120.686288,
+    "lat": 24.161981,
+    "lng": 120.731339,
     "google_place_id": "ChIJQf2z-vsZaTQReB9qcVFPl8o",
     "needs_verify": [
       "cuisine",
@@ -1954,7 +1911,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -1982,8 +1938,8 @@
       "spot-043",
       "spot-117"
     ],
-    "lat": 24.165303,
-    "lng": 120.633655,
+    "lat": 24.172248,
+    "lng": 120.647542,
     "google_place_id": "ChIJlffSUwAXaTQR1bkTLs9TLT4",
     "needs_verify": [
       "cuisine",
@@ -1992,7 +1948,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2053,8 +2008,8 @@
     "near_spot_ids": [
       "spot-040"
     ],
-    "lat": 24.166039,
-    "lng": 120.682318,
+    "lat": 24.156347,
+    "lng": 120.666995,
     "google_place_id": "ChIJU8xbKfU9aTQRr_aJXNYckZc",
     "needs_verify": [
       "cuisine",
@@ -2062,7 +2017,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2088,8 +2042,8 @@
     "near_spot_ids": [
       "spot-125"
     ],
-    "lat": 24.192679,
-    "lng": 120.545838,
+    "lat": 24.192876,
+    "lng": 120.57934,
     "google_place_id": "ChIJH7umgYQVaTQRRS2v5yaoBs4",
     "needs_verify": [
       "cuisine",
@@ -2097,7 +2051,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2126,8 +2079,8 @@
       "spot-117",
       "spot-113"
     ],
-    "lat": 24.182264,
-    "lng": 120.686288,
+    "lat": 24.164759,
+    "lng": 120.690927,
     "google_place_id": "ChIJM7X0OAAXaTQRpWPJGBhTKqY",
     "needs_verify": [
       "cuisine",
@@ -2135,7 +2088,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2159,8 +2111,8 @@
     "mins_from_linkou": 105,
     "tip": "在山上，景觀好。",
     "near_spot_ids": [],
-    "lat": 24.24219,
-    "lng": 120.71846,
+    "lat": 24.262559,
+    "lng": 120.760926,
     "google_place_id": "ChIJabHNcLIbaTQRjKx6er7utkI",
     "needs_verify": [
       "cuisine",
@@ -2168,7 +2120,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2197,8 +2148,8 @@
       "spot-111",
       "spot-055"
     ],
-    "lat": 22.980072,
-    "lng": 120.224198,
+    "lat": 22.972814,
+    "lng": 120.22056,
     "google_place_id": "ChIJkZNgSIJ1bjQR96PwusLJ7b8",
     "needs_verify": [
       "cuisine",
@@ -2207,7 +2158,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2233,8 +2183,8 @@
     "near_spot_ids": [
       "spot-127"
     ],
-    "lat": 23.308698,
-    "lng": 120.316957,
+    "lat": 23.303652,
+    "lng": 120.307762,
     "google_place_id": "ChIJM4gf9W-FbjQR8WgIDn2L-kQ",
     "needs_verify": [
       "cuisine",
@@ -2242,7 +2192,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2271,8 +2220,8 @@
       "spot-064",
       "spot-063"
     ],
-    "lat": 22.62177,
-    "lng": 120.312347,
+    "lat": 22.623442,
+    "lng": 120.318365,
     "google_place_id": "ChIJL5eLZ4YFbjQRUxUD0L19B4c",
     "needs_verify": [
       "cuisine",
@@ -2280,7 +2229,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2309,8 +2257,8 @@
       "spot-064",
       "spot-063"
     ],
-    "lat": 22.62177,
-    "lng": 120.312347,
+    "lat": 22.625651,
+    "lng": 120.31581,
     "google_place_id": "ChIJb_TEJJcEbjQRwh7QOZ-ee6Q",
     "needs_verify": [
       "cuisine",
@@ -2318,7 +2266,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2347,8 +2294,8 @@
       "spot-062",
       "spot-063"
     ],
-    "lat": 22.647695,
-    "lng": 120.299622,
+    "lat": 22.650222,
+    "lng": 120.29531,
     "google_place_id": "ChIJw_Wp4DYFbjQRjzRnno6e4A0",
     "needs_verify": [
       "cuisine",
@@ -2356,7 +2303,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2380,8 +2326,8 @@
     "mins_from_linkou": 240,
     "tip": "出發前先在 Google 地圖確認營業時間。",
     "near_spot_ids": [],
-    "lat": 22.788396,
-    "lng": 120.362165,
+    "lat": 22.814215,
+    "lng": 120.355956,
     "google_place_id": "ChIJtd5_LmISbjQRK5P7_tIBAzw",
     "needs_verify": [
       "cuisine",
@@ -2390,7 +2336,6 @@
       "tags",
       "tip"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2414,8 +2359,8 @@
     "mins_from_linkou": 240,
     "tip": "阿公店水庫旁的庭園農場餐廳。",
     "near_spot_ids": [],
-    "lat": 22.788396,
-    "lng": 120.362165,
+    "lat": 22.807076,
+    "lng": 120.366668,
     "google_place_id": "ChIJ_SwbXF0SbjQRfzOaeHjJE0g",
     "needs_verify": [
       "cuisine",
@@ -2423,7 +2368,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2448,8 +2392,8 @@
     "mins_from_linkou": 200,
     "tip": "景觀餐廳附親子農場和動物區。",
     "near_spot_ids": [],
-    "lat": 24.120156,
-    "lng": 121.626089,
+    "lat": 24.067168,
+    "lng": 121.607535,
     "google_place_id": "ChIJU0V-bZadaDQRUqU38uhQ_u4",
     "needs_verify": [
       "cuisine",
@@ -2457,7 +2401,6 @@
       "price_tier",
       "tags"
     ],
-    "coord_area": true,
     "verified": {
       "date": "2026-11-18",
       "fields": [
@@ -2481,8 +2424,8 @@
     "near_spot_ids": [
       "spot-027"
     ],
-    "lat": 24.702003,
-    "lng": 121.056685,
+    "lat": 24.712316,
+    "lng": 121.070435,
     "google_place_id": "ChIJRX1dgLFJaDQRg8XtDLj-0x0",
     "needs_verify": [
       "cuisine",
@@ -2491,7 +2434,6 @@
       "mins_from_linkou"
     ],
     "last_verified": "2026-11-20",
-    "coord_area": true,
     "verified": {
       "date": "2026-11-20",
       "fields": [
